@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { questions } from '@/data/questions';
 import { useQuiz } from '@/hooks/useQuiz';
 import { QuizHeader } from '@/components/quiz/QuizHeader';
@@ -9,9 +9,16 @@ import { QuizFooter } from '@/components/quiz/QuizFooter';
 import { IntermediatePage } from '@/components/quiz/IntermediatePage';
 import { IntermittentFastingInfo } from '@/components/quiz/IntermittentFastingInfo';
 import { StatsPage } from '@/components/quiz/StatsPage';
+import { LoadingAnalysis } from '@/components/quiz/LoadingAnalysis';
+import { ReadyTransition } from '@/components/quiz/ReadyTransition';
+import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
+  const [showAnalysis, setShowAnalysis] = useState(false);
+  const [showReadyTransition, setShowReadyTransition] = useState(false);
+  const [showExpectations, setShowExpectations] = useState(false);
+
   const {
     quizState,
     nextQuestion,
@@ -135,8 +142,8 @@ export const Quiz = () => {
     );
   }
 
-  // Handle consent and loading pages
-  if (currentQuestion.id === "consent-page" || currentQuestion.id === "loading-page") {
+  // Handle consent page
+  if (currentQuestion.id === "consent-page") {
     return (
       <IntermediatePage
         title={currentQuestion.title}
@@ -147,6 +154,25 @@ export const Quiz = () => {
         onBack={prevQuestion}
       />
     );
+  }
+
+  // Handle loading page with new analysis flow
+  if (currentQuestion.id === "loading-page") {
+    if (showExpectations) {
+      return <WeeklyExpectations onContinue={nextQuestion} />;
+    }
+    
+    if (showReadyTransition) {
+      return <ReadyTransition onComplete={() => setShowExpectations(true)} />;
+    }
+    
+    if (showAnalysis) {
+      return <LoadingAnalysis onComplete={() => setShowReadyTransition(true)} />;
+    }
+    
+    // Start the analysis flow
+    setTimeout(() => setShowAnalysis(true), 100);
+    return <LoadingAnalysis onComplete={() => setShowReadyTransition(true)} />;
   }
 
   const regularQuestions = questions.filter(q => typeof q.id === 'number');
