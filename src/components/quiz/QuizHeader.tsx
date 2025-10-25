@@ -33,15 +33,26 @@ export const QuizHeader = ({
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center gap-3 justify-center mb-6">
+          <div className="w-10 h-10 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center">
+            <img 
+              src={nutriaLogo} 
+              alt="Nutria" 
+              className="w-8 h-8 object-contain"
+            />
+          </div>
+          <span className="text-xl font-bold text-foreground">Nutria</span>
+        </div>
+
         {(showTitle || showSubtitle) && (
           <div className="text-center mb-6">
             {showTitle && (
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+              <h1 className="text-xl md:text-2xl font-bold text-foreground mb-2">
                 {showTitle}
               </h1>
             )}
             {showSubtitle && (
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 {showSubtitle}
               </p>
             )}
@@ -57,16 +68,7 @@ export const QuizHeader = ({
             <ArrowLeft className="w-5 h-5 text-foreground" />
           </button>
 
-          <div className="flex items-center gap-3 flex-1 justify-center">
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center">
-              <img 
-                src={nutriaLogo} 
-                alt="Nutria" 
-                className="w-8 h-8 object-contain"
-              />
-            </div>
-            <span className="text-xl font-bold text-foreground">Nutria</span>
-          </div>
+          <div className="flex-1"></div>
           
           <span className="text-sm font-medium text-muted-foreground min-w-[50px] text-right">
             {currentQuestion}/{totalQuestions}
