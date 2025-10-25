@@ -17,6 +17,7 @@ import fastingInfographic from '@/assets/fasting-infographic.jpg';
 import manWorkingOffice from '@/assets/man-working-office.jpg';
 import womanWorkingOffice from '@/assets/woman-working-office.jpg';
 import healthyLifestyle from '@/assets/healthy-lifestyle.jpg';
+import appMockupNutrition from '@/assets/app-mockup-nutrition.jpg';
 import fitnessThinking from '@/assets/fitness-thinking.jpg';
 import appLoading from '@/assets/app-loading.jpg';
 
@@ -70,7 +71,7 @@ export const imageMap = {
   'fasting-infographic': fastingInfographic,
   'man-working-office': manWorkingOffice,
   'woman-working-office': womanWorkingOffice,
-  'healthy-lifestyle': healthyLifestyle,
+  'healthy-lifestyle': appMockupNutrition,
   'fitness-thinking': fitnessThinking,
   'app-loading': appLoading,
   'body-thin-professional': bodyThinProfessional,
