@@ -156,7 +156,7 @@ export const Quiz = () => {
         onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
       
-      <main className="pt-32 pb-20 px-4">
+      <main className="pt-24 pb-20 px-4">
         <div className="container mx-auto py-8">
           <QuizQuestion
             question={currentQuestion}

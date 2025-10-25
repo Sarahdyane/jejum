@@ -32,8 +32,8 @@ export const QuizHeader = ({
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center gap-3 justify-center mb-6">
+      <div className="container mx-auto px-4 py-2">
+        <div className="flex items-center gap-3 justify-center mb-3">
           <div className="w-10 h-10 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center">
             <img 
               src={nutriaLogo} 
@@ -45,9 +45,9 @@ export const QuizHeader = ({
         </div>
 
         {(showTitle || showSubtitle) && (
-          <div className="text-center mb-6">
+          <div className="text-center mb-3">
             {showTitle && (
-              <h1 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+              <h1 className="text-xl md:text-2xl font-bold text-foreground mb-1">
                 {showTitle}
               </h1>
             )}
@@ -75,7 +75,7 @@ export const QuizHeader = ({
           </span>
         </div>
         
-        <div className="mt-3">
+        <div className="mt-2">
           <Progress value={progress} className="h-2" />
         </div>
       </div>
