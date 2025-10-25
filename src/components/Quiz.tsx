@@ -23,27 +23,35 @@ export const Quiz = () => {
     generateProfile,
   } = useQuiz(questions);
 
-  // Preload images for better performance
+  // Preload images for current and next questions
   useEffect(() => {
-    const imagesToPreload: string[] = [];
-    questions.forEach(q => {
-      if (q.image) imagesToPreload.push(getImageSrc(q.image));
-      if (q.maleImage) imagesToPreload.push(getImageSrc(q.maleImage));
-      if (q.femaleImage) imagesToPreload.push(getImageSrc(q.femaleImage));
+    const currentIndex = questions.findIndex(q => q.id === quizState.currentQuestion);
+    const questionsToPreload = questions.slice(currentIndex, currentIndex + 3);
+    
+    questionsToPreload.forEach(q => {
+      const imagesToLoad: string[] = [];
+      
+      if (q.image) imagesToLoad.push(getImageSrc(q.image));
+      if (q.maleImage) imagesToLoad.push(getImageSrc(q.maleImage));
+      if (q.femaleImage) imagesToLoad.push(getImageSrc(q.femaleImage));
+      
       if (q.options) {
         q.options.forEach(opt => {
-          if (opt.image) imagesToPreload.push(getImageSrc(opt.image));
-          if (opt.maleImage) imagesToPreload.push(getImageSrc(opt.maleImage));
-          if (opt.femaleImage) imagesToPreload.push(getImageSrc(opt.femaleImage));
+          if (opt.image) imagesToLoad.push(getImageSrc(opt.image));
+          if (opt.maleImage) imagesToLoad.push(getImageSrc(opt.maleImage));
+          if (opt.femaleImage) imagesToLoad.push(getImageSrc(opt.femaleImage));
         });
       }
-    });
 
-    imagesToPreload.forEach(src => {
-      const img = new Image();
-      img.src = src;
+      imagesToLoad.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+      });
     });
-  }, []);
+  }, [quizState.currentQuestion]);
 
   const currentQuestion = getCurrentQuestion();
   const progress = getProgress();

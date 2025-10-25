@@ -73,6 +73,8 @@ export const QuizOption = ({ option, isSelected, onClick, className }: QuizOptio
             <img 
               src={option.image} 
               alt={option.text}
+              loading="eager"
+              decoding="async"
               className="w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
             />
           </div>
