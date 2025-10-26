@@ -47,10 +47,10 @@ const weeklyBenefits = [
 
 export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Header with Logo */}
-      <div className="py-6 px-4 border-b border-border">
-        <div className="container mx-auto max-w-md">
+      <div className="py-6 px-4 border-b border-gray-200">
+        <div className="container mx-auto max-w-md flex justify-center">
           <img 
             src={nutriaLogo} 
             alt="Nutria" 
@@ -63,26 +63,28 @@ export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
       <div className="flex-1 flex flex-col justify-between py-8 px-4">
         <div className="container mx-auto max-w-md space-y-8 animate-fade-in">
           {/* Title */}
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
             O que você pode esperar?
           </h1>
 
           {/* Timeline */}
           <div className="space-y-6 relative">
             {/* Vertical line */}
-            <div className="absolute left-[15px] top-8 bottom-8 w-[2px] bg-border" />
+            <div className="absolute left-[15px] top-8 bottom-8 w-[2px]" style={{ 
+              backgroundImage: 'repeating-linear-gradient(0deg, #e5e7eb, #e5e7eb 4px, transparent 4px, transparent 8px)'
+            }} />
 
             {weeklyBenefits.map((benefit, index) => (
               <div key={index} className="flex gap-4 relative">
                 {/* Icon */}
                 <div className="flex-shrink-0 relative z-10">
                   {benefit.completed ? (
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                      <Check className="w-5 h-5 text-primary-foreground" />
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#0d7377' }}>
+                      <Check className="w-5 h-5 text-white" />
                     </div>
                   ) : (
-                    <div className="w-8 h-8 rounded-full border-2 border-border bg-background flex items-center justify-center">
-                      <Circle className="w-4 h-4 text-muted-foreground" />
+                    <div className="w-8 h-8 rounded-full border-2 border-gray-300 bg-white flex items-center justify-center">
+                      <div className="w-3 h-3 rounded-full border-2 border-gray-300" />
                     </div>
                   )}
                 </div>
@@ -90,23 +92,14 @@ export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
                 {/* Content */}
                 <div className="flex-1 pb-2">
                   <h3 className={`font-semibold mb-1 ${
-                    benefit.completed ? 'text-primary' : 'text-foreground'
+                    benefit.completed ? 'text-teal-600' : 'text-gray-900'
                   }`}>
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-600">
                     {benefit.description}
                   </p>
                 </div>
-
-                {/* Dotted connector for uncompleted items */}
-                {!benefit.completed && index < weeklyBenefits.length - 1 && (
-                  <div className="absolute left-[15px] top-10 w-[2px] h-6 bg-transparent" 
-                    style={{
-                      backgroundImage: 'repeating-linear-gradient(0deg, hsl(var(--border)), hsl(var(--border)) 4px, transparent 4px, transparent 8px)'
-                    }}
-                  />
-                )}
               </div>
             ))}
           </div>
@@ -116,7 +109,8 @@ export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
         <div className="container mx-auto max-w-md pt-8">
           <Button 
             onClick={onContinue}
-            className="w-full quiz-gradient hover:opacity-90 text-lg py-6"
+            className="w-full text-white text-lg py-6 rounded-lg font-semibold hover:opacity-90"
+            style={{ backgroundColor: '#0d7377' }}
           >
             Continuar
           </Button>

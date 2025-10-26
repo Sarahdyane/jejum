@@ -46,7 +46,7 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
   }, [currentStep, onComplete]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-background">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
       <div className="w-full max-w-md space-y-12 animate-fade-in">
         {/* Logo */}
         <div className="flex justify-center">
@@ -59,7 +59,7 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
 
         {/* Title */}
         <div className="text-center space-y-2">
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
             Suas respostas estão sendo analisadas...
           </h1>
         </div>
@@ -70,14 +70,14 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
             <div key={index} className="space-y-3">
               <p className={`text-sm md:text-base transition-colors duration-300 ${
                 index <= currentStep 
-                  ? 'text-foreground font-medium' 
-                  : 'text-muted-foreground'
+                  ? 'text-gray-900 font-medium' 
+                  : 'text-gray-400'
               }`}>
                 {step.text}
               </p>
               <Progress 
                 value={progress[index]} 
-                className="h-2"
+                className="h-2 bg-gray-100"
               />
             </div>
           ))}
@@ -87,12 +87,12 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
         <div className="text-center space-y-4 pt-8">
           <div className="flex items-center justify-center gap-2">
             <span className="text-xl">🌿</span>
-            <p className="text-sm text-muted-foreground italic">
-              O assistente de perda de peso <span className="font-semibold text-foreground">mais eficaz</span>
+            <p className="text-sm text-gray-600">
+              O assistente de perda de peso <span className="font-semibold text-gray-900">mais eficaz</span>
             </p>
             <span className="text-xl">🌿</span>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-gray-500">
             Avaliações honestas da marca
           </p>
         </div>
