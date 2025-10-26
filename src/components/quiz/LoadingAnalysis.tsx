@@ -60,24 +60,26 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
         {/* Title */}
         <div className="text-center space-y-2">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Suas respostas estão sendo analisadas...
+            Suas respostas estão sendo<br />analisadas...
           </h1>
         </div>
 
         {/* Progress Bars */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           {analysisSteps.map((step, index) => (
-            <div key={index} className="space-y-3">
-              <p className={`text-sm md:text-base transition-colors duration-300 ${
-                index <= currentStep 
+            <div key={index} className="space-y-2">
+              <p className={`text-base transition-colors duration-300 ${
+                index < currentStep 
                   ? 'text-gray-900 font-medium' 
+                  : index === currentStep
+                  ? 'text-gray-900 font-medium'
                   : 'text-gray-400'
               }`}>
                 {step.text}
               </p>
               <Progress 
                 value={progress[index]} 
-                className="h-2 bg-gray-100"
+                className="h-2 bg-gray-200"
               />
             </div>
           ))}
