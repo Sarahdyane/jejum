@@ -65,6 +65,7 @@ export const Quiz = () => {
   const canProceed = currentQuestion && (
     currentQuestion.type === 'intermediate' || 
     currentQuestion.type === 'stats' ||
+    currentQuestion.type === 'loading' ||
     (typeof currentQuestion.id === 'number' && hasAnswer(currentQuestion.id))
   );
 
@@ -157,7 +158,7 @@ export const Quiz = () => {
   }
 
   // Handle loading page with new analysis flow
-  if (currentQuestion.id === "loading-page") {
+  if (currentQuestion.type === 'loading') {
     if (showExpectations) {
       return <WeeklyExpectations onContinue={nextQuestion} />;
     }

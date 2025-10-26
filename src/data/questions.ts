@@ -548,9 +548,9 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "loading-page",
-    title: "Estamos montando seu plano personalizado…",
-    subtitle: "Aguarde enquanto criamos seu programa de jejum ideal",
-    type: "intermediate",
-    image: "app-loading"
+    title: "Suas respostas estão sendo analisadas...",
+    subtitle: "",
+    type: "loading",
+    image: ""
   }
 ];
