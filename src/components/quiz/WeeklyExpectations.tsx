@@ -1,120 +1,104 @@
-import { Check, Circle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Sparkles } from 'lucide-react';
 import nutriaLogo from '@/assets/nutria-logo.png';
 
 interface WeeklyExpectationsProps {
   onContinue: () => void;
 }
 
-const weeklyBenefits = [
-  {
-    week: 1,
-    title: 'Semana 1',
-    description: 'Açúcar no sangue equilibrado, energia constante.',
-    completed: true
-  },
-  {
-    week: 2,
-    title: 'Semana 2',
-    description: 'Mais energia através de uma dieta equilibrada.',
-    completed: false
-  },
-  {
-    week: 3,
-    title: 'Semana 3',
-    description: 'Melhor qualidade do sono por meio de nutrientes importantes.',
-    completed: false
-  },
-  {
-    week: 4,
-    title: 'Semana 4',
-    description: 'Equilíbrio hormonal, melhora do humor.',
-    completed: false
-  },
-  {
-    week: 6,
-    title: 'Semana 6',
-    description: 'Digestão mais saudável, menos inchaço.',
-    completed: false
-  },
-  {
-    week: 8,
-    title: 'Semana 8',
-    description: 'Benefícios a longo prazo, riscos reduzidos à saúde.',
-    completed: false
-  }
-];
-
 export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {/* Header with Logo */}
-      <div className="py-6 px-4 border-b border-gray-200">
-        <div className="container mx-auto max-w-md flex justify-center">
-          <img 
-            src={nutriaLogo} 
-            alt="Nutria" 
-            className="h-10 w-auto"
-          />
+    <div className="min-h-screen bg-white flex flex-col items-center justify-between p-6">
+      <div className="w-full max-w-md flex-1 flex flex-col">
+        {/* Logo */}
+        <div className="mb-8 mt-4">
+          <img src={nutriaLogo} alt="Nutria" className="h-12" />
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="flex-1 flex flex-col justify-between py-8 px-4">
-        <div className="container mx-auto max-w-md space-y-8 animate-fade-in">
-          {/* Title */}
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-            O que você pode esperar?
-          </h1>
+        {/* Title Section */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Sparkles className="w-8 h-8 text-[#0d7377]" />
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+              O plano de jejum intermitente de 4 semanas está pronto!
+            </h1>
+            <Sparkles className="w-8 h-8 text-[#0d7377]" />
+          </div>
+          <p className="text-gray-700 text-lg">
+            Trabalharemos juntos em direção ao seu objetivo
+          </p>
+        </div>
 
-          {/* Timeline */}
-          <div className="space-y-6 relative">
-            {/* Vertical line */}
-            <div className="absolute left-[15px] top-8 bottom-8 w-[2px]" style={{ 
-              backgroundImage: 'repeating-linear-gradient(0deg, #e5e7eb, #e5e7eb 4px, transparent 4px, transparent 8px)'
-            }} />
-
-            {weeklyBenefits.map((benefit, index) => (
-              <div key={index} className="flex gap-4 relative">
-                {/* Icon */}
-                <div className="flex-shrink-0 relative z-10">
-                  {benefit.completed ? (
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#0d7377' }}>
-                      <Check className="w-5 h-5 text-white" />
-                    </div>
-                  ) : (
-                    <div className="w-8 h-8 rounded-full border-2 border-gray-300 bg-white flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full border-2 border-gray-300" />
-                    </div>
-                  )}
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 pb-2">
-                  <h3 className={`font-semibold mb-1 ${
-                    benefit.completed ? 'text-teal-600' : 'text-gray-900'
-                  }`}>
-                    {benefit.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {benefit.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+        {/* Timeline Badge */}
+        <div className="flex justify-center mb-6">
+          <div className="bg-[#0d7377] text-white px-6 py-2 rounded-full font-semibold">
+            Depois de 4 semanas
           </div>
         </div>
 
-        {/* Button */}
-        <div className="container mx-auto max-w-md pt-8">
-          <Button 
-            onClick={onContinue}
-            className="w-full text-white text-lg py-6 rounded-lg font-semibold hover:opacity-90"
-            style={{ backgroundColor: '#0d7377' }}
-          >
-            Continuar
-          </Button>
+        {/* Progress Graph */}
+        <div className="flex-1 relative bg-gradient-to-b from-white via-teal-50/30 to-teal-100/40 rounded-lg p-6 mb-6">
+          {/* Graph visualization */}
+          <div className="relative h-64">
+            {/* Starting point */}
+            <div className="absolute bottom-8 left-4">
+              <div className="bg-pink-500 text-white px-4 py-2 rounded-lg font-semibold text-sm">
+                Seu peso
+              </div>
+              <div className="w-3 h-3 bg-pink-500 rounded-full mt-2 ml-6"></div>
+            </div>
+
+            {/* Curve path */}
+            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#ec4899" />
+                  <stop offset="50%" stopColor="#fbbf24" />
+                  <stop offset="100%" stopColor="#0d7377" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 40 230 Q 100 200, 150 160 T 280 80 T 380 40"
+                fill="none"
+                stroke="url(#lineGradient)"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            {/* Intermediate points */}
+            <div className="absolute top-32 left-28">
+              <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+            </div>
+            <div className="absolute top-20 left-52">
+              <div className="w-3 h-3 bg-teal-400 rounded-full"></div>
+            </div>
+
+            {/* End point */}
+            <div className="absolute top-8 right-4">
+              <div className="w-3 h-3 bg-[#0d7377] rounded-full mb-2 ml-12"></div>
+              <div className="bg-[#0d7377] text-white px-4 py-2 rounded-lg font-semibold text-sm">
+                MANTER O PESO
+              </div>
+              <div className="absolute -right-2 top-8 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-[#0d7377]"></div>
+            </div>
+          </div>
         </div>
+
+        {/* Disclaimer */}
+        <p className="text-center text-gray-600 text-sm mb-6">
+          Este é um cronograma preliminar baseado em suas respostas.
+        </p>
+      </div>
+
+      {/* Continue Button */}
+      <div className="w-full max-w-md">
+        <Button
+          onClick={onContinue}
+          className="w-full bg-[#0d7377] hover:bg-[#0a5c5f] text-white py-6 text-lg font-semibold rounded-lg"
+        >
+          Avançar
+        </Button>
       </div>
     </div>
   );
