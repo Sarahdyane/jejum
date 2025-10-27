@@ -1,8 +1,9 @@
 import { UserProfile } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Target, Clock, Utensils, Activity } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Check, Target, Flame, Droplet, User, Wind, MapPin } from "lucide-react";
+import nutriaLogo from '@/assets/nutria-logo.png';
+import appMockup from '@/assets/app-mockup-nutrition.jpg';
 
 interface QuizResultsProps {
   profile: UserProfile;
@@ -10,191 +11,417 @@ interface QuizResultsProps {
 }
 
 export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
-  const getFastingPlan = () => {
-    if (profile.fastingKnowledge === 'never') {
-      return '12:12 - Iniciante';
-    } else if (profile.fastingKnowledge === 'heard') {
-      return '14:10 - Intermediário';
+  // Calcular IMC
+  const calculateBMI = () => {
+    const heightInMeters = profile.height / 100;
+    return (profile.currentWeight / (heightInMeters * heightInMeters)).toFixed(2);
+  };
+
+  const calculateTargetBMI = () => {
+    const heightInMeters = profile.height / 100;
+    return (profile.targetWeight / (heightInMeters * heightInMeters)).toFixed(2);
+  };
+
+  // Determinar status do IMC
+  const getBMIStatus = (bmi: number) => {
+    if (bmi < 18.5) return 'Abaixo do peso';
+    if (bmi < 25) return 'Normal';
+    if (bmi < 30) return 'Sobrepeso';
+    return 'Obeso';
+  };
+
+  // Calcular percentual de gordura corporal estimado
+  const getBodyFatPercentage = () => {
+    const bmi = parseFloat(calculateBMI());
+    // Fórmula simplificada baseada em IMC e gênero
+    if (profile.gender === 'female') {
+      return `${Math.round(21 + (bmi - 22) * 0.8)}-${Math.round(24 + (bmi - 22) * 0.8)}%`;
+    }
+    return `${Math.round(18 + (bmi - 22) * 0.8)}-${Math.round(21 + (bmi - 22) * 0.8)}%`;
+  };
+
+  const getTargetBodyFatPercentage = () => {
+    const targetBMI = parseFloat(calculateTargetBMI());
+    if (profile.gender === 'female') {
+      return `${Math.round(21 + (targetBMI - 22) * 0.8)}-${Math.round(24 + (targetBMI - 22) * 0.8)}%`;
+    }
+    return `${Math.round(18 + (targetBMI - 22) * 0.8)}-${Math.round(21 + (targetBMI - 22) * 0.8)}%`;
+  };
+
+  // Calcular ingestão calórica recomendada
+  const calculateCalories = () => {
+    // Fórmula simplificada baseada em peso, altura, idade e objetivo
+    let bmr;
+    if (profile.gender === 'male') {
+      bmr = 10 * profile.currentWeight + 6.25 * profile.height - 5 * profile.userAge + 5;
     } else {
-      return '16:8 - Avançado';
+      bmr = 10 * profile.currentWeight + 6.25 * profile.height - 5 * profile.userAge - 161;
+    }
+
+    // Ajustar baseado no objetivo
+    if (profile.goal === 'lose-weight') {
+      return Math.round(bmr * 1.3 - 300);
+    } else if (profile.goal === 'gain-weight') {
+      return Math.round(bmr * 1.5 + 300);
+    }
+    return Math.round(bmr * 1.4);
+  };
+
+  // Calcular ingestão de água recomendada
+  const calculateWaterIntake = () => {
+    // 35ml por kg de peso corporal
+    return ((profile.currentWeight * 35) / 1000).toFixed(1);
+  };
+
+  // Obter imagem do corpo atual
+  const getCurrentBodyImage = () => {
+    const bodyType = profile.bodyType.toLowerCase();
+    const gender = profile.gender;
+    
+    if (bodyType.includes('média') || bodyType.includes('average')) {
+      return gender === 'female' 
+        ? '/images/body-average-female.png'
+        : '/images/body-average-male.png';
+    } else if (bodyType.includes('magra') || bodyType.includes('thin')) {
+      return gender === 'female'
+        ? '/images/body-thin-female.png'
+        : '/images/body-thin-male.png';
+    } else {
+      return gender === 'female'
+        ? '/images/body-robust-female.png'
+        : '/images/body-robust-male.png';
     }
   };
 
-  const getGoalDescription = () => {
-    switch (profile.goal) {
-      case 'lose-weight':
-        return 'Perda de peso através de jejum intermitente';
-      case 'get-fit':
-        return 'Melhora da forma física e saúde geral';
-      case 'gain-weight':
-        return 'Ganho de peso saudável e massa muscular';
-      default:
-        return 'Plano personalizado de saúde';
+  // Obter imagem do corpo meta
+  const getTargetBodyImage = () => {
+    const targetType = profile.targetBodyType?.toLowerCase() || profile.goal;
+    const gender = profile.gender;
+    
+    if (targetType.includes('atleta') || targetType.includes('athlete')) {
+      return gender === 'female'
+        ? '/images/goal-athlete-female.png'
+        : '/images/goal-athlete-male.png';
+    } else if (targetType.includes('esportivo') || targetType.includes('sporty')) {
+      return gender === 'female'
+        ? '/images/goal-sporty-female.png'
+        : '/images/goal-sporty-male.png';
+    } else if (targetType.includes('treinado') || targetType.includes('trained')) {
+      return gender === 'female'
+        ? '/images/goal-trained-female.png'
+        : '/images/goal-trained-male.png';
     }
+    return gender === 'female'
+      ? '/images/goal-smaller-female.png'
+      : '/images/goal-smaller-male.png';
+  };
+
+  const bmi = parseFloat(calculateBMI());
+  const bmiStatus = getBMIStatus(bmi);
+  const calories = calculateCalories();
+  const waterIntake = calculateWaterIntake();
+  const weightDifference = Math.abs(profile.targetWeight - profile.currentWeight);
+  const weightGoal = profile.targetWeight > profile.currentWeight ? `+${weightDifference}kg` : `-${weightDifference}kg`;
+
+  // Calcular idade metabólica (simplificado)
+  const metabolicAge = Math.max(18, Math.min(profile.userAge + Math.round((bmi - 22) * 2), 70));
+
+  // Determinar nível de energia
+  const getEnergyLevel = () => {
+    if (profile.energyLevel === 'high') return 'Ótimo';
+    if (profile.energyLevel === 'medium') return 'Bom';
+    return 'Baixo';
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20 pb-20">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8 quiz-fade-in">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 bg-primary/10 rounded-full">
-                <CheckCircle2 className="w-8 h-8 text-primary" />
+    <div className="min-h-screen bg-white">
+      {/* Header fixo */}
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 py-4 px-6">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <img src={nutriaLogo} alt="Nutria" className="h-10" />
+          <Button className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-6 py-2 rounded-lg font-semibold">
+            Obtenha meus resultados
+          </Button>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 py-8 space-y-12">
+        {/* Seção 1: Comparação Corpo Atual vs Meta */}
+        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Corpo Atual */}
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Seu peso</h3>
+              <div className="relative bg-white rounded-xl p-4 mb-4">
+                <img 
+                  src={getCurrentBodyImage()} 
+                  alt="Corpo atual" 
+                  className="w-full h-64 object-contain"
+                />
+              </div>
+              <div className="space-y-2">
+                <div>
+                  <p className="text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-gray-600">{getBodyFatPercentage()}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
+                  <Progress value={35} className="h-2" />
+                </div>
               </div>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-              Seu Plano Personalizado Está Pronto!
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Baseado nas suas respostas, criamos um plano de jejum intermitente ideal para você.
-            </p>
+
+            {/* Seta divisória */}
+            <div className="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="text-6xl text-gray-300 font-bold">→</div>
+            </div>
+
+            {/* Corpo Meta */}
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Meta</h3>
+              <div className="relative bg-white rounded-xl p-4 mb-4">
+                <img 
+                  src={getTargetBodyImage()} 
+                  alt="Corpo meta" 
+                  className="w-full h-64 object-contain"
+                />
+              </div>
+              <div className="space-y-2">
+                <div>
+                  <p className="text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-gray-600">{getTargetBodyFatPercentage()}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
+                  <Progress value={85} className="h-2" />
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Profile Summary */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <Card className="quiz-slide-in">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Target className="w-5 h-5 text-primary" />
-                  <span>Seu Perfil</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Objetivo:</span>
-                  <Badge variant="secondary">{getGoalDescription()}</Badge>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Idade:</span>
-                  <span className="font-medium">{profile.age}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Tipo de corpo:</span>
-                  <span className="font-medium">{profile.bodyType}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Peso atual:</span>
-                  <span className="font-medium">{profile.currentWeight} kg</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Peso desejado:</span>
-                  <span className="font-medium">{profile.targetWeight} kg</span>
-                </div>
-              </CardContent>
-            </Card>
+          <p className="text-center text-sm text-gray-600 mt-6">
+            Os resultados não são típicos. Os resultados individuais podem variar.
+          </p>
+        </div>
 
-            <Card className="quiz-slide-in">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Clock className="w-5 h-5 text-primary" />
-                  <span>Plano de Jejum</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="text-center p-4 bg-primary/10 rounded-lg">
-                  <div className="text-2xl font-bold text-primary mb-1">
-                    {getFastingPlan()}
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Plano recomendado para você
-                  </p>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Refeições por dia:</span>
-                  <span className="font-medium">{profile.mealsPerDay}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Tipo de dieta:</span>
-                  <span className="font-medium">{profile.dietType}</span>
-                </div>
-              </CardContent>
-            </Card>
+        {/* Seção 2: Resumo Pessoal */}
+        <div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            Resumo pessoal baseado em suas respostas
+          </h2>
+
+          {/* IMC Atual */}
+          <div className="bg-gray-50 rounded-2xl p-6 mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">IMC atual</h3>
+            <p className="text-4xl font-bold text-gray-900 mb-4">{bmi} IMC</p>
+            
+            {/* Escala de IMC */}
+            <div className="relative mb-4">
+              <div className="h-3 bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 to-red-400 rounded-full"></div>
+              <div 
+                className="absolute top-0 w-4 h-4 bg-white border-4 border-gray-900 rounded-full transform -translate-y-0.5"
+                style={{ left: `${Math.min(Math.max((bmi - 15) / 25 * 100, 0), 100)}%` }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs text-gray-600 mb-4">
+              <span>Abaixo do peso</span>
+              <span>Obeso</span>
+            </div>
+
+            <div className="bg-[#0d7377]/10 border-l-4 border-[#0d7377] p-4 rounded">
+              <p className="font-semibold text-[#0d7377] mb-2">{bmiStatus}</p>
+              <p className="text-sm text-gray-700">
+                O índice de massa corporal (IMC) é uma medida que usa sua altura e peso para determinar se seu peso é saudável.
+              </p>
+            </div>
           </div>
 
-          {/* Recommendations */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <Card className="quiz-slide-in">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Utensils className="w-5 h-5 text-primary" />
-                  <span>Recomendações Alimentares</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Baseado nas suas preferências alimentares:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {profile.likedFoods.slice(0, 6).map((food, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
-                        {food}
-                      </Badge>
-                    ))}
-                    {profile.likedFoods.length > 6 && (
-                      <Badge variant="outline" className="text-xs">
-                        +{profile.likedFoods.length - 6} mais
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="quiz-slide-in">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Activity className="w-5 h-5 text-primary" />
-                  <span>Atividade Física</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Nível de atividade:</span>
-                  <span className="font-medium">{profile.dailyActivity}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Caminhadas:</span>
-                  <span className="font-medium">{profile.walkingFrequency}</span>
-                </div>
-                {profile.targetZones.length > 0 && (
-                  <div>
-                    <span className="text-muted-foreground">Zonas-alvo:</span>
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {profile.targetZones.map((zone, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {zone}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+          {/* Ingestão Calórica */}
+          <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
+            <div className="absolute top-6 right-6">
+              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold">
+                RECOMENDADO
+              </span>
+            </div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-orange-100 p-3 rounded-xl">
+                <Flame className="w-8 h-8 text-orange-500" />
+              </div>
+              <div>
+                <p className="text-lg font-semibold text-gray-900">Ingestão calórica diária</p>
+                <p className="text-3xl font-bold text-gray-900">{calories} kcal</p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="h-3 bg-gradient-to-r from-yellow-200 via-orange-300 to-red-300 rounded-full"></div>
+              <div 
+                className="absolute top-0 w-4 h-4 bg-white border-4 border-orange-500 rounded-full transform -translate-y-0.5"
+                style={{ left: `${((calories - 1000) / 4000) * 100}%` }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs text-gray-600 mt-2">
+              <span>1000 kcal</span>
+              <span>5000 kcal</span>
+            </div>
           </div>
 
-          {/* CTA */}
-          <div className="text-center quiz-fade-in">
-            <Card className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-              <CardContent className="space-y-4">
-                <h3 className="text-xl font-bold text-foreground">
-                  Pronto para começar sua jornada?
-                </h3>
-                <p className="text-muted-foreground">
-                  Comece seu plano personalizado de jejum intermitente hoje mesmo e alcance seus objetivos de saúde e bem-estar.
+          {/* Ingestão de Água */}
+          <div className="bg-gray-50 rounded-2xl p-6 relative">
+            <div className="absolute top-6 right-6">
+              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold">
+                RECOMENDADO
+              </span>
+            </div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-blue-100 p-3 rounded-xl">
+                <Droplet className="w-8 h-8 text-blue-500" />
+              </div>
+              <div>
+                <p className="text-lg font-semibold text-gray-900">Ingestão diária de água</p>
+                <p className="text-3xl font-bold text-gray-900">{waterIntake} l</p>
+              </div>
+            </div>
+            {/* Copos de água */}
+            <div className="flex gap-2 justify-center">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className={`w-8 h-12 rounded-lg ${i < Math.round(parseFloat(waterIntake) / 0.25) ? 'bg-blue-400' : 'bg-gray-300'}`}></div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Seção 3: Seu plano personalizado está pronto */}
+        <div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            Seu plano personalizado <span className="text-[#0d7377]">está pronto!</span>
+          </h2>
+
+          <div className="space-y-4 mt-6">
+            {/* Meta */}
+            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
+              <div className="bg-red-100 p-3 rounded-xl">
+                <Target className="w-6 h-6 text-red-500" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">Meta</p>
+                <p className="text-xl font-bold text-gray-900">{weightGoal}</p>
+              </div>
+            </div>
+
+            {/* Idade Metabólica */}
+            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
+              <div className="bg-purple-100 p-3 rounded-xl">
+                <User className="w-6 h-6 text-purple-500" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">Idade metabólica</p>
+                <p className="text-xl font-bold text-gray-900">{metabolicAge}</p>
+              </div>
+            </div>
+
+            {/* Nível de Energia */}
+            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
+              <div className="bg-orange-100 p-3 rounded-xl">
+                <Wind className="w-6 h-6 text-orange-500" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">Nível de energia</p>
+                <p className="text-xl font-bold text-gray-900">{getEnergyLevel()}</p>
+              </div>
+            </div>
+
+            {/* Zonas Alvo */}
+            {profile.targetZones && profile.targetZones.length > 0 && (
+              <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
+                <div className="bg-yellow-100 p-3 rounded-xl">
+                  <MapPin className="w-6 h-6 text-yellow-600" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Zonas alvo</p>
+                  <p className="text-xl font-bold text-gray-900">{profile.targetZones.join(', ')}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Seção 4: As metas do seu plano também incluem */}
+        <div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            As metas do seu plano também incluem:
+          </h2>
+          
+          <div className="space-y-3">
+            {[
+              'Reduzir o estresse',
+              'Para se sentir mais saudável',
+              'Autodisciplina',
+              'Crie um hábito saudável',
+              'Melhore o sono'
+            ].map((goal, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <Check className="w-6 h-6 text-[#0d7377] flex-shrink-0" />
+                <span className="text-lg text-gray-900">{goal}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Seção 5: O que você ganha */}
+        <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+            O que você ganha:
+          </h2>
+
+          <div className="space-y-6">
+            {/* Planos nutricionais */}
+            <div className="flex items-start gap-4">
+              <div className="bg-orange-100 p-3 rounded-xl flex-shrink-0">
+                <Flame className="w-6 h-6 text-orange-500" />
+              </div>
+              <div className="flex-1">
+                <p className="text-lg font-bold text-gray-900 mb-2">
+                  Planos nutricionais personalizados com receitas fáceis de entender
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Button size="lg" className="quiz-gradient hover:opacity-90">
-                    Começar Plano Premium
-                  </Button>
-                  <Button size="lg" variant="outline" onClick={onRestart}>
-                    Refazer Quiz
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="hidden md:block flex-shrink-0">
+                <img src={appMockup} alt="App mockup" className="w-48 rounded-xl shadow-lg" />
+              </div>
+            </div>
+
+            {/* Rastreador de água */}
+            <div className="flex items-start gap-4">
+              <div className="bg-blue-100 p-3 rounded-xl flex-shrink-0">
+                <Droplet className="w-6 h-6 text-blue-500" />
+              </div>
+              <div>
+                <p className="text-lg font-bold text-gray-900">
+                  Rastreador de água inteligente para hidratação suficiente
+                </p>
+              </div>
+            </div>
+
+            {/* Temporizador de jejum */}
+            <div className="flex items-start gap-4">
+              <div className="bg-purple-100 p-3 rounded-xl flex-shrink-0">
+                <Target className="w-6 h-6 text-purple-500" />
+              </div>
+              <div>
+                <p className="text-lg font-bold text-gray-900">
+                  Temporizador de jejum personalizado
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="mt-8">
+            <Button 
+              className="w-full bg-[#0d7377] hover:bg-[#0a5c5f] text-white py-6 text-lg font-semibold rounded-xl"
+              size="lg"
+            >
+              Começar Meu Plano Agora
+            </Button>
           </div>
         </div>
       </div>
