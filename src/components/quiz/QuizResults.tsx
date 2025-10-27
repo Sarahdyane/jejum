@@ -1,9 +1,11 @@
 import { UserProfile } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Check, Target, Flame, Droplet, User, Wind, MapPin } from "lucide-react";
+import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck } from "lucide-react";
 import nutriaLogo from '@/assets/nutria-logo.png';
-import appMockup from '@/assets/app-mockup-nutrition.jpg';
+import appPhoneMockup from '@/assets/app-phone-mockup.png';
+import bodyCurrentFemale from '@/assets/body-current-female.png';
+import bodyGoalFemale from '@/assets/body-goal-female.png';
 
 interface QuizResultsProps {
   profile: UserProfile;
@@ -148,15 +150,15 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-12">
         {/* Seção 1: Comparação Corpo Atual vs Meta */}
         <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 relative">
             {/* Corpo Atual */}
             <div className="text-center">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Seu peso</h3>
-              <div className="relative bg-white rounded-xl p-4 mb-4">
+              <div className="relative bg-white rounded-xl p-6 mb-4 flex items-center justify-center">
                 <img 
-                  src={getCurrentBodyImage()} 
+                  src={bodyCurrentFemale}
                   alt="Corpo atual" 
-                  className="w-full h-64 object-contain"
+                  className="h-80 object-contain"
                 />
               </div>
               <div className="space-y-2">
@@ -171,19 +173,14 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </div>
             </div>
 
-            {/* Seta divisória */}
-            <div className="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="text-6xl text-gray-300 font-bold">→</div>
-            </div>
-
             {/* Corpo Meta */}
             <div className="text-center">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Meta</h3>
-              <div className="relative bg-white rounded-xl p-4 mb-4">
+              <div className="relative bg-white rounded-xl p-6 mb-4 flex items-center justify-center">
                 <img 
-                  src={getTargetBodyImage()} 
+                  src={bodyGoalFemale}
                   alt="Corpo meta" 
-                  className="w-full h-64 object-contain"
+                  className="h-80 object-contain"
                 />
               </div>
               <div className="space-y-2">
@@ -237,20 +234,20 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
 
           {/* Ingestão Calórica */}
-          <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
-            <div className="absolute top-6 right-6">
-              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold">
+          <div className="bg-gray-50 rounded-2xl p-6 mb-6">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-orange-100 p-3 rounded-xl">
+                  <Flame className="w-8 h-8 text-orange-500" />
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-gray-900">Ingestão calórica diária</p>
+                  <p className="text-3xl font-bold text-gray-900">{calories} kcal</p>
+                </div>
+              </div>
+              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
                 RECOMENDADO
               </span>
-            </div>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-orange-100 p-3 rounded-xl">
-                <Flame className="w-8 h-8 text-orange-500" />
-              </div>
-              <div>
-                <p className="text-lg font-semibold text-gray-900">Ingestão calórica diária</p>
-                <p className="text-3xl font-bold text-gray-900">{calories} kcal</p>
-              </div>
             </div>
             <div className="relative">
               <div className="h-3 bg-gradient-to-r from-yellow-200 via-orange-300 to-red-300 rounded-full"></div>
@@ -266,25 +263,28 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
 
           {/* Ingestão de Água */}
-          <div className="bg-gray-50 rounded-2xl p-6 relative">
-            <div className="absolute top-6 right-6">
-              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold">
+          <div className="bg-gray-50 rounded-2xl p-6">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-blue-100 p-3 rounded-xl">
+                  <Droplet className="w-8 h-8 text-blue-500" />
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-gray-900">Ingestão diária de água</p>
+                  <p className="text-3xl font-bold text-gray-900">{waterIntake} l</p>
+                </div>
+              </div>
+              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
                 RECOMENDADO
               </span>
             </div>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-100 p-3 rounded-xl">
-                <Droplet className="w-8 h-8 text-blue-500" />
-              </div>
-              <div>
-                <p className="text-lg font-semibold text-gray-900">Ingestão diária de água</p>
-                <p className="text-3xl font-bold text-gray-900">{waterIntake} l</p>
-              </div>
-            </div>
             {/* Copos de água */}
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-2 justify-center mt-4">
               {[...Array(8)].map((_, i) => (
-                <div key={i} className={`w-8 h-12 rounded-lg ${i < Math.round(parseFloat(waterIntake) / 0.25) ? 'bg-blue-400' : 'bg-gray-300'}`}></div>
+                <div 
+                  key={i} 
+                  className={`w-10 h-16 rounded-full ${i < Math.round(parseFloat(waterIntake) / 0.25) ? 'bg-blue-400' : 'bg-gray-300'}`}
+                ></div>
               ))}
             </div>
           </div>
@@ -299,9 +299,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           <div className="space-y-4 mt-6">
             {/* Meta */}
             <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-              <div className="bg-red-100 p-3 rounded-xl">
-                <Target className="w-6 h-6 text-red-500" />
-              </div>
+              <div className="text-5xl">🎯</div>
               <div>
                 <p className="text-sm text-gray-600">Meta</p>
                 <p className="text-xl font-bold text-gray-900">{weightGoal}</p>
@@ -310,9 +308,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
             {/* Idade Metabólica */}
             <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-              <div className="bg-purple-100 p-3 rounded-xl">
-                <User className="w-6 h-6 text-purple-500" />
-              </div>
+              <div className="text-5xl">🧘</div>
               <div>
                 <p className="text-sm text-gray-600">Idade metabólica</p>
                 <p className="text-xl font-bold text-gray-900">{metabolicAge}</p>
@@ -321,9 +317,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
             {/* Nível de Energia */}
             <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-              <div className="bg-orange-100 p-3 rounded-xl">
-                <Wind className="w-6 h-6 text-orange-500" />
-              </div>
+              <div className="text-5xl">🔥</div>
               <div>
                 <p className="text-sm text-gray-600">Nível de energia</p>
                 <p className="text-xl font-bold text-gray-900">{getEnergyLevel()}</p>
@@ -333,9 +327,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             {/* Zonas Alvo */}
             {profile.targetZones && profile.targetZones.length > 0 && (
               <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-                <div className="bg-yellow-100 p-3 rounded-xl">
-                  <MapPin className="w-6 h-6 text-yellow-600" />
-                </div>
+                <div className="text-5xl">🏃</div>
                 <div>
                   <p className="text-sm text-gray-600">Zonas alvo</p>
                   <p className="text-xl font-bold text-gray-900">{profile.targetZones.join(', ')}</p>
@@ -374,42 +366,47 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </h2>
 
           <div className="space-y-6">
-            {/* Planos nutricionais */}
-            <div className="flex items-start gap-4">
-              <div className="bg-orange-100 p-3 rounded-xl flex-shrink-0">
-                <Flame className="w-6 h-6 text-orange-500" />
-              </div>
-              <div className="flex-1">
-                <p className="text-lg font-bold text-gray-900 mb-2">
-                  Planos nutricionais personalizados com receitas fáceis de entender
-                </p>
-              </div>
-              <div className="hidden md:block flex-shrink-0">
-                <img src={appMockup} alt="App mockup" className="w-48 rounded-xl shadow-lg" />
-              </div>
-            </div>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Texto */}
+              <div className="space-y-6">
+                {/* Planos nutricionais */}
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl flex-shrink-0">🍽️</div>
+                  <div>
+                    <p className="text-lg font-bold text-gray-900">
+                      Planos nutricionais personalizados com receitas fáceis de entender
+                    </p>
+                  </div>
+                </div>
 
-            {/* Rastreador de água */}
-            <div className="flex items-start gap-4">
-              <div className="bg-blue-100 p-3 rounded-xl flex-shrink-0">
-                <Droplet className="w-6 h-6 text-blue-500" />
-              </div>
-              <div>
-                <p className="text-lg font-bold text-gray-900">
-                  Rastreador de água inteligente para hidratação suficiente
-                </p>
-              </div>
-            </div>
+                {/* Rastreador de água */}
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl flex-shrink-0">💧</div>
+                  <div>
+                    <p className="text-lg font-bold text-gray-900">
+                      Rastreador de água inteligente para hidratação suficiente
+                    </p>
+                  </div>
+                </div>
 
-            {/* Temporizador de jejum */}
-            <div className="flex items-start gap-4">
-              <div className="bg-purple-100 p-3 rounded-xl flex-shrink-0">
-                <Target className="w-6 h-6 text-purple-500" />
+                {/* Temporizador de jejum */}
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl flex-shrink-0">⏱️</div>
+                  <div>
+                    <p className="text-lg font-bold text-gray-900">
+                      Temporizador de jejum personalizado
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-lg font-bold text-gray-900">
-                  Temporizador de jejum personalizado
-                </p>
+
+              {/* Imagem do celular */}
+              <div className="flex justify-center">
+                <img 
+                  src={appPhoneMockup} 
+                  alt="App Nutria" 
+                  className="w-full max-w-sm rounded-2xl shadow-2xl"
+                />
               </div>
             </div>
           </div>
@@ -422,6 +419,39 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             >
               Começar Meu Plano Agora
             </Button>
+          </div>
+        </div>
+
+        {/* Seção 6: Garantia de Devolução */}
+        <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 text-center">
+          <div className="flex justify-center mb-6">
+            <div className="relative">
+              <div className="text-8xl">🏅</div>
+              <div className="absolute -top-2 -right-2 text-3xl">✨</div>
+              <div className="absolute -bottom-2 -left-2 text-3xl">✨</div>
+            </div>
+          </div>
+          
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Garantia de devolução de dinheiro
+          </h2>
+          
+          <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+            Se não obtiver resultados visíveis, você pode solicitar um reembolso total em até 30 dias após a compra. <span className="text-[#0d7377] font-semibold cursor-pointer">Saiba mais</span>
+          </p>
+          
+          <div className="border-t border-gray-300 pt-6 mt-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-3">
+              Isenção de responsabilidade
+            </h3>
+            <p className="text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Este site destina-se apenas a fins educacionais e de bem-estar geral. As informações fornecidas não substituem aconselhamento ou tratamento médico. Consulte sempre seu médico ou profissional de saúde antes de iniciar qualquer programa de perda de peso.
+            </p>
+          </div>
+          
+          <div className="mt-6 text-xs text-gray-500">
+            <p>Copyright © 2024 Nutria</p>
+            <p>Todos os direitos reservados</p>
           </div>
         </div>
       </div>
