@@ -149,25 +149,25 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-12">
         {/* Seção 1: Comparação Corpo Atual vs Meta */}
-        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8">
-          <div className="grid md:grid-cols-2 gap-8 relative">
+        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-6 md:p-8">
+          <div className="grid grid-cols-2 gap-4 md:gap-8">
             {/* Corpo Atual */}
             <div className="text-center">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Seu peso</h3>
-              <div className="relative bg-white rounded-xl p-6 mb-4 flex items-center justify-center">
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Seu peso</h3>
+              <div className="relative bg-white rounded-xl p-3 md:p-6 mb-3 md:mb-4 flex items-center justify-center">
                 <img 
                   src={bodyCurrentFemale}
                   alt="Corpo atual" 
-                  className="h-80 object-contain"
+                  className="h-48 md:h-80 object-contain"
                 />
               </div>
               <div className="space-y-2">
                 <div>
-                  <p className="text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-gray-600">{getBodyFatPercentage()}</p>
+                  <p className="text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-xs md:text-base text-gray-600">{getBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
+                  <p className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
                   <Progress value={35} className="h-2" />
                 </div>
               </div>
@@ -175,28 +175,28 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
             {/* Corpo Meta */}
             <div className="text-center">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Meta</h3>
-              <div className="relative bg-white rounded-xl p-6 mb-4 flex items-center justify-center">
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Meta</h3>
+              <div className="relative bg-white rounded-xl p-3 md:p-6 mb-3 md:mb-4 flex items-center justify-center">
                 <img 
                   src={bodyGoalFemale}
                   alt="Corpo meta" 
-                  className="h-80 object-contain"
+                  className="h-48 md:h-80 object-contain"
                 />
               </div>
               <div className="space-y-2">
                 <div>
-                  <p className="text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-gray-600">{getTargetBodyFatPercentage()}</p>
+                  <p className="text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-xs md:text-base text-gray-600">{getTargetBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
+                  <p className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
                   <Progress value={85} className="h-2" />
                 </div>
               </div>
             </div>
           </div>
 
-          <p className="text-center text-sm text-gray-600 mt-6">
+          <p className="text-center text-xs md:text-sm text-gray-600 mt-4 md:mt-6">
             Os resultados não são típicos. Os resultados individuais podem variar.
           </p>
         </div>
@@ -234,26 +234,26 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
 
           {/* Ingestão Calórica */}
-          <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center gap-4">
-                <div className="bg-orange-100 p-3 rounded-xl">
-                  <Flame className="w-8 h-8 text-orange-500" />
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-gray-900">Ingestão calórica diária</p>
-                  <p className="text-3xl font-bold text-gray-900">{calories} kcal</p>
-                </div>
+          <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-orange-100 p-3 rounded-xl flex-shrink-0">
+                <Flame className="w-8 h-8 text-orange-500" />
               </div>
-              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
-                RECOMENDADO
-              </span>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-lg font-semibold text-gray-900">Ingestão calórica diária</p>
+                  <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-3 py-0.5 rounded-full text-xs font-semibold">
+                    RECOMENDADO
+                  </span>
+                </div>
+                <p className="text-3xl font-bold text-gray-900 mt-1">{calories} kcal</p>
+              </div>
             </div>
-            <div className="relative">
+            <div className="relative mt-4">
               <div className="h-3 bg-gradient-to-r from-yellow-200 via-orange-300 to-red-300 rounded-full"></div>
               <div 
                 className="absolute top-0 w-4 h-4 bg-white border-4 border-orange-500 rounded-full transform -translate-y-0.5"
-                style={{ left: `${((calories - 1000) / 4000) * 100}%` }}
+                style={{ left: `${Math.min(Math.max(((calories - 1000) / 4000) * 100, 0), 100)}%` }}
               ></div>
             </div>
             <div className="flex justify-between text-xs text-gray-600 mt-2">
@@ -263,29 +263,53 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
 
           {/* Ingestão de Água */}
-          <div className="bg-gray-50 rounded-2xl p-6">
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center gap-4">
-                <div className="bg-blue-100 p-3 rounded-xl">
-                  <Droplet className="w-8 h-8 text-blue-500" />
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-gray-900">Ingestão diária de água</p>
-                  <p className="text-3xl font-bold text-gray-900">{waterIntake} l</p>
-                </div>
+          <div className="bg-gray-50 rounded-2xl p-6 relative">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-blue-100 p-3 rounded-xl flex-shrink-0">
+                <Droplet className="w-8 h-8 text-blue-500" />
               </div>
-              <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-4 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
-                RECOMENDADO
-              </span>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-lg font-semibold text-gray-900">Ingestão diária de água</p>
+                  <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-3 py-0.5 rounded-full text-xs font-semibold">
+                    RECOMENDADO
+                  </span>
+                </div>
+                <p className="text-3xl font-bold text-gray-900 mt-1">{waterIntake} l</p>
+              </div>
             </div>
-            {/* Copos de água */}
-            <div className="flex gap-2 justify-center mt-4">
-              {[...Array(8)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className={`w-10 h-16 rounded-full ${i < Math.round(parseFloat(waterIntake) / 0.25) ? 'bg-blue-400' : 'bg-gray-300'}`}
-                ></div>
-              ))}
+            {/* Copos de água estilizados */}
+            <div className="flex gap-2 justify-center mt-6">
+              {[...Array(8)].map((_, i) => {
+                const filled = i < Math.round(parseFloat(waterIntake) / 0.25);
+                return (
+                  <svg 
+                    key={i} 
+                    width="32" 
+                    height="48" 
+                    viewBox="0 0 32 48" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="flex-shrink-0"
+                  >
+                    {/* Copo */}
+                    <path 
+                      d="M6 4 L26 4 L24 44 L8 44 Z" 
+                      fill={filled ? '#60A5FA' : '#E5E7EB'} 
+                      stroke={filled ? '#3B82F6' : '#D1D5DB'} 
+                      strokeWidth="1.5"
+                    />
+                    {/* Água dentro */}
+                    {filled && (
+                      <path 
+                        d="M7 10 L25 10 L23.5 42 L8.5 42 Z" 
+                        fill="#93C5FD" 
+                        opacity="0.8"
+                      />
+                    )}
+                  </svg>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -296,41 +320,49 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             Seu plano personalizado <span className="text-[#0d7377]">está pronto!</span>
           </h2>
 
-          <div className="space-y-4 mt-6">
+          <div className="space-y-3 mt-6">
             {/* Meta */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-              <div className="text-5xl">🎯</div>
+            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
+              <div className="bg-red-100 p-2 rounded-full flex-shrink-0">
+                <Target className="w-5 h-5 text-red-500" />
+              </div>
               <div>
                 <p className="text-sm text-gray-600">Meta</p>
-                <p className="text-xl font-bold text-gray-900">{weightGoal}</p>
+                <p className="text-lg font-bold text-gray-900">{weightGoal}</p>
               </div>
             </div>
 
             {/* Idade Metabólica */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-              <div className="text-5xl">🧘</div>
+            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
+              <div className="bg-purple-100 p-2 rounded-full flex-shrink-0">
+                <User className="w-5 h-5 text-purple-500" />
+              </div>
               <div>
                 <p className="text-sm text-gray-600">Idade metabólica</p>
-                <p className="text-xl font-bold text-gray-900">{metabolicAge}</p>
+                <p className="text-lg font-bold text-gray-900">{metabolicAge}</p>
               </div>
             </div>
 
             {/* Nível de Energia */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-              <div className="text-5xl">🔥</div>
+            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
+              <div className="bg-orange-100 p-2 rounded-full flex-shrink-0">
+                <Wind className="w-5 h-5 text-orange-500" />
+              </div>
               <div>
                 <p className="text-sm text-gray-600">Nível de energia</p>
-                <p className="text-xl font-bold text-gray-900">{getEnergyLevel()}</p>
+                <p className="text-lg font-bold text-gray-900">{getEnergyLevel()}</p>
               </div>
             </div>
 
             {/* Zonas Alvo */}
             {profile.targetZones && profile.targetZones.length > 0 && (
-              <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-4">
-                <div className="text-5xl">🏃</div>
+              <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
+                <div className="bg-green-100 p-2 rounded-full flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-green-500" />
+                </div>
                 <div>
                   <p className="text-sm text-gray-600">Zonas alvo</p>
-                  <p className="text-xl font-bold text-gray-900">{profile.targetZones.join(', ')}</p>
+                  <p className="text-lg font-bold text-gray-900">{profile.targetZones.join(', ')}</p>
                 </div>
               </div>
             )}
@@ -360,54 +392,63 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </div>
 
         {/* Seção 5: O que você ganha */}
-        <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+        <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-6 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">
             O que você ganha:
           </h2>
 
-          <div className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              {/* Texto */}
-              <div className="space-y-6">
-                {/* Planos nutricionais */}
-                <div className="flex items-start gap-4">
-                  <div className="text-4xl flex-shrink-0">🍽️</div>
-                  <div>
-                    <p className="text-lg font-bold text-gray-900">
-                      Planos nutricionais personalizados com receitas fáceis de entender
-                    </p>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Texto à esquerda */}
+            <div className="space-y-6">
+              {/* Planos nutricionais */}
+              <div className="flex items-start gap-4">
+                <div className="bg-orange-100 p-3 rounded-full flex-shrink-0">
+                  <svg className="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
+                  </svg>
                 </div>
-
-                {/* Rastreador de água */}
-                <div className="flex items-start gap-4">
-                  <div className="text-4xl flex-shrink-0">💧</div>
-                  <div>
-                    <p className="text-lg font-bold text-gray-900">
-                      Rastreador de água inteligente para hidratação suficiente
-                    </p>
-                  </div>
-                </div>
-
-                {/* Temporizador de jejum */}
-                <div className="flex items-start gap-4">
-                  <div className="text-4xl flex-shrink-0">⏱️</div>
-                  <div>
-                    <p className="text-lg font-bold text-gray-900">
-                      Temporizador de jejum personalizado
-                    </p>
-                  </div>
+                <div>
+                  <p className="text-base md:text-lg font-bold text-gray-900">
+                    Planos nutricionais personalizados com receitas fáceis de entender
+                  </p>
                 </div>
               </div>
 
-              {/* Imagem do celular */}
-              <div className="flex justify-center">
-                <img 
-                  src={appPhoneMockup} 
-                  alt="App Nutria" 
-                  className="w-full max-w-sm rounded-2xl shadow-2xl"
-                />
+              {/* Rastreador de água */}
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
+                  <Droplet className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-base md:text-lg font-bold text-gray-900">
+                    Rastreador de água inteligente para hidratação suficiente
+                  </p>
+                </div>
               </div>
+
+              {/* Temporizador de jejum */}
+              <div className="flex items-start gap-4">
+                <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" strokeWidth="2"/>
+                    <path strokeWidth="2" d="M12 6v6l4 2"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-base md:text-lg font-bold text-gray-900">
+                    Temporizador de jejum personalizado
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Imagem do celular à direita */}
+            <div className="flex justify-center md:justify-end">
+              <img 
+                src={appPhoneMockup} 
+                alt="App Nutria" 
+                className="w-full max-w-[280px] md:max-w-sm drop-shadow-2xl"
+              />
             </div>
           </div>
 
