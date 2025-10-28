@@ -393,22 +393,22 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
         {/* Seção 5: O que você ganha */}
         <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-6 md:p-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
             O que você ganha:
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Texto à esquerda */}
+            {/* Lista de benefícios à esquerda */}
             <div className="space-y-6">
               {/* Planos nutricionais */}
               <div className="flex items-start gap-4">
-                <div className="bg-orange-100 p-3 rounded-full flex-shrink-0">
-                  <svg className="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
+                <div className="bg-orange-500 p-3 rounded-full flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/>
                   </svg>
                 </div>
                 <div>
-                  <p className="text-base md:text-lg font-bold text-gray-900">
+                  <p className="text-base md:text-lg font-semibold text-gray-900">
                     Planos nutricionais personalizados com receitas fáceis de entender
                   </p>
                 </div>
@@ -416,11 +416,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
               {/* Rastreador de água */}
               <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                  <Droplet className="w-6 h-6 text-blue-600" />
+                <div className="bg-blue-500 p-3 rounded-full flex-shrink-0">
+                  <Droplet className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-base md:text-lg font-bold text-gray-900">
+                  <p className="text-base md:text-lg font-semibold text-gray-900">
                     Rastreador de água inteligente para hidratação suficiente
                   </p>
                 </div>
@@ -428,14 +428,14 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
               {/* Temporizador de jejum */}
               <div className="flex items-start gap-4">
-                <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-purple-500 p-3 rounded-full flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" strokeWidth="2"/>
                     <path strokeWidth="2" d="M12 6v6l4 2"/>
                   </svg>
                 </div>
                 <div>
-                  <p className="text-base md:text-lg font-bold text-gray-900">
+                  <p className="text-base md:text-lg font-semibold text-gray-900">
                     Temporizador de jejum personalizado
                   </p>
                 </div>
