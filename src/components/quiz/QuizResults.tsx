@@ -392,50 +392,50 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </div>
 
         {/* Seção 5: O que você ganha */}
-        <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-6 md:p-8">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">
             O que você ganha:
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Texto à esquerda */}
-            <div className="space-y-6">
+          <div className="flex flex-row gap-6 items-start">
+            {/* Lista de benefícios à esquerda */}
+            <div className="flex-1 space-y-4">
               {/* Planos nutricionais */}
-              <div className="flex items-start gap-4">
-                <div className="bg-orange-100 p-3 rounded-full flex-shrink-0">
-                  <svg className="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-start gap-3">
+                <div className="bg-orange-500 p-2 rounded-full flex-shrink-0 mt-1">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
                   </svg>
                 </div>
-                <div>
-                  <p className="text-base md:text-lg font-bold text-gray-900">
+                <div className="flex-1">
+                  <p className="text-sm md:text-base font-semibold text-gray-900">
                     Planos nutricionais personalizados com receitas fáceis de entender
                   </p>
                 </div>
               </div>
 
               {/* Rastreador de água */}
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                  <Droplet className="w-6 h-6 text-blue-600" />
+              <div className="flex items-start gap-3">
+                <div className="bg-blue-500 p-2 rounded-full flex-shrink-0 mt-1">
+                  <Droplet className="w-5 h-5 text-white" />
                 </div>
-                <div>
-                  <p className="text-base md:text-lg font-bold text-gray-900">
+                <div className="flex-1">
+                  <p className="text-sm md:text-base font-semibold text-gray-900">
                     Rastreador de água inteligente para hidratação suficiente
                   </p>
                 </div>
               </div>
 
               {/* Temporizador de jejum */}
-              <div className="flex items-start gap-4">
-                <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" strokeWidth="2"/>
-                    <path strokeWidth="2" d="M12 6v6l4 2"/>
+              <div className="flex items-start gap-3">
+                <div className="bg-purple-500 p-2 rounded-full flex-shrink-0 mt-1">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
                   </svg>
                 </div>
-                <div>
-                  <p className="text-base md:text-lg font-bold text-gray-900">
+                <div className="flex-1">
+                  <p className="text-sm md:text-base font-semibold text-gray-900">
                     Temporizador de jejum personalizado
                   </p>
                 </div>
@@ -443,80 +443,86 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             </div>
 
             {/* Mockup do celular à direita */}
-            <div className="flex justify-center md:justify-end">
-              <div className="relative">
-                {/* Phone mockup SVG */}
+            <div className="flex-shrink-0">
+              <div className="relative" style={{ width: '200px', height: '400px' }}>
                 <svg 
-                  width="280" 
-                  height="560" 
-                  viewBox="0 0 280 560" 
+                  width="200" 
+                  height="400" 
+                  viewBox="0 0 200 400" 
                   fill="none" 
                   xmlns="http://www.w3.org/2000/svg"
                   className="drop-shadow-2xl"
                 >
-                  {/* Phone frame */}
-                  <rect x="10" y="10" width="260" height="540" rx="30" fill="#1F2937" />
-                  <rect x="20" y="20" width="240" height="520" rx="25" fill="white" />
+                  {/* Phone outer frame - dark */}
+                  <rect x="5" y="5" width="190" height="390" rx="25" fill="#1F2937" />
+                  
+                  {/* Phone screen */}
+                  <rect x="12" y="12" width="176" height="376" rx="20" fill="#FFFFFF" />
+                  
+                  {/* Notch */}
+                  <rect x="70" y="12" width="60" height="18" rx="9" fill="#1F2937" />
                   
                   {/* Status bar */}
-                  <text x="35" y="45" fontSize="12" fill="#1F2937" fontWeight="600">9:41</text>
+                  <text x="22" y="48" fontSize="10" fill="#1F2937" fontWeight="600">9:41</text>
+                  <text x="160" y="48" fontSize="10" fill="#1F2937">100%</text>
                   
-                  {/* App header with Nutria logo */}
-                  <rect x="20" y="55" width="240" height="60" fill="#0d7377" rx="0" />
-                  <image 
-                    href={nutriaLogo} 
-                    x="110" 
-                    y="65" 
-                    width="60" 
-                    height="40"
-                    preserveAspectRatio="xMidYMid meet"
+                  {/* Header gradient com logo Nutria */}
+                  <defs>
+                    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#0d7377" />
+                      <stop offset="100%" stopColor="#0a5c5f" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="12" y="55" width="176" height="70" fill="url(#headerGrad)" />
+                  
+                  {/* Logo Nutria no header */}
+                  <text x="100" y="85" fontSize="20" fill="#FFFFFF" fontWeight="700" textAnchor="middle">Nutria</text>
+                  <text x="100" y="105" fontSize="10" fill="#FFFFFF" opacity="0.9" textAnchor="middle">Seu plano personalizado</text>
+                  
+                  {/* Card 1 - Plano Nutricional */}
+                  <rect x="22" y="140" width="156" height="75" rx="12" fill="#FFF5EE" />
+                  <circle cx="40" cy="160" r="12" fill="#FB923C" />
+                  <path d="M35 160 L38 163 L45 156" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  
+                  <text x="58" y="163" fontSize="11" fill="#1F2937" fontWeight="700">Café da manhã</text>
+                  <text x="58" y="177" fontSize="8" fill="#6B7280">Ovos mexidos + Frutas</text>
+                  <text x="58" y="189" fontSize="8" fill="#FB923C" fontWeight="600">450 kcal</text>
+                  
+                  {/* Mini food images */}
+                  <rect x="30" y="195" width="30" height="15" rx="4" fill="#FDBA74" opacity="0.5" />
+                  <rect x="65" y="195" width="30" height="15" rx="4" fill="#FB923C" opacity="0.5" />
+                  <rect x="100" y="195" width="30" height="15" rx="4" fill="#F97316" opacity="0.5" />
+                  
+                  {/* Card 2 - Água */}
+                  <rect x="22" y="225" width="156" height="70" rx="12" fill="#EFF6FF" />
+                  <circle cx="40" cy="245" r="12" fill="#3B82F6" />
+                  <path d="M40 238 C40 238 36 242 36 246 C36 249 37.8 251 40 251 C42.2 251 44 249 44 246 C44 242 40 238 40 238 Z" fill="white" />
+                  
+                  <text x="58" y="248" fontSize="11" fill="#1F2937" fontWeight="700">Hidratação</text>
+                  <text x="58" y="262" fontSize="8" fill="#6B7280">Meta diária: 2.5L</text>
+                  
+                  {/* Water progress bar */}
+                  <rect x="58" y="268" width="110" height="8" rx="4" fill="#DBEAFE" />
+                  <rect x="58" y="268" width="77" height="8" rx="4" fill="#3B82F6" />
+                  <text x="58" y="288" fontSize="8" fill="#3B82F6" fontWeight="600">1.8L / 2.5L</text>
+                  
+                  {/* Card 3 - Jejum */}
+                  <rect x="22" y="305" width="156" height="65" rx="12" fill="#F3E8FF" />
+                  <circle cx="100" cy="337" r="25" stroke="#A855F7" strokeWidth="3" fill="none" />
+                  <circle cx="100" cy="337" r="25" stroke="#9333EA" strokeWidth="3" fill="none" 
+                    strokeDasharray="47 157" 
+                    strokeLinecap="round" 
+                    transform="rotate(-90 100 337)" 
                   />
                   
-                  {/* Content area - Nutrition Plan */}
-                  <rect x="35" y="130" width="210" height="100" rx="12" fill="#FFF5EE" />
-                  <circle cx="60" cy="155" r="15" fill="#FB923C" opacity="0.3" />
-                  <rect x="85" y="145" width="140" height="8" rx="4" fill="#FB923C" opacity="0.4" />
-                  <rect x="85" y="160" width="110" height="6" rx="3" fill="#D1D5DB" />
-                  <rect x="85" y="172" width="90" height="6" rx="3" fill="#D1D5DB" />
+                  <text x="100" y="342" fontSize="14" fill="#9333EA" fontWeight="700" textAnchor="middle">14:32</text>
+                  <text x="100" y="360" fontSize="8" fill="#7C3AED" textAnchor="middle">Jejum ativo (16h)</text>
                   
-                  {/* Meal image placeholder */}
-                  <rect x="45" y="190" width="65" height="28" rx="6" fill="#F97316" opacity="0.3" />
-                  <rect x="120" y="190" width="65" height="28" rx="6" fill="#FB923C" opacity="0.3" />
-                  
-                  {/* Water tracker section */}
-                  <rect x="35" y="250" width="210" height="90" rx="12" fill="#EFF6FF" />
-                  <circle cx="60" cy="275" r="15" fill="#3B82F6" opacity="0.3" />
-                  <rect x="85" y="267" width="120" height="8" rx="4" fill="#3B82F6" opacity="0.4" />
-                  <rect x="85" y="282" width="80" height="6" rx="3" fill="#D1D5DB" />
-                  
-                  {/* Water glasses */}
-                  <g transform="translate(45, 305)">
-                    {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
-                      <rect 
-                        key={i}
-                        x={i * 24} 
-                        y="0" 
-                        width="18" 
-                        height="24" 
-                        rx="2" 
-                        fill={i < 5 ? '#60A5FA' : '#E5E7EB'} 
-                        opacity={i < 5 ? '0.8' : '0.3'}
-                      />
-                    ))}
-                  </g>
-                  
-                  {/* Fasting timer section */}
-                  <rect x="35" y="360" width="210" height="90" rx="12" fill="#F3E8FF" />
-                  <circle cx="140" cy="395" r="30" stroke="#9333EA" strokeWidth="4" fill="none" opacity="0.4" />
-                  <circle cx="140" cy="395" r="30" stroke="#9333EA" strokeWidth="4" fill="none" strokeDasharray="60 128" strokeLinecap="round" transform="rotate(-90 140 395)" />
-                  <text x="140" y="400" fontSize="16" fill="#9333EA" fontWeight="700" textAnchor="middle">14h</text>
-                  <text x="140" y="430" fontSize="10" fill="#7C3AED" textAnchor="middle">Jejum ativo</text>
-                  
-                  {/* Bottom navigation */}
-                  <rect x="20" y="480" width="240" height="60" fill="#F9FAFB" />
-                  <circle cx="70" cy="510" r="8" fill="#0d7377" />
-                  <circle cx="140" cy="510" r="8" fill="#D1D5DB" />
-                  <circle cx="210" cy="510" r="8" fill="#D1D5DB" />
+                  {/* Bottom navigation bar */}
+                  <rect x="12" y="376" width="176" height="1" fill="#E5E7EB" />
+                  <circle cx="50" cy="388" r="6" fill="#0d7377" />
+                  <circle cx="100" cy="388" r="6" fill="#D1D5DB" />
+                  <circle cx="150" cy="388" r="6" fill="#D1D5DB" />
                 </svg>
               </div>
             </div>
