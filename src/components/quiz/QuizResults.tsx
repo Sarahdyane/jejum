@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck } from "lucide-react";
 import nutriaLogo from '@/assets/nutria-logo.png';
-import appPhoneMockup from '@/assets/app-phone-mockup.png';
+import appPhoneMockup from '@/assets/app-mockup-nutrition.jpg';
 import bodyCurrentFemale from '@/assets/body-current-female.png';
 import bodyGoalFemale from '@/assets/body-goal-female.png';
 
@@ -447,7 +447,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               <img 
                 src={appPhoneMockup} 
                 alt="App Nutria" 
-                className="w-full max-w-[280px] md:max-w-sm drop-shadow-2xl"
+                className="w-full max-w-[300px] md:max-w-md drop-shadow-2xl transform md:scale-105"
               />
             </div>
           </div>
