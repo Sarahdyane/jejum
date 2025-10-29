@@ -397,9 +397,9 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             O que você ganha:
           </h2>
 
-          <div className="flex flex-row gap-6 items-start">
-            {/* Lista de benefícios à esquerda */}
-            <div className="flex-1 space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* Lista de benefícios */}
+            <div className="space-y-4 order-2 lg:order-1">
               {/* Planos nutricionais */}
               <div className="flex items-start gap-3">
                 <div className="bg-orange-500 p-2 rounded-full flex-shrink-0 mt-1">
@@ -442,87 +442,170 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </div>
             </div>
 
-            {/* Mockup do celular à direita */}
-            <div className="flex-shrink-0">
-              <div className="relative" style={{ width: '200px', height: '400px' }}>
+            {/* Mockup do celular - agora responsivo */}
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="w-full max-w-[280px] md:max-w-[320px]">
                 <svg 
-                  width="200" 
-                  height="400" 
-                  viewBox="0 0 200 400" 
+                  viewBox="0 0 280 580" 
                   fill="none" 
                   xmlns="http://www.w3.org/2000/svg"
-                  className="drop-shadow-2xl"
+                  className="w-full h-auto drop-shadow-2xl"
+                  preserveAspectRatio="xMidYMid meet"
                 >
-                  {/* Phone outer frame - dark */}
-                  <rect x="5" y="5" width="190" height="390" rx="25" fill="#1F2937" />
-                  
-                  {/* Phone screen */}
-                  <rect x="12" y="12" width="176" height="376" rx="20" fill="#FFFFFF" />
-                  
-                  {/* Notch */}
-                  <rect x="70" y="12" width="60" height="18" rx="9" fill="#1F2937" />
-                  
-                  {/* Status bar */}
-                  <text x="22" y="48" fontSize="10" fill="#1F2937" fontWeight="600">9:41</text>
-                  <text x="160" y="48" fontSize="10" fill="#1F2937">100%</text>
-                  
-                  {/* Header gradient com logo Nutria */}
+                  {/* Definições de gradientes e padrões */}
                   <defs>
-                    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                       <stop offset="0%" stopColor="#0d7377" />
                       <stop offset="100%" stopColor="#0a5c5f" />
                     </linearGradient>
+                    <linearGradient id="cardGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#FFF5F0" />
+                      <stop offset="100%" stopColor="#FFE8DB" />
+                    </linearGradient>
+                    <linearGradient id="cardGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#EFF6FF" />
+                      <stop offset="100%" stopColor="#DBEAFE" />
+                    </linearGradient>
+                    <linearGradient id="cardGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#F3E8FF" />
+                      <stop offset="100%" stopColor="#E9D5FF" />
+                    </linearGradient>
+                    
+                    {/* Pattern para simular imagens de comida */}
+                    <pattern id="foodPattern1" x="0" y="0" width="100%" height="100%">
+                      <circle cx="15" cy="15" r="12" fill="#FB923C" opacity="0.3"/>
+                      <circle cx="15" cy="15" r="8" fill="#F97316" opacity="0.5"/>
+                      <circle cx="18" cy="12" r="3" fill="#FDBA74" opacity="0.8"/>
+                    </pattern>
+                    <pattern id="foodPattern2" x="0" y="0" width="100%" height="100%">
+                      <rect x="5" y="8" width="20" height="14" rx="3" fill="#34D399" opacity="0.4"/>
+                      <circle cx="15" cy="15" r="6" fill="#10B981" opacity="0.6"/>
+                    </pattern>
+                    <pattern id="foodPattern3" x="0" y="0" width="100%" height="100%">
+                      <ellipse cx="15" cy="15" rx="10" ry="8" fill="#F59E0B" opacity="0.4"/>
+                      <ellipse cx="15" cy="15" rx="6" ry="4" fill="#FBBF24" opacity="0.6"/>
+                    </pattern>
                   </defs>
-                  <rect x="12" y="55" width="176" height="70" fill="url(#headerGrad)" />
                   
-                  {/* Logo Nutria no header */}
-                  <text x="100" y="85" fontSize="20" fill="#FFFFFF" fontWeight="700" textAnchor="middle">Nutria</text>
-                  <text x="100" y="105" fontSize="10" fill="#FFFFFF" opacity="0.9" textAnchor="middle">Seu plano personalizado</text>
+                  {/* Corpo do celular - moldura externa escura */}
+                  <rect x="8" y="8" width="264" height="564" rx="35" fill="#1F2937" />
                   
-                  {/* Card 1 - Plano Nutricional */}
-                  <rect x="22" y="140" width="156" height="75" rx="12" fill="#FFF5EE" />
-                  <circle cx="40" cy="160" r="12" fill="#FB923C" />
-                  <path d="M35 160 L38 163 L45 156" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Tela do celular - fundo branco */}
+                  <rect x="16" y="16" width="248" height="548" rx="28" fill="#F9FAFB" />
                   
-                  <text x="58" y="163" fontSize="11" fill="#1F2937" fontWeight="700">Café da manhã</text>
-                  <text x="58" y="177" fontSize="8" fill="#6B7280">Ovos mexidos + Frutas</text>
-                  <text x="58" y="189" fontSize="8" fill="#FB923C" fontWeight="600">450 kcal</text>
+                  {/* Notch superior */}
+                  <rect x="100" y="16" width="80" height="24" rx="12" fill="#1F2937" />
                   
-                  {/* Mini food images */}
-                  <rect x="30" y="195" width="30" height="15" rx="4" fill="#FDBA74" opacity="0.5" />
-                  <rect x="65" y="195" width="30" height="15" rx="4" fill="#FB923C" opacity="0.5" />
-                  <rect x="100" y="195" width="30" height="15" rx="4" fill="#F97316" opacity="0.5" />
+                  {/* Barra de status */}
+                  <text x="28" y="60" fontSize="12" fill="#1F2937" fontWeight="600">9:41</text>
+                  <text x="220" y="60" fontSize="12" fill="#1F2937" fontWeight="500">100%</text>
                   
-                  {/* Card 2 - Água */}
-                  <rect x="22" y="225" width="156" height="70" rx="12" fill="#EFF6FF" />
-                  <circle cx="40" cy="245" r="12" fill="#3B82F6" />
-                  <path d="M40 238 C40 238 36 242 36 246 C36 249 37.8 251 40 251 C42.2 251 44 249 44 246 C44 242 40 238 40 238 Z" fill="white" />
+                  {/* Header do app com gradiente */}
+                  <rect x="16" y="70" width="248" height="100" fill="url(#headerGradient)" />
                   
-                  <text x="58" y="248" fontSize="11" fill="#1F2937" fontWeight="700">Hidratação</text>
-                  <text x="58" y="262" fontSize="8" fill="#6B7280">Meta diária: 2.5L</text>
+                  {/* Logo Nutria simplificado no header */}
+                  <circle cx="140" cy="95" r="18" fill="rgba(255,255,255,0.2)" />
+                  <text x="140" y="103" fontSize="24" fill="#FFFFFF" fontWeight="800" textAnchor="middle">N</text>
+                  <text x="140" y="130" fontSize="14" fill="#FFFFFF" fontWeight="600" textAnchor="middle">Seu Plano Nutria</text>
+                  <text x="140" y="148" fontSize="10" fill="rgba(255,255,255,0.8)" textAnchor="middle">Personalizado para você</text>
                   
-                  {/* Water progress bar */}
-                  <rect x="58" y="268" width="110" height="8" rx="4" fill="#DBEAFE" />
-                  <rect x="58" y="268" width="77" height="8" rx="4" fill="#3B82F6" />
-                  <text x="58" y="288" fontSize="8" fill="#3B82F6" fontWeight="600">1.8L / 2.5L</text>
+                  {/* Card 1 - Plano de Refeições Detalhado */}
+                  <rect x="28" y="190" width="224" height="110" rx="16" fill="url(#cardGradient1)" />
                   
-                  {/* Card 3 - Jejum */}
-                  <rect x="22" y="305" width="156" height="65" rx="12" fill="#F3E8FF" />
-                  <circle cx="100" cy="337" r="25" stroke="#A855F7" strokeWidth="3" fill="none" />
-                  <circle cx="100" cy="337" r="25" stroke="#9333EA" strokeWidth="3" fill="none" 
-                    strokeDasharray="47 157" 
+                  {/* Ícone de prato */}
+                  <circle cx="52" cy="218" r="16" fill="#FB923C" />
+                  <circle cx="52" cy="218" r="12" fill="white" opacity="0.3" />
+                  <path d="M48 218 L50 221 L56 215" stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  
+                  <text x="76" y="218" fontSize="13" fill="#1F2937" fontWeight="700">Café da Manhã</text>
+                  <text x="76" y="234" fontSize="10" fill="#6B7280" fontWeight="500">Ovos mexidos com espinafre</text>
+                  <text x="76" y="248" fontSize="9" fill="#FB923C" fontWeight="700">450 kcal • Proteína: 28g</text>
+                  
+                  {/* Mini imagens de alimentos (simuladas) */}
+                  <rect x="35" y="265" width="40" height="28" rx="6" fill="url(#foodPattern1)" />
+                  <rect x="82" y="265" width="40" height="28" rx="6" fill="url(#foodPattern2)" />
+                  <rect x="129" y="265" width="40" height="28" rx="6" fill="url(#foodPattern3)" />
+                  <rect x="176" y="265" width="40" height="28" rx="6" fill="url(#foodPattern1)" />
+                  
+                  {/* Labels nas imagens */}
+                  <text x="55" y="282" fontSize="7" fill="white" fontWeight="600" textAnchor="middle">Ovos</text>
+                  <text x="102" y="282" fontSize="7" fill="white" fontWeight="600" textAnchor="middle">Salada</text>
+                  <text x="149" y="282" fontSize="7" fill="white" fontWeight="600" textAnchor="middle">Frutas</text>
+                  <text x="196" y="282" fontSize="7" fill="white" fontWeight="600" textAnchor="middle">Pão</text>
+                  
+                  {/* Card 2 - Hidratação Avançada */}
+                  <rect x="28" y="315" width="224" height="95" rx="16" fill="url(#cardGradient2)" />
+                  
+                  {/* Ícone de gota d'água */}
+                  <circle cx="52" cy="340" r="16" fill="#3B82F6" />
+                  <path d="M52 330 C52 330 46 336 46 342 C46 347 48.7 350 52 350 C55.3 350 58 347 58 342 C58 336 52 330 52 330 Z" fill="white" />
+                  
+                  <text x="76" y="342" fontSize="13" fill="#1F2937" fontWeight="700">Hidratação Diária</text>
+                  <text x="76" y="358" fontSize="10" fill="#6B7280" fontWeight="500">Meta: 2.5L • Concluído: 70%</text>
+                  
+                  {/* Barra de progresso de água com gradiente */}
+                  <rect x="76" y="368" width="155" height="10" rx="5" fill="#DBEAFE" />
+                  <rect x="76" y="368" width="108" height="10" rx="5" fill="#3B82F6" />
+                  
+                  {/* Copos de água */}
+                  <g>
+                    {[0,1,2,3,4,5,6,7].map((i) => {
+                      const filled = i < 5;
+                      const x = 36 + i * 26;
+                      return (
+                        <g key={i}>
+                          <rect 
+                            x={x} 
+                            y="387" 
+                            width="18" 
+                            height="16" 
+                            rx="2" 
+                            fill={filled ? '#3B82F6' : '#E5E7EB'} 
+                            stroke={filled ? '#2563EB' : '#D1D5DB'} 
+                            strokeWidth="1"
+                          />
+                          {filled && (
+                            <rect x={x + 2} y="390" width="14" height="10" fill="#60A5FA" opacity="0.6" />
+                          )}
+                        </g>
+                      );
+                    })}
+                  </g>
+                  
+                  {/* Card 3 - Jejum Intermitente Premium */}
+                  <rect x="28" y="425" width="224" height="95" rx="16" fill="url(#cardGradient3)" />
+                  
+                  <text x="140" y="448" fontSize="13" fill="#1F2937" fontWeight="700" textAnchor="middle">Jejum Intermitente</text>
+                  <text x="140" y="463" fontSize="10" fill="#7C3AED" fontWeight="500" textAnchor="middle">Protocolo 16:8 em andamento</text>
+                  
+                  {/* Círculo de progresso do jejum */}
+                  <circle cx="140" cy="490" r="28" stroke="#E9D5FF" strokeWidth="4" fill="none" />
+                  <circle 
+                    cx="140" 
+                    cy="490" 
+                    r="28" 
+                    stroke="#9333EA" 
+                    strokeWidth="4" 
+                    fill="none" 
+                    strokeDasharray="52 176" 
                     strokeLinecap="round" 
-                    transform="rotate(-90 100 337)" 
+                    transform="rotate(-90 140 490)" 
                   />
                   
-                  <text x="100" y="342" fontSize="14" fill="#9333EA" fontWeight="700" textAnchor="middle">14:32</text>
-                  <text x="100" y="360" fontSize="8" fill="#7C3AED" textAnchor="middle">Jejum ativo (16h)</text>
+                  {/* Tempo no centro */}
+                  <text x="140" y="495" fontSize="16" fill="#9333EA" fontWeight="800" textAnchor="middle">14:32</text>
+                  <text x="140" y="507" fontSize="8" fill="#7C3AED" fontWeight="500" textAnchor="middle">de 16h</text>
                   
-                  {/* Bottom navigation bar */}
-                  <rect x="12" y="376" width="176" height="1" fill="#E5E7EB" />
-                  <circle cx="50" cy="388" r="6" fill="#0d7377" />
-                  <circle cx="100" cy="388" r="6" fill="#D1D5DB" />
-                  <circle cx="150" cy="388" r="6" fill="#D1D5DB" />
+                  {/* Navegação inferior */}
+                  <rect x="16" y="540" width="248" height="1" fill="#E5E7EB" />
+                  
+                  {/* Ícones de navegação */}
+                  <circle cx="70" cy="552" r="8" fill="#0d7377" />
+                  <circle cx="140" cy="552" r="8" fill="#D1D5DB" />
+                  <circle cx="210" cy="552" r="8" fill="#D1D5DB" />
+                  
+                  {/* Indicador de tela ativa */}
+                  <rect x="120" y="520" width="40" height="4" rx="2" fill="#0d7377" opacity="0.5" />
                 </svg>
               </div>
             </div>
