@@ -634,15 +634,6 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             Se não obtiver resultados visíveis, você pode solicitar um reembolso total em até 30 dias após a compra. <span className="text-[#0d7377] font-semibold cursor-pointer">Saiba mais</span>
           </p>
           
-          <div className="border-t border-gray-300 pt-6 mt-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-3">
-              Isenção de responsabilidade
-            </h3>
-            <p className="text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Este site destina-se apenas a fins educacionais e de bem-estar geral. As informações fornecidas não substituem aconselhamento ou tratamento médico. Consulte sempre seu médico ou profissional de saúde antes de iniciar qualquer programa de perda de peso.
-            </p>
-          </div>
-          
           <div className="mt-6 text-xs text-gray-500">
             <p>Copyright © 2024 Nutria</p>
             <p>Todos os direitos reservados</p>
