@@ -4,8 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck } from "lucide-react";
 import nutriaLogo from '@/assets/nutria-logo.png';
 import appPhoneMockup from '@/assets/app-phone-mockup.png';
-import bodyCurrentFemale from '@/assets/body-current-female.png';
-import bodyGoalFemale from '@/assets/body-goal-female.png';
+import { getImageSrc } from '@/utils/imageMapping';
 
 interface QuizResultsProps {
   profile: UserProfile;
@@ -75,47 +74,42 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     return ((profile.currentWeight * 35) / 1000).toFixed(1);
   };
 
-  // Obter imagem do corpo atual
+  // Obter imagem do corpo atual baseado nas respostas do quiz
   const getCurrentBodyImage = () => {
-    const bodyType = profile.bodyType.toLowerCase();
+    const bodyType = profile.bodyType?.toLowerCase() || '';
     const gender = profile.gender;
     
-    if (bodyType.includes('média') || bodyType.includes('average')) {
-      return gender === 'female' 
-        ? '/images/body-average-female.png'
-        : '/images/body-average-male.png';
-    } else if (bodyType.includes('magra') || bodyType.includes('thin')) {
-      return gender === 'female'
-        ? '/images/body-thin-female.png'
-        : '/images/body-thin-male.png';
-    } else {
-      return gender === 'female'
-        ? '/images/body-robust-female.png'
-        : '/images/body-robust-male.png';
+    // Mapear o tipo de corpo atual para a imagem correta
+    if (bodyType.includes('thin') || bodyType === 'thin') {
+      return getImageSrc(gender === 'female' ? 'body-thin-female-real' : 'body-thin-male-shorts');
+    } else if (bodyType.includes('average') || bodyType === 'average') {
+      return getImageSrc(gender === 'female' ? 'body-average-female-real' : 'body-fuller-male-shorts');
+    } else if (bodyType.includes('fuller') || bodyType === 'fuller') {
+      return getImageSrc(gender === 'female' ? 'body-fuller-female-real' : 'body-fuller-male-new-shorts');
+    } else if (bodyType.includes('overweight') || bodyType === 'overweight') {
+      return getImageSrc(gender === 'female' ? 'body-overweight-female-real' : 'body-overweight-male-shorts');
     }
+    
+    // Fallback para imagem média se não houver match
+    return getImageSrc(gender === 'female' ? 'body-average-female-real' : 'body-fuller-male-shorts');
   };
 
-  // Obter imagem do corpo meta
+  // Obter imagem do corpo meta baseado nas respostas do quiz
   const getTargetBodyImage = () => {
-    const targetType = profile.targetBodyType?.toLowerCase() || profile.goal;
+    const targetType = profile.targetBodyType?.toLowerCase() || '';
     const gender = profile.gender;
     
-    if (targetType.includes('atleta') || targetType.includes('athlete')) {
-      return gender === 'female'
-        ? '/images/goal-athlete-female.png'
-        : '/images/goal-athlete-male.png';
-    } else if (targetType.includes('esportivo') || targetType.includes('sporty')) {
-      return gender === 'female'
-        ? '/images/goal-sporty-female.png'
-        : '/images/goal-sporty-male.png';
-    } else if (targetType.includes('treinado') || targetType.includes('trained')) {
-      return gender === 'female'
-        ? '/images/goal-trained-female.png'
-        : '/images/goal-trained-male.png';
+    // Mapear o objetivo de corpo para a imagem correta
+    if (targetType.includes('slim') || targetType === 'slim') {
+      return getImageSrc(gender === 'female' ? 'goal-slim-female' : 'goal-slim-male');
+    } else if (targetType.includes('defined') || targetType === 'defined') {
+      return getImageSrc(gender === 'female' ? 'goal-defined-female' : 'goal-defined-male');
+    } else if (targetType.includes('athlete') || targetType === 'athlete') {
+      return getImageSrc(gender === 'female' ? 'goal-athlete-female' : 'goal-athlete-male');
     }
-    return gender === 'female'
-      ? '/images/goal-smaller-female.png'
-      : '/images/goal-smaller-male.png';
+    
+    // Fallback para imagem slim se não houver match
+    return getImageSrc(gender === 'female' ? 'goal-slim-female' : 'goal-slim-male');
   };
 
   const bmi = parseFloat(calculateBMI());
@@ -156,7 +150,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Seu peso</h3>
               <div className="relative bg-white rounded-xl p-3 md:p-6 mb-3 md:mb-4 flex items-center justify-center">
                 <img 
-                  src={bodyCurrentFemale}
+                  src={getCurrentBodyImage()}
                   alt="Corpo atual" 
                   className="h-48 md:h-80 object-contain"
                 />
@@ -178,7 +172,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Meta</h3>
               <div className="relative bg-white rounded-xl p-3 md:p-6 mb-3 md:mb-4 flex items-center justify-center">
                 <img 
-                  src={bodyGoalFemale}
+                  src={getTargetBodyImage()}
                   alt="Corpo meta" 
                   className="h-48 md:h-80 object-contain"
                 />
