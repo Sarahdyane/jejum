@@ -434,6 +434,7 @@ export const questions: QuizQuestion[] = [
     id: 20,
     title: "Com que frequência você vai caminhar?",
     type: "single",
+    showTitle: "Caminhada para ficar em forma",
     options: [
       { id: "almost-daily", text: "Quase todos os dias", icon: "Footprints" },
       { id: "3-4-times", text: "3–4 vezes por semana", icon: "Footprints" },
