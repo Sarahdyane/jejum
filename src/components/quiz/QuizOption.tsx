@@ -43,9 +43,10 @@ interface QuizOptionProps {
   onClick: () => void;
   className?: string;
   gender?: string;
+  questionId?: number | string;
 }
 
-export const QuizOption = ({ option, isSelected, onClick, className }: QuizOptionProps) => {
+export const QuizOption = ({ option, isSelected, onClick, className, questionId }: QuizOptionProps) => {
   // Check if this is a body type or age option that needs full-width display
   const isFullWidthImage = !!(option.image && typeof option.image === 'string' && (
     option.image.includes('body-') || 
@@ -57,7 +58,7 @@ export const QuizOption = ({ option, isSelected, onClick, className }: QuizOptio
     <button
       onClick={onClick}
       className={cn(
-        "w-full p-6 rounded-2xl border-2 transition-all duration-300 text-left relative overflow-hidden group shadow-lg hover:shadow-xl",
+        "w-full p-4 rounded-2xl border-2 transition-all duration-300 text-left relative group shadow-lg hover:shadow-xl",
         "hover:border-primary hover:shadow-primary/20 hover:scale-105",
         isSelected 
           ? "border-primary bg-primary text-primary-foreground shadow-xl shadow-primary/25 scale-105" 
@@ -103,7 +104,7 @@ export const QuizOption = ({ option, isSelected, onClick, className }: QuizOptio
             })()
           )}
           
-          {isSelected && (
+          {isSelected && questionId !== 2 && (
             <CheckCircle2 className="w-6 h-6 text-primary-foreground drop-shadow-lg" />
           )}
         </div>

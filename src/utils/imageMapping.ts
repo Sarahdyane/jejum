@@ -23,6 +23,8 @@ import appLoading from '@/assets/app-loading.jpg';
 import motivationIncredible from '@/assets/motivation-incredible.jpg';
 import motivationChangeHabits from '@/assets/motivation-change-habits.jpg';
 import nutriaLogo from '@/assets/nutria-logo.png';
+import lipedemaInfo from '@/assets/lipedema-info.png';
+import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
 
 // Professional body type images
 import bodyThinProfessional from '@/assets/body-thin-professional.png';
@@ -77,9 +79,10 @@ export const imageMap = {
   'healthy-lifestyle': healthyLifestyle,
   'fitness-thinking': fitnessThinking,
   'app-loading': appLoading,
-  'motivation-incredible': motivationIncredible,
+  'motivation-incredible': healthyPeopleCelebration,
   'motivation-change-habits': motivationChangeHabits,
   'nutria-logo': nutriaLogo,
+  'lipedema-info': lipedemaInfo,
   'body-thin-professional': bodyThinProfessional,
   'body-average-professional': bodyAverageProfessional,
   'body-robust-professional': bodyRobustProfessional,

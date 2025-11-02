@@ -25,7 +25,7 @@ export const questions: QuizQuestion[] = [
   {
     id: "intermediate-1",
     title: "Você está em boas mãos",
-    subtitle: "Mais de 29.567.899 usuários escolheram o unimeal para começar sua jornada de perda de peso conosco",
+    subtitle: "Mais de 29.567.899 usuários escolheram a Nutria para começar sua jornada de perda de peso conosco",
     type: "intermediate",
     image: "person-exercising-small"
   },
@@ -220,10 +220,10 @@ export const questions: QuizQuestion[] = [
     subtitle: "Uma condição que afeta milhões de mulheres",
     description: "O lipedema é uma condição crônica que causa acúmulo desproporcional de gordura, principalmente nas pernas e braços.\n\n✨ Características principais:\n• Afeta principalmente mulheres\n• Pode causar dor e sensibilidade\n• Dieta balanceada pode ajudar no controle\n• Não é resultado de má alimentação",
     type: "intermediate",
-    image: "healthy-lifestyle"
+    image: "lipedema-info"
   },
   {
-    id: "lipedema-question",
+    id: 8,
     title: "Você sofre ou suspeita ter lipedema?",
     type: "single",
     options: [
@@ -241,7 +241,7 @@ export const questions: QuizQuestion[] = [
     image: "motivation-change-habits"
   },
   {
-    id: 9,
+    id: 10,
     title: "Como você descreveria seu dia típico?",
     type: "single",
     requiresGender: true,
@@ -254,7 +254,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     title: "Quando você costuma fazer a primeira refeição do dia?",
     type: "single",
     thematicImage: "healthy-meal",
@@ -266,7 +266,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 11,
+    id: 12,
     title: "Quando você costuma fazer a última refeição do dia?",
     type: "single",
     thematicImage: "evening-meal",
@@ -278,7 +278,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 12,
+    id: 13,
     title: "Quantas refeições por dia você gostaria de fazer?",
     type: "single",
     options: [
@@ -289,7 +289,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 13,
+    id: 14,
     title: "Qual tipo de dieta você prefere?",
     type: "single",
     options: [
@@ -300,7 +300,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 14,
+    id: 15,
     title: "Escolha os produtos que você gosta",
     subtitle: "Selecione todas as opções que você gosta",
     type: "food-categories",
@@ -334,7 +334,7 @@ export const questions: QuizQuestion[] = [
           { id: "oats", text: "Aveia" },
           { id: "quinoa", text: "Quinoa" }
         ],
-        disabledWhen: { questionId: 13, value: "gluten-free" }
+        disabledWhen: { questionId: 14, value: "gluten-free" }
       },
       {
         id: "meat",
@@ -347,7 +347,7 @@ export const questions: QuizQuestion[] = [
           { id: "chicken-sausage", text: "Salsicha de frango" },
           { id: "chicken-ham", text: "Presunto de frango" }
         ],
-        disabledWhen: { questionId: 13, value: "vegetarian" }
+        disabledWhen: { questionId: 14, value: "vegetarian" }
       },
       {
         id: "fish",
@@ -361,7 +361,7 @@ export const questions: QuizQuestion[] = [
           { id: "shrimp", text: "Camarão" },
           { id: "trout", text: "Filé de truta de rio" }
         ],
-        disabledWhen: { questionId: 13, value: "vegetarian" }
+        disabledWhen: { questionId: 14, value: "vegetarian" }
       },
       {
         id: "dairy",
@@ -377,7 +377,7 @@ export const questions: QuizQuestion[] = [
           { id: "cheese", text: "Queijo" },
           { id: "light-cream", text: "Chantilly com baixo teor de gordura" }
         ],
-        disabledWhen: { questionId: 13, value: "lactose-free" }
+        disabledWhen: { questionId: 14, value: "lactose-free" }
       },
       {
         id: "fruits",
@@ -396,7 +396,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 15,
+    id: 16,
     title: "Quanta água você bebe diariamente?",
     type: "single",
     thematicImage: "/images/lifestyle/water-consumption.jpg",
@@ -409,7 +409,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 16,
+    id: 17,
     title: "Quanto você dorme normalmente?",
     type: "single",
     thematicImage: "/images/lifestyle/peaceful-sleep.jpg",
@@ -421,7 +421,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 17,
+    id: 18,
     title: "Quão cansado você se sente normalmente durante o dia?",
     type: "single",
     options: [
@@ -432,7 +432,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 18,
+    id: 19,
     title: "Você prefere cozinhar, comer fora ou pedir comida?",
     type: "single",
     thematicImage: "/images/lifestyle/healthy-cooking.jpg",
@@ -444,7 +444,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 19,
+    id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
     options: [
@@ -454,7 +454,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 20,
+    id: 21,
     title: "Com que frequência você vai caminhar?",
     type: "single",
     options: [
@@ -465,7 +465,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 21,
+    id: 22,
     title: "Como é o seu horário de trabalho?",
     type: "single",
     options: [
@@ -476,7 +476,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 22,
+    id: 23,
     title: "Você tem algum dos seguintes maus hábitos?",
     type: "multiple",
     options: [
@@ -488,7 +488,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 23,
+    id: 24,
     title: "Algum dos seguintes eventos nos últimos anos levou ao ganho de peso?",
     type: "multiple",
     options: [
@@ -503,7 +503,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 24,
+    id: 25,
     title: "É difícil para você escolher roupas com seu peso atual?",
     type: "single",
     options: [
@@ -519,7 +519,7 @@ export const questions: QuizQuestion[] = [
     type: "stats",
   },
   {
-    id: 25,
+    id: 26,
     title: "Qual é a sua principal razão para entrar em forma?",
     type: "single",
     options: [
@@ -531,7 +531,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 26,
+    id: 27,
     title: "Qual a sua altura?",
     type: "input",
     inputType: "number",
@@ -539,7 +539,7 @@ export const questions: QuizQuestion[] = [
     inputSuffix: "cm"
   },
   {
-    id: 27,
+    id: 28,
     title: "Qual é o seu peso atual?",
     type: "input",
     inputType: "number",
@@ -547,7 +547,7 @@ export const questions: QuizQuestion[] = [
     inputSuffix: "kg"
   },
   {
-    id: 28,
+    id: 29,
     title: "Qual é o seu peso desejado?",
     type: "input",
     inputType: "number",
@@ -555,7 +555,7 @@ export const questions: QuizQuestion[] = [
     inputSuffix: "kg"
   },
   {
-    id: 29,
+    id: 30,
     title: "Qual a sua idade?",
     type: "input",
     inputType: "number",

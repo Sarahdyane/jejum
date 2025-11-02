@@ -223,6 +223,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                   optionImage ? "min-h-[160px]" : "min-h-[60px]"
                 )}
                 gender={gender}
+                questionId={question.id}
               />
             );
           })}
