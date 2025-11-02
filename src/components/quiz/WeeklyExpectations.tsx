@@ -1,14 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Sparkles } from 'lucide-react';
 import nutriaLogo from '@/assets/nutria-logo.png';
-
 interface WeeklyExpectationsProps {
   onContinue: () => void;
 }
-
-export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
-  return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-between p-6">
+export const WeeklyExpectations = ({
+  onContinue
+}: WeeklyExpectationsProps) => {
+  return <div className="min-h-screen bg-white flex flex-col items-center justify-between p-6">
       <div className="w-full max-w-md flex-1 flex flex-col">
         {/* Logo */}
         <div className="mb-8 mt-4">
@@ -19,9 +18,7 @@ export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Sparkles className="w-8 h-8 text-[#0d7377]" />
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-              O plano de jejum intermitente de 4 semanas está pronto!
-            </h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">O plano para alcaçar seus objetivos está pronto!</h1>
             <Sparkles className="w-8 h-8 text-[#0d7377]" />
           </div>
           <p className="text-gray-700 text-lg">
@@ -57,13 +54,7 @@ export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
                   <stop offset="100%" stopColor="#0d7377" />
                 </linearGradient>
               </defs>
-              <path
-                d="M 40 230 Q 100 200, 150 160 T 280 80 T 380 40"
-                fill="none"
-                stroke="url(#lineGradient)"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
+              <path d="M 40 230 Q 100 200, 150 160 T 280 80 T 380 40" fill="none" stroke="url(#lineGradient)" strokeWidth="3" strokeLinecap="round" />
             </svg>
 
             {/* Intermediate points */}
@@ -93,13 +84,9 @@ export const WeeklyExpectations = ({ onContinue }: WeeklyExpectationsProps) => {
 
       {/* Continue Button */}
       <div className="w-full max-w-md">
-        <Button
-          onClick={onContinue}
-          className="w-full bg-[#0d7377] hover:bg-[#0a5c5f] text-white py-6 text-lg font-semibold rounded-lg"
-        >
+        <Button onClick={onContinue} className="w-full bg-[#0d7377] hover:bg-[#0a5c5f] text-white py-6 text-lg font-semibold rounded-lg">
           Avançar
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 };
