@@ -20,6 +20,9 @@ import healthyLifestyle from '@/assets/healthy-lifestyle.jpg';
 import appMockupNutrition from '@/assets/app-mockup-nutrition.jpg';
 import fitnessThinking from '@/assets/fitness-thinking.jpg';
 import appLoading from '@/assets/app-loading.jpg';
+import motivationIncredible from '@/assets/motivation-incredible.jpg';
+import motivationChangeHabits from '@/assets/motivation-change-habits.jpg';
+import nutriaLogo from '@/assets/nutria-logo.png';
 
 // Professional body type images
 import bodyThinProfessional from '@/assets/body-thin-professional.png';
@@ -71,9 +74,12 @@ export const imageMap = {
   'fasting-infographic': fastingInfographic,
   'man-working-office': manWorkingOffice,
   'woman-working-office': womanWorkingOffice,
-  'healthy-lifestyle': appMockupNutrition,
+  'healthy-lifestyle': healthyLifestyle,
   'fitness-thinking': fitnessThinking,
   'app-loading': appLoading,
+  'motivation-incredible': motivationIncredible,
+  'motivation-change-habits': motivationChangeHabits,
+  'nutria-logo': nutriaLogo,
   'body-thin-professional': bodyThinProfessional,
   'body-average-professional': bodyAverageProfessional,
   'body-robust-professional': bodyRobustProfessional,

@@ -4,7 +4,8 @@ import {
   CheckCircle2, TrendingDown, TrendingUp, Dumbbell, AlertCircle, 
   AlertTriangle, CheckCircle, Footprints, Clock, Moon, Calendar, 
   Armchair, Candy, Wine, Pizza, DollarSign, Users, Briefcase, 
-  HeartCrack, Bug, Shirt, Heart, Activity, Zap, MessageCircle 
+  HeartCrack, Bug, Shirt, Heart, Activity, Zap, MessageCircle,
+  HelpCircle, X
 } from "lucide-react";
 
 const iconMap = {
@@ -32,6 +33,8 @@ const iconMap = {
   Activity,
   Zap,
   MessageCircle,
+  HelpCircle,
+  X,
 };
 
 interface QuizOptionProps {

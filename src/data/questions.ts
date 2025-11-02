@@ -2,10 +2,17 @@ import { QuizQuestion } from "@/types/quiz";
 
 export const questions: QuizQuestion[] = [
   {
+    id: "splash-screen",
+    title: "",
+    subtitle: "",
+    type: "intermediate",
+    image: "nutria-logo"
+  },
+  {
     id: 1,
     title: "Qual a sua idade?",
     type: "single",
-    showTitle: "JEJUM INTERMITENTE",
+    showTitle: "SUA CAMINHADA PARA EMAGRECER",
     showSubtitle: "Com base na sua idade",
     showFooter: true,
     options: [
@@ -60,9 +67,9 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "intermediate-2",
-    title: "Um plano de jejum personalizado é a resposta!",
-    subtitle: "Para as mulheres, o jejum é a solução ideal para a tonificação.",
-    description: "Se você deseja uma aparência em forma, energia duradoura e um corpo saudável, o jejum é um ponto de partida simples que não exige muitas mudanças ou compromissos.",
+    title: "Um plano personalizado é a chave para o seu sucesso!",
+    subtitle: "Para as mulheres, uma abordagem individualizada é essencial para resultados duradouros.",
+    description: "Se você deseja uma aparência em forma, energia duradoura e um corpo saudável, um plano personalizado é o ponto de partida ideal que se adapta ao seu estilo de vida.",
     type: "intermediate",
     requiresGender: true,
     maleImage: "fitness-male",
@@ -153,7 +160,9 @@ export const questions: QuizQuestion[] = [
     id: 7,
     title: "Há quanto tempo você não está na melhor forma da sua vida?",
     type: "single",
-    thematicImage: "fitness-thinking",
+    requiresGender: true,
+    maleImage: "fitness-thinking",
+    femaleImage: "fitness-female",
     showInfoBox: true,
     options: [
       { 
@@ -161,7 +170,7 @@ export const questions: QuizQuestion[] = [
         text: "Agora mesmo",
         infoBox: {
           title: "🔥 Continue assim!",
-          content: "O jejum ajuda a manter os resultados, mantendo os níveis de insulina baixos e o metabolismo ativo — mesmo com a idade."
+          content: "Manter os resultados é tão importante quanto conquistá-los. Vamos ajudá-lo a manter seus hábitos saudáveis."
         }
       },
       { 
@@ -169,7 +178,7 @@ export const questions: QuizQuestion[] = [
         text: "1–2 anos atrás",
         infoBox: {
           title: "⚡ Ótimo momento!",
-          content: "Seu corpo ainda se lembra dos hábitos saudáveis. O jejum intermitente vai reativar rapidamente seu metabolismo."
+          content: "Seu corpo ainda se lembra dos hábitos saudáveis. Vamos reativar rapidamente seu metabolismo."
         }
       },
       { 
@@ -177,7 +186,7 @@ export const questions: QuizQuestion[] = [
         text: "3–5 anos atrás",
         infoBox: {
           title: "🎯 Vamos retomar!",
-          content: "É normal que o metabolismo desacelere com o tempo. O jejum reativa naturalmente a queima de gordura e aumenta a energia."
+          content: "É normal que o metabolismo desacelere com o tempo. Vamos reativá-lo naturalmente e aumentar sua energia."
         }
       },
       { 
@@ -185,7 +194,7 @@ export const questions: QuizQuestion[] = [
         text: "Mais de 5 anos atrás",
         infoBox: {
           title: "💪 Seu corpo lembra!",
-          content: "Mesmo que já tenha passado um tempo, seu corpo ainda se lembra de como queimar gordura de forma eficiente — o jejum reativa esse processo naturalmente."
+          content: "Mesmo que já tenha passado um tempo, seu corpo ainda se lembra de como funcionar de forma eficiente."
         }
       },
       { 
@@ -193,29 +202,43 @@ export const questions: QuizQuestion[] = [
         text: "Nunca me senti realmente em forma",
         infoBox: {
           title: "🌟 Hora da transformação!",
-          content: "Esta é sua oportunidade! O jejum intermitente é uma das formas mais eficazes de iniciar uma transformação corporal duradoura."
+          content: "Esta é sua oportunidade! Uma transformação corporal duradoura começa agora."
         }
       }
     ]
   },
   {
-    id: 8,
-    title: "O que você sabe sobre jejum intermitente?",
+    id: "motivation-incredible",
+    title: "Você é incrível!",
+    subtitle: "Muitas pessoas lutam contra o medo de não serem boas o suficiente - levaremos isso em conta ao elaborar o seu plano para oferecer uma abordagem que permita que você ganhe confiança!",
+    type: "intermediate",
+    image: "motivation-incredible"
+  },
+  {
+    id: "lipedema-info",
+    title: "Você sabia sobre o Lipedema?",
+    subtitle: "Uma condição que afeta milhões de mulheres",
+    description: "O lipedema é uma condição crônica que causa acúmulo desproporcional de gordura, principalmente nas pernas e braços.\n\n✨ Características principais:\n• Afeta principalmente mulheres\n• Pode causar dor e sensibilidade\n• Dieta balanceada pode ajudar no controle\n• Não é resultado de má alimentação",
+    type: "intermediate",
+    image: "healthy-lifestyle"
+  },
+  {
+    id: "lipedema-question",
+    title: "Você sofre ou suspeita ter lipedema?",
     type: "single",
-    thematicImage: "healthy-meal",
     options: [
-      { id: "never", text: "Nunca ouvi falar" },
-      { id: "heard", text: "Já ouvi falar" },
-      { id: "experienced", text: "Sou um jejuador experiente" }
+      { id: "yes-diagnosed", text: "Sim, tenho diagnóstico", icon: "CheckCircle" },
+      { id: "suspect", text: "Suspeito que tenho", icon: "AlertCircle" },
+      { id: "no", text: "Não", icon: "X" },
+      { id: "dont-know", text: "Não sei o que é", icon: "HelpCircle" }
     ]
   },
   {
-    id: "fasting-benefits",
-    title: "Jejum Intermitente: Foco em QUANDO você come",
-    subtitle: "Uma abordagem simples e eficaz para transformar seu corpo",
-    description: "O jejum intermitente alterna períodos de jejum (apenas água, chá ou café sem açúcar) com janelas de alimentação.\n\n✨ Benefícios principais:\n• Acelera a queima de gordura\n• Melhora o metabolismo\n• Aumenta a energia e clareza mental\n• Simplifica sua rotina alimentar",
+    id: "motivation-change-habits",
+    title: "Você sempre pode mudar os seus hábitos para melhor",
+    subtitle: "Grandes mudanças na vida costumam afetar no peso. É normal. Nós iremos ajudar você a alcançar o seu objetivo.",
     type: "intermediate",
-    image: "fasting-infographic"
+    image: "motivation-change-habits"
   },
   {
     id: 9,

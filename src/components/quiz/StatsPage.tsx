@@ -12,7 +12,7 @@ export const StatsPage = ({ onContinue, onBack }: StatsPageProps) => {
   const data = [
     { name: "2 numerações menores", value: 72, color: "hsl(var(--primary))" },
     { name: "3 numerações menores", value: 15, color: "hsl(var(--accent))" },
-    { name: "Nenhuma mudança", value: 13, color: "hsl(var(--muted))" }
+    { name: "Nenhuma mudança", value: 13, color: "#ef4444" }
   ];
 
   const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
@@ -66,7 +66,7 @@ export const StatsPage = ({ onContinue, onBack }: StatsPageProps) => {
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
             <span className="text-primary text-5xl font-extrabold">72%</span> dos usuários da Nutria<br />
-            reduzem <span className="text-primary font-extrabold">2 numerações de roupa</span> em <span className="text-primary font-extrabold">3 meses</span>
+            reduzem <span className="text-primary font-extrabold">2 numerações de roupa</span> em <span className="text-primary font-extrabold">1 mês</span>
           </h1>
 
           <motion.div
@@ -102,7 +102,7 @@ export const StatsPage = ({ onContinue, onBack }: StatsPageProps) => {
           </motion.div>
 
           <p className="text-sm text-muted-foreground italic max-w-lg mx-auto">
-            Porcentagem de usuários da Nutria que reduziram a numeração de roupa em 3 meses. 
+            Porcentagem de usuários da Nutria que reduziram a numeração de roupa em 1 mês. 
             Este é um cronograma preliminar baseado em suas respostas.
           </p>
         </motion.div>

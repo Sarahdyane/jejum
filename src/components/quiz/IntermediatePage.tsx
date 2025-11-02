@@ -11,6 +11,39 @@ interface IntermediatePageProps {
 }
 
 export const IntermediatePage = ({ title, subtitle, description, image, onContinue, onBack }: IntermediatePageProps) => {
+  // Splash screen mode - show only logo centered
+  const isSplashScreen = !title && !subtitle && !description;
+  
+  if (isSplashScreen) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex justify-center"
+        >
+          <img 
+            src={image} 
+            alt="Nutria" 
+            className="h-24 w-auto"
+          />
+        </motion.div>
+        
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
+          onClick={onContinue}
+          className="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-md mx-auto bg-primary text-primary-foreground hover:bg-primary/90 
+                   py-4 px-8 rounded-lg font-semibold text-lg transition-colors"
+        >
+          Começar
+        </motion.button>
+      </div>
+    );
+  }
+  
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       {onBack && (
