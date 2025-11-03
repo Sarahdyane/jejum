@@ -80,37 +80,50 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     const bodyType = profile.bodyType?.toLowerCase() || '';
     const gender = profile.gender;
     
-    // Mapear o tipo de corpo atual para a imagem correta
-    if (bodyType.includes('thin') || bodyType === 'thin') {
-      return getImageSrc(gender === 'female' ? 'body-thin-female-real' : 'body-thin-male-shorts');
-    } else if (bodyType.includes('average') || bodyType === 'average') {
-      return getImageSrc(gender === 'female' ? 'body-average-female-real' : 'body-fuller-male-shorts');
-    } else if (bodyType.includes('fuller') || bodyType === 'fuller') {
-      return getImageSrc(gender === 'female' ? 'body-fuller-female-real' : 'body-fuller-male-new-shorts');
-    } else if (bodyType.includes('overweight') || bodyType === 'overweight') {
-      return getImageSrc(gender === 'female' ? 'body-overweight-female-real' : 'body-overweight-male-shorts');
+    if (gender === 'female') {
+      // Para mulheres, usar as novas imagens dos resultados
+      if (bodyType.includes('fuller') || bodyType === 'fuller' || 
+          bodyType.includes('overweight') || bodyType === 'overweight') {
+        // Gordinha ou Sobrepeso -> imagem fuller
+        return getImageSrc('body-fuller-female-results');
+      } else {
+        // Magra ou Média -> imagem average
+        return getImageSrc('body-average-female-results');
+      }
+    } else {
+      // Para homens, manter as imagens originais
+      if (bodyType.includes('thin') || bodyType === 'thin') {
+        return getImageSrc('body-thin-male-shorts');
+      } else if (bodyType.includes('average') || bodyType === 'average') {
+        return getImageSrc('body-fuller-male-shorts');
+      } else if (bodyType.includes('fuller') || bodyType === 'fuller') {
+        return getImageSrc('body-fuller-male-new-shorts');
+      } else if (bodyType.includes('overweight') || bodyType === 'overweight') {
+        return getImageSrc('body-overweight-male-shorts');
+      }
+      return getImageSrc('body-fuller-male-shorts');
     }
-    
-    // Fallback para imagem média se não houver match
-    return getImageSrc(gender === 'female' ? 'body-average-female-real' : 'body-fuller-male-shorts');
   };
 
   // Obter imagem do corpo meta baseado nas respostas do quiz
   const getTargetBodyImage = () => {
-    const targetType = profile.targetBodyType?.toLowerCase() || '';
     const gender = profile.gender;
     
-    // Mapear o objetivo de corpo para a imagem correta
-    if (targetType.includes('slim') || targetType === 'slim') {
-      return getImageSrc(gender === 'female' ? 'goal-slim-female' : 'goal-slim-male');
-    } else if (targetType.includes('defined') || targetType === 'defined') {
-      return getImageSrc(gender === 'female' ? 'goal-defined-female' : 'goal-defined-male');
-    } else if (targetType.includes('athlete') || targetType === 'athlete') {
-      return getImageSrc(gender === 'female' ? 'goal-athlete-female' : 'goal-athlete-male');
+    if (gender === 'female') {
+      // Para mulheres, sempre usar a imagem goal-female-results
+      return getImageSrc('body-goal-female-results');
+    } else {
+      // Para homens, manter a lógica original
+      const targetType = profile.targetBodyType?.toLowerCase() || '';
+      if (targetType.includes('slim') || targetType === 'slim') {
+        return getImageSrc('goal-slim-male');
+      } else if (targetType.includes('defined') || targetType === 'defined') {
+        return getImageSrc('goal-defined-male');
+      } else if (targetType.includes('athlete') || targetType === 'athlete') {
+        return getImageSrc('goal-athlete-male');
+      }
+      return getImageSrc('goal-slim-male');
     }
-    
-    // Fallback para imagem slim se não houver match
-    return getImageSrc(gender === 'female' ? 'goal-slim-female' : 'goal-slim-male');
   };
 
   const bmi = parseFloat(calculateBMI());

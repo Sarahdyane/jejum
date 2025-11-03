@@ -57,6 +57,11 @@ import goalDefinedFemale from '@/assets/goal-defined-female.jpg';
 import goalAthleteMale from '@/assets/goal-athlete-male.jpg';
 import goalAthleteFemale from '@/assets/goal-athlete-female.jpg';
 
+// Results page body images
+import bodyFullerFemaleResults from '@/assets/body-fuller-female-results.png';
+import bodyAverageFemaleResults from '@/assets/body-average-female-results.png';
+import bodyGoalFemaleResults from '@/assets/body-goal-female-results.png';
+
 export const imageMap = {
   'age-couple-1': age1829CoupleNew,
   'age-couple-2': age3039Couple,
@@ -108,6 +113,9 @@ export const imageMap = {
   'goal-defined-female': goalDefinedFemale,
   'goal-athlete-male': goalAthleteMale,
   'goal-athlete-female': goalAthleteFemale,
+  'body-fuller-female-results': bodyFullerFemaleResults,
+  'body-average-female-results': bodyAverageFemaleResults,
+  'body-goal-female-results': bodyGoalFemaleResults,
 };
 
 export const getImageSrc = (imageKey: string) => {
