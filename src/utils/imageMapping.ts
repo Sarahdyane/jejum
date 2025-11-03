@@ -40,14 +40,18 @@ import bodyRobustFemaleProfessional from '@/assets/body-robust-female-profession
 // Real body type images - realistic photos for body type selection
 import bodyThinMaleShorts from '@/assets/body-thin-male-shorts.jpg';
 import bodyThinFemaleReal from '@/assets/body-thin-female-real.jpg';
+import bodyThinFemaleNew from '@/assets/body-thin-female-new.png';
 import bodyAverageMaleReal from '@/assets/body-average-male-real.jpg';
 import bodyAverageFemaleReal from '@/assets/body-average-female-real.jpg';
+import bodyAverageFemaleNew from '@/assets/body-average-female-new.png';
 import bodyFullerMaleShorts from '@/assets/body-fuller-male-real-shorts.jpg';
 import bodyFullerFemaleReal from '@/assets/body-fuller-female-real.jpg';
+import bodyFullerFemaleNew from '@/assets/body-fuller-female-new.png';
 import bodyFullerMaleNewShorts from '@/assets/body-fuller-male-new-shorts-fixed.jpg';
 import bodyFullerFemaleProfessional from '@/assets/body-fuller-female-professional-fixed.jpg';
 import bodyOverweightMaleShorts from '@/assets/body-overweight-male-shorts.jpg';
 import bodyOverweightFemaleReal from '@/assets/body-overweight-female-real.jpg';
+import bodyOverweightFemaleNew from '@/assets/body-overweight-female-new.png';
 
 // Goal body images
 import goalSlimMale from '@/assets/goal-slim-male.jpg';
@@ -94,14 +98,18 @@ export const imageMap = {
   'body-robust-female-professional': bodyRobustFemaleProfessional,
   'body-thin-male-shorts': bodyThinMaleShorts,
   'body-thin-female-real': bodyThinFemaleReal,
+  'body-thin-female-new': bodyThinFemaleNew,
   'body-average-male-real': bodyAverageMaleReal,
   'body-average-female-real': bodyAverageFemaleReal,
+  'body-average-female-new': bodyAverageFemaleNew,
   'body-fuller-male-shorts': bodyFullerMaleShorts,
   'body-fuller-female-real': bodyFullerFemaleReal,
+  'body-fuller-female-new': bodyFullerFemaleNew,
   'body-fuller-male-new-shorts': bodyFullerMaleNewShorts,
   'body-fuller-female-professional': bodyFullerFemaleProfessional,
   'body-overweight-male-shorts': bodyOverweightMaleShorts,
   'body-overweight-female-real': bodyOverweightFemaleReal,
+  'body-overweight-female-new': bodyOverweightFemaleNew,
   'goal-slim-male': goalSlimMale,
   'goal-slim-female': goalSlimFemale,
   'goal-defined-male': goalDefinedMale,
