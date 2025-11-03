@@ -13,10 +13,26 @@ interface QuizResultsProps {
 }
 
 export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
-  // Calcular IMC
+  // Debug para verificar os dados do profile
+  console.log('Profile dados:', {
+    height: profile.height,
+    currentWeight: profile.currentWeight,
+    targetWeight: profile.targetWeight,
+    userAge: profile.userAge,
+    gender: profile.gender,
+    bodyType: profile.bodyType
+  });
+
+  // Calcular IMC - validar se os dados existem
   const calculateBMI = () => {
+    if (!profile.height || !profile.currentWeight) {
+      console.error('Dados faltando para cálculo de IMC:', { height: profile.height, weight: profile.currentWeight });
+      return '0.00';
+    }
     const heightInMeters = profile.height / 100;
-    return (profile.currentWeight / (heightInMeters * heightInMeters)).toFixed(2);
+    const bmi = (profile.currentWeight / (heightInMeters * heightInMeters)).toFixed(1);
+    console.log('IMC calculado:', bmi);
+    return bmi;
   };
 
   const calculateTargetBMI = () => {
@@ -130,8 +146,18 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
   const bmiStatus = getBMIStatus(bmi);
   const calories = calculateCalories();
   const waterIntake = calculateWaterIntake();
+  
+  // Calcular a diferença de peso e formatar a meta corretamente
   const weightDifference = Math.abs(profile.targetWeight - profile.currentWeight);
-  const weightGoal = profile.targetWeight > profile.currentWeight ? `+${weightDifference}kg` : `-${weightDifference}kg`;
+  const isLosingWeight = profile.currentWeight > profile.targetWeight;
+  const weightGoal = isLosingWeight ? `-${weightDifference.toFixed(1)}kg` : `+${weightDifference.toFixed(1)}kg`;
+  
+  console.log('Meta de peso:', {
+    current: profile.currentWeight,
+    target: profile.targetWeight,
+    difference: weightDifference,
+    goal: weightGoal
+  });
 
   // Calcular idade metabólica (simplificado)
   const metabolicAge = Math.max(18, Math.min(profile.userAge + Math.round((bmi - 22) * 2), 70));
@@ -162,11 +188,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             {/* Corpo Atual */}
             <div className="text-center">
               <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Seu peso</h3>
-              <div className="relative bg-white rounded-xl p-3 md:p-6 mb-3 md:mb-4 flex items-center justify-center">
+              <div className="relative bg-white rounded-xl p-4 md:p-8 mb-3 md:mb-4 flex items-center justify-center shadow-sm">
                 <img 
                   src={getCurrentBodyImage()}
                   alt="Corpo atual" 
-                  className="h-48 md:h-80 object-contain"
+                  className="h-64 md:h-96 w-auto object-contain"
                 />
               </div>
               <div className="space-y-2">
@@ -184,11 +210,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             {/* Corpo Meta */}
             <div className="text-center">
               <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Meta</h3>
-              <div className="relative bg-white rounded-xl p-3 md:p-6 mb-3 md:mb-4 flex items-center justify-center">
+              <div className="relative bg-white rounded-xl p-4 md:p-8 mb-3 md:mb-4 flex items-center justify-center shadow-sm">
                 <img 
                   src={getTargetBodyImage()}
                   alt="Corpo meta" 
-                  className="h-48 md:h-80 object-contain"
+                  className="h-64 md:h-96 w-auto object-contain"
                 />
               </div>
               <div className="space-y-2">
@@ -218,7 +244,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           {/* IMC Atual */}
           <div className="bg-gray-50 rounded-2xl p-6 mb-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">IMC atual</h3>
-            <p className="text-4xl font-bold text-gray-900 mb-4">{bmi} IMC</p>
+            <p className="text-4xl font-bold text-gray-900 mb-4">{bmi}</p>
             
             {/* Escala de IMC */}
             <div className="relative mb-4">
