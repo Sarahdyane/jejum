@@ -85,25 +85,25 @@ export const questions: QuizQuestion[] = [
         id: "thin", 
         text: "Magra", 
         maleImage: "body-thin-male-shorts", 
-        femaleImage: "body-thin-female-new" 
+        femaleImage: "body-thin-female-real" 
       },
       { 
         id: "average", 
         text: "Média", 
         maleImage: "body-fuller-male-shorts", 
-        femaleImage: "body-average-female-new" 
+        femaleImage: "body-fuller-female-real" 
       },
       { 
         id: "fuller", 
         text: "Gordinha", 
         maleImage: "body-overweight-male-shorts", 
-        femaleImage: "body-fuller-female-new" 
+        femaleImage: "body-fuller-female-professional" 
       },
       { 
         id: "overweight", 
         text: "Sobrepeso", 
         maleImage: "body-fuller-male-new-shorts", 
-        femaleImage: "body-overweight-female-new" 
+        femaleImage: "body-overweight-female-real" 
       }
     ]
   },
