@@ -134,7 +134,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
 
   return (
     <div className="w-full max-w-4xl mx-auto quiz-fade-in">
-      <div className="text-center mb-8">
+      <div className="text-center mb-12">
         {(question.thematicImage || (question.requiresGender && gender && (question.maleImage || question.femaleImage))) && (
           <div className="mb-6 flex justify-center">
             <div className="w-32 h-32 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/20">
