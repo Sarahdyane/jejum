@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 import nutriaLogo from '@/assets/nutria-logo.png';
 interface WeeklyExpectationsProps {
   onContinue: () => void;
@@ -34,45 +35,90 @@ export const WeeklyExpectations = ({
         </div>
 
         {/* Progress Graph */}
-        <div className="flex-1 relative bg-gradient-to-b from-white via-teal-50/30 to-teal-100/40 rounded-lg p-6 mb-6">
+        <div className="flex-1 relative bg-gradient-to-br from-teal-50 via-blue-50 to-purple-50 rounded-2xl p-8 mb-6 shadow-lg">
           {/* Graph visualization */}
-          <div className="relative h-64">
+          <div className="relative h-80">
             {/* Starting point */}
-            <div className="absolute bottom-8 left-4">
-              <div className="bg-pink-500 text-white px-4 py-2 rounded-lg font-semibold text-sm">
+            <motion.div 
+              className="absolute bottom-8 left-4"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg">
                 Seu peso
               </div>
-              <div className="w-3 h-3 bg-pink-500 rounded-full mt-2 ml-6"></div>
-            </div>
+              <motion.div 
+                className="w-4 h-4 bg-pink-500 rounded-full mt-2 ml-8 shadow-md"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+            </motion.div>
 
-            {/* Curve path */}
+            {/* Animated curve path */}
             <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#ec4899" />
-                  <stop offset="50%" stopColor="#fbbf24" />
+                  <stop offset="30%" stopColor="#f59e0b" />
+                  <stop offset="70%" stopColor="#10b981" />
                   <stop offset="100%" stopColor="#0d7377" />
                 </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
               </defs>
-              <path d="M 40 230 Q 100 200, 150 160 T 280 80 T 380 40" fill="none" stroke="url(#lineGradient)" strokeWidth="3" strokeLinecap="round" />
+              <motion.path 
+                d="M 40 280 Q 120 240, 180 180 T 320 90 T 420 45" 
+                fill="none" 
+                stroke="url(#lineGradient)" 
+                strokeWidth="4" 
+                strokeLinecap="round"
+                filter="url(#glow)"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 2, ease: "easeInOut", delay: 0.3 }}
+              />
             </svg>
 
             {/* Intermediate points */}
-            <div className="absolute top-32 left-28">
-              <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-            </div>
-            <div className="absolute top-20 left-52">
-              <div className="w-3 h-3 bg-teal-400 rounded-full"></div>
-            </div>
+            <motion.div 
+              className="absolute top-40 left-36"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 1 }}
+            >
+              <div className="w-4 h-4 bg-yellow-400 rounded-full shadow-md ring-4 ring-yellow-100"></div>
+            </motion.div>
+            <motion.div 
+              className="absolute top-24 left-64"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 1.5 }}
+            >
+              <div className="w-4 h-4 bg-green-400 rounded-full shadow-md ring-4 ring-green-100"></div>
+            </motion.div>
 
             {/* End point */}
-            <div className="absolute top-8 right-4">
-              <div className="w-3 h-3 bg-[#0d7377] rounded-full mb-2 ml-12"></div>
-              <div className="bg-[#0d7377] text-white px-4 py-2 rounded-lg font-semibold text-sm">
+            <motion.div 
+              className="absolute top-8 right-4"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 2 }}
+            >
+              <motion.div 
+                className="w-4 h-4 bg-[#0d7377] rounded-full mb-2 ml-16 shadow-md"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 2 }}
+              />
+              <div className="bg-gradient-to-r from-[#0d7377] to-[#0a5c5f] text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg">
                 MANTER O PESO
               </div>
-              <div className="absolute -right-2 top-8 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-[#0d7377]"></div>
-            </div>
+            </motion.div>
           </div>
         </div>
 

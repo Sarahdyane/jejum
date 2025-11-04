@@ -455,7 +455,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 21,
-    title: "Com que frequência você vai caminhar?",
+    title: "Com que frequência você costuma se exercitar?",
     type: "single",
     options: [
       { id: "almost-daily", text: "Quase todos os dias", icon: "Footprints" },

@@ -22,6 +22,9 @@ import fitnessThinking from '@/assets/fitness-thinking.jpg';
 import appLoading from '@/assets/app-loading.jpg';
 import motivationIncredible from '@/assets/motivation-incredible.jpg';
 import motivationChangeHabits from '@/assets/motivation-change-habits.jpg';
+import motivationIncredibleNew from '@/assets/motivation-incredible-new.png';
+import motivationChangeHabitsNew from '@/assets/motivation-change-habits-new.png';
+import fitnessFemaleNew from '@/assets/fitness-female-new.png';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaInfo from '@/assets/lipedema-info.png';
 import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
@@ -70,7 +73,6 @@ export const imageMap = {
   'healthy-celebration': healthyCelebration,
   'fitness-couple': fitnessCouple,
   'fitness-male': fitnessMale,
-  'fitness-female': fitnessFemale,
   'body-zones-male-mascot': bodyZonesMaleMascot,
   'body-zones-female-mascot': bodyZonesFemaleMascot,
   'body-zones-male-arrows': bodyZonesMaleArrows,
@@ -81,11 +83,12 @@ export const imageMap = {
   'fasting-infographic': fastingInfographic,
   'man-working-office': manWorkingOffice,
   'woman-working-office': womanWorkingOffice,
-  'healthy-lifestyle': healthyLifestyle,
   'fitness-thinking': fitnessThinking,
   'app-loading': appLoading,
-  'motivation-incredible': healthyPeopleCelebration,
-  'motivation-change-habits': motivationChangeHabits,
+  'motivation-incredible': motivationIncredibleNew,
+  'motivation-change-habits': motivationChangeHabitsNew,
+  'fitness-female': fitnessFemaleNew,
+  'healthy-lifestyle': fitnessFemaleNew,
   'nutria-logo': nutriaLogo,
   'lipedema-info': lipedemaInfo,
   'body-thin-professional': bodyThinProfessional,
