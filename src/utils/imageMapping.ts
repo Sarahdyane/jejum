@@ -25,6 +25,7 @@ import motivationChangeHabits from '@/assets/motivation-change-habits.jpg';
 import motivationIncredibleNew from '@/assets/motivation-incredible-new.png';
 import motivationChangeHabitsNew from '@/assets/motivation-change-habits-new.png';
 import fitnessFemaleNew from '@/assets/fitness-female-new.png';
+import healthyLifestyleNew from '@/assets/healthy-lifestyle-new.jpg';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaInfo from '@/assets/lipedema-info.png';
 import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
@@ -87,8 +88,8 @@ export const imageMap = {
   'app-loading': appLoading,
   'motivation-incredible': motivationIncredibleNew,
   'motivation-change-habits': motivationChangeHabitsNew,
-  'fitness-female': fitnessFemaleNew,
-  'healthy-lifestyle': fitnessFemaleNew,
+  'fitness-female': healthyLifestyleNew,
+  'healthy-lifestyle': healthyLifestyleNew,
   'nutria-logo': nutriaLogo,
   'lipedema-info': lipedemaInfo,
   'body-thin-professional': bodyThinProfessional,
