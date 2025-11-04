@@ -180,54 +180,54 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-12">
         {/* Seção 1: Comparação Corpo Atual vs Meta */}
-        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-4 md:p-10 shadow-lg">
-          <div className="grid grid-cols-2 gap-3 md:gap-10">
+        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-3 sm:p-6 md:p-10 shadow-lg">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-10">
             {/* Corpo Atual */}
             <div className="text-center">
-              <h3 className="text-base md:text-2xl font-bold text-gray-900 mb-3 md:mb-6">Seu peso</h3>
-              <div className="relative bg-white rounded-2xl p-4 md:p-10 mb-3 md:mb-6 flex items-center justify-center shadow-xl min-h-[420px] md:min-h-[480px]">
+              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 md:mb-6">Seu peso</h3>
+              <div className="relative bg-white rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
                 <img 
                   src={getCurrentBodyImage()}
                   alt="Corpo atual" 
-                  className="h-[350px] md:h-[400px] w-auto object-contain"
+                  className="w-full max-w-[140px] sm:max-w-[180px] md:max-w-none md:h-[400px] h-auto object-contain"
                 />
               </div>
-              <div className="space-y-2 md:space-y-3">
+              <div className="space-y-2 md:space-y-3 px-1">
                 <div>
-                  <p className="text-xs md:text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-xs md:text-base text-gray-600">{getBodyFatPercentage()}</p>
+                  <p className="text-xs sm:text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-[10px] sm:text-xs md:text-base text-gray-600">{getBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
-                  <Progress value={35} className="h-2 md:h-2.5" />
+                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
+                  <Progress value={35} className="h-1.5 sm:h-2 md:h-2.5" />
                 </div>
               </div>
             </div>
 
             {/* Corpo Meta */}
             <div className="text-center">
-              <h3 className="text-base md:text-2xl font-bold text-gray-900 mb-3 md:mb-6">Meta</h3>
-              <div className="relative bg-white rounded-2xl p-4 md:p-10 mb-3 md:mb-6 flex items-center justify-center shadow-xl min-h-[420px] md:min-h-[480px]">
+              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 md:mb-6">Meta</h3>
+              <div className="relative bg-white rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
                 <img 
                   src={getTargetBodyImage()}
                   alt="Corpo meta" 
-                  className="h-[350px] md:h-[400px] w-auto object-contain"
+                  className="w-full max-w-[140px] sm:max-w-[180px] md:max-w-none md:h-[400px] h-auto object-contain"
                 />
               </div>
-              <div className="space-y-2 md:space-y-3">
+              <div className="space-y-2 md:space-y-3 px-1">
                 <div>
-                  <p className="text-xs md:text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-xs md:text-base text-gray-600">{getTargetBodyFatPercentage()}</p>
+                  <p className="text-xs sm:text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-[10px] sm:text-xs md:text-base text-gray-600">{getTargetBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
-                  <Progress value={85} className="h-2 md:h-2.5" />
+                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
+                  <Progress value={85} className="h-1.5 sm:h-2 md:h-2.5" />
                 </div>
               </div>
             </div>
           </div>
 
-          <p className="text-center text-xs md:text-sm text-gray-600 mt-4 md:mt-8 px-2">
+          <p className="text-center text-[10px] sm:text-xs md:text-sm text-gray-600 mt-3 sm:mt-6 md:mt-8 px-2">
             Os resultados não são típicos. Os resultados individuais podem variar.
           </p>
         </div>
