@@ -35,90 +35,244 @@ export const WeeklyExpectations = ({
         </div>
 
         {/* Progress Graph */}
-        <div className="flex-1 relative bg-gradient-to-br from-teal-50 via-blue-50 to-purple-50 rounded-2xl p-8 mb-6 shadow-lg">
+        <div className="flex-1 relative bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 rounded-3xl p-6 md:p-10 mb-6 shadow-2xl backdrop-blur-sm border border-white/50">
           {/* Graph visualization */}
-          <div className="relative h-80">
-            {/* Starting point */}
-            <motion.div 
-              className="absolute bottom-8 left-4"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg">
-                Seu peso
-              </div>
-              <motion.div 
-                className="w-4 h-4 bg-pink-500 rounded-full mt-2 ml-8 shadow-md"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-            </motion.div>
+          <div className="relative h-80 md:h-96">
+            {/* Y-Axis Labels */}
+            <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs text-gray-400 pr-2">
+              <span>Meta</span>
+              <span className="text-center">Progresso</span>
+              <span>Início</span>
+            </div>
 
             {/* Animated curve path */}
-            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+            <svg className="absolute inset-0 w-full h-full pl-8" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid meet">
               <defs>
+                {/* Enhanced gradient for the line */}
                 <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#ec4899" />
-                  <stop offset="30%" stopColor="#f59e0b" />
-                  <stop offset="70%" stopColor="#10b981" />
+                  <stop offset="0%" stopColor="#fb7185" />
+                  <stop offset="25%" stopColor="#f97316" />
+                  <stop offset="50%" stopColor="#fbbf24" />
+                  <stop offset="75%" stopColor="#34d399" />
                   <stop offset="100%" stopColor="#0d7377" />
                 </linearGradient>
+                
+                {/* Glow effect */}
                 <filter id="glow">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                   <feMerge>
+                    <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
+
+                {/* Shadow for markers */}
+                <filter id="markerShadow">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                  <feOffset dx="0" dy="2" result="offsetblur"/>
+                  <feComponentTransfer>
+                    <feFuncA type="linear" slope="0.3"/>
+                  </feComponentTransfer>
+                  <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
               </defs>
+
+              {/* Smooth bezier curve path */}
               <motion.path 
-                d="M 40 280 Q 120 240, 180 180 T 320 90 T 420 45" 
+                d="M 30 280 C 80 260, 100 220, 120 180 S 160 120, 200 90 S 260 55, 300 40 S 350 28, 370 25" 
                 fill="none" 
                 stroke="url(#lineGradient)" 
-                strokeWidth="4" 
+                strokeWidth="5" 
                 strokeLinecap="round"
+                strokeLinejoin="round"
                 filter="url(#glow)"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 2, ease: "easeInOut", delay: 0.3 }}
+                transition={{ duration: 2.5, ease: "easeInOut", delay: 0.5 }}
+              />
+
+              {/* Animated marker points */}
+              {/* Point 1 - Start */}
+              <motion.circle
+                cx="30"
+                cy="280"
+                r="8"
+                fill="#fb7185"
+                filter="url(#markerShadow)"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.7 }}
+              />
+              <motion.circle
+                cx="30"
+                cy="280"
+                r="14"
+                fill="none"
+                stroke="#fb7185"
+                strokeWidth="2"
+                opacity="0.3"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              />
+
+              {/* Point 2 */}
+              <motion.circle
+                cx="120"
+                cy="180"
+                r="7"
+                fill="#f97316"
+                filter="url(#markerShadow)"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 1.2 }}
+              />
+              <motion.circle
+                cx="120"
+                cy="180"
+                r="12"
+                fill="none"
+                stroke="#f97316"
+                strokeWidth="2"
+                opacity="0.3"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              />
+
+              {/* Point 3 */}
+              <motion.circle
+                cx="200"
+                cy="90"
+                r="7"
+                fill="#fbbf24"
+                filter="url(#markerShadow)"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 1.7 }}
+              />
+              <motion.circle
+                cx="200"
+                cy="90"
+                r="12"
+                fill="none"
+                stroke="#fbbf24"
+                strokeWidth="2"
+                opacity="0.3"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 1.7 }}
+              />
+
+              {/* Point 4 */}
+              <motion.circle
+                cx="300"
+                cy="40"
+                r="7"
+                fill="#34d399"
+                filter="url(#markerShadow)"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 2.2 }}
+              />
+              <motion.circle
+                cx="300"
+                cy="40"
+                r="12"
+                fill="none"
+                stroke="#34d399"
+                strokeWidth="2"
+                opacity="0.3"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 2.2 }}
+              />
+
+              {/* Point 5 - End */}
+              <motion.circle
+                cx="370"
+                cy="25"
+                r="8"
+                fill="#0d7377"
+                filter="url(#markerShadow)"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 2.7 }}
+              />
+              <motion.circle
+                cx="370"
+                cy="25"
+                r="14"
+                fill="none"
+                stroke="#0d7377"
+                strokeWidth="2"
+                opacity="0.3"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 2.7 }}
+              />
+              <motion.circle
+                cx="370"
+                cy="25"
+                r="8"
+                fill="#0d7377"
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 3 }}
               />
             </svg>
 
-            {/* Intermediate points */}
+            {/* Starting Label */}
             <motion.div 
-              className="absolute top-40 left-36"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 1 }}
+              className="absolute bottom-2 left-10 md:left-12"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
             >
-              <div className="w-4 h-4 bg-yellow-400 rounded-full shadow-md ring-4 ring-yellow-100"></div>
-            </motion.div>
-            <motion.div 
-              className="absolute top-24 left-64"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 1.5 }}
-            >
-              <div className="w-4 h-4 bg-green-400 rounded-full shadow-md ring-4 ring-green-100"></div>
-            </motion.div>
-
-            {/* End point */}
-            <motion.div 
-              className="absolute top-8 right-4"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 2 }}
-            >
-              <motion.div 
-                className="w-4 h-4 bg-[#0d7377] rounded-full mb-2 ml-16 shadow-md"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 2 }}
-              />
-              <div className="bg-gradient-to-r from-[#0d7377] to-[#0a5c5f] text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg">
-                MANTER O PESO
+              <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-4 py-2 md:px-5 md:py-3 rounded-2xl font-bold text-xs md:text-sm shadow-xl backdrop-blur-sm border border-white/20">
+                Agora
               </div>
             </motion.div>
+
+            {/* Week 2 Label */}
+            <motion.div 
+              className="absolute top-32 left-28 md:left-32"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.8 }}
+            >
+              <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-semibold text-[10px] md:text-xs text-gray-700 shadow-lg border border-gray-200">
+                Semana 2
+              </div>
+            </motion.div>
+
+            {/* Week 4 Label */}
+            <motion.div 
+              className="absolute top-6 right-4 md:right-8"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 2.8 }}
+            >
+              <div className="bg-gradient-to-r from-[#0d7377] to-[#0a5c5f] text-white px-4 py-2 md:px-5 md:py-3 rounded-2xl font-bold text-xs md:text-sm shadow-xl backdrop-blur-sm border border-white/20">
+                Meta alcançada!
+              </div>
+            </motion.div>
+
+            {/* Decorative elements */}
+            <motion.div
+              className="absolute top-20 right-20 w-16 h-16 bg-gradient-to-br from-[#0d7377]/10 to-purple-500/10 rounded-full blur-xl"
+              animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <motion.div
+              className="absolute bottom-24 left-32 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-full blur-xl"
+              animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
           </div>
         </div>
 
