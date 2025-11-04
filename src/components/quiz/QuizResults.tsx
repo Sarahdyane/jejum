@@ -13,25 +13,13 @@ interface QuizResultsProps {
 }
 
 export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
-  // Debug para verificar os dados do profile
-  console.log('Profile dados:', {
-    height: profile.height,
-    currentWeight: profile.currentWeight,
-    targetWeight: profile.targetWeight,
-    userAge: profile.userAge,
-    gender: profile.gender,
-    bodyType: profile.bodyType
-  });
-
   // Calcular IMC - validar se os dados existem
   const calculateBMI = () => {
     if (!profile.height || !profile.currentWeight) {
-      console.error('Dados faltando para cálculo de IMC:', { height: profile.height, weight: profile.currentWeight });
       return '0.00';
     }
     const heightInMeters = profile.height / 100;
     const bmi = (profile.currentWeight / (heightInMeters * heightInMeters)).toFixed(1);
-    console.log('IMC calculado:', bmi);
     return bmi;
   };
 
@@ -147,26 +135,35 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
   const calories = calculateCalories();
   const waterIntake = calculateWaterIntake();
   
-  // Calcular a diferença de peso e formatar a meta corretamente
-  const weightDifference = Math.abs(profile.targetWeight - profile.currentWeight);
-  const isLosingWeight = profile.currentWeight > profile.targetWeight;
-  const weightGoal = isLosingWeight ? `-${weightDifference.toFixed(1)}kg` : `+${weightDifference.toFixed(1)}kg`;
-  
-  console.log('Meta de peso:', {
-    current: profile.currentWeight,
-    target: profile.targetWeight,
-    difference: weightDifference,
-    goal: weightGoal
-  });
+  // Mostrar o peso desejado como meta
+  const weightGoal = `${profile.targetWeight}kg`;
 
   // Calcular idade metabólica (simplificado)
   const metabolicAge = Math.max(18, Math.min(profile.userAge + Math.round((bmi - 22) * 2), 70));
 
-  // Determinar nível de energia
+  // Determinar nível de energia baseado na resposta da pergunta 18
   const getEnergyLevel = () => {
-    if (profile.energyLevel === 'high') return 'Ótimo';
-    if (profile.energyLevel === 'medium') return 'Bom';
+    if (profile.energyLevel === 'great-most') return 'Ótimo';
+    if (profile.energyLevel === 'inconsistent') return 'Bom';
+    if (profile.energyLevel === 'morning-good') return 'Moderado';
     return 'Baixo';
+  };
+
+  // Traduzir zonas alvo para português
+  const translateZones = (zones: string[]) => {
+    const translations: Record<string, string> = {
+      'belly': 'Barriga',
+      'chest': 'Peito',
+      'arms': 'Braços',
+      'legs': 'Pernas',
+      'butt': 'Glúteos',
+      'thighs': 'Coxas',
+      'back': 'Costas',
+      'face': 'Rosto',
+      'neck': 'Pescoço',
+      'hips': 'Quadris'
+    };
+    return zones.map(zone => translations[zone] || zone);
   };
 
   return (
@@ -396,7 +393,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Zonas alvo</p>
-                  <p className="text-lg font-bold text-gray-900">{profile.targetZones.join(', ')}</p>
+                  <p className="text-lg font-bold text-gray-900">{translateZones(profile.targetZones).join(', ')}</p>
                 </div>
               </div>
             )}
