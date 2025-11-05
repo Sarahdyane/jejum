@@ -101,9 +101,9 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
       } else if (bodyType.includes('average') || bodyType === 'average') {
         return getImageSrc('body-average-male-real');
       } else if (bodyType.includes('fuller') || bodyType === 'fuller') {
-        return getImageSrc('body-overweight-male-real');
+        return getImageSrc('body-overweight-male-shorts');
       } else if (bodyType.includes('overweight') || bodyType === 'overweight') {
-        return getImageSrc('body-overweight-male-real');
+        return getImageSrc('body-obese-male-shorts');
       }
       return getImageSrc('body-average-male-real');
     }

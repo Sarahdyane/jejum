@@ -53,6 +53,7 @@ import bodyFullerMaleNewShorts from '@/assets/body-fuller-male-new-shorts-fixed.
 import bodyFullerFemaleProfessional from '@/assets/body-fuller-female-professional-fixed.jpg';
 import bodyOverweightMaleShorts from '@/assets/body-overweight-male-shorts.jpg';
 import bodyOverweightFemaleReal from '@/assets/body-overweight-female-real.jpg';
+import bodyObeseMaleShorts from '@/assets/body-obese-male-shorts.jpg';
 
 // Goal body images
 import goalSlimMale from '@/assets/goal-slim-male.jpg';
@@ -112,6 +113,7 @@ export const imageMap = {
   'body-fuller-female-professional': bodyFullerFemaleProfessional,
   'body-overweight-male-shorts': bodyOverweightMaleShorts,
   'body-overweight-female-real': bodyOverweightFemaleReal,
+  'body-obese-male-shorts': bodyObeseMaleShorts,
   'goal-slim-male': goalSlimMale,
   'goal-slim-female': goalSlimFemale,
   'goal-defined-male': goalDefinedMale,
