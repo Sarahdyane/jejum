@@ -440,8 +440,10 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               opts={{
                 align: "start",
                 loop: true,
+                dragFree: true,
+                containScroll: "trimSnaps",
               }}
-              className="w-full max-w-5xl mx-auto mb-12"
+              className="w-full max-w-5xl mx-auto mb-12 touch-pan-y"
             >
               <CarouselContent>
                 {/* Card 1 - Mariana */}
