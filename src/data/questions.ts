@@ -96,7 +96,8 @@ export const questions: QuizQuestion[] = [
       { 
         id: "fuller", 
         text: "Gordinha", 
-        maleImage: "body-overweight-male-shorts", 
+        maleText: "Gordinho",
+        maleImage: "body-overweight-male-real", 
         femaleImage: "body-fuller-female-professional" 
       },
       { 

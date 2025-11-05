@@ -95,17 +95,17 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         return getImageSrc('body-average-female-results');
       }
     } else {
-      // Para homens, manter as imagens originais
+      // Para homens, usar imagens mais comuns para magro e médio
       if (bodyType.includes('thin') || bodyType === 'thin') {
-        return getImageSrc('body-thin-male-shorts');
+        return getImageSrc('body-thin-male-real');
       } else if (bodyType.includes('average') || bodyType === 'average') {
-        return getImageSrc('body-fuller-male-shorts');
+        return getImageSrc('body-average-male-real');
       } else if (bodyType.includes('fuller') || bodyType === 'fuller') {
-        return getImageSrc('body-fuller-male-new-shorts');
+        return getImageSrc('body-overweight-male-real');
       } else if (bodyType.includes('overweight') || bodyType === 'overweight') {
-        return getImageSrc('body-overweight-male-shorts');
+        return getImageSrc('body-overweight-male-real');
       }
-      return getImageSrc('body-fuller-male-shorts');
+      return getImageSrc('body-average-male-real');
     }
   };
 

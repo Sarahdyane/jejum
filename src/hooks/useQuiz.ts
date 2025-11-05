@@ -8,12 +8,29 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     isComplete: false,
   });
 
+  const shouldShowQuestion = useCallback((question: QuizQuestion) => {
+    const genderAnswer = quizState.answers[2];
+    
+    // Pular perguntas de lipedema para homens
+    if ((question.id === 8 || question.id === 'lipedema-info') && genderAnswer === 'male') {
+      return false;
+    }
+    
+    return true;
+  }, [quizState.answers]);
+
+  const getFilteredQuestions = useCallback(() => {
+    return questions.filter(shouldShowQuestion);
+  }, [questions, shouldShowQuestion]);
+
   const nextQuestion = useCallback(() => {
-    const currentIndex = questions.findIndex(q => q.id === quizState.currentQuestion);
-    if (currentIndex < questions.length - 1) {
+    const filteredQuestions = getFilteredQuestions();
+    const currentIndex = filteredQuestions.findIndex(q => q.id === quizState.currentQuestion);
+    
+    if (currentIndex < filteredQuestions.length - 1) {
       setQuizState(prev => ({
         ...prev,
-        currentQuestion: questions[currentIndex + 1].id,
+        currentQuestion: filteredQuestions[currentIndex + 1].id,
       }));
     } else {
       setQuizState(prev => ({
@@ -21,17 +38,19 @@ export const useQuiz = (questions: QuizQuestion[]) => {
         isComplete: true,
       }));
     }
-  }, [quizState.currentQuestion, questions]);
+  }, [quizState.currentQuestion, getFilteredQuestions]);
 
   const prevQuestion = useCallback(() => {
-    const currentIndex = questions.findIndex(q => q.id === quizState.currentQuestion);
+    const filteredQuestions = getFilteredQuestions();
+    const currentIndex = filteredQuestions.findIndex(q => q.id === quizState.currentQuestion);
+    
     if (currentIndex > 0) {
       setQuizState(prev => ({
         ...prev,
-        currentQuestion: questions[currentIndex - 1].id,
+        currentQuestion: filteredQuestions[currentIndex - 1].id,
       }));
     }
-  }, [quizState.currentQuestion, questions]);
+  }, [quizState.currentQuestion, getFilteredQuestions]);
 
   const setAnswer = useCallback((questionId: number | string, answer: string | string[] | number) => {
     setQuizState(prev => ({
@@ -44,15 +63,16 @@ export const useQuiz = (questions: QuizQuestion[]) => {
   }, []);
 
   const getCurrentQuestion = useCallback(() => {
-    return questions.find(q => q.id === quizState.currentQuestion);
-  }, [questions, quizState.currentQuestion]);
+    const filteredQuestions = getFilteredQuestions();
+    return filteredQuestions.find(q => q.id === quizState.currentQuestion);
+  }, [getFilteredQuestions, quizState.currentQuestion]);
 
   const getProgress = useCallback(() => {
-    const currentIndex = questions.findIndex(q => q.id === quizState.currentQuestion);
-    const regularQuestions = questions.filter(q => typeof q.id === 'number');
+    const filteredQuestions = getFilteredQuestions();
+    const regularQuestions = filteredQuestions.filter(q => typeof q.id === 'number');
     const currentQuestionNumber = regularQuestions.findIndex(q => q.id === quizState.currentQuestion) + 1;
     return Math.round((currentQuestionNumber / regularQuestions.length) * 100);
-  }, [quizState.currentQuestion, questions]);
+  }, [quizState.currentQuestion, getFilteredQuestions]);
 
   const hasAnswer = useCallback((questionId: number | string) => {
     const answer = quizState.answers[questionId];

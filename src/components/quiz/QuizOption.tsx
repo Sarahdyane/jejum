@@ -46,7 +46,13 @@ interface QuizOptionProps {
   questionId?: number | string;
 }
 
-export const QuizOption = ({ option, isSelected, onClick, className, questionId }: QuizOptionProps) => {
+const getOptionText = (option: QuizOptionType, gender?: string): string => {
+  if (gender === 'male' && option.maleText) return option.maleText;
+  if (gender === 'female' && option.femaleText) return option.femaleText;
+  return option.text;
+};
+
+export const QuizOption = ({ option, isSelected, onClick, className, gender, questionId }: QuizOptionProps) => {
   // Check if this is a body type or age option that needs full-width display
   const isFullWidthImage = !!(option.image && typeof option.image === 'string' && (
     option.image.includes('body-') || 
@@ -90,7 +96,7 @@ export const QuizOption = ({ option, isSelected, onClick, className, questionId 
           "font-semibold text-base leading-relaxed",
           isSelected ? "text-primary-foreground" : "text-foreground"
         )}>
-          {option.text}
+          {getOptionText(option, gender)}
         </span>
         
         <div className="flex items-center gap-2">
