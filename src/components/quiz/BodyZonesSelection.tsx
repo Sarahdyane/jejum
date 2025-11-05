@@ -26,22 +26,22 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // Position arrows based on body parts - adjust these coordinates as needed
+    // Position arrows based on body parts - optimized for better visibility
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
-      'arms': { top: '25%', left: '15%' },
-      'chest': { top: '30%', right: '15%' },
-      'abs': { top: '45%', right: '20%' },
-      'legs': { top: '65%', left: '25%' },
-      'butt': { top: '60%', right: '15%' },
-      'full-body': { top: '75%', right: '25%' }
+      'arms': { top: '22%', left: '8%' },
+      'chest': { top: '28%', right: '8%' },
+      'abs': { top: '42%', right: '8%' },
+      'legs': { top: '68%', left: '8%' },
+      'butt': { top: '52%', right: '8%' },
+      'full-body': { top: '82%', left: '50%' }
     };
     return positions[zoneId] || { top: '50%', left: '50%' };
   };
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center mb-6">
-        <div className="relative max-w-xs">
+      <div className="flex justify-center mb-8">
+        <div className="relative w-full max-w-md px-4">
           <img 
             src={getBodyImage()} 
             alt="Body zones" 
@@ -56,41 +56,42 @@ export const BodyZonesSelection = ({
             return (
               <div
                 key={option.id}
-                className="absolute flex items-center"
+                className="absolute flex items-center z-10"
                 style={{
                   top: position.top,
                   ...(position.left ? { left: position.left } : {}),
-                  ...(position.right ? { right: position.right } : {}),
-                  transform: 'translate(-50%, -50%)'
+                  ...(position.right ? { right: position.right } : {})
                 }}
               >
-                {/* Arrow line */}
-                <div 
-                  className={cn(
-                    "w-16 h-0.5 transition-colors duration-200",
-                    isSelected ? "bg-green-500" : "bg-gray-400"
-                  )}
-                />
-                
-                {/* Arrow head */}
-                <div 
-                  className={cn(
-                    "w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent transition-colors duration-200",
-                    isSelected ? "border-b-green-500" : "border-b-gray-400"
-                  )}
-                />
-                
-                {/* Label */}
-                <div 
-                  className={cn(
-                    "ml-2 px-3 py-1 rounded-full text-sm font-medium border-2 cursor-pointer transition-all duration-200 whitespace-nowrap",
-                    isSelected 
-                      ? "bg-green-500 text-white border-green-500 shadow-md" 
-                      : "bg-white text-gray-600 border-gray-300 hover:border-gray-400"
-                  )}
-                  onClick={() => onZoneSelect(option.id)}
-                >
-                  {option.text}
+                <div className="flex items-center">
+                  {/* Arrow line */}
+                  <div 
+                    className={cn(
+                      "w-12 sm:w-16 h-0.5 transition-colors duration-200",
+                      isSelected ? "bg-primary" : "bg-muted-foreground/60"
+                    )}
+                  />
+                  
+                  {/* Arrow head */}
+                  <div 
+                    className={cn(
+                      "w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200",
+                      isSelected ? "border-b-primary" : "border-b-muted-foreground/60"
+                    )}
+                  />
+                  
+                  {/* Label */}
+                  <div 
+                    className={cn(
+                      "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
+                      isSelected 
+                        ? "bg-primary text-primary-foreground border-primary scale-105" 
+                        : "bg-card text-foreground border-border hover:border-primary hover:scale-105"
+                    )}
+                    onClick={() => onZoneSelect(option.id)}
+                  >
+                    {option.text}
+                  </div>
                 </div>
               </div>
             );
