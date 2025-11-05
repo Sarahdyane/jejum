@@ -29,6 +29,7 @@ export const BodyZonesSelection = ({
       'chest': { top: '30%', right: '15%' },
       'abs': { top: '45%', right: '20%' },
       'legs': { top: '65%', left: '25%' },
+      'butt': { top: '60%', right: '15%' },
       'full-body': { top: '75%', right: '25%' }
     };
     return positions[zoneId] || { top: '50%', left: '50%' };

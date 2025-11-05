@@ -150,12 +150,13 @@ export const questions: QuizQuestion[] = [
     bodyImage: "/images/body-zones.png",
     maleBodyImage: "body-zones-male-mascot",
     femaleBodyImage: "body-zones-female-mascot",
-    bodyZones: ["arms", "chest", "abs", "legs", "full-body"],
+    bodyZones: ["arms", "chest", "abs", "legs", "butt", "full-body"],
     options: [
       { id: "arms", text: "Braços" },
       { id: "chest", text: "Peito" },
       { id: "abs", text: "Abdômen" },
       { id: "legs", text: "Pernas" },
+      { id: "butt", text: "Bunda" },
       { id: "full-body", text: "Corpo inteiro" }
     ]
   },
