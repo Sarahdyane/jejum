@@ -2,6 +2,7 @@ import { UserProfile } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import nutriaLogo from '@/assets/nutria-logo.png';
 import appPhoneMockup from '@/assets/app-phone-mockup.png';
 import appMockupNutrition from '@/assets/app-mockup-nutrition-real.png';
@@ -26,6 +27,8 @@ interface QuizResultsProps {
 }
 
 export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
+  const navigate = useNavigate();
+  
   // Calcular IMC - validar se os dados existem
   const calculateBMI = () => {
     if (!profile.height || !profile.currentWeight) {
@@ -693,10 +696,10 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         {/* CTA Section */}
         <div className="text-center py-8" data-cta-section>
           <Button 
-            onClick={onRestart}
+            onClick={() => navigate('/transformation')}
             className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            Continuar
+            Ver minha transformação
           </Button>
         </div>
 
