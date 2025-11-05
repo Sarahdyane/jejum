@@ -170,11 +170,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     <div className="min-h-screen bg-white">
       {/* Header fixo */}
       <div className="sticky top-0 z-50 bg-white border-b border-gray-200 py-4 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
+        <div className="max-w-4xl mx-auto flex items-center justify-center">
           <img src={nutriaLogo} alt="Nutria" className="h-8 md:h-10" />
-          <Button className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-3 py-2 md:px-6 md:py-2 rounded-lg font-semibold text-sm md:text-base whitespace-nowrap">
-            Obtenha meus resultados
-          </Button>
         </div>
       </div>
 
@@ -497,15 +494,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </section>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-br from-[#0d7377] to-[#0a5c5f] text-white rounded-2xl p-8 md:p-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Comece sua jornada hoje
-          </h2>
-          <p className="text-lg mb-8 text-white/90">
-            Junte-se a milhares de pessoas que já transformaram suas vidas com a Nutria
-          </p>
-          <Button className="bg-white text-[#0d7377] hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-lg">
-            Obtenha seu plano personalizado
+        <div className="text-center py-8">
+          <Button 
+            onClick={onRestart}
+            className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            Continuar
           </Button>
         </div>
 
