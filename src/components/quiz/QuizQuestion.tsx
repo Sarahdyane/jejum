@@ -26,7 +26,13 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     setSelectedOption(optionId);
   };
 
-  const handleMultipleAnswer = (optionId: string) => {
+  const handleMultipleAnswer = (optionId: string | string[]) => {
+    // Se for um array (vindo do "Corpo inteiro"), substitui todas as respostas
+    if (Array.isArray(optionId)) {
+      onAnswer(optionId);
+      return;
+    }
+    
     const currentAnswers = Array.isArray(answer) ? answer : [];
     
     // Handle "Select All" functionality

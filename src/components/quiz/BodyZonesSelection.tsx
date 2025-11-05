@@ -5,7 +5,7 @@ import { getImageSrc } from '@/utils/imageMapping';
 interface BodyZonesSelectionProps {
   gender: string;
   selectedZones: string[];
-  onZoneSelect: (zone: string) => void;
+  onZoneSelect: (zone: string | string[]) => void;
   options: Array<{ id: string; text: string }>;
   bodyImage?: string;
 }
@@ -17,6 +17,16 @@ export const BodyZonesSelection = ({
   options,
   bodyImage 
 }: BodyZonesSelectionProps) => {
+  
+  const handleZoneClick = (zoneId: string) => {
+    // Se "Corpo inteiro" for selecionado, seleciona todas as outras opções
+    if (zoneId === 'full-body') {
+      const allZones = options.filter(opt => opt.id !== 'full-body').map(opt => opt.id);
+      onZoneSelect(allZones);
+    } else {
+      onZoneSelect(zoneId);
+    }
+  };
   
   const getBodyImage = () => {
     if (bodyImage) return bodyImage;
@@ -88,7 +98,7 @@ export const BodyZonesSelection = ({
                         ? "bg-primary text-primary-foreground border-primary scale-105" 
                         : "bg-card text-foreground border-border hover:border-primary hover:scale-105"
                     )}
-                    onClick={() => onZoneSelect(option.id)}
+                    onClick={() => handleZoneClick(option.id)}
                   >
                     {option.text}
                   </div>
@@ -100,17 +110,17 @@ export const BodyZonesSelection = ({
       </div>
       
       {/* Alternative button list for easier selection on mobile */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto md:hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4">
         {options.map((option) => {
           const isSelected = selectedZones.includes(option.id);
           return (
             <button
               key={option.id}
-              onClick={() => onZoneSelect(option.id)}
+              onClick={() => handleZoneClick(option.id)}
               className={cn(
-                "p-3 rounded-lg border-2 transition-all duration-200 text-center font-medium",
+                "p-3 rounded-lg border-2 transition-all duration-200 text-center font-semibold",
                 isSelected 
-                  ? "bg-green-500 text-white border-green-500" 
+                  ? "bg-primary text-primary-foreground border-primary" 
                   : "bg-card text-foreground border-border hover:border-primary"
               )}
             >
