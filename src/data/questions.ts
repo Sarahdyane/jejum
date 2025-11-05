@@ -10,7 +10,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 1,
-    title: "Qual a sua idade?",
+    title: "",
     type: "single",
     showTitle: "SUA CAMINHADA PARA EMAGRECER",
     showSubtitle: "Com base na sua idade",
