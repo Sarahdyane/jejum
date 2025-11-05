@@ -6,6 +6,12 @@ import nutriaLogo from '@/assets/nutria-logo.png';
 import appPhoneMockup from '@/assets/app-phone-mockup.png';
 import appMockupNutrition from '@/assets/app-mockup-nutrition-real.png';
 import { getImageSrc } from '@/utils/imageMapping';
+import transformationBeforeFemale1 from '@/assets/transformation-before-female-1.jpg';
+import transformationAfterFemale1 from '@/assets/transformation-after-female-1.jpg';
+import transformationBeforeMale1 from '@/assets/transformation-before-male-1.jpg';
+import transformationAfterMale1 from '@/assets/transformation-after-male-1.jpg';
+import transformationBeforeFemale2 from '@/assets/transformation-before-female-2.jpg';
+import transformationAfterFemale2 from '@/assets/transformation-after-female-2.jpg';
 
 interface QuizResultsProps {
   profile: UserProfile;
@@ -419,7 +425,120 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
         </div>
 
-        {/* Seção 5: O que você ganha */}
+        {/* Seção 5: Transformações Reais */}
+        <section className="py-16 px-4 bg-gradient-to-br from-orange-50/50 to-amber-50/50">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+              Transformações que Inspiram
+            </h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              Resultados reais de pessoas que transformaram suas vidas com o Nutria
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              {/* Card 1 - Mariana */}
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="grid grid-cols-2 gap-2 p-4">
+                  <div>
+                    <p className="text-xs text-gray-500 text-center mb-2 font-semibold">ANTES</p>
+                    <img 
+                      src={transformationBeforeFemale1} 
+                      alt="Antes" 
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 text-center mb-2 font-semibold">DEPOIS</p>
+                    <img 
+                      src={transformationAfterFemale1} 
+                      alt="Depois" 
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                  </div>
+                </div>
+                <div className="p-6 pt-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mariana, -12kg</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    "Em 3 meses consegui resultados incríveis! Me sinto mais energizada e confiante do que nunca."
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 2 - Carlos */}
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="grid grid-cols-2 gap-2 p-4">
+                  <div>
+                    <p className="text-xs text-gray-500 text-center mb-2 font-semibold">ANTES</p>
+                    <img 
+                      src={transformationBeforeMale1} 
+                      alt="Antes" 
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 text-center mb-2 font-semibold">DEPOIS</p>
+                    <img 
+                      src={transformationAfterMale1} 
+                      alt="Depois" 
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                  </div>
+                </div>
+                <div className="p-6 pt-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Carlos, -18kg</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    "O plano personalizado fez toda a diferença. Perdi peso de forma saudável e sustentável."
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 3 - Ana */}
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="grid grid-cols-2 gap-2 p-4">
+                  <div>
+                    <p className="text-xs text-gray-500 text-center mb-2 font-semibold">ANTES</p>
+                    <img 
+                      src={transformationBeforeFemale2} 
+                      alt="Antes" 
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 text-center mb-2 font-semibold">DEPOIS</p>
+                    <img 
+                      src={transformationAfterFemale2} 
+                      alt="Depois" 
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                  </div>
+                </div>
+                <div className="p-6 pt-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Ana, -8kg</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    "Finalmente encontrei um método que funciona! Estou mais saudável e feliz."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center">
+              <Button 
+                onClick={() => {
+                  const ctaSection = document.querySelector('[data-cta-section]');
+                  if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }
+                }}
+                className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-10 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                Quero ser o próximo resultado
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Seção 6: O que você ganha */}
         <section className="py-16 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
@@ -494,7 +613,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </section>
 
         {/* CTA Section */}
-        <div className="text-center py-8">
+        <div className="text-center py-8" data-cta-section>
           <Button 
             onClick={onRestart}
             className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
