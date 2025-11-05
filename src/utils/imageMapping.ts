@@ -51,7 +51,7 @@ import bodyFullerMaleShorts from '@/assets/body-fuller-male-real-shorts.jpg';
 import bodyFullerFemaleReal from '@/assets/body-fuller-female-real.jpg';
 import bodyFullerMaleNewShorts from '@/assets/body-fuller-male-new-shorts-fixed.jpg';
 import bodyFullerFemaleProfessional from '@/assets/body-fuller-female-professional-fixed.jpg';
-import bodyOverweightMaleShorts from '@/assets/body-chubby-male-headless.jpg';
+import bodyOverweightMaleShorts from '@/assets/body-chubby-male-final.jpg';
 import bodyOverweightFemaleReal from '@/assets/body-overweight-female-real.jpg';
 import bodyObeseMaleShorts from '@/assets/body-obese-male-headless.jpg';
 
