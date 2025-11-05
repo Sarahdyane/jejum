@@ -180,6 +180,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
           selectedZones={Array.isArray(answer) ? answer : []}
           onZoneSelect={handleMultipleAnswer}
           options={question.options || []}
+          bodyImage={getBodyImage()}
         />
       ) : question.type === 'food-categories' ? (
         <FoodCategoriesSelection

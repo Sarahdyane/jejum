@@ -7,16 +7,19 @@ interface BodyZonesSelectionProps {
   selectedZones: string[];
   onZoneSelect: (zone: string) => void;
   options: Array<{ id: string; text: string }>;
+  bodyImage?: string;
 }
 
 export const BodyZonesSelection = ({ 
   gender, 
   selectedZones, 
   onZoneSelect, 
-  options 
+  options,
+  bodyImage 
 }: BodyZonesSelectionProps) => {
   
   const getBodyImage = () => {
+    if (bodyImage) return bodyImage;
     return gender === 'male' 
       ? getImageSrc('body-zones-male-arrows')
       : getImageSrc('body-zones-female-arrows');
