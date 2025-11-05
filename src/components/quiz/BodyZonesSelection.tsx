@@ -41,7 +41,7 @@ export const BodyZonesSelection = ({
   return (
     <div className="space-y-6">
       <div className="flex justify-center mb-8">
-        <div className="relative w-full max-w-3xl px-1">
+        <div className="relative w-full sm:max-w-3xl px-0">
           <img 
             src={getBodyImage()} 
             alt="Body zones" 
