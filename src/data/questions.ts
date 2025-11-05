@@ -83,13 +83,15 @@ export const questions: QuizQuestion[] = [
     options: [
       { 
         id: "thin", 
-        text: "Magra", 
+        text: "Magra",
+        maleText: "Magro",
         maleImage: "body-thin-male-shorts", 
         femaleImage: "body-thin-female-real" 
       },
       { 
         id: "average", 
-        text: "Média", 
+        text: "Média",
+        maleText: "Médio",
         maleImage: "body-fuller-male-shorts", 
         femaleImage: "body-fuller-female-real" 
       },
