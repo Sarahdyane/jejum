@@ -14,6 +14,7 @@ import transformationBeforeFemale2 from '@/assets/transformation-before-female-2
 import transformationAfterFemale2 from '@/assets/transformation-after-female-2.jpg';
 import transformationCombinedFemale3 from '@/assets/transformation-combined-female-3.png';
 import transformationCombinedFemale4 from '@/assets/transformation-combined-female-4.png';
+import transformationCombinedFemale5 from '@/assets/transformation-combined-female-5.png';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 interface QuizResultsProps {
@@ -469,31 +470,24 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                   </div>
                 </CarouselItem>
 
-                {/* Card 2 - Carlos */}
+                {/* Card 2 - Juliana */}
                 <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-                    <div className="grid grid-cols-2 gap-2 p-4">
-                      <div>
-                        <p className="text-xs text-gray-500 text-center mb-2 font-semibold">ANTES</p>
-                        <img 
-                          src={transformationBeforeMale1} 
-                          alt="Antes" 
-                          className="w-full h-64 object-cover rounded-lg"
-                        />
+                    <div className="p-4">
+                      <div className="flex justify-between mb-2">
+                        <p className="text-xs text-gray-500 text-center font-semibold flex-1">ANTES</p>
+                        <p className="text-xs text-gray-500 text-center font-semibold flex-1">DEPOIS</p>
                       </div>
-                      <div>
-                        <p className="text-xs text-gray-500 text-center mb-2 font-semibold">DEPOIS</p>
-                        <img 
-                          src={transformationAfterMale1} 
-                          alt="Depois" 
-                          className="w-full h-64 object-cover rounded-lg"
-                        />
-                      </div>
+                      <img 
+                        src={transformationCombinedFemale5} 
+                        alt="Transformação Juliana" 
+                        className="w-full h-64 object-cover rounded-lg"
+                      />
                     </div>
                     <div className="p-6 pt-2">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Carlos, -18kg</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Juliana, -14kg</h3>
                       <p className="text-gray-600 text-sm leading-relaxed">
-                        "O plano personalizado fez toda a diferença. Perdi peso de forma saudável e sustentável."
+                        "Mudança incrível! Recuperei minha autoestima e me sinto radiante."
                       </p>
                     </div>
                   </div>
