@@ -178,7 +178,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
       {/* Header fixo */}
       <div className="sticky top-0 z-50 bg-white border-b border-gray-200 py-4 px-4 md:px-6">
         <div className="max-w-4xl mx-auto flex items-center justify-center">
-          <img src={nutriaLogo} alt="Nutria" className="h-8 md:h-10" />
+          <img src={nutriaLogo} alt="Nutria" className="h-12 md:h-14" />
         </div>
       </div>
 
@@ -440,14 +440,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               opts={{
                 align: "start",
                 loop: true,
-                dragFree: true,
-                containScroll: "trimSnaps",
               }}
-              className="w-full max-w-5xl mx-auto mb-12 touch-pan-y"
+              className="w-full max-w-5xl mx-auto mb-12"
             >
-              <CarouselContent>
+              <CarouselContent className="-ml-2 md:-ml-4">
                 {/* Card 1 - Mariana */}
-                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                     <div className="grid grid-cols-2 gap-2 p-4">
                       <div>
@@ -477,7 +475,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 </CarouselItem>
 
                 {/* Card 2 - Carlos */}
-                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                     <div className="grid grid-cols-2 gap-2 p-4">
                       <div>
@@ -507,7 +505,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 </CarouselItem>
 
                 {/* Card 3 - Ana */}
-                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                     <div className="grid grid-cols-2 gap-2 p-4">
                       <div>
@@ -537,12 +535,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 </CarouselItem>
               </CarouselContent>
 
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
+              <CarouselPrevious className="-left-4 md:-left-12" />
+              <CarouselNext className="-right-4 md:-right-12" />
             </Carousel>
 
             {/* CTA Button */}
-            <div className="text-center">
+            <div className="text-center px-4">
               <Button 
                 onClick={() => {
                   const ctaSection = document.querySelector('[data-cta-section]');
@@ -550,7 +548,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                     ctaSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
                   }
                 }}
-                className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-10 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
                 Quero ser o próximo resultado
               </Button>
