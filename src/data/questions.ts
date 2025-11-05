@@ -215,7 +215,9 @@ export const questions: QuizQuestion[] = [
     title: "Você é incrível!",
     subtitle: "Muitas pessoas lutam contra o medo de não serem boas o suficiente - levaremos isso em conta ao elaborar o seu plano para oferecer uma abordagem que permita que você ganhe confiança!",
     type: "intermediate",
-    image: "motivation-incredible"
+    requiresGender: true,
+    femaleImage: "motivation-incredible",
+    maleImage: "motivation-incredible-male"
   },
   {
     id: "lipedema-info",
@@ -241,7 +243,9 @@ export const questions: QuizQuestion[] = [
     title: "Você sempre pode mudar os seus hábitos para melhor",
     subtitle: "Grandes mudanças na vida costumam afetar no peso. É normal. Nós iremos ajudar você a alcançar o seu objetivo.",
     type: "intermediate",
-    image: "motivation-change-habits"
+    requiresGender: true,
+    femaleImage: "motivation-change-habits",
+    maleImage: "motivation-change-habits-male"
   },
   {
     id: 10,
@@ -570,7 +574,9 @@ export const questions: QuizQuestion[] = [
     title: "Deixe-nos personalizar seu plano",
     subtitle: "Para oferecer planos personalizados e recursos do aplicativo, precisamos do seu consentimento para processar seus dados de saúde.",
     type: "intermediate",
-    image: "healthy-lifestyle"
+    requiresGender: true,
+    femaleImage: "healthy-lifestyle",
+    maleImage: "healthy-lifestyle-male"
   },
   {
     id: "loading-page",

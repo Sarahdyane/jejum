@@ -24,9 +24,12 @@ import motivationIncredible from '@/assets/motivation-incredible.jpg';
 import motivationChangeHabits from '@/assets/motivation-change-habits.jpg';
 import motivationIncredibleNew from '@/assets/motivation-incredible-new.png';
 import motivationChangeHabitsNew from '@/assets/motivation-change-habits-new.png';
+import motivationIncredibleMale from '@/assets/motivation-incredible-male.jpg';
+import motivationChangeHabitsMale from '@/assets/motivation-change-habits-male.jpg';
 import fitnessFemaleNew from '@/assets/fitness-female-new.png';
 import fitnessFemalePurple from '@/assets/fitness-female-purple.png';
 import healthyLifestyleNew from '@/assets/healthy-lifestyle-new.jpg';
+import healthyLifestyleMale from '@/assets/healthy-lifestyle-male.jpg';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaInfo from '@/assets/lipedema-info.png';
 import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
@@ -89,9 +92,12 @@ export const imageMap = {
   'fitness-thinking': fitnessThinking,
   'app-loading': appLoading,
   'motivation-incredible': motivationIncredibleNew,
+  'motivation-incredible-male': motivationIncredibleMale,
   'motivation-change-habits': motivationChangeHabitsNew,
+  'motivation-change-habits-male': motivationChangeHabitsMale,
   'fitness-female': fitnessFemalePurple,
   'healthy-lifestyle': fitnessFemaleNew,
+  'healthy-lifestyle-male': healthyLifestyleMale,
   'nutria-logo': nutriaLogo,
   'lipedema-info': lipedemaInfo,
   'body-thin-professional': bodyThinProfessional,
