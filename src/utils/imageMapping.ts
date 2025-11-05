@@ -7,7 +7,7 @@ import fitnessCouple from '@/assets/fitness-couple.jpg';
 import fitnessMale from '@/assets/fitness-male.jpg';
 import fitnessFemale from '@/assets/fitness-female.jpg';
 import bodyZonesMaleMascot from '@/assets/body-zones-male-mascot.jpg';
-import bodyZonesFemaleMascot from '@/assets/body-zones-female-new.png';
+import bodyZonesFemaleMascot from '@/assets/body-zones-female-mascot-new.png';
 import bodyZonesMaleArrows from '@/assets/body-zones-male-arrows.jpg';
 import bodyZonesFemaleArrows from '@/assets/body-zones-female-arrows.jpg';
 import personExercisingSmall from '@/assets/person-exercising-small.jpg';
