@@ -91,27 +91,27 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
         </div>
       )}
       
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-2">
         <span className={cn(
-          "font-semibold text-base leading-relaxed",
+          "font-semibold text-base leading-relaxed flex-1",
           isSelected ? "text-primary-foreground" : "text-foreground"
         )}>
           {getOptionText(option, gender)}
         </span>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           {option.icon && iconMap[option.icon as keyof typeof iconMap] && (
             (() => {
               const IconComponent = iconMap[option.icon as keyof typeof iconMap];
               return <IconComponent className={cn(
-                "w-6 h-6",
+                "w-5 h-5",
                 isSelected ? "text-primary-foreground" : "text-primary"
               )} />;
             })()
           )}
           
           {isSelected && questionId !== 2 && (
-            <CheckCircle2 className="w-6 h-6 text-primary-foreground drop-shadow-lg" />
+            <CheckCircle2 className="w-5 h-5 text-primary-foreground drop-shadow-lg flex-shrink-0" />
           )}
         </div>
       </div>
