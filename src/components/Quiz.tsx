@@ -12,12 +12,14 @@ import { StatsPage } from '@/components/quiz/StatsPage';
 import { LoadingAnalysis } from '@/components/quiz/LoadingAnalysis';
 import { ReadyTransition } from '@/components/quiz/ReadyTransition';
 import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
+import { CommitmentPage } from '@/components/quiz/CommitmentPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showReadyTransition, setShowReadyTransition] = useState(false);
   const [showExpectations, setShowExpectations] = useState(false);
+  const [showCommitment, setShowCommitment] = useState(false);
 
   const {
     quizState,
@@ -75,7 +77,21 @@ export const Quiz = () => {
 
   if (quizState.isComplete) {
     const profile = generateProfile();
-    return <QuizResults profile={profile} onRestart={handleRestart} />;
+    
+    // Show commitment page after results
+    if (showCommitment) {
+      return (
+        <CommitmentPage
+          onStart={() => {
+            // Navigate to dashboard/home (for now, restart)
+            handleRestart();
+          }}
+          onViewPlan={() => setShowCommitment(false)}
+        />
+      );
+    }
+    
+    return <QuizResults profile={profile} onRestart={() => setShowCommitment(true)} />;
   }
 
   if (!currentQuestion) {
