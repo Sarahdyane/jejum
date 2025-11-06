@@ -40,7 +40,7 @@ const Commitment = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button
-              onClick={() => navigate('/')}
+              onClick={() => window.location.href = 'https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO'}
               size="lg"
               className="w-full sm:w-auto px-8 py-6 text-lg rounded-full bg-[#0d7377] hover:bg-[#0a5c5f] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
