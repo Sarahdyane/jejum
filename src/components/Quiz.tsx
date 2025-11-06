@@ -32,6 +32,11 @@ export const Quiz = () => {
     generateProfile,
   } = useQuiz(questions);
 
+  // Scroll to top when question changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [quizState.currentQuestion]);
+
   // Preload images for current and next questions
   useEffect(() => {
     const currentIndex = questions.findIndex(q => q.id === quizState.currentQuestion);
