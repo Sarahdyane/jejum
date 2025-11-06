@@ -2,9 +2,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import commitmentHero from "@/assets/commitment-hero.jpg";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Commitment = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import nutriaLogo from '@/assets/nutria-logo.png';
 import appPhoneMockup from '@/assets/app-phone-mockup.png';
 import appMockupNutrition from '@/assets/app-mockup-nutrition-real.png';
@@ -28,6 +29,10 @@ interface QuizResultsProps {
 
 export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   
   // Calcular IMC - validar se os dados existem
   const calculateBMI = () => {

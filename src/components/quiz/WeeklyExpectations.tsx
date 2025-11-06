@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import nutriaLogo from '@/assets/nutria-logo.png';
 interface WeeklyExpectationsProps {
   onContinue: () => void;
@@ -8,6 +9,10 @@ interface WeeklyExpectationsProps {
 export const WeeklyExpectations = ({
   onContinue
 }: WeeklyExpectationsProps) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return <div className="min-h-screen bg-white flex flex-col items-center justify-between p-6">
       <div className="w-full max-w-md flex-1 flex flex-col">
         {/* Logo */}

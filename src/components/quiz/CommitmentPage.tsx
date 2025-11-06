@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 import commitmentHero from "@/assets/commitment-hero.jpg";
 
 interface CommitmentPageProps {
@@ -8,6 +9,10 @@ interface CommitmentPageProps {
 }
 
 export const CommitmentPage = ({ onStart, onViewPlan }: CommitmentPageProps) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Image Section */}

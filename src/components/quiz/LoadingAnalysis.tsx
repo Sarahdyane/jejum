@@ -18,6 +18,10 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
   const [progress, setProgress] = useState<number[]>([0, 0, 0, 0]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     if (currentStep >= analysisSteps.length) {
       const timer = setTimeout(onComplete, 500);
       return () => clearTimeout(timer);

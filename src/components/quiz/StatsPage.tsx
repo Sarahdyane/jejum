@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import { ArrowLeft } from "lucide-react";
+import { useEffect } from "react";
 import nutriaLogo from "@/assets/nutria-logo.png";
 
 interface StatsPageProps {
@@ -9,6 +10,10 @@ interface StatsPageProps {
 }
 
 export const StatsPage = ({ onContinue, onBack }: StatsPageProps) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const data = [
     { name: "2 numerações menores", value: 72, color: "hsl(var(--primary))" },
     { name: "3 numerações menores", value: 15, color: "hsl(var(--accent))" },

@@ -2,9 +2,14 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle2, Clock, BarChart3, Target, Trophy, ArrowLeft } from "lucide-react";
 import nutriaLogo from '@/assets/nutria-logo.png';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Transformation = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const weeks = [
     {

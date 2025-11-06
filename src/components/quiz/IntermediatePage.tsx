@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { useEffect } from "react";
 
 interface IntermediatePageProps {
   title: string;
@@ -11,6 +12,10 @@ interface IntermediatePageProps {
 }
 
 export const IntermediatePage = ({ title, subtitle, description, image, onContinue, onBack }: IntermediatePageProps) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   // Splash screen mode - show only logo centered
   const isSplashScreen = !title && !subtitle && !description;
   

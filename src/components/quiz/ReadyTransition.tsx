@@ -6,6 +6,10 @@ interface ReadyTransitionProps {
 
 export const ReadyTransition = ({ onComplete }: ReadyTransitionProps) => {
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(onComplete, 2500);
     return () => clearTimeout(timer);
   }, [onComplete]);
