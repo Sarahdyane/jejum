@@ -436,12 +436,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </div>
 
         {/* Seção 5: Transformações Reais */}
-        <section className="py-16 px-4 bg-gradient-to-br from-orange-50/50 to-amber-50/50">
+        <section className="py-8 px-4 bg-gradient-to-br from-orange-50/50 to-amber-50/50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
               Transformações que Inspiram
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
               Resultados reais de pessoas que transformaram suas vidas com o Nutria
             </p>
             
@@ -450,7 +450,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full max-w-5xl mx-auto mb-12"
+              className="w-full max-w-5xl mx-auto mb-8"
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {profile.gender === 'male' ? (
@@ -603,7 +603,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             </Carousel>
 
             {/* CTA Button */}
-            <div className="text-center px-4">
+            <div className="text-center px-4 mt-6">
               <Button 
                 onClick={() => {
                   const ctaSection = document.querySelector('[data-cta-section]');

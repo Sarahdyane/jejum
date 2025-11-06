@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Sparkles, Clock, BarChart3, Target, Trophy } from "lucide-react";
+import { CheckCircle2, Clock, BarChart3, Target, Trophy, ArrowLeft } from "lucide-react";
 import nutriaLogo from '@/assets/nutria-logo.png';
 import { useNavigate } from "react-router-dom";
 
@@ -166,22 +166,10 @@ const Transformation = () => {
           </div>
         </div>
 
-        {/* Bloco Motivacional */}
-        <div className="mb-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-          <div className="bg-gradient-to-br from-[#0d7377] to-[#14919b] rounded-3xl p-10 md:p-16 text-center shadow-lg">
-            <div className="max-w-3xl mx-auto">
-              <Sparkles className="w-12 h-12 md:w-14 md:h-14 text-white/90 mx-auto mb-8" strokeWidth={1.5} />
-              <p className="text-2xl md:text-4xl font-light text-white leading-relaxed">
-                "Se você dedicar 4 semanas,<br className="hidden md:block" /> o Nutria cuida do resto."
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* CTA Section */}
         <div className="text-center space-y-6 animate-fade-in" style={{ animationDelay: '0.75s' }}>
           <Button 
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/commitment')}
             className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 md:px-20 md:py-8 text-lg md:text-2xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
           >
             Quero começar agora
@@ -191,9 +179,10 @@ const Transformation = () => {
             <Button 
               onClick={() => navigate(-1)}
               variant="ghost"
-              className="text-[#0d7377] hover:text-[#0a5c5f] text-base md:text-lg font-medium hover:bg-[#0d7377]/5 transition-all"
+              className="text-[#0d7377] hover:text-[#0a5c5f] text-base md:text-lg font-medium hover:bg-[#0d7377]/5 transition-all flex items-center gap-2 mx-auto"
             >
-              ← Ver plano em detalhes
+              <ArrowLeft className="w-5 h-5" />
+              Ver plano em detalhes
             </Button>
           </div>
         </div>
