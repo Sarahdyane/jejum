@@ -1,12 +1,36 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { QuizState, QuizQuestion, UserProfile } from '@/types/quiz';
 
+const STORAGE_KEY = 'nutria_quiz_state';
+
 export const useQuiz = (questions: QuizQuestion[]) => {
-  const [quizState, setQuizState] = useState<QuizState>({
-    currentQuestion: 1,
-    answers: {},
-    isComplete: false,
-  });
+  // Load initial state from sessionStorage if available
+  const getInitialState = (): QuizState => {
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      try {
+        return JSON.parse(stored);
+      } catch {
+        return {
+          currentQuestion: 1,
+          answers: {},
+          isComplete: false,
+        };
+      }
+    }
+    return {
+      currentQuestion: 1,
+      answers: {},
+      isComplete: false,
+    };
+  };
+
+  const [quizState, setQuizState] = useState<QuizState>(getInitialState);
+
+  // Persist state to sessionStorage whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(quizState));
+  }, [quizState]);
 
   const shouldShowQuestion = useCallback((question: QuizQuestion) => {
     const genderAnswer = quizState.answers[2];

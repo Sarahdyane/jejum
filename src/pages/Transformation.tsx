@@ -184,7 +184,7 @@ const Transformation = () => {
           
           <div>
             <Button 
-              onClick={() => navigate('/quiz')}
+              onClick={() => navigate(-1)}
               variant="ghost"
               className="text-[#0d7377] hover:text-[#0a5c5f] text-base md:text-lg font-medium hover:bg-[#0d7377]/5 transition-all flex items-center gap-2 mx-auto"
             >
