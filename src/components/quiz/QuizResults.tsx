@@ -701,7 +701,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         {/* CTA Section */}
         <div className="text-center py-8" data-cta-section>
           <Button 
-            onClick={() => navigate('/transformation')}
+            onClick={() => navigate('/transformation', { state: { gender: profile.gender } })}
             className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Ver minha transformação

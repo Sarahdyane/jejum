@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Clock, BarChart3, Target, Trophy, ArrowLeft } from "lucide-react";
 import nutriaLogo from '@/assets/nutria-logo.png';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const Transformation = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const gender = location.state?.gender || 'female';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -174,7 +176,7 @@ const Transformation = () => {
         {/* CTA Section */}
         <div className="text-center space-y-6 animate-fade-in" style={{ animationDelay: '0.75s' }}>
           <Button 
-            onClick={() => navigate('/commitment')}
+            onClick={() => navigate('/commitment', { state: { gender } })}
             className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 md:px-20 md:py-8 text-lg md:text-2xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
           >
             Continuar

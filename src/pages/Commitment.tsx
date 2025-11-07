@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import commitmentHero from "@/assets/commitment-hero.jpg";
-import { useNavigate } from "react-router-dom";
+import commitmentHeroMale from "@/assets/motivation-incredible-male.jpg";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const Commitment = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const gender = location.state?.gender || 'female';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -16,7 +19,7 @@ const Commitment = () => {
       {/* Hero Image Section */}
       <div className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
         <img
-          src={commitmentHero}
+          src={gender === 'male' ? commitmentHeroMale : commitmentHero}
           alt="Transformação inspiradora"
           className="w-full h-full object-cover"
         />
@@ -28,7 +31,9 @@ const Commitment = () => {
         <div className="text-center space-y-6">
           {/* Main Title */}
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            Você realmente está pronta para entrar nessa jornada?
+            {gender === 'male' 
+              ? 'Você realmente está pronto para entrar nessa jornada?'
+              : 'Você realmente está pronta para entrar nessa jornada?'}
           </h1>
 
           {/* Subtitle */}
@@ -38,7 +43,9 @@ const Commitment = () => {
 
           {/* Supporting Text */}
           <div className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto space-y-3 pt-4">
-            <p>Você já deu o passo mais importante: decidiu mudar.</p>
+            <p>{gender === 'male' 
+              ? 'Você já deu o passo mais importante: decidiu mudar.'
+              : 'Você já deu o passo mais importante: decidiu mudar.'}</p>
             <p>Agora o Nutria vai caminhar com você.</p>
           </div>
 
