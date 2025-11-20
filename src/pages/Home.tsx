@@ -18,10 +18,10 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center justify-center px-4 pb-24">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Bem-vindo ao Nutria
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              O Seu Corpo Tem um Padrão Oculto<br />Vamos Descobrir Qual É?
             </h2>
-            <p className="text-lg text-muted-foreground">Seu plano personalizado para alcançar seus objetivos</p>
+            <p className="text-lg text-muted-foreground">Cada mulher tem um padrão oculto que explica por que ela incha, por que ganha peso rápido em certas fases, por que trava no dia 3… Hoje, você vai descobrir o SEU.</p>
           </div>
 
           <div className="space-y-4">
