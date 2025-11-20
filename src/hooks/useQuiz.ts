@@ -33,15 +33,8 @@ export const useQuiz = (questions: QuizQuestion[]) => {
   }, [quizState]);
 
   const shouldShowQuestion = useCallback((question: QuizQuestion) => {
-    const genderAnswer = quizState.answers[2];
-    
-    // Pular perguntas de lipedema para homens
-    if ((question.id === 8 || question.id === 'lipedema-info') && genderAnswer === 'male') {
-      return false;
-    }
-    
     return true;
-  }, [quizState.answers]);
+  }, []);
 
   const getFilteredQuestions = useCallback(() => {
     return questions.filter(shouldShowQuestion);
@@ -110,7 +103,7 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     const answers = quizState.answers;
     return {
       age: answers[1] as string || '',
-      gender: answers[2] as string || '',
+      gender: 'female', // Quiz exclusivo para mulheres
       goal: answers[3] as string || '',
       bodyType: answers[4] as string || '',
       targetBodyType: answers[5] as string || '',

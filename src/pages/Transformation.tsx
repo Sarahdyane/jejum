@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Clock, BarChart3, Target, Trophy, ArrowLeft } from "lucide-react";
 import nutriaLogo from '@/assets/nutria-logo.png';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Transformation = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const gender = location.state?.gender || 'female';
+  // Quiz exclusivo para mulheres
+  const gender = 'female';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

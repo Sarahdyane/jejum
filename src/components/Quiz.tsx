@@ -126,16 +126,7 @@ export const Quiz = () => {
 
   // Handle intermediate pages
   if (currentQuestion.type === 'intermediate') {
-    const gender = quizState.answers[2] as string;
-    let imageSrc = currentQuestion.image ? getImageSrc(currentQuestion.image) : '';
-    
-    if (currentQuestion.requiresGender && gender) {
-      if (gender === 'male' && currentQuestion.maleImage) {
-        imageSrc = getImageSrc(currentQuestion.maleImage);
-      } else if (gender === 'female' && currentQuestion.femaleImage) {
-        imageSrc = getImageSrc(currentQuestion.femaleImage);
-      }
-    }
+    const imageSrc = currentQuestion.image ? getImageSrc(currentQuestion.image) : '';
 
     return (
       <IntermediatePage
