@@ -30,32 +30,6 @@ export const questions: QuizQuestion[] = [
     image: "person-exercising-small"
   },
   {
-    id: 2,
-    title: "Qual o seu gênero?",
-    type: "single",
-    showInfoBox: true,
-    options: [
-      { 
-        id: "male", 
-        text: "Masculino", 
-        image: "/images/gender-male-professional.jpg",
-        infoBox: {
-          title: "Você sabia?",
-          content: "Os homens tendem a responder bem ao jejum 16:8: ele ajuda a otimizar a testosterona e a queima de gordura."
-        }
-      },
-      { 
-        id: "female", 
-        text: "Feminino", 
-        image: "/images/gender-female-professional.jpg",
-        infoBox: {
-          title: "Você sabia?",
-          content: "As mulheres geralmente se beneficiam de janelas de jejum mais suaves, como o jejum das 14h10, especialmente nas primeiras semanas."
-        }
-      }
-    ]
-  },
-  {
     id: 3,
     title: "Qual é o seu objetivo?",
     type: "single",
@@ -71,42 +45,32 @@ export const questions: QuizQuestion[] = [
     subtitle: "Para as mulheres, uma abordagem individualizada é essencial para resultados duradouros.",
     description: "Se você deseja uma aparência em forma, energia duradoura e um corpo saudável, um plano personalizado é o ponto de partida ideal que se adapta ao seu estilo de vida.",
     type: "intermediate",
-    requiresGender: true,
-    maleImage: "fitness-male",
-    femaleImage: "fitness-female"
+    image: "fitness-female"
   },
   {
     id: 4,
     title: "Como você descreveria seu físico?",
     type: "single",
-    requiresGender: true,
     options: [
       { 
         id: "thin", 
         text: "Magra",
-        maleText: "Magro",
-        maleImage: "body-thin-male-shorts", 
-        femaleImage: "body-thin-female-real" 
+        image: "body-thin-female-real" 
       },
       { 
         id: "average", 
         text: "Média",
-        maleText: "Médio",
-        maleImage: "body-fuller-male-shorts", 
-        femaleImage: "body-fuller-female-real" 
+        image: "body-fuller-female-real" 
       },
       { 
         id: "fuller", 
         text: "Gordinha", 
-        maleText: "Gordinho",
-        maleImage: "body-overweight-male-shorts", 
-        femaleImage: "body-fuller-female-professional" 
+        image: "body-fuller-female-professional" 
       },
       { 
         id: "overweight", 
         text: "Sobrepeso", 
-        maleImage: "body-obese-male-shorts", 
-        femaleImage: "body-overweight-female-real" 
+        image: "body-overweight-female-real" 
       }
     ]
   },
@@ -114,7 +78,6 @@ export const questions: QuizQuestion[] = [
     id: 5,
     title: "Qual é o seu objetivo de tipo de corpo?",
     type: "single",
-    requiresGender: true,
     showInfoBox: true,
     infoBoxContent: {
       title: "🔥 Fato sobre queima de gordura",
@@ -124,20 +87,17 @@ export const questions: QuizQuestion[] = [
       { 
         id: "slim", 
         text: "Afinar", 
-        maleImage: "goal-slim-male", 
-        femaleImage: "goal-slim-female" 
+        image: "goal-slim-female" 
       },
       { 
         id: "defined", 
         text: "Definir", 
-        maleImage: "goal-defined-male", 
-        femaleImage: "goal-defined-female" 
+        image: "goal-defined-female" 
       },
       { 
         id: "athlete", 
         text: "Atleta", 
-        maleImage: "goal-athlete-male", 
-        femaleImage: "goal-athlete-female" 
+        image: "goal-athlete-female" 
       }
     ]
   },
@@ -146,10 +106,7 @@ export const questions: QuizQuestion[] = [
     title: "Selecione suas zonas-alvo",
     subtitle: "Você pode escolher várias opções",
     type: "body-selection",
-    requiresGender: true,
-    bodyImage: "/images/body-zones.png",
-    maleBodyImage: "body-zones-male-mascot",
-    femaleBodyImage: "body-zones-female-mascot",
+    bodyImage: "body-zones-female-mascot",
     bodyZones: ["arms", "chest", "abs", "legs", "butt", "full-body"],
     options: [
       { id: "arms", text: "Braços" },
@@ -164,9 +121,7 @@ export const questions: QuizQuestion[] = [
     id: 7,
     title: "Há quanto tempo você não está na melhor forma da sua vida?",
     type: "single",
-    requiresGender: true,
-    maleImage: "fitness-thinking",
-    femaleImage: "fitness-female",
+    image: "fitness-female",
     showInfoBox: true,
     options: [
       { 
@@ -216,9 +171,7 @@ export const questions: QuizQuestion[] = [
     title: "Você é incrível!",
     subtitle: "Muitas pessoas lutam contra o medo de não serem boas o suficiente - levaremos isso em conta ao elaborar o seu plano para oferecer uma abordagem que permita que você ganhe confiança!",
     type: "intermediate",
-    requiresGender: true,
-    femaleImage: "motivation-incredible",
-    maleImage: "motivation-incredible-male"
+    image: "motivation-incredible"
   },
   {
     id: "lipedema-info",
@@ -244,17 +197,13 @@ export const questions: QuizQuestion[] = [
     title: "Você sempre pode mudar os seus hábitos para melhor",
     subtitle: "Grandes mudanças na vida costumam afetar no peso. É normal. Nós iremos ajudar você a alcançar o seu objetivo.",
     type: "intermediate",
-    requiresGender: true,
-    femaleImage: "motivation-change-habits",
-    maleImage: "motivation-change-habits-male"
+    image: "motivation-change-habits"
   },
   {
     id: 10,
     title: "Como você descreveria seu dia típico?",
     type: "single",
-    requiresGender: true,
-    maleImage: "man-working-office",
-    femaleImage: "woman-working-office",
+    image: "woman-working-office",
     options: [
       { id: "sitting", text: "Passo a maior parte do dia sentado" },
       { id: "active-breaks", text: "Faço pausas ativas" },
@@ -575,9 +524,7 @@ export const questions: QuizQuestion[] = [
     title: "Deixe-nos personalizar seu plano",
     subtitle: "Para oferecer planos personalizados e recursos do aplicativo, precisamos do seu consentimento para processar seus dados de saúde.",
     type: "intermediate",
-    requiresGender: true,
-    femaleImage: "healthy-lifestyle",
-    maleImage: "healthy-lifestyle-male"
+    image: "healthy-lifestyle"
   },
   {
     id: "loading-page",

@@ -18,8 +18,8 @@ interface QuizQuestionProps {
 export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuestionProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   
-  // Get gender from previous answers (question 2)
-  const gender = answers[2] as string;
+  // Quiz exclusivo para mulheres
+  const gender = 'female';
   
   const handleSingleAnswer = (optionId: string) => {
     onAnswer(optionId);
@@ -79,36 +79,27 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return answer === optionId;
   };
 
-  // Get the appropriate body image based on gender
+  // Get the body image (sempre feminino)
   const getBodyImage = () => {
-    if (!question.requiresGender || !gender) {
-      if (question.bodyImage) return question.bodyImage;
-      return question.maleBodyImage ? getImageSrc(question.maleBodyImage) : '';
+    if (question.bodyImage) {
+      return typeof question.bodyImage === 'string' && !question.bodyImage.startsWith('http') && !question.bodyImage.startsWith('/') 
+        ? getImageSrc(question.bodyImage)
+        : question.bodyImage;
     }
-    if (gender === 'male' && question.maleBodyImage) {
-      return getImageSrc(question.maleBodyImage);
-    }
-    if (gender === 'female' && question.femaleBodyImage) {
-      return getImageSrc(question.femaleBodyImage);
-    }
-    return question.bodyImage || '';
+    return '';
   };
 
-  // Get option image based on gender and custom images
+  // Get option image (sempre feminino)
   const getOptionImage = (option: any) => {
     if (option.customImage) {
       return getImageSrc(option.customImage);
     }
-    if (!question.requiresGender || !gender) {
-      return option.image;
+    if (option.image) {
+      return typeof option.image === 'string' && !option.image.startsWith('http') && !option.image.startsWith('/') 
+        ? getImageSrc(option.image)
+        : option.image;
     }
-    if (gender === 'male' && option.maleImage) {
-      return getImageSrc(option.maleImage);
-    }
-    if (gender === 'female' && option.femaleImage) {
-      return getImageSrc(option.femaleImage);
-    }
-    return option.image;
+    return '';
   };
 
   // Get info box for selected option
@@ -141,15 +132,13 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
   return (
     <div className="w-full max-w-4xl mx-auto quiz-fade-in">
       <div className="text-center mb-12">
-        {(question.thematicImage || (question.requiresGender && gender && (question.maleImage || question.femaleImage))) && (
+        {question.thematicImage && (
           <div className="mb-6 flex justify-center">
             <div className="w-32 h-32 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/20">
               <img 
-                src={question.requiresGender && gender ? 
-                  (gender === 'male' && question.maleImage ? getImageSrc(question.maleImage) : 
-                   gender === 'female' && question.femaleImage ? getImageSrc(question.femaleImage) : 
-                   question.thematicImage ? getImageSrc(question.thematicImage) : question.thematicImage) : 
-                  question.thematicImage ? getImageSrc(question.thematicImage) : question.thematicImage
+                src={typeof question.thematicImage === 'string' && !question.thematicImage.startsWith('http') && !question.thematicImage.startsWith('/') 
+                  ? getImageSrc(question.thematicImage) 
+                  : question.thematicImage
                 } 
                 alt={question.title}
                 className="w-full h-full object-cover"
@@ -201,9 +190,6 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
           // Special layout for age question (ID 1) - 2x2 grid on mobile
           question.id === 1 
             ? "grid-cols-2 md:grid-cols-4" 
-            : // Special layout for gender question (ID 2) - side by side
-            question.id === 2 
-            ? "grid-cols-2" 
             : // Special layout for body type question (ID 4) - 2x2 grid
             question.id === 4
             ? "grid-cols-2"
