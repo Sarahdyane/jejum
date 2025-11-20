@@ -3,23 +3,21 @@ import { QuizQuestion } from "@/types/quiz";
 export const questions: QuizQuestion[] = [
   {
     id: "splash-screen",
-    title: "",
-    subtitle: "",
+    title: "O Seu Corpo Tem um Padrão Oculto\nVamos Descobrir Qual É?",
+    subtitle: "Cada mulher tem um padrão oculto que explica por que ela incha, por que ganha peso rápido em certas fases, por que trava no dia 3…\nHoje, você vai descobrir o SEU.",
     type: "intermediate",
     image: "nutria-logo"
   },
   {
     id: 1,
-    title: "",
+    title: "Quando seu corpo incha, geralmente acontece em qual período do dia?",
     type: "single",
-    showTitle: "SUA CAMINHADA PARA EMAGRECER",
-    showSubtitle: "Com base na sua idade",
-    showFooter: true,
     options: [
-      { id: "18-29", text: "18–29", customImage: "age-couple-1" },
-      { id: "30-39", text: "30–39", customImage: "age-couple-2" },
-      { id: "40-49", text: "40–49", customImage: "age-couple-3" },
-      { id: "50+", text: "50+", customImage: "age-couple-4" }
+      { id: "morning", text: "Pela manhã" },
+      { id: "end-of-day", text: "No fim do dia" },
+      { id: "night-evening", text: "Noite/tarde" },
+      { id: "anytime", text: "Em qualquer hora" },
+      { id: "dont-know", text: "Não sei, mas percebo que incho fácil" }
     ]
   },
   {
@@ -31,12 +29,13 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 3,
-    title: "Qual é o seu objetivo?",
+    title: "Qual é o momento social que mais te causa insegurança hoje por causa do seu corpo?",
     type: "single",
     options: [
-      { id: "lose-weight", text: "Perder peso", icon: "TrendingDown" },
-      { id: "get-fit", text: "Ficar em forma", icon: "Dumbbell" },
-      { id: "gain-weight", text: "Ganhar peso", icon: "TrendingUp" }
+      { id: "bikini", text: "Usar biquíni na praia/piscina" },
+      { id: "clothes", text: "Vestir aquela roupa que não serve mais" },
+      { id: "photos", text: "Tirar fotos em eventos e festas" },
+      { id: "other", text: "Outro (Qualquer um que me faça sentir mal)" }
     ]
   },
   {
