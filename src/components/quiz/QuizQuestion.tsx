@@ -185,19 +185,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
           allAnswers={answers}
         />
       ) : (
-        <div className={cn(
-          "grid gap-4 max-w-3xl mx-auto",
-          // Special layout for age question (ID 1) - 2x2 grid on mobile
-          question.id === 1 
-            ? "grid-cols-2 md:grid-cols-4" 
-            : // Special layout for body type question (ID 4) - 2x2 grid
-            question.id === 4
-            ? "grid-cols-2"
-            : // Default layout for other questions
-            question.options && question.options.length <= 4 
-            ? "grid-cols-1 md:grid-cols-2" 
-            : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-        )}>
+        <div className="flex flex-col gap-3 max-w-2xl mx-auto">
           {question.options?.map((option) => {
             const optionImage = getOptionImage(option);
             return (
@@ -212,9 +200,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                   ? handleMultipleAnswer(option.id) 
                   : handleSingleAnswer(option.id)
                 }
-                className={cn(
-                  optionImage ? "min-h-[160px]" : "min-h-[60px]"
-                )}
+                className="min-h-[70px]"
                 gender={gender}
                 questionId={question.id}
               />
