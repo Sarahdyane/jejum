@@ -70,7 +70,7 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
           <img 
             src={image} 
             alt="Inspirational fitness" 
-            className="max-w-xs h-auto rounded-lg shadow-lg"
+            className="w-full max-w-lg h-auto rounded-2xl shadow-2xl"
           />
         </motion.div>
 
