@@ -175,17 +175,6 @@ export const questions: QuizQuestion[] = [
     image: "smoothie-detox-purple"
   },
   {
-    id: 14,
-    title: "Qual tipo de dieta você prefere?",
-    type: "single",
-    options: [
-      { id: "traditional", text: "Tradicional" },
-      { id: "vegetarian", text: "Vegetariana" },
-      { id: "lactose-free", text: "Sem lactose" },
-      { id: "gluten-free", text: "Sem glúten" }
-    ]
-  },
-  {
     id: 21,
     title: "Com que frequência você costuma se exercitar?",
     type: "single",
