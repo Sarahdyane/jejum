@@ -64,11 +64,11 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "intermediate-2",
-    title: "Um plano personalizado é a chave para o seu sucesso!",
-    subtitle: "Para as mulheres, uma abordagem individualizada é essencial para resultados duradouros.",
-    description: "Se você deseja uma aparência em forma, energia duradoura e um corpo saudável, um plano personalizado é o ponto de partida ideal que se adapta ao seu estilo de vida.",
+    title: "Pequeno pico de dopamina para manter retenção",
+    subtitle: "Amiga…\nTô analisando aqui seu padrão e já percebi uma coisa super importante sobre seu corpo.",
+    description: "Mulheres com respostas como as suas entram no grupo de Retenção Sensível — e eu já sei que um dos primeiros passos vai ser incluir 2 chás secretos no seu plano… segura aí que já já te conto!",
     type: "intermediate",
-    image: "fitness-female"
+    image: "lifestyle/water-consumption"
   },
   {
     id: 4,
