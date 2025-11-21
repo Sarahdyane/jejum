@@ -12,14 +12,14 @@ export const useQuiz = (questions: QuizQuestion[]) => {
         return JSON.parse(stored);
       } catch {
         return {
-          currentQuestion: 1,
+          currentQuestion: questions[0]?.id || 1,
           answers: {},
           isComplete: false,
         };
       }
     }
     return {
-      currentQuestion: 1,
+      currentQuestion: questions[0]?.id || 1,
       answers: {},
       isComplete: false,
     };
