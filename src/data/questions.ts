@@ -143,8 +143,8 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "motivation-incredible",
-    title: "Você é incrível!",
-    subtitle: "Muitas pessoas lutam contra o medo de não serem boas o suficiente - levaremos isso em conta ao elaborar o seu plano para oferecer uma abordagem que permita que você ganhe confiança!",
+    title: "Você não falhou, o método que falhou com você!",
+    subtitle: "Suas respostas mostram que você é determinada, mas que foi sabotada por dietas genéricas. Mas calma, vou te ajudar com isso agora !",
     type: "intermediate",
     image: "motivation-incredible"
   },
