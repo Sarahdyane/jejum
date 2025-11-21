@@ -10,14 +10,22 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 1,
-    title: "Quando seu corpo incha, geralmente acontece em qual período do dia?",
+    title: "Qual é a sua Visão de Sucesso?",
+    subtitle: "O que você quer que as pessoas notem primeiro em você?",
     type: "single",
     options: [
-      { id: "morning", text: "Pela manhã" },
-      { id: "end-of-day", text: "No fim do dia" },
-      { id: "night-evening", text: "Noite/tarde" },
-      { id: "anytime", text: "Em qualquer hora" },
-      { id: "dont-know", text: "Não sei, mas percebo que incho fácil" }
+      { 
+        id: "confidence", 
+        text: "💪 A Confiança Inabalável\nSentir-se poderosa em qualquer roupa"
+      },
+      { 
+        id: "energy", 
+        text: "⚡ A Energia Contagiante\nTer disposição para tudo, sem cansaço"
+      },
+      { 
+        id: "sculpted", 
+        text: "✨ O Corpo Esculpido\nVer a barriga chapada e a cintura fina"
+      }
     ]
   },
   {
