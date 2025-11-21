@@ -126,7 +126,11 @@ export const Quiz = () => {
 
   // Handle intermediate pages
   if (currentQuestion.type === 'intermediate') {
-    const imageSrc = currentQuestion.image ? getImageSrc(currentQuestion.image) : '';
+    const imageSrc = currentQuestion.thematicImage 
+      ? getImageSrc(currentQuestion.thematicImage)
+      : currentQuestion.image 
+      ? getImageSrc(currentQuestion.image) 
+      : '';
 
     return (
       <IntermediatePage
