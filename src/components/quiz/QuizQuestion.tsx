@@ -185,7 +185,13 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
           allAnswers={answers}
         />
       ) : (
-        <div className="flex flex-col gap-3 max-w-2xl mx-auto">
+        <div className={cn(
+          "grid gap-3 max-w-3xl mx-auto",
+          // Special layout for body type question (ID 4) - 2x2 grid
+          question.id === 4
+            ? "grid-cols-2"
+            : "flex flex-col"
+        )}>
           {question.options?.map((option) => {
             const optionImage = getOptionImage(option);
             return (
