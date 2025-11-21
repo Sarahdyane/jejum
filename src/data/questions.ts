@@ -127,7 +127,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 6,
-    title: "Selecione suas zonas-alvo",
+    title: "Selecione as áreas que mais te incomodam",
     subtitle: "Você pode escolher várias opções",
     type: "body-selection",
     bodyImage: "body-zones-female-mascot",
