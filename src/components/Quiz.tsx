@@ -13,6 +13,7 @@ import { LoadingAnalysis } from '@/components/quiz/LoadingAnalysis';
 import { ReadyTransition } from '@/components/quiz/ReadyTransition';
 import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
 import { CommitmentPage } from '@/components/quiz/CommitmentPage';
+import { MetabolicPatternPage } from '@/components/quiz/MetabolicPatternPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
@@ -118,6 +119,16 @@ export const Quiz = () => {
   if (currentQuestion.type === 'stats') {
     return (
       <StatsPage
+        onContinue={nextQuestion}
+        onBack={prevQuestion}
+      />
+    );
+  }
+
+  // Handle metabolic pattern page
+  if (currentQuestion.type === 'metabolic-pattern') {
+    return (
+      <MetabolicPatternPage
         onContinue={nextQuestion}
         onBack={prevQuestion}
       />
