@@ -64,11 +64,11 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "intermediate-2",
-    title: "Pequeno pico de dopamina para manter retenção",
-    subtitle: "Amiga…\nTô analisando aqui seu padrão e já percebi uma coisa super importante sobre seu corpo.",
+    title: "Amiga…",
+    subtitle: "Tô analisando aqui seu padrão e já percebi uma coisa super importante sobre seu corpo.",
     description: "Mulheres com respostas como as suas entram no grupo de Retenção Sensível — e eu já sei que um dos primeiros passos vai ser incluir 2 chás secretos no seu plano… segura aí que já já te conto!",
     type: "intermediate",
-    image: "lifestyle/water-consumption"
+    thematicImage: "teas-collection"
   },
   {
     id: 4,
