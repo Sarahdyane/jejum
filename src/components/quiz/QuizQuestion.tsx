@@ -190,6 +190,9 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
           // Special layout for body type question (ID 4) - 2x2 grid
           question.id === 4
             ? "grid-cols-2"
+            : // Special layout for goal body question (ID 5) - 3 columns
+            question.id === 5
+            ? "grid-cols-1 md:grid-cols-3"
             : "flex flex-col"
         )}>
           {question.options?.map((option) => {
