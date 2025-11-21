@@ -150,9 +150,9 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "lipedema-info",
-    title: "Você sabia sobre o Lipedema?",
+    title: "Esse Pode Ser o Motivo do Seu Inchaço Que Ninguém Nunca Te Contou…",
     subtitle: "Uma condição que afeta milhões de mulheres",
-    description: "O lipedema é uma condição crônica que causa acúmulo desproporcional de gordura, principalmente nas pernas e braços.\n\n✨ Características principais:\n• Afeta principalmente mulheres\n• Pode causar dor e sensibilidade\n• Dieta balanceada pode ajudar no controle\n• Não é resultado de má alimentação",
+    description: "Muitas mulheres acham que estão 'engordando errado', quando na verdade estão lidando com algo chamado lipedema — um tipo de acúmulo de gordura e inchaço que NÃO melhora com dieta comum.",
     type: "intermediate",
     image: "lipedema-info"
   },
