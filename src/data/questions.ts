@@ -29,6 +29,29 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: 2,
+    title: "Quando você tenta seguir um plano, qual é o SEU padrão mais real?",
+    type: "single",
+    options: [
+      { 
+        id: "excited-day3", 
+        text: "🎯 Fico animada, mas travo no dia 3"
+      },
+      { 
+        id: "weekend-fail", 
+        text: "📅 Vou bem até o fim de semana… aí desanda"
+      },
+      { 
+        id: "body-no-response", 
+        text: "💪 Faço tudo certo, mas meu corpo não responde"
+      },
+      { 
+        id: "stubborn-body", 
+        text: "🔒 Sinto que meu corpo é \"teimoso\""
+      }
+    ]
+  },
+  {
     id: 3,
     title: "Qual é o momento social que mais te causa insegurança hoje por causa do seu corpo?",
     type: "single",
