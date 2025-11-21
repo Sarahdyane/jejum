@@ -100,7 +100,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 5,
-    title: "Qual é o seu objetivo de tipo de corpo?",
+    title: "Qual é a sensação de poder que você quer ter ao se olhar no espelho daqui a 30 dias?",
     type: "single",
     showInfoBox: true,
     infoBoxContent: {
