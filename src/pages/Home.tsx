@@ -19,14 +19,18 @@ export default function Home() {
         <div className="w-full max-w-md space-y-8">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-              O Seu Corpo Tem um Padrão Oculto<br />Vamos Descobrir Qual É?
+              Seu Corpo Está Enviando Sinais Que Você Nunca Decodificou… até agora.
             </h2>
-            <p className="text-lg text-muted-foreground">Cada mulher tem um padrão oculto que explica por que ela incha, por que ganha peso rápido em certas fases, por que trava no dia 3… Hoje, você vai descobrir o SEU.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Seu inchaço, suas oscilações de peso, sua falta de constância… nada disso é culpa sua.<br />
+              Existem 4 padrões ocultos que explicam EXACTAMENTE por que você trava.<br />
+              Hoje, vamos descobrir qual é o SEU.
+            </p>
           </div>
 
           <div className="space-y-4">
             <Button onClick={() => navigate('/quiz')} className="w-full h-14 text-lg font-semibold" size="lg">
-              Começar Agora
+              Começar minha análise gratuita →
             </Button>
             
             <p className="text-center text-sm text-muted-foreground">
