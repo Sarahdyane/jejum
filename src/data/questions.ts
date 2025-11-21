@@ -169,10 +169,10 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "motivation-change-habits",
-    title: "Você sempre pode mudar os seus hábitos para melhor",
-    subtitle: "Grandes mudanças na vida costumam afetar no peso. É normal. Nós iremos ajudar você a alcançar o seu objetivo.",
-    type: "intermediate",
-    image: "motivation-change-habits"
+    title: "Pronto. Agora eu CONFIRMEI seu padrão metabólico oculto.",
+    subtitle: "Seu corpo segue um padrão que poucas mulheres conhecem — e isso muda tudo.",
+    type: "metabolic-pattern",
+    image: "smoothie-detox-purple"
   },
   {
     id: 14,
