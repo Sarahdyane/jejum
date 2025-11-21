@@ -29,13 +29,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: "intermediate-1",
-    title: "Você está em boas mãos",
-    subtitle: "Mais de 29.567.899 usuários escolheram a Nutria para começar sua jornada de perda de peso conosco",
-    type: "intermediate",
-    image: "person-exercising-small"
-  },
-  {
     id: 3,
     title: "Qual é o momento social que mais te causa insegurança hoje por causa do seu corpo?",
     type: "single",
