@@ -72,7 +72,8 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 4,
-    title: "Como você descreveria seu físico?",
+    title: "Qual dessas imagens mais se aproxima da sua realidade",
+    subtitle: "(seja sincera, amiga, sem julgamento!)",
     type: "single",
     options: [
       { 
