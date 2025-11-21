@@ -9,7 +9,18 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     const stored = sessionStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        // Validate that current question exists in the questions array
+        const questionExists = questions.find(q => q.id === parsed.currentQuestion);
+        if (!questionExists) {
+          // If stored question doesn't exist, reset to first question
+          return {
+            currentQuestion: questions[0]?.id || 1,
+            answers: {},
+            isComplete: false,
+          };
+        }
+        return parsed;
       } catch {
         return {
           currentQuestion: questions[0]?.id || 1,
