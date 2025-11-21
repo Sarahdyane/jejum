@@ -109,10 +109,6 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
               )} />;
             })()
           )}
-          
-          {isSelected && questionId !== 2 && (
-            <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
-          )}
         </div>
       </div>
     </button>
