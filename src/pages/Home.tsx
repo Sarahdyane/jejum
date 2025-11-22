@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import nutriaLogo from '@/assets/nutria-logo.png';
+import metabolicDoor from '@/assets/metabolic-door.png';
+
 export default function Home() {
   const navigate = useNavigate();
-  return <div className="min-h-screen bg-background flex flex-col">
+  
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="flex items-center justify-center py-6 px-4 relative">
+      <header className="flex items-center justify-center py-8 px-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center">
             <img src={nutriaLogo} alt="Nutria" className="w-10 h-10 object-contain" />
@@ -15,34 +19,61 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-4 pb-24">
-        <div className="w-full max-w-md space-y-8">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-              Seu Corpo Está Enviando Sinais Que Você Nunca Decodificou… até agora.
+      <main className="flex-1 flex flex-col items-center justify-center px-6 pb-16">
+        <div className="w-full max-w-2xl space-y-12">
+          {/* Hero Image */}
+          <div className="relative w-full max-w-md mx-auto animate-fade-in">
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={metabolicDoor} 
+                alt="A Porta Metabólica Secreta" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="text-center space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            {/* Main Title */}
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight tracking-tight">
+              Seu Corpo Envia Sinais Que Você Nunca Decodificou… até agora.
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Seu inchaço, suas oscilações de peso, sua falta de constância… nada disso é culpa sua.<br />
-              Existem 4 padrões ocultos que explicam EXACTAMENTE por que você trava.<br />
-              Hoje, vamos descobrir qual é o SEU.
+            
+            {/* Emotional Subtitle */}
+            <p className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed">
+              Seu inchaço, suas oscilações de peso, sua falta de constância… nada disso é culpa sua.
+            </p>
+            
+            {/* Authority Paragraph */}
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              Existem 4 padrões metabólicos ocultos que explicam exatamente por que muitas mulheres travam — mesmo tentando de tudo.
+              <br /><br />
+              Hoje, você vai descobrir qual desses padrões o seu corpo segue… e isso pode mudar completamente sua jornada.
             </p>
           </div>
 
-          <div className="space-y-4">
-            <Button onClick={() => navigate('/quiz')} className="w-full h-14 text-lg font-semibold" size="lg">
+          {/* CTA Section */}
+          <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <Button 
+              onClick={() => navigate('/quiz')} 
+              className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all" 
+              size="lg"
+            >
               Começar minha análise gratuita →
             </Button>
             
-            <p className="text-center text-sm text-muted-foreground">
-              Junte-se a mais de 29 milhões de usuários que transformaram suas vidas
+            {/* Subtle Exclusivity Text */}
+            <p className="text-center text-sm text-muted-foreground/80">
+              Leva menos de 2 minutos. Resultados personalizados.
             </p>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="py-6 px-4 text-center text-sm text-muted-foreground">
+      <footer className="py-6 px-4 text-center text-sm text-muted-foreground/60">
         <p>© 2025 Nutria. Todos os direitos reservados.</p>
       </footer>
-    </div>;
+    </div>
+  );
 }
