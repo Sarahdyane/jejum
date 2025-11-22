@@ -22,7 +22,7 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center justify-center px-6 pb-16">
         <div className="w-full max-w-2xl space-y-12">
           {/* Hero Image */}
-          <div className="relative w-full max-w-2xl mx-auto animate-fade-in">
+          <div className="relative w-full max-w-3xl mx-auto animate-fade-in">
             <img 
               src={metabolicDoor} 
               alt="A Porta Metabólica Secreta" 
