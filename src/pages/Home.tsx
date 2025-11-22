@@ -22,14 +22,13 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center justify-center px-6 pb-16">
         <div className="w-full max-w-2xl space-y-12">
           {/* Hero Image */}
-          <div className="relative w-full max-w-md mx-auto animate-fade-in">
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src={metabolicDoor} 
-                alt="A Porta Metabólica Secreta" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="relative w-full max-w-lg mx-auto animate-fade-in">
+            <img 
+              src={metabolicDoor} 
+              alt="A Porta Metabólica Secreta" 
+              title="A Porta Metabólica Secreta"
+              className="w-full h-auto object-contain drop-shadow-2xl"
+            />
           </div>
 
           {/* Content */}
