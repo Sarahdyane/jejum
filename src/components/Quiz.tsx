@@ -155,6 +155,7 @@ export const Quiz = () => {
         subtitle={currentQuestion.subtitle}
         description={currentQuestion.description}
         image={imageSrc}
+        thematicImage={currentQuestion.thematicImage}
         onContinue={nextQuestion}
         onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
@@ -172,6 +173,7 @@ export const Quiz = () => {
         subtitle={currentQuestion.subtitle}
         description={currentQuestion.description}
         image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
+        thematicImage={currentQuestion.thematicImage}
         onContinue={nextQuestion}
         onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
@@ -188,6 +190,7 @@ export const Quiz = () => {
         subtitle={currentQuestion.subtitle}
         description={currentQuestion.description}
         image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
+        thematicImage={currentQuestion.thematicImage}
         onContinue={nextQuestion}
         onBack={currentIndex > 0 ? prevQuestion : undefined}
       />

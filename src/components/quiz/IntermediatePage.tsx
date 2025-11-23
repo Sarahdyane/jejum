@@ -9,12 +9,52 @@ interface IntermediatePageProps {
   image: string;
   onContinue: () => void;
   onBack?: () => void;
+  thematicImage?: string;
 }
 
-export const IntermediatePage = ({ title, subtitle, description, image, onContinue, onBack }: IntermediatePageProps) => {
+export const IntermediatePage = ({ title, subtitle, description, image, onContinue, onBack, thematicImage }: IntermediatePageProps) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  // Auto-advance for analyzing page
+  const isAnalyzing = title === "Analisando seu padrão metabólico";
+  
+  useEffect(() => {
+    if (isAnalyzing) {
+      const timer = setTimeout(() => {
+        onContinue();
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isAnalyzing, onContinue]);
+
+  // Analyzing mode - show loading bar
+  if (isAnalyzing) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="w-full max-w-md text-center space-y-8">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl md:text-3xl font-bold text-foreground"
+          >
+            {title}
+          </motion.h1>
+          
+          <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 2.5, ease: "easeInOut" }}
+              className="h-full bg-green-500 rounded-full"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Splash screen mode - show only logo centered
   const isSplashScreen = !title && !subtitle && !description;
