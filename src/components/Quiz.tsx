@@ -31,6 +31,7 @@ export const Quiz = () => {
     getProgress,
     hasAnswer,
     generateProfile,
+    goToQuestion,
   } = useQuiz(questions);
 
   // Scroll to top when question changes
@@ -133,14 +134,15 @@ export const Quiz = () => {
     
     // Custom back handler to skip the analyzing page
     const handleBack = () => {
-      // Go back once to analyzing page
-      const analyzingIndex = currentIndex - 1;
-      if (analyzingIndex >= 0 && questions[analyzingIndex].id === 'analyzing-pattern') {
-        // Go back twice to skip analyzing page
-        prevQuestion();
-        setTimeout(() => prevQuestion(), 0);
-      } else {
-        prevQuestion();
+      const filtered = questions;
+      const idx = filtered.findIndex(q => q.id === currentQuestion.id);
+      if (idx <= 0) return;
+      let targetIndex = idx - 1;
+      if (filtered[targetIndex]?.id === 'analyzing-pattern') {
+        targetIndex -= 1;
+      }
+      if (targetIndex >= 0) {
+        goToQuestion(filtered[targetIndex].id);
       }
     };
     
