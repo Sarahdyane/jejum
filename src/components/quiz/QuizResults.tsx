@@ -171,7 +171,10 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
   };
 
   // Traduzir zonas alvo para português
-  const translateZones = (zones: string[]) => {
+  const translateZones = (zones: string[] | undefined) => {
+    if (!Array.isArray(zones)) {
+      return [];
+    }
     const translations: Record<string, string> = {
       'belly': 'Barriga',
       'chest': 'Peito',
@@ -404,7 +407,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             </div>
 
             {/* Zonas Alvo */}
-            {profile.targetZones && profile.targetZones.length > 0 && (
+            {Array.isArray(profile.targetZones) && profile.targetZones.length > 0 && (
               <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
                 <div className="bg-green-100 p-2 rounded-full flex-shrink-0">
                   <MapPin className="w-5 h-5 text-green-500" />
