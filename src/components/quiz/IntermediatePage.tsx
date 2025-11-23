@@ -113,9 +113,22 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
         )}
         <div className="w-full max-w-xl text-center space-y-12">
           <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center mb-8"
+          >
+            <img 
+              src={image} 
+              alt="Metabolic Pattern" 
+              className="w-full max-w-md h-auto rounded-2xl shadow-2xl"
+            />
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-8"
           >
             <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
