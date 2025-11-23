@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import nutriaLogo from '@/assets/nutria-logo.png';
-import metabolicDoor from '@/assets/metabolic-door.png';
+import metabolicDoor from '@/assets/metabolic-door-new.webp';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -22,13 +22,18 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center justify-center px-6 pb-16">
         <div className="w-full max-w-2xl space-y-12">
           {/* Hero Image */}
-          <div className="relative w-full max-w-3xl mx-auto animate-fade-in">
-            <img 
-              src={metabolicDoor} 
-              alt="A Porta Metabólica Secreta" 
-              title="A Porta Metabólica Secreta"
-              className="w-full h-auto object-contain drop-shadow-2xl"
-            />
+          <div className="space-y-6 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
+              A Porta Metabólica Secreta
+            </h2>
+            <div className="relative w-full max-w-3xl mx-auto">
+              <img 
+                src={metabolicDoor} 
+                alt="A Porta Metabólica Secreta" 
+                title="A Porta Metabólica Secreta"
+                className="w-full h-auto object-contain drop-shadow-2xl"
+              />
+            </div>
           </div>
 
           {/* Content */}
