@@ -131,10 +131,23 @@ export const Quiz = () => {
   if (currentQuestion.type === 'metabolic-pattern') {
     const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
     
+    // Custom back handler to skip the analyzing page
+    const handleBack = () => {
+      // Go back once to analyzing page
+      const analyzingIndex = currentIndex - 1;
+      if (analyzingIndex >= 0 && questions[analyzingIndex].id === 'analyzing-pattern') {
+        // Go back twice to skip analyzing page
+        prevQuestion();
+        setTimeout(() => prevQuestion(), 0);
+      } else {
+        prevQuestion();
+      }
+    };
+    
     return (
       <MetabolicPatternPage
         onContinue={nextQuestion}
-        onBack={currentIndex > 0 ? prevQuestion : undefined}
+        onBack={currentIndex > 0 ? handleBack : undefined}
       />
     );
   }
