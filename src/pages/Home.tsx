@@ -24,13 +24,13 @@ export default function Home() {
           {/* Hero Image */}
           <div className="space-y-6 animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
-              A Porta Metabólica Secreta
+              A Sua Porta Metabólica Secreta
             </h2>
             <div className="relative w-full max-w-3xl mx-auto">
               <img 
                 src={metabolicDoor} 
-                alt="A Porta Metabólica Secreta" 
-                title="A Porta Metabólica Secreta"
+                alt="A Sua Porta Metabólica Secreta" 
+                title="A Sua Porta Metabólica Secreta"
                 className="w-full h-auto object-contain drop-shadow-2xl"
               />
             </div>
