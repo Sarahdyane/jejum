@@ -195,7 +195,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
             ? "grid grid-cols-2 md:grid-cols-4"
             : "flex flex-col"
         )}>
-          {question.options?.map((option) => {
+          {Array.isArray(question.options) && question.options.map((option) => {
             const optionImage = getOptionImage(option);
             return (
               <QuizOption
