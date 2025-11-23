@@ -128,7 +128,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             {/* Você agora */}
             <div className="text-center">
               <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Você agora</h3>
-              <div className="relative bg-white rounded-2xl p-4 md:p-8 mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="relative bg-white rounded-2xl p-4 md:p-8 mb-4 md:mb-6 flex items-end justify-center shadow-md hover:shadow-lg transition-shadow min-h-[280px] md:min-h-[380px]">
                 <img 
                   src={getCurrentBodyImage()}
                   alt="Corpo atual" 
@@ -150,7 +150,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             {/* Você daqui 1 mês */}
             <div className="text-center">
               <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Você daqui 1 mês</h3>
-              <div className="relative bg-white rounded-2xl p-4 md:p-8 mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+              <div className="relative bg-white rounded-2xl p-4 md:p-8 mb-4 md:mb-6 flex items-end justify-center shadow-md hover:shadow-lg transition-shadow min-h-[280px] md:min-h-[380px]">
                 <img 
                   src={getTargetBodyImage()}
                   alt="Corpo meta" 
