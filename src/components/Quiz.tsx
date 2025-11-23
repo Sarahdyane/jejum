@@ -79,6 +79,11 @@ export const Quiz = () => {
   );
 
   const handleRestart = () => {
+    try {
+      sessionStorage.removeItem('nutria_quiz_state');
+    } catch (e) {
+      // ignore storage errors
+    }
     window.location.reload();
   };
 
