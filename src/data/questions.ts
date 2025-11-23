@@ -30,6 +30,25 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 2,
+    title: "Você já tentou outro plano alimentar antes?",
+    type: "single",
+    options: [
+      { 
+        id: "tried-failed", 
+        text: "Sim, mas nunca adiantou"
+      },
+      { 
+        id: "tried-success", 
+        text: "Sim, até tive resultados"
+      },
+      { 
+        id: "never-tried", 
+        text: "Não, nunca tentei"
+      }
+    ]
+  },
+  {
+    id: 3,
     title: "Quando você tenta seguir um plano, qual é o SEU padrão mais real?",
     type: "single",
     options: [
@@ -52,7 +71,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: "Qual é o momento social que mais te causa insegurança hoje por causa do seu corpo?",
     type: "single",
     options: [
@@ -71,7 +90,7 @@ export const questions: QuizQuestion[] = [
     thematicImage: "tea-echinacea"
   },
   {
-    id: 4,
+    id: 5,
     title: "Qual dessas imagens mais se aproxima da sua realidade",
     subtitle: "(seja sincera, amiga, sem julgamento!)",
     type: "single",
@@ -99,7 +118,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     title: "Qual é a sensação de poder que você quer ter ao se olhar no espelho daqui a 30 dias?",
     type: "single",
     showInfoBox: true,
@@ -126,7 +145,7 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     title: "Selecione as áreas que mais te incomodam",
     subtitle: "Você pode escolher várias opções",
     type: "body-selection",
