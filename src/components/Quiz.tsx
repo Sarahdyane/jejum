@@ -117,20 +117,24 @@ export const Quiz = () => {
 
   // Handle stats page
   if (currentQuestion.type === 'stats') {
+    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
+    
     return (
       <StatsPage
         onContinue={nextQuestion}
-        onBack={prevQuestion}
+        onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
     );
   }
 
   // Handle metabolic pattern page
   if (currentQuestion.type === 'metabolic-pattern') {
+    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
+    
     return (
       <MetabolicPatternPage
         onContinue={nextQuestion}
-        onBack={prevQuestion}
+        onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
     );
   }
@@ -142,6 +146,8 @@ export const Quiz = () => {
       : currentQuestion.image 
       ? getImageSrc(currentQuestion.image) 
       : '';
+    
+    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
 
     return (
       <IntermediatePage
@@ -150,7 +156,7 @@ export const Quiz = () => {
         description={currentQuestion.description}
         image={imageSrc}
         onContinue={nextQuestion}
-        onBack={prevQuestion}
+        onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
     );
   }
@@ -158,6 +164,8 @@ export const Quiz = () => {
 
   // Handle fasting benefits page
   if (currentQuestion.id === "fasting-benefits") {
+    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
+    
     return (
       <IntermediatePage
         title={currentQuestion.title}
@@ -165,13 +173,15 @@ export const Quiz = () => {
         description={currentQuestion.description}
         image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
         onContinue={nextQuestion}
-        onBack={prevQuestion}
+        onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
     );
   }
 
   // Handle consent page
   if (currentQuestion.id === "consent-page") {
+    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
+    
     return (
       <IntermediatePage
         title={currentQuestion.title}
@@ -179,7 +189,7 @@ export const Quiz = () => {
         description={currentQuestion.description}
         image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
         onContinue={nextQuestion}
-        onBack={prevQuestion}
+        onBack={currentIndex > 0 ? prevQuestion : undefined}
       />
     );
   }
