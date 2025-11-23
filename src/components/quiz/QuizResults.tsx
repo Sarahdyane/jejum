@@ -426,7 +426,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               🔥 Hoje você desbloqueia TUDO por apenas
             </p>
             <p className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
-              R$ 5,90
+              R$ 10,90
             </p>
             <a 
               href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
