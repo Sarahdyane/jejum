@@ -186,13 +186,13 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
         />
       ) : (
         <div className={cn(
-          "grid gap-3 max-w-3xl mx-auto",
-          // Special layout for body type question (ID 4) - 2x2 grid
+          "gap-3 max-w-3xl mx-auto",
+          // Question 4 (momento social): vertical layout (one below another)
           question.id === 4
-            ? "grid-cols-2"
-            : // Special layout for goal body question (ID 5) - 3 columns
+            ? "flex flex-col"
+            : // Question 5 (body images): horizontal layout (side by side)
             question.id === 5
-            ? "grid-cols-1 md:grid-cols-3"
+            ? "grid grid-cols-2 md:grid-cols-4"
             : "flex flex-col"
         )}>
           {question.options?.map((option) => {
