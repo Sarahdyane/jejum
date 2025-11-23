@@ -1,19 +1,12 @@
 import { UserProfile } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import nutriaLogo from '@/assets/nutria-logo.png';
 import appPhoneMockup from '@/assets/app-phone-mockup.png';
-import appMockupNutrition from '@/assets/app-mockup-nutrition-real.png';
 import { getImageSrc } from '@/utils/imageMapping';
-import transformationBeforeFemale1 from '@/assets/transformation-before-female-1.jpg';
-import transformationAfterFemale1 from '@/assets/transformation-after-female-1.jpg';
-import transformationBeforeMale1 from '@/assets/transformation-before-male-1.jpg';
-import transformationAfterMale1 from '@/assets/transformation-after-male-1.jpg';
-import transformationBeforeFemale2 from '@/assets/transformation-before-female-2.jpg';
-import transformationAfterFemale2 from '@/assets/transformation-after-female-2.jpg';
 import transformationCombinedFemale3 from '@/assets/transformation-combined-female-3.png';
 import transformationCombinedFemale4 from '@/assets/transformation-combined-female-4.png';
 import transformationCombinedFemale5 from '@/assets/transformation-combined-female-5.png';
@@ -34,89 +27,19 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
   
-  // Calcular IMC - validar se os dados existem
-  const calculateBMI = () => {
-    if (!profile.height || !profile.currentWeight) {
-      return '0.00';
-    }
-    const heightInMeters = profile.height / 100;
-    const bmi = (profile.currentWeight / (heightInMeters * heightInMeters)).toFixed(1);
-    return bmi;
-  };
-
-  const calculateTargetBMI = () => {
-    const heightInMeters = profile.height / 100;
-    return (profile.targetWeight / (heightInMeters * heightInMeters)).toFixed(2);
-  };
-
-  // Determinar status do IMC
-  const getBMIStatus = (bmi: number) => {
-    if (bmi < 18.5) return 'Abaixo do peso';
-    if (bmi < 25) return 'Normal';
-    if (bmi < 30) return 'Sobrepeso';
-    return 'Obeso';
-  };
-
-  // Calcular percentual de gordura corporal estimado
-  const getBodyFatPercentage = () => {
-    const bmi = parseFloat(calculateBMI());
-    // Fórmula simplificada baseada em IMC e gênero
-    if (profile.gender === 'female') {
-      return `${Math.round(21 + (bmi - 22) * 0.8)}-${Math.round(24 + (bmi - 22) * 0.8)}%`;
-    }
-    return `${Math.round(18 + (bmi - 22) * 0.8)}-${Math.round(21 + (bmi - 22) * 0.8)}%`;
-  };
-
-  const getTargetBodyFatPercentage = () => {
-    const targetBMI = parseFloat(calculateTargetBMI());
-    if (profile.gender === 'female') {
-      return `${Math.round(21 + (targetBMI - 22) * 0.8)}-${Math.round(24 + (targetBMI - 22) * 0.8)}%`;
-    }
-    return `${Math.round(18 + (targetBMI - 22) * 0.8)}-${Math.round(21 + (targetBMI - 22) * 0.8)}%`;
-  };
-
-  // Calcular ingestão calórica recomendada
-  const calculateCalories = () => {
-    // Fórmula simplificada baseada em peso, altura, idade e objetivo
-    let bmr;
-    if (profile.gender === 'male') {
-      bmr = 10 * profile.currentWeight + 6.25 * profile.height - 5 * profile.userAge + 5;
-    } else {
-      bmr = 10 * profile.currentWeight + 6.25 * profile.height - 5 * profile.userAge - 161;
-    }
-
-    // Ajustar baseado no objetivo
-    if (profile.goal === 'lose-weight') {
-      return Math.round(bmr * 1.3 - 300);
-    } else if (profile.goal === 'gain-weight') {
-      return Math.round(bmr * 1.5 + 300);
-    }
-    return Math.round(bmr * 1.4);
-  };
-
-  // Calcular ingestão de água recomendada
-  const calculateWaterIntake = () => {
-    // 35ml por kg de peso corporal
-    return ((profile.currentWeight * 35) / 1000).toFixed(1);
-  };
-
-  // Obter imagem do corpo atual baseado nas respostas do quiz
+  // Helper functions
   const getCurrentBodyImage = () => {
     const bodyType = profile.bodyType?.toLowerCase() || '';
     const gender = profile.gender;
     
     if (gender === 'female') {
-      // Para mulheres, usar as novas imagens dos resultados
       if (bodyType.includes('fuller') || bodyType === 'fuller' || 
           bodyType.includes('overweight') || bodyType === 'overweight') {
-        // Gordinha ou Sobrepeso -> imagem fuller
         return getImageSrc('body-fuller-female-results');
       } else {
-        // Magra ou Média -> imagem average
         return getImageSrc('body-average-female-results');
       }
     } else {
-      // Para homens, usar imagens mais comuns para magro e médio
       if (bodyType.includes('thin') || bodyType === 'thin') {
         return getImageSrc('body-thin-male-real');
       } else if (bodyType.includes('average') || bodyType === 'average') {
@@ -130,15 +53,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     }
   };
 
-  // Obter imagem do corpo meta baseado nas respostas do quiz
   const getTargetBodyImage = () => {
     const gender = profile.gender;
     
     if (gender === 'female') {
-      // Para mulheres, sempre usar a imagem goal-female-results
       return getImageSrc('body-goal-female-results');
     } else {
-      // Para homens, manter a lógica original
       const targetType = profile.targetBodyType?.toLowerCase() || '';
       if (targetType.includes('slim') || targetType === 'slim') {
         return getImageSrc('goal-slim-male');
@@ -151,306 +71,438 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     }
   };
 
-  const bmi = parseFloat(calculateBMI());
-  const bmiStatus = getBMIStatus(bmi);
-  const calories = calculateCalories();
-  const waterIntake = calculateWaterIntake();
-  
-  // Mostrar o peso desejado como meta
-  const weightGoal = `${profile.targetWeight}kg`;
-
-  // Calcular idade metabólica (simplificado)
-  const metabolicAge = Math.max(18, Math.min(profile.userAge + Math.round((bmi - 22) * 2), 70));
-
-  // Determinar nível de energia baseado na resposta da pergunta 18
-  const getEnergyLevel = () => {
-    if (profile.energyLevel === 'great-most') return 'Ótimo';
-    if (profile.energyLevel === 'inconsistent') return 'Bom';
-    if (profile.energyLevel === 'morning-good') return 'Moderado';
-    return 'Baixo';
+  const calculateBMI = () => {
+    if (!profile.height || !profile.currentWeight) {
+      return '0.00';
+    }
+    const heightInMeters = profile.height / 100;
+    const bmi = (profile.currentWeight / (heightInMeters * heightInMeters)).toFixed(1);
+    return bmi;
   };
 
-  // Traduzir zonas alvo para português
-  const translateZones = (zones: string[] | undefined) => {
-    if (!Array.isArray(zones)) {
-      return [];
+  const getBodyFatPercentage = () => {
+    const bmi = parseFloat(calculateBMI());
+    if (profile.gender === 'female') {
+      return `${Math.round(21 + (bmi - 22) * 0.8)}-${Math.round(24 + (bmi - 22) * 0.8)}%`;
     }
-    const translations: Record<string, string> = {
-      'belly': 'Barriga',
-      'chest': 'Peito',
-      'arms': 'Braços',
-      'legs': 'Pernas',
-      'butt': 'Glúteos',
-      'thighs': 'Coxas',
-      'back': 'Costas',
-      'face': 'Rosto',
-      'neck': 'Pescoço',
-      'hips': 'Quadris'
-    };
-    return zones.map(zone => translations[zone] || zone);
+    return `${Math.round(18 + (bmi - 22) * 0.8)}-${Math.round(21 + (bmi - 22) * 0.8)}%`;
+  };
+
+  const calculateTargetBMI = () => {
+    const heightInMeters = profile.height / 100;
+    return (profile.targetWeight / (heightInMeters * heightInMeters)).toFixed(2);
+  };
+
+  const getTargetBodyFatPercentage = () => {
+    const targetBMI = parseFloat(calculateTargetBMI());
+    if (profile.gender === 'female') {
+      return `${Math.round(21 + (targetBMI - 22) * 0.8)}-${Math.round(24 + (targetBMI - 22) * 0.8)}%`;
+    }
+    return `${Math.round(18 + (targetBMI - 22) * 0.8)}-${Math.round(21 + (targetBMI - 22) * 0.8)}%`;
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Header fixo */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 py-4 px-4 md:px-6">
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 py-4 px-4 md:px-6 shadow-sm">
         <div className="max-w-4xl mx-auto flex items-center justify-center">
           <img src={nutriaLogo} alt="Nutria" className="h-12 md:h-14" />
         </div>
       </div>
 
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-12">
-        {/* Seção 1: Comparação Corpo Atual vs Meta */}
-        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-3 sm:p-6 md:p-10 shadow-lg">
-          <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-10">
-            {/* Corpo Atual */}
+        {/* ⭐ SEÇÃO 1 — HEADER DA REVELAÇÃO */}
+        <div className="bg-gradient-to-br from-purple-600 via-purple-500 to-pink-500 rounded-3xl p-8 md:p-12 text-center shadow-2xl">
+          <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border-2 border-white/40 mb-6">
+            <p className="text-sm font-bold uppercase tracking-wider text-white">✨ Análise Concluída</p>
+          </div>
+          
+          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+            Análise concluída! Seu corpo acabou de revelar o que estava escondido…
+          </h1>
+          
+          <p className="text-lg md:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
+            E isso explica exatamente porque você trava — e como destravar a partir de agora.
+          </p>
+        </div>
+
+        {/* Comparação de Corpo - Você agora vs Você daqui 1 mês */}
+        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-6 md:p-10 shadow-lg">
+          <div className="grid grid-cols-2 gap-6 md:gap-10">
+            {/* Você agora */}
             <div className="text-center">
-              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 md:mb-6">Seu peso</h3>
-              <div className="relative bg-white rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Você agora</h3>
+              <div className="relative bg-white rounded-2xl p-4 md:p-8 mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
                 <img 
                   src={getCurrentBodyImage()}
                   alt="Corpo atual" 
-                  className="w-full max-w-[140px] sm:max-w-[180px] md:max-w-none md:h-[400px] h-auto object-contain"
+                  className="w-full max-w-[140px] md:max-w-[220px] h-auto object-contain"
                 />
               </div>
-              <div className="space-y-2 md:space-y-3 px-1">
+              <div className="space-y-3">
                 <div>
-                  <p className="text-xs sm:text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-[10px] sm:text-xs md:text-base text-gray-600">{getBodyFatPercentage()}</p>
+                  <p className="text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-xs md:text-base text-gray-600">{getBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
-                  <Progress value={35} className="h-1.5 sm:h-2 md:h-2.5" />
+                  <p className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
+                  <Progress value={35} className="h-2 md:h-2.5" />
                 </div>
               </div>
             </div>
 
-            {/* Corpo Meta */}
+            {/* Você daqui 1 mês */}
             <div className="text-center">
-              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 md:mb-6">Meta</h3>
-              <div className="relative bg-white rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Você daqui 1 mês</h3>
+              <div className="relative bg-white rounded-2xl p-4 md:p-8 mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
                 <img 
                   src={getTargetBodyImage()}
                   alt="Corpo meta" 
-                  className="w-full max-w-[140px] sm:max-w-[180px] md:max-w-none md:h-[400px] h-auto object-contain"
+                  className="w-full max-w-[140px] md:max-w-[220px] h-auto object-contain"
                 />
               </div>
-              <div className="space-y-2 md:space-y-3 px-1">
+              <div className="space-y-3">
                 <div>
-                  <p className="text-xs sm:text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-[10px] sm:text-xs md:text-base text-gray-600">{getTargetBodyFatPercentage()}</p>
+                  <p className="text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
+                  <p className="text-xs md:text-base text-gray-600">{getTargetBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
-                  <Progress value={85} className="h-1.5 sm:h-2 md:h-2.5" />
+                  <p className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Nível de energia</p>
+                  <Progress value={85} className="h-2 md:h-2.5" />
                 </div>
               </div>
             </div>
           </div>
 
-          <p className="text-center text-[10px] sm:text-xs md:text-sm text-gray-600 mt-3 sm:mt-6 md:mt-8 px-2">
+          <p className="text-center text-xs md:text-sm text-gray-600 mt-6 md:mt-8">
             Os resultados não são típicos. Os resultados individuais podem variar.
           </p>
         </div>
 
-        {/* Seção 2: Resumo Pessoal */}
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Resumo pessoal baseado em suas respostas
-          </h2>
-
-          {/* IMC Atual */}
-          <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">IMC atual</h3>
-            <p className="text-4xl font-bold text-gray-900 mb-4">{bmi}</p>
-            
-            {/* Escala de IMC */}
-            <div className="relative mb-4">
-              <div className="h-3 bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 to-red-400 rounded-full"></div>
-              <div 
-                className="absolute top-0 w-4 h-4 bg-white border-4 border-gray-900 rounded-full transform -translate-y-0.5"
-                style={{ left: `${Math.min(Math.max((bmi - 15) / 25 * 100, 0), 100)}%` }}
-              ></div>
+        {/* ⭐ SEÇÃO 2 — DIAGNÓSTICO PERSONALIZADO */}
+        <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-green-50 rounded-3xl p-8 md:p-12 border-2 border-purple-200/60 shadow-xl">
+          <div className="text-center space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              🔬 Seu padrão metabólico identificado:
+            </h2>
+            <div className="bg-gradient-to-r from-white to-purple-50 rounded-2xl p-6 md:p-8 shadow-lg border-2 border-purple-300/50">
+              <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Metabolismo Reativo com Tendência Inflamatória {profile.gender === 'female' ? 'Feminina' : 'Masculina'}
+              </p>
             </div>
-            <div className="flex justify-between text-xs text-gray-600 mb-4">
-              <span>Abaixo do peso</span>
-              <span>Obeso</span>
-            </div>
-
-            <div className="bg-[#0d7377]/10 border-l-4 border-[#0d7377] p-4 rounded">
-              <p className="font-semibold text-[#0d7377] mb-2">{bmiStatus}</p>
-              <p className="text-sm text-gray-700">
-                O índice de massa corporal (IMC) é uma medida que usa sua altura e peso para determinar se seu peso é saudável.
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+              Esse padrão explica por que você incha facilmente, sente oscilação de energia, tem dificuldade de ver resultados e acaba frustrad{profile.gender === 'female' ? 'a' : 'o'} mesmo seguindo dietas 'certinhas'.
+            </p>
+            <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl p-6 border-2 border-green-300">
+              <p className="text-gray-900 text-lg md:text-xl font-bold">
+                💚 A boa notícia é: esse tipo metabólico responde extremamente bem ao protocolo que montei para você.
               </p>
             </div>
           </div>
-
-          {/* Ingestão Calórica */}
-          <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-orange-100 p-3 rounded-xl flex-shrink-0">
-                <Flame className="w-8 h-8 text-orange-500" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <p className="text-lg font-semibold text-gray-900">Ingestão calórica diária</p>
-                  <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-3 py-0.5 rounded-full text-xs font-semibold">
-                    RECOMENDADO
-                  </span>
-                </div>
-                <p className="text-3xl font-bold text-gray-900 mt-1">{calories} kcal</p>
-              </div>
-            </div>
-            <div className="relative mt-4">
-              <div className="h-3 bg-gradient-to-r from-yellow-200 via-orange-300 to-red-300 rounded-full"></div>
-              <div 
-                className="absolute top-0 w-4 h-4 bg-white border-4 border-orange-500 rounded-full transform -translate-y-0.5"
-                style={{ left: `${Math.min(Math.max(((calories - 1000) / 4000) * 100, 0), 100)}%` }}
-              ></div>
-            </div>
-            <div className="flex justify-between text-xs text-gray-600 mt-2">
-              <span>1000 kcal</span>
-              <span>5000 kcal</span>
-            </div>
-          </div>
-
-          {/* Ingestão de Água */}
-          <div className="bg-gray-50 rounded-2xl p-6 relative">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-100 p-3 rounded-xl flex-shrink-0">
-                <Droplet className="w-8 h-8 text-blue-500" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <p className="text-lg font-semibold text-gray-900">Ingestão diária de água</p>
-                  <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-3 py-0.5 rounded-full text-xs font-semibold">
-                    RECOMENDADO
-                  </span>
-                </div>
-                <p className="text-3xl font-bold text-gray-900 mt-1">{waterIntake} l</p>
-              </div>
-            </div>
-            {/* Copos de água estilizados */}
-            <div className="flex gap-2 justify-center mt-6">
-              {[...Array(8)].map((_, i) => {
-                const filled = i < Math.round(parseFloat(waterIntake) / 0.25);
-                return (
-                  <svg 
-                    key={i} 
-                    width="32" 
-                    height="48" 
-                    viewBox="0 0 32 48" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="flex-shrink-0"
-                  >
-                    {/* Copo */}
-                    <path 
-                      d="M6 4 L26 4 L24 44 L8 44 Z" 
-                      fill={filled ? '#60A5FA' : '#E5E7EB'} 
-                      stroke={filled ? '#3B82F6' : '#D1D5DB'} 
-                      strokeWidth="1.5"
-                    />
-                    {/* Água dentro */}
-                    {filled && (
-                      <path 
-                        d="M7 10 L25 10 L23.5 42 L8.5 42 Z" 
-                        fill="#93C5FD" 
-                        opacity="0.8"
-                      />
-                    )}
-                  </svg>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
-        {/* Seção 3: Seu plano personalizado está pronto */}
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
-            Seu plano personalizado <span className="text-[#0d7377]">está pronto!</span>
+        {/* ⭐ SEÇÃO 3 — ANÁLISE DETALHADA */}
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
+            O que acontece no seu corpo:
           </h2>
-
-          <div className="space-y-3 mt-6">
-            {/* Meta */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-              <div className="bg-red-100 p-2 rounded-full flex-shrink-0">
-                <Target className="w-5 h-5 text-red-500" />
-              </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-red-50 to-red-100 rounded-xl border-2 border-red-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-red-600 text-2xl font-bold">✔</div>
               <div>
-                <p className="text-sm text-gray-600">Meta</p>
-                <p className="text-lg font-bold text-gray-900">{weightGoal}</p>
+                <h3 className="font-bold text-gray-900 text-lg">Retenção corporal</h3>
               </div>
             </div>
-
-            {/* Idade Metabólica */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-              <div className="bg-purple-100 p-2 rounded-full flex-shrink-0">
-                <User className="w-5 h-5 text-purple-500" />
-              </div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl border-2 border-orange-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-orange-600 text-2xl font-bold">✔</div>
               <div>
-                <p className="text-sm text-gray-600">Idade metabólica</p>
-                <p className="text-lg font-bold text-gray-900">{metabolicAge}</p>
+                <h3 className="font-bold text-gray-900 text-lg">Ansiedade metabólica</h3>
               </div>
             </div>
-
-            {/* Nível de Energia */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-              <div className="bg-orange-100 p-2 rounded-full flex-shrink-0">
-                <Wind className="w-5 h-5 text-orange-500" />
-              </div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl border-2 border-yellow-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-yellow-600 text-2xl font-bold">✔</div>
               <div>
-                <p className="text-sm text-gray-600">Nível de energia</p>
-                <p className="text-lg font-bold text-gray-900">{getEnergyLevel()}</p>
+                <h3 className="font-bold text-gray-900 text-lg">Pico de estresse interno</h3>
               </div>
             </div>
-
-            {/* Zonas Alvo */}
-            {Array.isArray(profile.targetZones) && profile.targetZones.length > 0 && (
-              <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-                <div className="bg-green-100 p-2 rounded-full flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-green-500" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Zonas alvo</p>
-                  <p className="text-lg font-bold text-gray-900">{translateZones(profile.targetZones).join(', ')}</p>
-                </div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border-2 border-blue-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-blue-600 text-2xl font-bold">✔</div>
+              <div>
+                <h3 className="font-bold text-gray-900 text-lg">Falta de resposta a dietas comuns</h3>
               </div>
-            )}
+            </div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border-2 border-purple-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-purple-600 text-2xl font-bold">✔</div>
+              <div>
+                <h3 className="font-bold text-gray-900 text-lg">Oscilação de peso</h3>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl border-2 border-pink-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-pink-600 text-2xl font-bold">✔</div>
+              <div>
+                <h3 className="font-bold text-gray-900 text-lg">Inflamação silenciosa</h3>
+              </div>
+            </div>
+          </div>
+          <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6 border-2 border-purple-300">
+            <p className="text-center text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
+              <strong className="text-purple-700">Nada disso é culpa sua.</strong> Seu corpo não responde a dietas prontas — ele precisa de algo criado especificamente para o <strong className="text-purple-700">SEU padrão metabólico</strong>.
+            </p>
           </div>
         </div>
 
-        {/* Seção 4: As metas do seu plano também incluem */}
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            As metas do seu plano também incluem:
-          </h2>
-          
-          <div className="space-y-3">
-            {[
-              'Reduzir o estresse',
-              'Para se sentir mais saudável',
-              'Autodisciplina',
-              'Crie um hábito saudável',
-              'Melhore o sono'
-            ].map((goal, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <Check className="w-6 h-6 text-[#0d7377] flex-shrink-0" />
-                <span className="text-lg text-gray-900">{goal}</span>
+        {/* ⭐ SEÇÃO 4 — PROTOCOLO PERSONALIZADO */}
+        <div className="space-y-8">
+          <div className="text-center space-y-4">
+            <div className="inline-block">
+              <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl animate-pulse">
+                ✨ CARREGAMENTO CONCLUÍDO
               </div>
-            ))}
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              SEU PROTOCOLO FOI GERADO!
+            </h2>
+            <p className="text-xl text-gray-600">
+              4 pilares personalizados para o seu padrão metabólico
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* 🔶 1. Plano Nutricional */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl p-8 border-2 border-green-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-3xl">🔶</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Plano Nutricional Metabólico</h3>
+              </div>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Horários ideais para comer</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Alimentos que desincham o tipo metabólico específico</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Alimentos que travam diretamente seu metabolismo</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Ajuste correto de carboidratos</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Refeições rápidas e práticas</span>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 border-2 border-green-300 shadow-md">
+                <p className="text-sm text-gray-800">
+                  <strong className="text-green-700">💚 Recompensa dopaminérgica:</strong> Incluí também duas receitas secretas que aceleram o seu padrão metabólico em até 72 horas.
+                </p>
+              </div>
+            </div>
+
+            {/* 🔶 2. Treino */}
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-xl p-8 border-2 border-purple-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-3xl">🔶</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Treino Certo Para o Seu Corpo</h3>
+              </div>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Treino exato do tipo metabólico</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Tempo ideal: 20-30 minutos</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Intensidade calculada</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Rotinas que destravam braços, pernas e abdômen</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Protocolos rápidos para dias cansativos</span>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 border-2 border-purple-300 shadow-md">
+                <p className="text-sm text-gray-800">
+                  <strong className="text-purple-700">💜 Recompensa:</strong> Seu treino ideal foi selecionado para acelerar resultado sem exaustão.
+                </p>
+              </div>
+            </div>
+
+            {/* 🔶 3. Receitas Secretas */}
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl shadow-xl p-8 border-2 border-orange-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-600 to-amber-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-3xl">🔶</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Receitas Secretas do Método Monjour</h3>
+              </div>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <span className="text-orange-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">12 receitas anti-inflamatórias</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-orange-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">7 detox reativos</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-orange-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Smoothie metabólico do seu tipo</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-orange-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Chás secretos personalizados</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-orange-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Protocolo de desincho de 24h</span>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 border-2 border-orange-300 shadow-md">
+                <p className="text-sm text-gray-800">
+                  <strong className="text-orange-700">🧡 Exclusivo:</strong> Essas receitas não estão no Google — apenas para quem descobre seu padrão metabólico.
+                </p>
+              </div>
+            </div>
+
+            {/* 🔶 4. Nutricionista Online */}
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-xl p-8 border-2 border-blue-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-3xl">🔶</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Nutricionista Online Sempre</h3>
+              </div>
+              
+              <div className="mb-6 flex justify-center">
+                <img 
+                  src={appPhoneMockup}
+                  alt="App Nutria"
+                  className="w-full max-w-[200px] drop-shadow-2xl"
+                />
+              </div>
+
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Atendimento por chat</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Ajuste do plano</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Revisão semanal</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-gray-800 font-medium">Apoio emocional</span>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 border-2 border-blue-300 shadow-md">
+                <p className="text-sm text-gray-800">
+                  <strong className="text-blue-700">💙 Suporte:</strong> Você não vai caminhar sozinha. Sempre que travar, alguém te apoia.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Seção 5: Transformações Reais */}
-        <section className="py-8 px-4 bg-gradient-to-br from-orange-50/50 to-amber-50/50">
-          <div className="max-w-6xl mx-auto">
+        {/* ⭐ SEÇÃO 5 — PREÇO ANCORADO */}
+        <div className="bg-gradient-to-br from-gray-50 via-white to-gray-50 rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-gray-200">
+          <div className="text-center space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+              Toda essa estrutura custaria facilmente:
+            </h2>
+            <div className="space-y-3 text-xl text-gray-600 mb-8">
+              <p className="line-through">Plano Nutricional Completo: <strong>R$ 497</strong></p>
+              <p className="line-through">Treino Personalizado: <strong>R$ 297</strong></p>
+              <p className="line-through">Receitas Exclusivas: <strong>R$ 197</strong></p>
+              <p className="line-through">Nutricionista Online: <strong>R$ 120/mês</strong></p>
+            </div>
+            <div className="border-t-2 border-dashed border-gray-400 pt-6 mb-8">
+              <p className="text-2xl text-gray-500 line-through mb-2">Total: <strong>R$ 1.111</strong></p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-10 text-center text-white shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+            <div className="relative z-10">
+              <p className="text-2xl md:text-3xl font-bold mb-6 drop-shadow-lg">
+                🔥 Hoje você desbloqueia TUDO isso por apenas
+              </p>
+              <p className="text-6xl md:text-7xl font-bold mb-8 drop-shadow-2xl">
+                R$ 5,90
+              </p>
+              <a 
+                href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-purple-600 px-12 md:px-16 py-6 md:py-8 text-xl md:text-3xl font-bold rounded-full shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-300 hover:bg-yellow-50"
+              >
+                Quero Meu Plano Completo Agora →
+              </a>
+              <p className="text-sm mt-6 text-white/90 font-medium">✨ Acesso imediato após 1 minuto</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ⭐ SEÇÃO 6 — GARANTIA */}
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-10 border-2 border-green-300 shadow-xl text-center">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-3xl">✓</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Garantia Invertida</h3>
+          </div>
+          <p className="text-lg md:text-xl text-gray-800 leading-relaxed max-w-2xl mx-auto">
+            Se em <strong className="text-green-700">7 dias</strong> seu corpo não mostrar sinais claros de resposta, eu ajusto tudo pessoalmente para você — <strong className="text-green-700">sem custo adicional</strong>.
+          </p>
+        </div>
+
+        {/* ⭐ SEÇÃO 7 — CTA FINAL */}
+        <div className="text-center py-8" data-cta-section>
+          <a 
+            href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white px-12 md:px-20 py-6 md:py-8 text-2xl md:text-4xl font-bold rounded-full shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-300"
+          >
+            Quero Meu Plano Completo Agora →
+          </a>
+          <p className="text-sm text-gray-500 mt-4">✨ Acesso imediato após 1 minuto.</p>
+        </div>
+
+        {/* ⭐ SEÇÃO 8 — PROVA SOCIAL */}
+        <section className="py-12 bg-gradient-to-br from-orange-50/50 to-amber-50/50 rounded-3xl">
+          <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-              Transformações que Inspiram
+              ✨ Histórias de Transformação Reais
             </h2>
             <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-              Resultados reais de pessoas que transformaram suas vidas com o Nutria
+              Pessoas que mudaram suas vidas com o método personalizado
             </p>
             
             <Carousel
@@ -463,7 +515,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               <CarouselContent className="-ml-2 md:-ml-4">
                 {profile.gender === 'male' ? (
                   <>
-                    {/* Card 1 - Ricardo */}
+                    {/* Transformações Masculinas */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                       <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
@@ -486,7 +538,6 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                       </div>
                     </CarouselItem>
 
-                    {/* Card 2 - Felipe */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                       <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
@@ -509,7 +560,6 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                       </div>
                     </CarouselItem>
 
-                    {/* Card 3 - Marcelo */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                       <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
@@ -534,7 +584,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                   </>
                 ) : (
                   <>
-                    {/* Card 1 - Camila */}
+                    {/* Transformações Femininas */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                       <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
@@ -557,7 +607,6 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                       </div>
                     </CarouselItem>
 
-                    {/* Card 2 - Juliana */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                       <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
@@ -580,7 +629,6 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                       </div>
                     </CarouselItem>
 
-                    {/* Card 3 - Patricia */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                       <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
@@ -610,112 +658,48 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               <CarouselNext className="-right-4 md:-right-12" />
             </Carousel>
 
-            {/* CTA Button */}
-            <div className="text-center px-4 mt-6">
-              <Button 
-                onClick={() => {
-                  const ctaSection = document.querySelector('[data-cta-section]');
-                  if (ctaSection) {
-                    ctaSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }
-                }}
-                className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+            <div className="text-center mt-6">
+              <a 
+                href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 Quero ser o próximo resultado
-              </Button>
+              </a>
             </div>
           </div>
         </section>
 
-        {/* Seção 6: O que você ganha */}
-        <section className="py-16 px-4 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-              O que você ganha
-            </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Tudo o que você precisa para atingir seus objetivos de fitness em um só lugar
-            </p>
-            
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center">
-              {/* Phone Mockup */}
-              <div className="flex-shrink-0">
-                <img 
-                  src={appMockupNutrition} 
-                  alt="Nutria App" 
-                  className="w-full max-w-[280px] md:max-w-[340px] h-auto object-contain drop-shadow-2xl"
-                />
-              </div>
+        {/* ⭐ SEÇÃO 9 — FINALIZAÇÃO EMOCIONAL */}
+        <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 rounded-3xl p-10 md:p-16 text-center shadow-2xl border-2 border-purple-200">
+          <p className="text-2xl md:text-3xl text-gray-800 leading-relaxed font-light mb-8">
+            Agora que você finalmente sabe o seu <strong className="text-purple-700">padrão metabólico</strong>… 
+            <br />
+            <span className="text-pink-700 font-semibold">está nas suas mãos transformar seu corpo com o método certo.</span>
+          </p>
+          <a 
+            href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gradient-to-r from-orange-500 via-pink-600 to-purple-600 text-white px-12 md:px-16 py-6 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-300"
+          >
+            Sim, eu quero transformar meu corpo agora! 🔥
+          </a>
+        </div>
 
-              {/* Features List */}
-              <div className="space-y-6 max-w-xl">
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#0d7377] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-1">
-                      Planos nutricionais personalizados com receitas fáceis de entender
-                    </h3>
-                    <p className="text-gray-600">
-                      Receba planos alimentares adaptados às suas necessidades e preferências
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#0d7377] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-1">
-                      Rastreador de água inteligente para hidratação suficiente
-                    </h3>
-                    <p className="text-gray-600">
-                      Monitore sua ingestão de água e mantenha-se hidratado ao longo do dia
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#0d7377] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-1">
-                      Temporizador de jejum personalizado
-                    </h3>
-                    <p className="text-gray-600">
-                      Acompanhe seus períodos de jejum intermitente de forma simples e eficaz
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Garantia e Rodapé */}
+        {/* Rodapé */}
         <div className="text-center space-y-6 pt-12 pb-8">
           <div className="flex items-center justify-center gap-2 text-gray-700">
-            <ShieldCheck className="w-6 h-6 text-[#0d7377]" />
-            <span className="font-semibold">Garantia de 30 dias de devolução do dinheiro</span>
+            <Heart className="w-6 h-6 text-pink-600" fill="currentColor" />
+            <p className="text-lg font-medium">
+              Feito com dedicação para sua jornada de transformação
+            </p>
           </div>
           
-          <p className="text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Se não obtiver resultados visíveis, você pode solicitar um reembolso total em até 30 dias após a compra. <span className="text-[#0d7377] font-semibold cursor-pointer">Saiba mais</span>
+          <p className="text-gray-500 text-sm">
+            © 2024 Método Monjour - Todos os direitos reservados
           </p>
-          
-          <div className="mt-6 text-xs text-gray-500">
-            <p>Copyright © 2024 Nutria</p>
-            <p>Todos os direitos reservados</p>
-          </div>
         </div>
       </div>
     </div>
