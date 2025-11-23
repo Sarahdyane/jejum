@@ -35,7 +35,7 @@ import lipedemaInfo from '@/assets/lipedema-info.png';
 import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
 import teasCollection from '@/assets/teas-collection.jpg';
 import teaEchinacea from '@/assets/tea-echinacea.jpg';
-import metabolicHeart from '@/assets/metabolic-heart.png';
+import metabolicHeart from '@/assets/metabolic-door-new-woman.png';
 import metabolicPatternFemale from '@/assets/metabolic-pattern-female.png';
 
 // Professional body type images
