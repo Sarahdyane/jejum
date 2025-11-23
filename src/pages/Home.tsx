@@ -1,10 +1,34 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import metabolicDoor from '@/assets/metabolic-door-new.png';
+import { removeBackground, loadImage } from '@/utils/removeBackground';
 
 export default function Home() {
   const navigate = useNavigate();
+  const [processedImage, setProcessedImage] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  useEffect(() => {
+    const processImage = async () => {
+      setIsProcessing(true);
+      try {
+        const response = await fetch(metabolicDoor);
+        const blob = await response.blob();
+        const img = await loadImage(blob);
+        const processedBlob = await removeBackground(img);
+        const url = URL.createObjectURL(processedBlob);
+        setProcessedImage(url);
+      } catch (error) {
+        console.error('Error processing image:', error);
+      } finally {
+        setIsProcessing(false);
+      }
+    };
+
+    processImage();
+  }, []);
   
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -27,12 +51,18 @@ export default function Home() {
               A Sua Porta Metabólica Secreta
             </h2>
             <div className="relative w-full max-w-3xl mx-auto">
-              <img 
-                src={metabolicDoor} 
-                alt="A Sua Porta Metabólica Secreta" 
-                title="A Sua Porta Metabólica Secreta"
-                className="w-full h-auto object-contain drop-shadow-2xl"
-              />
+              {isProcessing ? (
+                <div className="flex items-center justify-center h-64">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                </div>
+              ) : (
+                <img 
+                  src={processedImage || metabolicDoor} 
+                  alt="A Sua Porta Metabólica Secreta" 
+                  title="A Sua Porta Metabólica Secreta"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                />
+              )}
             </div>
           </div>
 
