@@ -187,6 +187,12 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: "analyzing-pattern",
+    title: "Analisando seu padrão metabólico",
+    type: "intermediate",
+    thematicImage: "metabolic-heart"
+  },
+  {
     id: "motivation-change-habits",
     title: "Pronto. Agora eu CONFIRMEI seu padrão metabólico oculto.",
     subtitle: "Seu corpo segue um padrão que poucas mulheres conhecem — e isso muda tudo.",
