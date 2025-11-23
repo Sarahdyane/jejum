@@ -176,20 +176,20 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </div>
 
         {/* ⭐ SEÇÃO 2 — DIAGNÓSTICO PERSONALIZADO */}
-        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12 border-2 border-green-200/60 shadow-xl">
+        <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-8 md:p-12 border-2 border-primary/20 shadow-xl">
           <div className="text-center space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
               🔬 Seu padrão metabólico identificado:
             </h2>
-            <div className="bg-gradient-to-r from-white to-green-50 rounded-2xl p-6 md:p-8 shadow-lg border-2 border-green-300/50">
-              <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            <div className="bg-gradient-to-r from-white to-primary/10 rounded-2xl p-6 md:p-8 shadow-lg border-2 border-primary/30">
+              <p className="text-2xl md:text-4xl font-bold text-primary">
                 Metabolismo Reativo com Tendência Inflamatória {profile.gender === 'female' ? 'Feminina' : 'Masculina'}
               </p>
             </div>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
               Esse padrão explica por que você incha facilmente, sente oscilação de energia, tem dificuldade de ver resultados e acaba frustrad{profile.gender === 'female' ? 'a' : 'o'} mesmo seguindo dietas 'certinhas'.
             </p>
-            <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl p-6 border-2 border-green-300">
+            <div className="bg-gradient-to-r from-primary/15 to-primary/20 rounded-xl p-6 border-2 border-primary/30">
               <p className="text-gray-900 text-lg md:text-xl font-bold">
                 💚 A boa notícia é: esse tipo metabólico responde extremamente bem ao protocolo que montei para você.
               </p>
@@ -227,22 +227,22 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 <h3 className="font-bold text-gray-900 text-lg">Falta de resposta a dietas comuns</h3>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border-2 border-green-200 shadow-md hover:shadow-lg transition-all">
-              <div className="text-green-600 text-2xl font-bold">✔</div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-primary/10 to-primary/15 rounded-xl border-2 border-primary/20 shadow-md hover:shadow-lg transition-all">
+              <div className="text-primary text-2xl font-bold">✔</div>
               <div>
                 <h3 className="font-bold text-gray-900 text-lg">Oscilação de peso</h3>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl border-2 border-emerald-200 shadow-md hover:shadow-lg transition-all">
-              <div className="text-emerald-600 text-2xl font-bold">✔</div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-primary/10 to-primary/15 rounded-xl border-2 border-primary/20 shadow-md hover:shadow-lg transition-all">
+              <div className="text-primary text-2xl font-bold">✔</div>
               <div>
                 <h3 className="font-bold text-gray-900 text-lg">Inflamação silenciosa</h3>
               </div>
             </div>
           </div>
-          <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-6 border-2 border-green-300">
+          <div className="bg-gradient-to-r from-primary/15 to-primary/20 rounded-2xl p-6 border-2 border-primary/30">
             <p className="text-center text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
-              <strong className="text-green-700">Nada disso é culpa sua.</strong> Seu corpo não responde a dietas prontas — ele precisa de algo criado especificamente para o <strong className="text-green-700">SEU padrão metabólico</strong>.
+              <strong className="text-primary">Nada disso é culpa sua.</strong> Seu corpo não responde a dietas prontas — ele precisa de algo criado especificamente para o <strong className="text-primary">SEU padrão metabólico</strong>.
             </p>
           </div>
         </div>
@@ -260,9 +260,9 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* 🔶 1. Plano Nutricional */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl p-8 border-2 border-green-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl shadow-xl p-8 border-2 border-primary/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
                   <span className="text-3xl">🔶</span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Plano Nutricional Metabólico</h3>
@@ -270,23 +270,23 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               
               <div className="space-y-3 mb-6">
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-primary font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Horários ideais para comer</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-primary font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Alimentos que desincham o tipo metabólico específico</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-primary font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Alimentos que travam diretamente seu metabolismo</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-primary font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Ajuste correto de carboidratos</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-lg">✓</span>
+                  <span className="text-primary font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Refeições rápidas e práticas</span>
                 </div>
               </div>
@@ -417,7 +417,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-center text-white shadow-lg mt-8">
+          <div className="bg-primary rounded-2xl p-8 text-center text-white shadow-lg mt-8">
             <p className="text-xl md:text-2xl font-bold mb-4">
               🔥 Hoje você desbloqueia TUDO por apenas
             </p>
@@ -428,7 +428,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white text-green-700 px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+              className="inline-block bg-white text-primary px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
             >
               Quero Meu Plano Completo Agora →
             </a>
@@ -437,15 +437,15 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </div>
 
         {/* ⭐ SEÇÃO 6 — GARANTIA */}
-        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-10 border-2 border-green-300 shadow-xl text-center">
+        <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-8 md:p-10 border-2 border-primary/30 shadow-xl text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-3xl">✓</span>
+            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-3xl text-white">✓</span>
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Garantia Invertida</h3>
           </div>
           <p className="text-lg md:text-xl text-gray-800 leading-relaxed max-w-2xl mx-auto">
-            Se em <strong className="text-green-700">7 dias</strong> seu corpo não mostrar sinais claros de resposta, eu ajusto tudo pessoalmente para você — <strong className="text-green-700">sem custo adicional</strong>.
+            Se em <strong className="text-primary">7 dias</strong> seu corpo não mostrar sinais claros de resposta, eu ajusto tudo pessoalmente para você — <strong className="text-primary">sem custo adicional</strong>.
           </p>
         </div>
 
@@ -455,7 +455,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-green-600 text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+            className="inline-block bg-primary text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
           >
             Quero Meu Plano Completo Agora →
           </a>
@@ -630,7 +630,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+                className="inline-block bg-primary text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
               >
                 Quero ser o próximo resultado
               </a>
@@ -639,17 +639,17 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </section>
 
         {/* ⭐ SEÇÃO 9 — FINALIZAÇÃO EMOCIONAL */}
-        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12 text-center shadow-lg border border-green-200">
+        <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-8 md:p-12 text-center shadow-lg border border-primary/20">
           <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
-            Agora que você finalmente sabe o seu <strong className="text-green-700">padrão metabólico</strong>… 
+            Agora que você finalmente sabe o seu <strong className="text-primary">padrão metabólico</strong>… 
             <br />
-            <span className="text-emerald-700 font-semibold">está nas suas mãos transformar seu corpo com o método certo.</span>
+            <span className="text-primary font-semibold">está nas suas mãos transformar seu corpo com o método certo.</span>
           </p>
           <a 
             href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-green-600 text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+            className="inline-block bg-primary text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
           >
             Sim, eu quero transformar meu corpo agora! 🔥
           </a>
@@ -658,7 +658,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         {/* Rodapé */}
         <div className="text-center space-y-6 pt-12 pb-8">
           <div className="flex items-center justify-center gap-2 text-gray-700">
-            <Heart className="w-6 h-6 text-green-600" fill="currentColor" />
+            <Heart className="w-6 h-6 text-primary" fill="currentColor" />
             <p className="text-lg font-medium">
               Feito com dedicação para sua jornada de transformação
             </p>
