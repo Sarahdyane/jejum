@@ -417,22 +417,22 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             </div>
           </div>
 
-          <div className="bg-primary rounded-2xl p-8 text-center text-white shadow-lg mt-8">
-            <p className="text-xl md:text-2xl font-bold mb-4">
+          <div className="bg-primary rounded-2xl p-4 md:p-8 text-center text-white shadow-lg mt-8">
+            <p className="text-base md:text-xl lg:text-2xl font-bold mb-3 md:mb-4">
               🔥 Hoje você desbloqueia TUDO por apenas
             </p>
-            <p className="text-5xl md:text-6xl font-bold mb-6">
+            <p className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
               R$ 5,90
             </p>
             <a 
               href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white text-primary px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+              className="inline-block bg-white text-primary px-6 py-2.5 md:px-8 md:py-3 text-base md:text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
             >
               Quero Meu Plano Completo Agora →
             </a>
-            <p className="text-sm mt-4 text-white/90">✨ Acesso imediato após 1 minuto</p>
+            <p className="text-xs md:text-sm mt-3 md:mt-4 text-white/90">✨ Acesso imediato após 1 minuto</p>
           </div>
         </div>
 
@@ -455,11 +455,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-primary text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+            className="inline-block bg-primary text-white px-6 py-2.5 md:px-10 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
           >
             Quero Meu Plano Completo Agora →
           </a>
-          <p className="text-sm text-gray-500 mt-3">✨ Acesso imediato após 1 minuto.</p>
+          <p className="text-xs md:text-sm text-gray-500 mt-3">✨ Acesso imediato após 1 minuto.</p>
         </div>
 
         {/* ⭐ SEÇÃO 8 — PROVA SOCIAL */}
@@ -630,7 +630,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-primary text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+                className="inline-block bg-primary text-white px-6 py-2.5 md:px-10 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
               >
                 Quero ser o próximo resultado
               </a>
@@ -639,8 +639,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </section>
 
         {/* ⭐ SEÇÃO 9 — FINALIZAÇÃO EMOCIONAL */}
-        <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-8 md:p-12 text-center shadow-lg border border-primary/20">
-          <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
+        <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-6 md:p-8 lg:p-12 text-center shadow-lg border border-primary/20">
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed mb-5 md:mb-6">
             Agora que você finalmente sabe o seu <strong className="text-primary">padrão metabólico</strong>… 
             <br />
             <span className="text-primary font-semibold">está nas suas mãos transformar seu corpo com o método certo.</span>
@@ -649,7 +649,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-primary text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+            className="inline-block bg-primary text-white px-6 py-2.5 md:px-10 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
           >
             Sim, eu quero transformar meu corpo agora! 🔥
           </a>
