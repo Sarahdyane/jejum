@@ -59,7 +59,14 @@ export default function Home() {
           {/* CTA Section */}
           <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button 
-              onClick={() => navigate('/quiz')} 
+              onClick={() => {
+                try {
+                  sessionStorage.removeItem('nutria_quiz_state');
+                } catch (e) {
+                  // ignore storage errors
+                }
+                navigate('/quiz');
+              }} 
               className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all" 
               size="lg"
             >
