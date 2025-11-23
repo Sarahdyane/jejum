@@ -90,6 +90,13 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     }));
   }, []);
 
+  const goToQuestion = useCallback((questionId: number | string) => {
+    setQuizState(prev => ({
+      ...prev,
+      currentQuestion: questionId,
+    }));
+  }, []);
+
   const getCurrentQuestion = useCallback(() => {
     const filteredQuestions = getFilteredQuestions();
     return filteredQuestions.find(q => q.id === quizState.currentQuestion);
@@ -154,5 +161,6 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     getProgress,
     hasAnswer,
     generateProfile,
+    goToQuestion,
   };
 };
