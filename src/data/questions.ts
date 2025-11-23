@@ -2,14 +2,14 @@ import { QuizQuestion } from "@/types/quiz";
 
 export const questions: QuizQuestion[] = [
   {
-    id: 1,
+    id: "heart-intro",
     title: "Hoje você vai descobrir o seu coração metabólico, e o que realmente funciona pra você.",
     description: "Certeza que você sempre tenta começar uma dieta diferente, aquela velha frase \"na segunda eu começo...\", e seu corpo nunca mostra bons resultados. A verdade é que a dieta que você vê por ai pode não funcionar pro seu metabolismo.",
     type: "intermediate",
     thematicImage: "metabolic-heart"
   },
   {
-    id: "vision-1",
+    id: 1,
     title: "Qual é a sua Visão de Sucesso?",
     subtitle: "O que você quer que as pessoas notem primeiro em você?",
     type: "single",
