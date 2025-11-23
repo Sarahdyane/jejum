@@ -264,7 +264,7 @@ export const questions: QuizQuestion[] = [
     title: "Deixe-nos personalizar seu plano",
     subtitle: "Para oferecer planos personalizados e recursos do aplicativo, precisamos do seu consentimento para processar seus dados de saúde.",
     type: "intermediate",
-    image: "healthy-lifestyle"
+    image: "metabolic-pattern-female"
   },
   {
     id: "loading-page",
