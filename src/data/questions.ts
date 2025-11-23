@@ -2,13 +2,6 @@ import { QuizQuestion } from "@/types/quiz";
 
 export const questions: QuizQuestion[] = [
   {
-    id: "splash-screen",
-    title: "O Seu Corpo Tem um Padrão Oculto\nVamos Descobrir Qual É?",
-    subtitle: "Cada mulher tem um padrão oculto que explica por que ela incha, por que ganha peso rápido em certas fases, por que trava no dia 3…\nHoje, você vai descobrir o SEU.",
-    type: "intermediate",
-    image: "nutria-logo"
-  },
-  {
     id: 1,
     title: "Hoje você vai descobrir o seu coração metabólico, e o que realmente funciona pra você.",
     description: "Certeza que você sempre tenta começar uma dieta diferente, aquela velha frase \"na segunda eu começo...\", e seu corpo nunca mostra bons resultados. A verdade é que a dieta que você vê por ai pode não funcionar pro seu metabolismo.",
