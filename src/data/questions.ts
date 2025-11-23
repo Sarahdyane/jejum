@@ -261,8 +261,8 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "consent-page",
-    title: "Deixe-nos personalizar seu plano",
-    subtitle: "Para oferecer planos personalizados e recursos do aplicativo, precisamos do seu consentimento para processar seus dados de saúde.",
+    title: "Estamos finalizando sua análise…",
+    subtitle: "Para liberar seu plano metabólico personalizado, preciso da sua autorização para usar suas respostas e montar:\n\nsua alimentação ideal\nseu treino exato\nsuas receitas e chás específicos\nseu protocolo de desincho\n\nIsso garante que seu resultado seja 100% preciso.",
     type: "intermediate",
     image: "metabolic-pattern-female"
   },

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Utensils, Dumbbell, Coffee, Droplets } from "lucide-react";
 import { useEffect } from "react";
 
 interface IntermediatePageProps {
@@ -85,6 +85,89 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
         >
           Começar
         </motion.button>
+      </div>
+    );
+  }
+
+  // Special styling for consent page
+  const isConsentPage = title === "Estamos finalizando sua análise…";
+  
+  if (isConsentPage) {
+    const items = [
+      { icon: Utensils, text: "sua alimentação ideal" },
+      { icon: Dumbbell, text: "seu treino exato" },
+      { icon: Coffee, text: "suas receitas e chás específicos" },
+      { icon: Droplets, text: "seu protocolo de desincho" }
+    ];
+
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-8">
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="fixed top-4 left-4 z-50 p-2 hover:bg-secondary/50 rounded-lg transition-colors"
+            aria-label="Voltar"
+          >
+            <ArrowLeft className="w-5 h-5 text-foreground" />
+          </button>
+        )}
+        <div className="w-full max-w-xl text-center space-y-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              {title}
+            </h1>
+            
+            <div className="space-y-6 text-left">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                Para liberar seu plano metabólico personalizado, preciso da sua autorização para usar suas respostas e montar:
+              </p>
+              
+              <div className="space-y-4 pl-4">
+                {items.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                    className="flex items-center gap-3"
+                  >
+                    <item.icon className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <span className="text-base text-foreground">{item.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <p className="text-sm text-muted-foreground pt-4">
+                Isso garante que seu resultado seja <span className="font-semibold text-foreground">100% preciso.</span>
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="space-y-3"
+          >
+            <button
+              onClick={onContinue}
+              className="w-full bg-emerald-600 text-white hover:bg-emerald-700 
+                       py-4 px-8 rounded-xl font-semibold text-lg transition-all
+                       shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Desbloquear meu plano →
+            </button>
+            
+            <p className="text-xs text-muted-foreground/70">
+              Autorizo o uso das minhas respostas para gerar meu plano individual.
+            </p>
+          </motion.div>
+        </div>
       </div>
     );
   }
