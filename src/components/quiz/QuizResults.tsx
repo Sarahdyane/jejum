@@ -5,7 +5,7 @@ import { Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import nutriaLogo from '@/assets/nutria-logo.png';
-import appPhoneMockup from '@/assets/app-phone-mockup.png';
+import appMockupNutritionReal from '@/assets/app-mockup-nutrition-real.png';
 import { getImageSrc } from '@/utils/imageMapping';
 import transformationCombinedFemale3 from '@/assets/transformation-combined-female-3.png';
 import transformationCombinedFemale4 from '@/assets/transformation-combined-female-4.png';
@@ -112,16 +112,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-12">
         {/* ⭐ SEÇÃO 1 — HEADER DA REVELAÇÃO */}
-        <div className="bg-gradient-to-br from-purple-600 via-purple-500 to-pink-500 rounded-3xl p-8 md:p-12 text-center shadow-2xl">
-          <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border-2 border-white/40 mb-6">
-            <p className="text-sm font-bold uppercase tracking-wider text-white">✨ Análise Concluída</p>
-          </div>
-          
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+        <div className="text-center space-y-4 py-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
             Análise concluída! Seu corpo acabou de revelar o que estava escondido…
           </h1>
           
-          <p className="text-lg md:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
             E isso explica exatamente porque você trava — e como destravar a partir de agora.
           </p>
         </div>
@@ -180,13 +176,13 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </div>
 
         {/* ⭐ SEÇÃO 2 — DIAGNÓSTICO PERSONALIZADO */}
-        <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-green-50 rounded-3xl p-8 md:p-12 border-2 border-purple-200/60 shadow-xl">
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12 border-2 border-green-200/60 shadow-xl">
           <div className="text-center space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
               🔬 Seu padrão metabólico identificado:
             </h2>
-            <div className="bg-gradient-to-r from-white to-purple-50 rounded-2xl p-6 md:p-8 shadow-lg border-2 border-purple-300/50">
-              <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <div className="bg-gradient-to-r from-white to-green-50 rounded-2xl p-6 md:p-8 shadow-lg border-2 border-green-300/50">
+              <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                 Metabolismo Reativo com Tendência Inflamatória {profile.gender === 'female' ? 'Feminina' : 'Masculina'}
               </p>
             </div>
@@ -231,22 +227,22 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 <h3 className="font-bold text-gray-900 text-lg">Falta de resposta a dietas comuns</h3>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border-2 border-purple-200 shadow-md hover:shadow-lg transition-all">
-              <div className="text-purple-600 text-2xl font-bold">✔</div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border-2 border-green-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-green-600 text-2xl font-bold">✔</div>
               <div>
                 <h3 className="font-bold text-gray-900 text-lg">Oscilação de peso</h3>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl border-2 border-pink-200 shadow-md hover:shadow-lg transition-all">
-              <div className="text-pink-600 text-2xl font-bold">✔</div>
+            <div className="flex items-start gap-3 p-5 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl border-2 border-emerald-200 shadow-md hover:shadow-lg transition-all">
+              <div className="text-emerald-600 text-2xl font-bold">✔</div>
               <div>
                 <h3 className="font-bold text-gray-900 text-lg">Inflamação silenciosa</h3>
               </div>
             </div>
           </div>
-          <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6 border-2 border-purple-300">
+          <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-6 border-2 border-green-300">
             <p className="text-center text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
-              <strong className="text-purple-700">Nada disso é culpa sua.</strong> Seu corpo não responde a dietas prontas — ele precisa de algo criado especificamente para o <strong className="text-purple-700">SEU padrão metabólico</strong>.
+              <strong className="text-green-700">Nada disso é culpa sua.</strong> Seu corpo não responde a dietas prontas — ele precisa de algo criado especificamente para o <strong className="text-green-700">SEU padrão metabólico</strong>.
             </p>
           </div>
         </div>
@@ -254,15 +250,10 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         {/* ⭐ SEÇÃO 4 — PROTOCOLO PERSONALIZADO */}
         <div className="space-y-8">
           <div className="text-center space-y-4">
-            <div className="inline-block">
-              <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl animate-pulse">
-                ✨ CARREGAMENTO CONCLUÍDO
-              </div>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               SEU PROTOCOLO FOI GERADO!
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg text-gray-600">
               4 pilares personalizados para o seu padrão metabólico
             </p>
           </div>
@@ -299,50 +290,38 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                   <span className="text-gray-800 font-medium">Refeições rápidas e práticas</span>
                 </div>
               </div>
-
-              <div className="bg-white rounded-xl p-4 border-2 border-green-300 shadow-md">
-                <p className="text-sm text-gray-800">
-                  <strong className="text-green-700">💚 Recompensa dopaminérgica:</strong> Incluí também duas receitas secretas que aceleram o seu padrão metabólico em até 72 horas.
-                </p>
-              </div>
             </div>
 
             {/* 🔶 2. Treino */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-xl p-8 border-2 border-purple-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl shadow-xl p-8 border-2 border-cyan-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <span className="text-3xl">🔶</span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Treino Certo Para o Seu Corpo</h3>
               </div>
               
-              <div className="space-y-3 mb-6">
+              <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-cyan-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Treino exato do tipo metabólico</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-cyan-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Tempo ideal: 20-30 minutos</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-cyan-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Intensidade calculada</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-cyan-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Rotinas que destravam braços, pernas e abdômen</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
+                  <span className="text-cyan-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Protocolos rápidos para dias cansativos</span>
                 </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 border-2 border-purple-300 shadow-md">
-                <p className="text-sm text-gray-800">
-                  <strong className="text-purple-700">💜 Recompensa:</strong> Seu treino ideal foi selecionado para acelerar resultado sem exaustão.
-                </p>
               </div>
             </div>
 
@@ -386,9 +365,9 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             </div>
 
             {/* 🔶 4. Nutricionista Online */}
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-xl p-8 border-2 border-blue-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+            <div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl shadow-xl p-8 border-2 border-purple-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <span className="text-3xl">🔶</span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Nutricionista Online Sempre</h3>
@@ -396,76 +375,64 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               
               <div className="mb-6 flex justify-center">
                 <img 
-                  src={appPhoneMockup}
+                  src={appMockupNutritionReal}
                   alt="App Nutria"
                   className="w-full max-w-[200px] drop-shadow-2xl"
                 />
               </div>
 
-              <div className="space-y-3 mb-6">
+              <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Atendimento por chat</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Ajuste do plano</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Revisão semanal</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-blue-600 font-bold text-lg">✓</span>
+                  <span className="text-purple-600 font-bold text-lg">✓</span>
                   <span className="text-gray-800 font-medium">Apoio emocional</span>
                 </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 border-2 border-blue-300 shadow-md">
-                <p className="text-sm text-gray-800">
-                  <strong className="text-blue-700">💙 Suporte:</strong> Você não vai caminhar sozinha. Sempre que travar, alguém te apoia.
-                </p>
               </div>
             </div>
           </div>
         </div>
 
         {/* ⭐ SEÇÃO 5 — PREÇO ANCORADO */}
-        <div className="bg-gradient-to-br from-gray-50 via-white to-gray-50 rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-gray-200">
-          <div className="text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+        <div className="bg-white rounded-3xl shadow-lg p-8 md:p-10 border border-gray-200">
+          <div className="text-center space-y-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
               Toda essa estrutura custaria facilmente:
             </h2>
-            <div className="space-y-3 text-xl text-gray-600 mb-8">
-              <p className="line-through">Plano Nutricional Completo: <strong>R$ 497</strong></p>
+            <div className="space-y-2 text-base text-gray-600">
+              <p className="line-through">Plano Nutricional: <strong>R$ 497</strong></p>
               <p className="line-through">Treino Personalizado: <strong>R$ 297</strong></p>
               <p className="line-through">Receitas Exclusivas: <strong>R$ 197</strong></p>
               <p className="line-through">Nutricionista Online: <strong>R$ 120/mês</strong></p>
             </div>
-            <div className="border-t-2 border-dashed border-gray-400 pt-6 mb-8">
-              <p className="text-2xl text-gray-500 line-through mb-2">Total: <strong>R$ 1.111</strong></p>
-            </div>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-10 text-center text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-            <div className="relative z-10">
-              <p className="text-2xl md:text-3xl font-bold mb-6 drop-shadow-lg">
-                🔥 Hoje você desbloqueia TUDO isso por apenas
-              </p>
-              <p className="text-6xl md:text-7xl font-bold mb-8 drop-shadow-2xl">
-                R$ 5,90
-              </p>
-              <a 
-                href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-white text-purple-600 px-12 md:px-16 py-6 md:py-8 text-xl md:text-3xl font-bold rounded-full shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-300 hover:bg-yellow-50"
-              >
-                Quero Meu Plano Completo Agora →
-              </a>
-              <p className="text-sm mt-6 text-white/90 font-medium">✨ Acesso imediato após 1 minuto</p>
-            </div>
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-center text-white shadow-lg mt-8">
+            <p className="text-xl md:text-2xl font-bold mb-4">
+              🔥 Hoje você desbloqueia TUDO por apenas
+            </p>
+            <p className="text-5xl md:text-6xl font-bold mb-6">
+              R$ 5,90
+            </p>
+            <a 
+              href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-green-700 px-8 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+            >
+              Quero Meu Plano Completo Agora →
+            </a>
+            <p className="text-sm mt-4 text-white/90">✨ Acesso imediato após 1 minuto</p>
           </div>
         </div>
 
@@ -483,16 +450,16 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </div>
 
         {/* ⭐ SEÇÃO 7 — CTA FINAL */}
-        <div className="text-center py-8" data-cta-section>
+        <div className="text-center py-6" data-cta-section>
           <a 
             href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white px-12 md:px-20 py-6 md:py-8 text-2xl md:text-4xl font-bold rounded-full shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-300"
+            className="inline-block bg-green-600 text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
           >
             Quero Meu Plano Completo Agora →
           </a>
-          <p className="text-sm text-gray-500 mt-4">✨ Acesso imediato após 1 minuto.</p>
+          <p className="text-sm text-gray-500 mt-3">✨ Acesso imediato após 1 minuto.</p>
         </div>
 
         {/* ⭐ SEÇÃO 8 — PROVA SOCIAL */}
@@ -663,7 +630,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="inline-block bg-green-600 text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
               >
                 Quero ser o próximo resultado
               </a>
@@ -672,17 +639,17 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </section>
 
         {/* ⭐ SEÇÃO 9 — FINALIZAÇÃO EMOCIONAL */}
-        <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 rounded-3xl p-10 md:p-16 text-center shadow-2xl border-2 border-purple-200">
-          <p className="text-2xl md:text-3xl text-gray-800 leading-relaxed font-light mb-8">
-            Agora que você finalmente sabe o seu <strong className="text-purple-700">padrão metabólico</strong>… 
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12 text-center shadow-lg border border-green-200">
+          <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-6">
+            Agora que você finalmente sabe o seu <strong className="text-green-700">padrão metabólico</strong>… 
             <br />
-            <span className="text-pink-700 font-semibold">está nas suas mãos transformar seu corpo com o método certo.</span>
+            <span className="text-emerald-700 font-semibold">está nas suas mãos transformar seu corpo com o método certo.</span>
           </p>
           <a 
             href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-orange-500 via-pink-600 to-purple-600 text-white px-12 md:px-16 py-6 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-300"
+            className="inline-block bg-green-600 text-white px-10 py-4 text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
           >
             Sim, eu quero transformar meu corpo agora! 🔥
           </a>
@@ -691,7 +658,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         {/* Rodapé */}
         <div className="text-center space-y-6 pt-12 pb-8">
           <div className="flex items-center justify-center gap-2 text-gray-700">
-            <Heart className="w-6 h-6 text-pink-600" fill="currentColor" />
+            <Heart className="w-6 h-6 text-green-600" fill="currentColor" />
             <p className="text-lg font-medium">
               Feito com dedicação para sua jornada de transformação
             </p>
