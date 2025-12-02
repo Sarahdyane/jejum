@@ -136,13 +136,13 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
           <div className={cn(
             "flex justify-center",
             question.thematicImage === 'lipedema-stages' 
-              ? "-mx-6 md:-mx-8 mb-8" 
+              ? "-mx-2 mb-8" 
               : "mb-6 px-4"
           )}>
             <div className={cn(
               "overflow-hidden",
               question.thematicImage === 'lipedema-stages' 
-                ? "w-screen max-w-none shadow-none rounded-none" 
+                ? "w-full max-w-none rounded-lg shadow-lg" 
                 : "w-32 h-32 ring-4 ring-white/20 rounded-xl shadow-2xl"
             )}>
               <img 
@@ -153,7 +153,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                 alt={question.title}
                 className={cn(
                   question.thematicImage === 'lipedema-stages'
-                    ? "w-full h-auto object-contain scale-110 md:scale-100"
+                    ? "w-full h-auto object-contain"
                     : "w-full h-full object-cover"
                 )}
                 onError={(e) => {
