@@ -40,6 +40,13 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Texto de transição */}
+          <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl md:text-2xl font-medium text-foreground leading-relaxed">
+              Se livre do lipedema ainda esse mês e receba o mapa que já ajudou centenas de mulheres a reconquistar a leveza e a liberdade
+            </p>
+          </div>
+
           {/* Authority Section - DOUTORA PRIMEIRO */}
           <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <div className="flex flex-col md:flex-row items-center gap-8 justify-center">
