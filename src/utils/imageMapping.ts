@@ -39,6 +39,7 @@ import teaEchinacea from '@/assets/tea-echinacea.jpg';
 import metabolicHeart from '@/assets/metabolic-heart.png';
 import metabolicPatternFemale from '@/assets/metabolic-pattern-female.png';
 import lipedemaExpertPresentation from '@/assets/lipedema-expert-presentation.png';
+import legMarksExample from '@/assets/leg-marks-example.png';
 
 // Professional body type images
 import bodyThinProfessional from '@/assets/body-thin-professional.png';
@@ -141,6 +142,7 @@ export const imageMap = {
   'metabolic-heart': metabolicHeart,
   'metabolic-pattern-female': metabolicPatternFemale,
   'lipedema-expert-presentation': lipedemaExpertPresentation,
+  'leg-marks-example': legMarksExample,
 };
 
 export const getImageSrc = (imageKey: string) => {

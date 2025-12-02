@@ -132,7 +132,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
   return (
     <div className="w-full max-w-4xl mx-auto quiz-fade-in">
       <div className="text-center mb-12">
-        {question.thematicImage && (
+        {question.thematicImage && question.id !== 'leg-marks' && (
           <div className={cn(
             "flex justify-center",
             question.thematicImage === 'lipedema-stages' 
@@ -170,6 +170,20 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
           <p className="text-muted-foreground text-lg">
             {question.subtitle}
           </p>
+        )}
+        {question.thematicImage && question.id === 'leg-marks' && (
+          <div className="flex justify-center mt-6 px-4">
+            <div className="overflow-hidden max-w-xs rounded-xl shadow-lg">
+              <img 
+                src={getImageSrc(question.thematicImage)} 
+                alt={question.title}
+                className="w-full h-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+          </div>
         )}
       </div>
 
