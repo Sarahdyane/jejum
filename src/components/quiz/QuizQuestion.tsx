@@ -133,12 +133,12 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     <div className="w-full max-w-4xl mx-auto quiz-fade-in">
       <div className="text-center mb-12">
         {question.thematicImage && (
-          <div className="mb-6 flex justify-center">
+          <div className="mb-6 flex justify-center px-4">
             <div className={cn(
-              "rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/20",
+              "rounded-xl overflow-hidden shadow-2xl",
               question.thematicImage === 'lipedema-stages' 
-                ? "w-full max-w-3xl" 
-                : "w-32 h-32"
+                ? "w-full max-w-5xl" 
+                : "w-32 h-32 ring-4 ring-white/20"
             )}>
               <img 
                 src={typeof question.thematicImage === 'string' && !question.thematicImage.startsWith('http') && !question.thematicImage.startsWith('/') 
