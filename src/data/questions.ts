@@ -68,6 +68,7 @@ export const questions: QuizQuestion[] = [
     id: "leg-marks",
     title: "É comum você encontrar marcas nas pernas e coxas após tirar a roupa?",
     type: "single",
+    thematicImage: "leg-marks-example",
     options: [
       { id: "yes", text: "Sim" },
       { id: "no", text: "Não" },
