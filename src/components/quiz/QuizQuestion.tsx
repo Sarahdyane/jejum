@@ -133,11 +133,14 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     <div className="w-full max-w-4xl mx-auto quiz-fade-in">
       <div className="text-center mb-12">
         {question.thematicImage && (
-          <div className="mb-6 flex justify-center px-4">
+          <div className={cn(
+            "mb-6 flex justify-center",
+            question.thematicImage === 'lipedema-stages' ? "px-0" : "px-4"
+          )}>
             <div className={cn(
               "rounded-xl overflow-hidden shadow-2xl",
               question.thematicImage === 'lipedema-stages' 
-                ? "w-full max-w-5xl" 
+                ? "w-full max-w-none" 
                 : "w-32 h-32 ring-4 ring-white/20"
             )}>
               <img 
@@ -148,7 +151,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                 alt={question.title}
                 className={cn(
                   question.thematicImage === 'lipedema-stages'
-                    ? "w-full h-auto"
+                    ? "w-full h-auto object-contain"
                     : "w-full h-full object-cover"
                 )}
                 onError={(e) => {
