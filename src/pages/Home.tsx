@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaLegs from '@/assets/lipedema-legs.png';
+import nutritionistAna from '@/assets/nutritionist-ana-flavia.png';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -60,6 +61,18 @@ export default function Home() {
             <p className="text-center text-sm text-muted-foreground/80">
               Leva menos de 2 minutos. Resultados personalizados.
             </p>
+
+            {/* Authority Section */}
+            <div className="flex items-center gap-4 justify-center pt-6 pb-2">
+              <img 
+                src={nutritionistAna} 
+                alt="Nutricionista Ana Flávia" 
+                className="w-16 h-16 rounded-full object-cover shadow-md"
+              />
+              <p className="text-left text-sm text-muted-foreground max-w-xs">
+                Teste desenvolvido pela Nutricionista Ana Flávia, especialista em saúde da mulher.
+              </p>
+            </div>
           </div>
         </div>
       </main>
