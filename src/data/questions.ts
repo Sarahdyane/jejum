@@ -57,7 +57,7 @@ export const questions: QuizQuestion[] = [
   {
     id: "lipedema-expert-intro",
     title: "O que eu vou revelar aqui raramente é discutido em consultórios comuns no Brasil. 🚨",
-    description: "Depois de anos viajando pelo mundo e estudando diversas técnicas avançadas sobre o lipedema, descobri protocolos que estão anos-luz à frente do tratamento convencional. Eu vi, com meus próprios olhos, mulheres recuperarem sua qualidade de vida quando finalmente entenderam o que realmente estava acontecendo em seus corpos.\n\nEu decodifiquei os sinais ocultos do lipedema — aqueles que a maioria ignora até que o quadro se agrave.\n\nNão consigo atender a todas individualmente agora, mas eu não podia guardar esse conhecimento. Por isso, condensei essa minha experiência internacional em uma Ferramenta de Triagem Avançada",
+    description: "Após anos de estudos internacionais, descobri protocolos avançados para o lipedema que superam os tratamentos convencionais e decodifiquei estratégias ocultas da doença. Transformei protocolos avançados em uma Ferramenta acessível.",
     type: "intermediate",
     image: "lipedema-expert-presentation"
   },
