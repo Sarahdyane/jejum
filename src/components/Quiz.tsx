@@ -73,7 +73,8 @@ export const Quiz = () => {
     currentQuestion.type === 'intermediate' || 
     currentQuestion.type === 'stats' ||
     currentQuestion.type === 'loading' ||
-    (typeof currentQuestion.id === 'number' && hasAnswer(currentQuestion.id))
+    currentQuestion.type === 'metabolic-pattern' ||
+    hasAnswer(currentQuestion.id)
   );
 
   const handleRestart = () => {
