@@ -33,24 +33,16 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 3,
-    title: "Quando você tenta seguir um plano, qual é o SEU padrão mais real?",
+    title: "Você percebe que a gordura nas pernas tem uma textura diferente do resto do corpo, sendo mais nodular?",
     type: "single",
     options: [
       { 
-        id: "excited-day3", 
-        text: "🎯 Fico animada, mas travo no dia 3"
+        id: "yes", 
+        text: "Sim"
       },
       { 
-        id: "weekend-fail", 
-        text: "📅 Vou bem até o fim de semana… aí desanda"
-      },
-      { 
-        id: "body-no-response", 
-        text: "💪 Faço tudo certo, mas meu corpo não responde"
-      },
-      { 
-        id: "stubborn-body", 
-        text: "🔒 Sinto que meu corpo é \"teimoso\""
+        id: "no", 
+        text: "Não"
       }
     ]
   },
