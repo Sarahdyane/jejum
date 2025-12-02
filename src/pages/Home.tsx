@@ -40,8 +40,18 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Texto de curiosidade */}
+          <div className="text-center animate-fade-in space-y-4" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl md:text-2xl font-bold text-foreground leading-relaxed">
+              O que eu descobri sobre a gordura nas pernas depois de viajar o mundo vai contra tudo o que te disseram até hoje.
+            </p>
+            <p className="text-base md:text-lg text-muted-foreground italic">
+              Esqueça o "feche a boca e malhe mais". Se isso funcionasse, você não estaria aqui.
+            </p>
+          </div>
+
           {/* Texto de transição */}
-          <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="text-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <p className="text-xl md:text-2xl font-medium text-foreground leading-relaxed">
               Se livre do lipedema ainda esse mês e receba o mapa que já ajudou centenas de mulheres a reconquistar a leveza e a liberdade
             </p>
