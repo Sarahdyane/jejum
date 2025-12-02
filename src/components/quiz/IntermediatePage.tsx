@@ -203,7 +203,7 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
           transition={{ duration: 0.6 }}
           className="space-y-4"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h1 className="text-xl md:text-2xl font-bold text-foreground leading-tight px-2">
             {title}
           </h1>
         </motion.div>
