@@ -32,6 +32,7 @@ import healthyLifestyleNew from '@/assets/healthy-lifestyle-new.jpg';
 import healthyLifestyleMale from '@/assets/healthy-lifestyle-male.jpg';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaInfo from '@/assets/lipedema-info.png';
+import lipedemaStages from '@/assets/lipedema-stages.png';
 import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
 import teasCollection from '@/assets/teas-collection.jpg';
 import teaEchinacea from '@/assets/tea-echinacea.jpg';
@@ -104,6 +105,7 @@ export const imageMap = {
   'healthy-lifestyle-male': healthyLifestyleMale,
   'nutria-logo': nutriaLogo,
   'lipedema-info': lipedemaInfo,
+  'lipedema-stages': lipedemaStages,
   'body-thin-professional': bodyThinProfessional,
   'body-average-professional': bodyAverageProfessional,
   'body-robust-professional': bodyRobustProfessional,

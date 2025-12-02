@@ -9,20 +9,25 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 2,
-    title: "Você já tentou outro plano alimentar antes?",
+    title: "Você se identifica em algum estágio?",
     type: "single",
+    thematicImage: "lipedema-stages",
     options: [
       { 
-        id: "tried-failed", 
-        text: "Sim, mas nunca adiantou"
+        id: "stage-1", 
+        text: "Sim, estágio 1"
       },
       { 
-        id: "tried-success", 
-        text: "Sim, até tive resultados"
+        id: "stage-2", 
+        text: "Sim, estágio 2"
       },
       { 
-        id: "never-tried", 
-        text: "Não, nunca tentei"
+        id: "stage-3", 
+        text: "Sim, estágio 3"
+      },
+      { 
+        id: "no-identify", 
+        text: "Não me identifico"
       }
     ]
   },
