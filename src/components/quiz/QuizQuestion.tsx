@@ -134,14 +134,23 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
       <div className="text-center mb-12">
         {question.thematicImage && (
           <div className="mb-6 flex justify-center">
-            <div className="w-32 h-32 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/20">
+            <div className={cn(
+              "rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/20",
+              question.thematicImage === 'lipedema-stages' 
+                ? "w-full max-w-3xl" 
+                : "w-32 h-32"
+            )}>
               <img 
                 src={typeof question.thematicImage === 'string' && !question.thematicImage.startsWith('http') && !question.thematicImage.startsWith('/') 
                   ? getImageSrc(question.thematicImage) 
                   : question.thematicImage
                 } 
                 alt={question.title}
-                className="w-full h-full object-cover"
+                className={cn(
+                  question.thematicImage === 'lipedema-stages'
+                    ? "w-full h-auto"
+                    : "w-full h-full object-cover"
+                )}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
