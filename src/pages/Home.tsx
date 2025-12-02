@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaComparison from '@/assets/lipedema-comparison.jpg';
-import nutritionistAna from '@/assets/nutritionist-ana-flavia.png';
+import nutritionistAna from '@/assets/nutritionist-ana-flavia-new.png';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default function Home() {
               Chega de sofrer com lipedema !
             </h1>
             <p className="text-xl md:text-2xl text-center text-muted-foreground font-medium">
-              descobrir o nível de inflamação
+              descubra seu nível de inflamação
             </p>
             <div className="relative w-full max-w-3xl mx-auto">
               <img 
@@ -40,42 +40,44 @@ export default function Home() {
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Button 
-              onClick={() => {
-                try {
-                  sessionStorage.removeItem('nutria_quiz_state');
-                } catch (e) {
-                  // ignore storage errors
-                }
-                navigate('/quiz');
-              }} 
-              className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all" 
-              size="lg"
-            >
-              FAZER O TESTE AGORA
-            </Button>
-            
-            {/* Subtle Exclusivity Text */}
-            <p className="text-center text-sm text-muted-foreground/80">
-              Leva menos de 2 minutos. Resultados personalizados.
-            </p>
-
-            {/* Social Proof */}
-            <p className="text-center text-base text-muted-foreground pt-4">
-              Junte-se a mais de <span className="font-semibold text-foreground">1.257 mulheres</span> que já descobriram seu nível de inflamação.
-            </p>
-
-            {/* Authority Section */}
-            <div className="flex items-center gap-6 justify-center pt-8 pb-2">
+          {/* Authority Section */}
+          <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col md:flex-row items-center gap-6 justify-center">
               <img 
                 src={nutritionistAna} 
-                alt="Nutricionista Ana Flávia" 
-                className="w-40 h-40 rounded-full object-cover shadow-lg"
+                alt="Dr. Ana Flávia" 
+                className="w-56 h-56 rounded-full object-cover shadow-lg"
               />
-              <p className="text-left text-base text-muted-foreground max-w-xs">
-                Teste desenvolvido pela Nutricionista Ana Flávia, especialista em saúde da mulher.
+              <p className="text-center md:text-left text-base text-muted-foreground max-w-xs">
+                Teste desenvolvido pela Dr.Ana Flávia, especialista em saúde da mulher.
+              </p>
+            </div>
+
+            {/* CTA Section */}
+            <div className="space-y-4 pt-4">
+              <Button 
+                onClick={() => {
+                  try {
+                    sessionStorage.removeItem('nutria_quiz_state');
+                  } catch (e) {
+                    // ignore storage errors
+                  }
+                  navigate('/quiz');
+                }} 
+                className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all" 
+                size="lg"
+              >
+                FAZER O TESTE AGORA
+              </Button>
+              
+              {/* Subtle Exclusivity Text */}
+              <p className="text-center text-sm text-muted-foreground/80">
+                Leva menos de 2 minutos. Resultados personalizados.
+              </p>
+
+              {/* Social Proof */}
+              <p className="text-center text-base text-muted-foreground pt-4">
+                Junte-se a mais de <span className="font-semibold text-foreground">1.257 mulheres</span> que já descobriram seu nível de inflamação.
               </p>
             </div>
           </div>
