@@ -173,11 +173,11 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
         )}
         {question.thematicImage && question.id === 'leg-marks' && (
           <div className="flex justify-center mt-6 px-4">
-            <div className="overflow-hidden max-w-xs rounded-xl shadow-lg">
+            <div className="overflow-hidden w-32 h-32 rounded-xl shadow-lg bg-white p-2">
               <img 
                 src={getImageSrc(question.thematicImage)} 
                 alt={question.title}
-                className="w-full h-auto object-contain"
+                className="w-full h-full object-cover rounded-lg"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
