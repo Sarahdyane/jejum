@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import nutriaLogo from '@/assets/nutria-logo.png';
-import lipedemaLegs from '@/assets/lipedema-legs.png';
+import lipedemaComparison from '@/assets/lipedema-comparison.jpg';
 import nutritionistAna from '@/assets/nutritionist-ana-flavia.png';
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
             </p>
             <div className="relative w-full max-w-3xl mx-auto">
               <img 
-                src={lipedemaLegs} 
+                src={lipedemaComparison} 
                 alt="Chega de sofrer com lipedema" 
                 title="Chega de sofrer com lipedema"
                 className="w-full h-auto object-contain drop-shadow-2xl rounded-xl"
@@ -62,12 +62,17 @@ export default function Home() {
               Leva menos de 2 minutos. Resultados personalizados.
             </p>
 
+            {/* Social Proof */}
+            <p className="text-center text-base text-muted-foreground pt-4">
+              Junte-se a mais de <span className="font-semibold text-foreground">1.257 mulheres</span> que já descobriram seu nível de inflamação.
+            </p>
+
             {/* Authority Section */}
-            <div className="flex items-center gap-6 justify-center pt-6 pb-2">
+            <div className="flex items-center gap-6 justify-center pt-8 pb-2">
               <img 
                 src={nutritionistAna} 
                 alt="Nutricionista Ana Flávia" 
-                className="w-32 h-32 rounded-full object-cover shadow-lg"
+                className="w-40 h-40 rounded-full object-cover shadow-lg"
               />
               <p className="text-left text-base text-muted-foreground max-w-xs">
                 Teste desenvolvido pela Nutricionista Ana Flávia, especialista em saúde da mulher.
