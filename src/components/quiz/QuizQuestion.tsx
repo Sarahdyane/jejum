@@ -134,14 +134,16 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
       <div className="text-center mb-12">
         {question.thematicImage && (
           <div className={cn(
-            "mb-6 flex justify-center",
-            question.thematicImage === 'lipedema-stages' ? "px-0" : "px-4"
+            "flex justify-center",
+            question.thematicImage === 'lipedema-stages' 
+              ? "-mx-6 md:-mx-8 mb-8" 
+              : "mb-6 px-4"
           )}>
             <div className={cn(
-              "rounded-xl overflow-hidden shadow-2xl",
+              "overflow-hidden",
               question.thematicImage === 'lipedema-stages' 
-                ? "w-full max-w-none" 
-                : "w-32 h-32 ring-4 ring-white/20"
+                ? "w-screen max-w-none shadow-none rounded-none" 
+                : "w-32 h-32 ring-4 ring-white/20 rounded-xl shadow-2xl"
             )}>
               <img 
                 src={typeof question.thematicImage === 'string' && !question.thematicImage.startsWith('http') && !question.thematicImage.startsWith('/') 
@@ -151,7 +153,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                 alt={question.title}
                 className={cn(
                   question.thematicImage === 'lipedema-stages'
-                    ? "w-full h-auto object-contain"
+                    ? "w-full h-auto object-contain scale-110 md:scale-100"
                     : "w-full h-full object-cover"
                 )}
                 onError={(e) => {
