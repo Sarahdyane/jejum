@@ -63,13 +63,13 @@ export default function Home() {
             </p>
 
             {/* Authority Section */}
-            <div className="flex items-center gap-4 justify-center pt-6 pb-2">
+            <div className="flex items-center gap-6 justify-center pt-6 pb-2">
               <img 
                 src={nutritionistAna} 
                 alt="Nutricionista Ana Flávia" 
-                className="w-16 h-16 rounded-full object-cover shadow-md"
+                className="w-32 h-32 rounded-full object-cover shadow-lg"
               />
-              <p className="text-left text-sm text-muted-foreground max-w-xs">
+              <p className="text-left text-base text-muted-foreground max-w-xs">
                 Teste desenvolvido pela Nutricionista Ana Flávia, especialista em saúde da mulher.
               </p>
             </div>
