@@ -40,21 +40,21 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Authority Section */}
-          <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="flex flex-col md:flex-row items-center gap-6 justify-center">
+          {/* Authority Section - DOUTORA PRIMEIRO */}
+          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col md:flex-row items-center gap-8 justify-center">
               <img 
                 src={nutritionistAna} 
                 alt="Dr. Ana Flávia" 
-                className="w-56 h-56 rounded-full object-cover shadow-lg"
+                className="w-64 h-64 rounded-full object-cover shadow-2xl"
               />
-              <p className="text-center md:text-left text-base text-muted-foreground max-w-xs">
+              <p className="text-center md:text-left text-lg text-muted-foreground max-w-sm">
                 Teste desenvolvido pela Dr.Ana Flávia, especialista em saúde da mulher.
               </p>
             </div>
 
-            {/* CTA Section */}
-            <div className="space-y-4 pt-4">
+            {/* CTA Section - BOTÃO DEPOIS DA DOUTORA */}
+            <div className="space-y-4 pt-8">
               <Button 
                 onClick={() => {
                   try {
