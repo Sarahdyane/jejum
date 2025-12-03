@@ -77,9 +77,9 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "intermediate-2",
-    title: "Amiga…",
-    subtitle: "Tô analisando aqui seu padrão e já percebi uma coisa super importante sobre seu corpo.",
-    description: "Mulheres com respostas como as suas entram no grupo de Retenção Sensível — e eu já sei que um dos primeiros passos vai ser incluir 2 chás secretos no seu plano… segura aí que já já te conto!",
+    title: "Identificando a raiz da resistência...",
+    subtitle: "Estou conectando os pontos das suas respostas agora. É impressionante.",
+    description: "Conectando suas respostas, descobri a peça que faltava no seu quebra-cabeça do lipedema. Você estava usando a 'chave' errada. O plano sendo gerado contém a chave exata para o seu tipo de inflamação. Você finalmente entenderá tudo.",
     type: "intermediate",
     thematicImage: "tea-echinacea"
   },
