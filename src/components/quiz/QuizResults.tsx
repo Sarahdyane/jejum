@@ -251,219 +251,184 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
         </div>
 
-        {/* ⭐ SEÇÃO 4 — PROTOCOLO PERSONALIZADO */}
-        <div className="space-y-8">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              SEU PROTOCOLO FOI GERADO!
+        {/* ⭐ SEÇÃO 3 — A OFERTA PRINCIPAL (Tripwire) */}
+        <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 rounded-3xl p-8 md:p-12 border-2 border-amber-200 shadow-2xl">
+          <div className="text-center space-y-6">
+            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">
+              <span>🔓</span> REVELAÇÃO EXCLUSIVA
+            </div>
+            
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
+              Apresentando: O Protocolo Internacional de Alívio Imediato
             </h2>
-            <p className="text-lg text-gray-600">
-              4 pilares personalizados para o seu padrão metabólico
+            
+            <p className="text-lg md:text-xl text-gray-700 font-medium">
+              A <span className="text-amber-700 font-bold">"Manobra Alemã"</span> de 3 minutos + O Guia de Desinflamação Express de 72h
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* 🔶 1. Plano Nutricional */}
-            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl shadow-xl p-8 border-2 border-primary/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
-                  <span className="text-3xl">🔶</span>
+            
+            {/* Visual Mockups */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 py-6">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-amber-200 flex-1 max-w-xs">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <span className="text-3xl">🎬</span>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Plano Nutricional Metabólico</h3>
+                <h4 className="font-bold text-gray-900 text-lg mb-2">Vídeo Tutorial</h4>
+                <p className="text-gray-600 text-sm">Manobra de drenagem passo a passo</p>
               </div>
               
-              <div className="space-y-3 mb-6">
-                <div className="flex items-start gap-3">
-                  <span className="text-primary font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Horários ideais para comer</span>
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-amber-200 flex-1 max-w-xs">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <span className="text-3xl">📋</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-primary font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Alimentos que desincham o tipo metabólico específico</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-primary font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Alimentos que travam diretamente seu metabolismo</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-primary font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Ajuste correto de carboidratos</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-primary font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Refeições rápidas e práticas</span>
-                </div>
+                <h4 className="font-bold text-gray-900 text-lg mb-2">Guia PDF Express</h4>
+                <p className="text-gray-600 text-sm">Protocolo alimentar de 3 dias</p>
               </div>
             </div>
-
-            {/* 🔶 2. Treino */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl shadow-xl p-8 border-2 border-cyan-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <span className="text-3xl">🔶</span>
+            
+            {/* Bullets de Benefícios */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-amber-200 text-left space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-amber-700 font-bold">✓</span>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Treino Certo Para o Seu Corpo</h3>
+                <p className="text-gray-800 text-base md:text-lg">
+                  <strong className="text-amber-800">Aprenda em vídeo</strong> a manobra manual exata que eu trouxe da Europa para <strong>drenar a sensação de peso antes de dormir.</strong>
+                </p>
               </div>
-              
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <span className="text-cyan-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Treino exato do tipo metabólico</span>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-amber-700 font-bold">✓</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-cyan-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Tempo ideal: 20-30 minutos</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-cyan-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Intensidade calculada</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-cyan-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Rotinas que destravam braços, pernas e abdômen</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-cyan-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Protocolos rápidos para dias cansativos</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 🔶 3. Receitas Secretas */}
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl shadow-xl p-8 border-2 border-orange-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-600 to-amber-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <span className="text-3xl">🔶</span>
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Receitas Secretas do Método Monjour</h3>
-              </div>
-              
-              <div className="space-y-3 mb-6">
-                <div className="flex items-start gap-3">
-                  <span className="text-orange-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">12 receitas anti-inflamatórias</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-orange-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">7 detox reativos</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-orange-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Smoothie metabólico do seu tipo</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-orange-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Chás secretos personalizados</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-orange-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Protocolo de desincho de 24h</span>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 border-2 border-orange-300 shadow-md">
-                <p className="text-sm text-gray-800">
-                  <strong className="text-orange-700">🧡 Exclusivo:</strong> Essas receitas não estão no Google — apenas para quem descobre seu padrão metabólico.
+                <p className="text-gray-800 text-base md:text-lg">
+                  <strong className="text-amber-800">O protocolo alimentar de apenas 3 dias</strong> focado em <strong>murchar a inflamação aguda rapidamente.</strong>
                 </p>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* 🔶 4. Nutricionista Online */}
-            <div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl shadow-xl p-8 border-2 border-purple-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <span className="text-3xl">🔶</span>
+        {/* ⭐ SEÇÃO 4 — BÔNUS "CAVALO DE TROIA" */}
+        <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl p-8 md:p-12 border-2 border-indigo-200 shadow-2xl">
+          <div className="text-center space-y-6">
+            <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-semibold animate-pulse">
+              <span>🎁</span> MAS ESPERE!
+            </div>
+            
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
+              Eu não vou te deixar sozinha depois disso.
+            </h2>
+            
+            {/* Mockup da Plataforma */}
+            <div className="bg-white rounded-2xl p-6 shadow-xl border border-indigo-200 max-w-lg mx-auto">
+              <img 
+                src={appMockupNutritionReal}
+                alt="Plataforma Completa"
+                className="w-full max-w-[280px] mx-auto drop-shadow-2xl mb-4"
+              />
+              <p className="text-sm text-gray-500">Interface da plataforma com treinos, receitas e comunidade</p>
+            </div>
+            
+            <div className="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl p-6 md:p-8 border-2 border-indigo-300">
+              <h3 className="text-xl md:text-2xl font-bold text-indigo-900 mb-4">
+                🎁 BÔNUS INÉDITO: Acesso GRATUITO à minha Plataforma Completa
+              </h3>
+              <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                Se você garantir o Protocolo de Alívio acima <strong className="text-indigo-800">HOJE</strong>, eu vou te dar de presente o <strong className="text-indigo-800">acesso total</strong> à minha plataforma com todos os planos alimentares faseados, treinos específicos para lipedema que não inflamam e suporte.
+              </p>
+              
+              {/* O que está incluso */}
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-white rounded-xl p-4 shadow-md">
+                  <span className="text-2xl mb-2 block">🍽️</span>
+                  <h4 className="font-bold text-gray-900 text-sm">Planos Alimentares</h4>
+                  <p className="text-xs text-gray-600">Faseados e personalizados</p>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Nutricionista Online Sempre</h3>
+                <div className="bg-white rounded-xl p-4 shadow-md">
+                  <span className="text-2xl mb-2 block">💪</span>
+                  <h4 className="font-bold text-gray-900 text-sm">Treinos Específicos</h4>
+                  <p className="text-xs text-gray-600">Que não inflamam</p>
+                </div>
+                <div className="bg-white rounded-xl p-4 shadow-md">
+                  <span className="text-2xl mb-2 block">💬</span>
+                  <h4 className="font-bold text-gray-900 text-sm">Suporte Exclusivo</h4>
+                  <p className="text-xs text-gray-600">Comunidade e chat</p>
+                </div>
               </div>
               
-              <div className="mb-6 flex justify-center">
-                <img 
-                  src={appMockupNutritionReal}
-                  alt="App Nutria"
-                  className="w-full max-w-[200px] drop-shadow-2xl"
-                />
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Atendimento por chat</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Ajuste do plano</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Revisão semanal</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-purple-600 font-bold text-lg">✓</span>
-                  <span className="text-gray-800 font-medium">Apoio emocional</span>
-                </div>
+              {/* Âncora de Valor */}
+              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-4 text-white">
+                <p className="text-sm mb-1">Valor real da plataforma:</p>
+                <p className="text-2xl font-bold line-through opacity-80">R$ 997/ano</p>
+                <p className="text-3xl font-bold text-yellow-300 mt-2">HOJE PARA VOCÊ: R$ 0,00</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ⭐ SEÇÃO 5 — PREÇO ANCORADO */}
-        <div className="bg-white rounded-3xl shadow-lg p-8 md:p-10 border border-gray-200">
-          <div className="text-center space-y-4">
+        {/* ⭐ SEÇÃO 5 — FECHAMENTO "SEM PENSAR" */}
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-primary/20">
+          <div className="text-center space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Toda essa estrutura custaria facilmente:
+              Veja tudo que você está levando:
             </h2>
-            <div className="space-y-2 text-base text-gray-600">
-              <p className="line-through">Plano Nutricional: <strong>R$ 497</strong></p>
-              <p className="line-through">Treino Personalizado: <strong>R$ 297</strong></p>
-              <p className="line-through">Receitas Exclusivas: <strong>R$ 197</strong></p>
-              <p className="line-through">Nutricionista Online: <strong>R$ 120/mês</strong></p>
+            
+            {/* Pilha de Valor */}
+            <div className="space-y-4 max-w-lg mx-auto text-left">
+              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
+                <div className="flex items-center gap-3">
+                  <span className="text-green-600 text-xl">✅</span>
+                  <span className="font-medium text-gray-800">Protocolo Internacional de Alívio Imediato</span>
+                </div>
+                <span className="text-gray-500 font-semibold">R$ 197</span>
+              </div>
+              
+              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
+                <div className="flex items-center gap-3">
+                  <span className="text-green-600 text-xl">✅</span>
+                  <span className="font-medium text-gray-800">BÔNUS VIP: Acesso à Plataforma Completa</span>
+                </div>
+                <span className="text-gray-500 font-semibold">R$ 997</span>
+              </div>
+              
+              <div className="border-t-2 border-dashed border-gray-300 pt-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-bold text-gray-900">Valor Total:</span>
+                  <span className="text-xl font-bold text-gray-500 line-through">R$ 1.194</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Preço Final */}
+            <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-6 md:p-10 text-white shadow-2xl">
+              <p className="text-lg md:text-xl font-medium mb-2">🔥 HOJE POR APENAS:</p>
+              <div className="flex flex-col items-center gap-2 mb-4">
+                <p className="text-4xl md:text-6xl font-bold">12x de R$ 9,90</p>
+                <p className="text-lg opacity-90">ou <span className="font-bold">R$ 97 à vista</span></p>
+              </div>
+              
+              <a 
+                href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-yellow-400 text-gray-900 px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-200 animate-pulse"
+              >
+                QUERO MEU ALÍVIO IMEDIATO + ACESSO TOTAL À PLATAFORMA
+              </a>
+              
+              <p className="text-sm mt-4 text-white/80">✨ Acesso imediato após confirmação</p>
+            </div>
+            
+            {/* Selo de Garantia */}
+            <div className="flex items-center justify-center gap-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200 max-w-md mx-auto">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl">🛡️</span>
+              </div>
+              <div className="text-left">
+                <p className="font-bold text-green-800">Garantia de 7 dias</p>
+                <p className="text-sm text-green-700">Satisfação garantida ou seu dinheiro de volta</p>
+              </div>
             </div>
           </div>
-
-          <div className="bg-primary rounded-2xl p-4 md:p-8 text-center text-white shadow-lg mt-8">
-            <p className="text-base md:text-xl lg:text-2xl font-bold mb-3 md:mb-4">
-              🔥 Hoje você desbloqueia TUDO por apenas
-            </p>
-            <p className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
-              R$ 10,90
-            </p>
-            <a 
-              href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-primary px-6 py-2.5 md:px-8 md:py-3 text-base md:text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
-            >
-              Quero Meu Plano Completo Agora →
-            </a>
-            <p className="text-xs md:text-sm mt-3 md:mt-4 text-white/90">✨ Acesso imediato após 1 minuto</p>
-          </div>
-        </div>
-
-        {/* ⭐ SEÇÃO 6 — GARANTIA */}
-        <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-8 md:p-10 border-2 border-primary/30 shadow-xl text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-3xl text-white">✓</span>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Garantia Invertida</h3>
-          </div>
-          <p className="text-lg md:text-xl text-gray-800 leading-relaxed max-w-2xl mx-auto">
-            Se em <strong className="text-primary">7 dias</strong> seu corpo não mostrar sinais claros de resposta, eu ajusto tudo pessoalmente para você — <strong className="text-primary">sem custo adicional</strong>.
-          </p>
-        </div>
-
-        {/* ⭐ SEÇÃO 7 — CTA FINAL */}
-        <div className="text-center py-6" data-cta-section>
-          <a 
-            href="https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-primary text-white px-6 py-2.5 md:px-10 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
-          >
-            Quero Meu Plano Completo Agora →
-          </a>
-          <p className="text-xs md:text-sm text-gray-500 mt-3">✨ Acesso imediato após 1 minuto.</p>
         </div>
 
         {/* ⭐ SEÇÃO 8 — PROVA SOCIAL */}
