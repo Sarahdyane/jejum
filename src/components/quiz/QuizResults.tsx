@@ -201,16 +201,6 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
         </div>
 
-        {/* ⭐ SEÇÃO — EXPERIÊNCIA INTERNACIONAL */}
-        <div className="relative overflow-hidden rounded-3xl p-8 md:p-12 border border-emerald-200/50 shadow-xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-red-50/30"></div>
-          <div className="absolute top-4 right-4 text-4xl opacity-20">❄️</div>
-          <div className="absolute bottom-4 left-4 text-4xl opacity-20">🎄</div>
-          <p className="relative text-lg md:text-xl text-gray-700 leading-relaxed text-center italic">
-            "Nas minhas viagens estudando em centros de linfologia na Europa, eu aprendi que não adianta te dar uma dieta complexa para começar amanhã se hoje você mal consegue dormir de desconforto. <strong className="text-gray-900 not-italic">O primeiro passo é sempre o Desbloqueio Imediato.</strong>"
-          </p>
-        </div>
-
         {/* ⭐ SEÇÃO 3 — A OFERTA PRINCIPAL (Protocolo Internacional) */}
         <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-red-100">
           {/* Background premium natalino */}
