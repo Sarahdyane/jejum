@@ -201,7 +201,75 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
         </div>
 
-        {/* ⭐ SEÇÃO 3 — ANÁLISE DETALHADA */}
+        {/* ⭐ SEÇÃO — EXPERIÊNCIA INTERNACIONAL */}
+        <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-8 md:p-12 border border-slate-200 shadow-lg">
+          <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center italic">
+            "Nas minhas viagens estudando em centros de linfologia na Europa, eu aprendi que não adianta te dar uma dieta complexa para começar amanhã se hoje você mal consegue dormir de desconforto. <strong className="text-gray-900 not-italic">O primeiro passo é sempre o Desbloqueio Imediato.</strong>"
+          </p>
+        </div>
+
+        {/* ⭐ SEÇÃO 3 — A OFERTA PRINCIPAL (Protocolo Internacional) */}
+        <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+          {/* Background com gradiente premium dourado/azul médico */}
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-amber-100/50 to-sky-100"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-200/30 via-transparent to-sky-200/30"></div>
+          
+          {/* Elementos decorativos tecnológicos */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-amber-500 to-sky-500"></div>
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-amber-300/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-sky-300/20 rounded-full blur-3xl"></div>
+          
+          <div className="relative p-8 md:p-12 lg:p-16 text-center space-y-8">
+            {/* Badge de exclusividade */}
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+              REVELAÇÃO EXCLUSIVA
+            </div>
+            
+            {/* Título principal */}
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Apresentando: <span className="bg-gradient-to-r from-amber-600 to-amber-700 bg-clip-text text-transparent">O Protocolo Internacional de Alívio Imediato</span>
+              </h2>
+              
+              {/* Subtítulo com destaque */}
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-amber-200/50 shadow-lg max-w-3xl mx-auto">
+                <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800">
+                  A <span className="text-amber-600 font-bold">"Manobra Alemã"</span> de 3 minutos + O Guia de <span className="text-sky-600 font-bold">Desinflamação Express</span> de 72h
+                </p>
+              </div>
+            </div>
+            
+            {/* Grid de benefícios tecnológicos */}
+            <div className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto">
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-amber-200/30 shadow-md hover:shadow-lg transition-all hover:scale-[1.02]">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <span className="text-2xl">⚡</span>
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Alívio em 3 Minutos</h3>
+                <p className="text-sm text-gray-600">Técnica desenvolvida em centros europeus de linfologia</p>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-sky-200/30 shadow-md hover:shadow-lg transition-all hover:scale-[1.02]">
+                <div className="w-12 h-12 bg-gradient-to-br from-sky-400 to-sky-500 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <span className="text-2xl">🔬</span>
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Cientificamente Validado</h3>
+                <p className="text-sm text-gray-600">Baseado em pesquisas de referência mundial</p>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-amber-200/30 shadow-md hover:shadow-lg transition-all hover:scale-[1.02]">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Resultados em 72h</h3>
+                <p className="text-sm text-gray-600">Protocolo express de desinflamação comprovado</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ⭐ SEÇÃO 4 — ANÁLISE DETALHADA */}
         <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
             O que acontece no seu corpo:
