@@ -77,7 +77,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "intermediate-2",
-    title: "Identificando a raiz da resistência...",
+    title: "Estou conectando os pontos das suas respostas agora. É impressionante.",
     subtitle: "Estou conectando os pontos das suas respostas agora. É impressionante.",
     description: "Conectando suas respostas, descobri a peça que faltava no seu quebra-cabeça do lipedema. Você estava usando a 'chave' errada. O plano sendo gerado contém a chave exata para o seu tipo de inflamação. Você finalmente entenderá tudo.",
     type: "intermediate",
