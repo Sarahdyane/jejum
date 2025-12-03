@@ -32,14 +32,7 @@ import healthyLifestyleNew from '@/assets/healthy-lifestyle-new.jpg';
 import healthyLifestyleMale from '@/assets/healthy-lifestyle-male.jpg';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaInfo from '@/assets/lipedema-info.png';
-import lipedemaStages from '@/assets/lipedema-stages.png';
 import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
-import teasCollection from '@/assets/teas-collection.jpg';
-import teaEchinacea from '@/assets/tea-echinacea.jpg';
-import metabolicHeart from '@/assets/metabolic-heart.png';
-import metabolicPatternFemale from '@/assets/metabolic-pattern-female.png';
-import lipedemaExpertPresentation from '@/assets/lipedema-expert-presentation.png';
-import legMarksExample from '@/assets/leg-marks-example.png';
 
 // Professional body type images
 import bodyThinProfessional from '@/assets/body-thin-professional.png';
@@ -107,7 +100,6 @@ export const imageMap = {
   'healthy-lifestyle-male': healthyLifestyleMale,
   'nutria-logo': nutriaLogo,
   'lipedema-info': lipedemaInfo,
-  'lipedema-stages': lipedemaStages,
   'body-thin-professional': bodyThinProfessional,
   'body-average-professional': bodyAverageProfessional,
   'body-robust-professional': bodyRobustProfessional,
@@ -137,12 +129,6 @@ export const imageMap = {
   'body-fuller-female-results': bodyFullerFemaleResults,
   'body-average-female-results': bodyAverageFemaleResults,
   'body-goal-female-results': bodyGoalFemaleResults,
-  'teas-collection': teasCollection,
-  'tea-echinacea': teaEchinacea,
-  'metabolic-heart': metabolicHeart,
-  'metabolic-pattern-female': metabolicPatternFemale,
-  'lipedema-expert-presentation': lipedemaExpertPresentation,
-  'leg-marks-example': legMarksExample,
 };
 
 export const getImageSrc = (imageKey: string) => {

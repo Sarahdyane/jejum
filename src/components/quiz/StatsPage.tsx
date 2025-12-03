@@ -15,8 +15,9 @@ export const StatsPage = ({ onContinue, onBack }: StatsPageProps) => {
   }, []);
 
   const data = [
-    { name: "Focaram na desinflamação", value: 87, color: "hsl(var(--primary))" },
-    { name: "Focaram em dietas restritivas", value: 13, color: "#ef4444" }
+    { name: "2 numerações menores", value: 72, color: "hsl(var(--primary))" },
+    { name: "3 numerações menores", value: 15, color: "hsl(var(--accent))" },
+    { name: "Nenhuma mudança", value: 13, color: "#ef4444" }
   ];
 
   const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
@@ -69,7 +70,8 @@ export const StatsPage = ({ onContinue, onBack }: StatsPageProps) => {
           </p>
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-            Mulheres com seu perfil inflamatório tendem a focar na <span className="text-primary font-extrabold">desinflamação</span>, e não em dietas
+            <span className="text-primary text-5xl font-extrabold">72%</span> dos usuários da Nutria<br />
+            reduzem <span className="text-primary font-extrabold">2 numerações de roupa</span> em <span className="text-primary font-extrabold">1 mês</span>
           </h1>
 
           <motion.div

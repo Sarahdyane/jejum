@@ -6,8 +6,6 @@ import { useEffect } from "react";
 
 const Transformation = () => {
   const navigate = useNavigate();
-  // Quiz exclusivo para mulheres
-  const gender = 'female';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -176,20 +174,20 @@ const Transformation = () => {
         {/* CTA Section */}
         <div className="text-center space-y-6 animate-fade-in" style={{ animationDelay: '0.75s' }}>
           <Button 
-            onClick={() => navigate('/commitment', { state: { gender } })}
+            onClick={() => window.location.href = 'https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO'}
             className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 md:px-20 md:py-8 text-lg md:text-2xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
           >
-            Continuar
+            Quero começar agora
           </Button>
           
           <div>
             <Button 
-              onClick={() => navigate(-1)}
+              onClick={() => navigate('/quiz')}
               variant="ghost"
               className="text-[#0d7377] hover:text-[#0a5c5f] text-base md:text-lg font-medium hover:bg-[#0d7377]/5 transition-all flex items-center gap-2 mx-auto"
             >
               <ArrowLeft className="w-5 h-5" />
-              Voltar
+              Ver plano em detalhes
             </Button>
           </div>
         </div>

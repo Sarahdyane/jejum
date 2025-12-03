@@ -1,51 +1,23 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { QuizState, QuizQuestion, UserProfile } from '@/types/quiz';
 
-const STORAGE_KEY = 'nutria_quiz_state';
-
 export const useQuiz = (questions: QuizQuestion[]) => {
-  // Load initial state from sessionStorage if available
-  const getInitialState = (): QuizState => {
-    const stored = sessionStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        // Validate that current question exists in the questions array
-        const questionExists = questions.find(q => q.id === parsed.currentQuestion);
-        if (!questionExists) {
-          // If stored question doesn't exist, reset to first question
-          return {
-            currentQuestion: questions[0]?.id || 1,
-            answers: {},
-            isComplete: false,
-          };
-        }
-        return parsed;
-      } catch {
-        return {
-          currentQuestion: questions[0]?.id || 1,
-          answers: {},
-          isComplete: false,
-        };
-      }
-    }
-    return {
-      currentQuestion: questions[0]?.id || 1,
-      answers: {},
-      isComplete: false,
-    };
-  };
-
-  const [quizState, setQuizState] = useState<QuizState>(getInitialState);
-
-  // Persist state to sessionStorage whenever it changes
-  useEffect(() => {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(quizState));
-  }, [quizState]);
+  const [quizState, setQuizState] = useState<QuizState>({
+    currentQuestion: 1,
+    answers: {},
+    isComplete: false,
+  });
 
   const shouldShowQuestion = useCallback((question: QuizQuestion) => {
+    const genderAnswer = quizState.answers[2];
+    
+    // Pular perguntas de lipedema para homens
+    if ((question.id === 8 || question.id === 'lipedema-info') && genderAnswer === 'male') {
+      return false;
+    }
+    
     return true;
-  }, []);
+  }, [quizState.answers]);
 
   const getFilteredQuestions = useCallback(() => {
     return questions.filter(shouldShowQuestion);
@@ -90,13 +62,6 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     }));
   }, []);
 
-  const goToQuestion = useCallback((questionId: number | string) => {
-    setQuizState(prev => ({
-      ...prev,
-      currentQuestion: questionId,
-    }));
-  }, []);
-
   const getCurrentQuestion = useCallback(() => {
     const filteredQuestions = getFilteredQuestions();
     return filteredQuestions.find(q => q.id === quizState.currentQuestion);
@@ -121,7 +86,7 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     const answers = quizState.answers;
     return {
       age: answers[1] as string || '',
-      gender: 'female', // Quiz exclusivo para mulheres
+      gender: answers[2] as string || '',
       goal: answers[3] as string || '',
       bodyType: answers[4] as string || '',
       targetBodyType: answers[5] as string || '',
@@ -161,6 +126,5 @@ export const useQuiz = (questions: QuizQuestion[]) => {
     getProgress,
     hasAnswer,
     generateProfile,
-    goToQuestion,
   };
 };

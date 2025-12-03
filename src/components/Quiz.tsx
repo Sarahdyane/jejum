@@ -12,13 +12,14 @@ import { StatsPage } from '@/components/quiz/StatsPage';
 import { LoadingAnalysis } from '@/components/quiz/LoadingAnalysis';
 import { ReadyTransition } from '@/components/quiz/ReadyTransition';
 import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
-import { MetabolicPatternPage } from '@/components/quiz/MetabolicPatternPage';
+import { CommitmentPage } from '@/components/quiz/CommitmentPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showReadyTransition, setShowReadyTransition] = useState(false);
   const [showExpectations, setShowExpectations] = useState(false);
+  const [showCommitment, setShowCommitment] = useState(false);
 
   const {
     quizState,
@@ -29,7 +30,6 @@ export const Quiz = () => {
     getProgress,
     hasAnswer,
     generateProfile,
-    goToQuestion,
   } = useQuiz(questions);
 
   // Scroll to top when question changes
@@ -73,22 +73,30 @@ export const Quiz = () => {
     currentQuestion.type === 'intermediate' || 
     currentQuestion.type === 'stats' ||
     currentQuestion.type === 'loading' ||
-    currentQuestion.type === 'metabolic-pattern' ||
-    hasAnswer(currentQuestion.id)
+    (typeof currentQuestion.id === 'number' && hasAnswer(currentQuestion.id))
   );
 
   const handleRestart = () => {
-    try {
-      sessionStorage.removeItem('nutria_quiz_state');
-    } catch (e) {
-      // ignore storage errors
-    }
     window.location.reload();
   };
 
   if (quizState.isComplete) {
     const profile = generateProfile();
-    return <QuizResults profile={profile} onRestart={handleRestart} />;
+    
+    // Show commitment page after results
+    if (showCommitment) {
+      return (
+        <CommitmentPage
+          onStart={() => {
+            // Navigate to dashboard/home (for now, restart)
+            handleRestart();
+          }}
+          onViewPlan={() => setShowCommitment(false)}
+        />
+      );
+    }
+    
+    return <QuizResults profile={profile} onRestart={() => setShowCommitment(true)} />;
   }
 
   if (!currentQuestion) {
@@ -108,51 +116,26 @@ export const Quiz = () => {
 
   // Handle stats page
   if (currentQuestion.type === 'stats') {
-    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
-    
     return (
       <StatsPage
         onContinue={nextQuestion}
-        onBack={currentIndex > 0 ? prevQuestion : undefined}
-      />
-    );
-  }
-
-  // Handle metabolic pattern page
-  if (currentQuestion.type === 'metabolic-pattern') {
-    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
-    
-    // Custom back handler to skip the analyzing page
-    const handleBack = () => {
-      const filtered = questions;
-      const idx = filtered.findIndex(q => q.id === currentQuestion.id);
-      if (idx <= 0) return;
-      let targetIndex = idx - 1;
-      if (filtered[targetIndex]?.id === 'analyzing-pattern') {
-        targetIndex -= 1;
-      }
-      if (targetIndex >= 0) {
-        goToQuestion(filtered[targetIndex].id);
-      }
-    };
-    
-    return (
-      <MetabolicPatternPage
-        onContinue={nextQuestion}
-        onBack={currentIndex > 0 ? handleBack : undefined}
+        onBack={prevQuestion}
       />
     );
   }
 
   // Handle intermediate pages
   if (currentQuestion.type === 'intermediate') {
-    const imageSrc = currentQuestion.thematicImage 
-      ? getImageSrc(currentQuestion.thematicImage)
-      : currentQuestion.image 
-      ? getImageSrc(currentQuestion.image) 
-      : '';
+    const gender = quizState.answers[2] as string;
+    let imageSrc = currentQuestion.image ? getImageSrc(currentQuestion.image) : '';
     
-    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
+    if (currentQuestion.requiresGender && gender) {
+      if (gender === 'male' && currentQuestion.maleImage) {
+        imageSrc = getImageSrc(currentQuestion.maleImage);
+      } else if (gender === 'female' && currentQuestion.femaleImage) {
+        imageSrc = getImageSrc(currentQuestion.femaleImage);
+      }
+    }
 
     return (
       <IntermediatePage
@@ -160,9 +143,8 @@ export const Quiz = () => {
         subtitle={currentQuestion.subtitle}
         description={currentQuestion.description}
         image={imageSrc}
-        thematicImage={currentQuestion.thematicImage}
         onContinue={nextQuestion}
-        onBack={currentIndex > 0 ? prevQuestion : undefined}
+        onBack={prevQuestion}
       />
     );
   }
@@ -170,34 +152,28 @@ export const Quiz = () => {
 
   // Handle fasting benefits page
   if (currentQuestion.id === "fasting-benefits") {
-    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
-    
     return (
       <IntermediatePage
         title={currentQuestion.title}
         subtitle={currentQuestion.subtitle}
         description={currentQuestion.description}
         image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
-        thematicImage={currentQuestion.thematicImage}
         onContinue={nextQuestion}
-        onBack={currentIndex > 0 ? prevQuestion : undefined}
+        onBack={prevQuestion}
       />
     );
   }
 
   // Handle consent page
   if (currentQuestion.id === "consent-page") {
-    const currentIndex = questions.findIndex(q => q.id === currentQuestion.id);
-    
     return (
       <IntermediatePage
         title={currentQuestion.title}
         subtitle={currentQuestion.subtitle}
         description={currentQuestion.description}
         image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
-        thematicImage={currentQuestion.thematicImage}
         onContinue={nextQuestion}
-        onBack={currentIndex > 0 ? prevQuestion : undefined}
+        onBack={prevQuestion}
       />
     );
   }

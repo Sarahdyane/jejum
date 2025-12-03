@@ -18,8 +18,8 @@ interface QuizQuestionProps {
 export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuestionProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   
-  // Quiz exclusivo para mulheres
-  const gender = 'female';
+  // Get gender from previous answers (question 2)
+  const gender = answers[2] as string;
   
   const handleSingleAnswer = (optionId: string) => {
     onAnswer(optionId);
@@ -79,27 +79,36 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return answer === optionId;
   };
 
-  // Get the body image (sempre feminino)
+  // Get the appropriate body image based on gender
   const getBodyImage = () => {
-    if (question.bodyImage) {
-      return typeof question.bodyImage === 'string' && !question.bodyImage.startsWith('http') && !question.bodyImage.startsWith('/') 
-        ? getImageSrc(question.bodyImage)
-        : question.bodyImage;
+    if (!question.requiresGender || !gender) {
+      if (question.bodyImage) return question.bodyImage;
+      return question.maleBodyImage ? getImageSrc(question.maleBodyImage) : '';
     }
-    return '';
+    if (gender === 'male' && question.maleBodyImage) {
+      return getImageSrc(question.maleBodyImage);
+    }
+    if (gender === 'female' && question.femaleBodyImage) {
+      return getImageSrc(question.femaleBodyImage);
+    }
+    return question.bodyImage || '';
   };
 
-  // Get option image (sempre feminino)
+  // Get option image based on gender and custom images
   const getOptionImage = (option: any) => {
     if (option.customImage) {
       return getImageSrc(option.customImage);
     }
-    if (option.image) {
-      return typeof option.image === 'string' && !option.image.startsWith('http') && !option.image.startsWith('/') 
-        ? getImageSrc(option.image)
-        : option.image;
+    if (!question.requiresGender || !gender) {
+      return option.image;
     }
-    return '';
+    if (gender === 'male' && option.maleImage) {
+      return getImageSrc(option.maleImage);
+    }
+    if (gender === 'female' && option.femaleImage) {
+      return getImageSrc(option.femaleImage);
+    }
+    return option.image;
   };
 
   // Get info box for selected option
@@ -132,30 +141,18 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
   return (
     <div className="w-full max-w-4xl mx-auto quiz-fade-in">
       <div className="text-center mb-12">
-        {question.thematicImage && question.id !== 'leg-marks' && (
-          <div className={cn(
-            "flex justify-center",
-            question.thematicImage === 'lipedema-stages' 
-              ? "-mx-2 mb-8" 
-              : "mb-6 px-4"
-          )}>
-            <div className={cn(
-              "overflow-hidden",
-              question.thematicImage === 'lipedema-stages' 
-                ? "w-full max-w-none rounded-lg shadow-lg" 
-                : "w-32 h-32 ring-4 ring-white/20 rounded-xl shadow-2xl"
-            )}>
+        {(question.thematicImage || (question.requiresGender && gender && (question.maleImage || question.femaleImage))) && (
+          <div className="mb-6 flex justify-center">
+            <div className="w-32 h-32 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/20">
               <img 
-                src={typeof question.thematicImage === 'string' && !question.thematicImage.startsWith('http') && !question.thematicImage.startsWith('/') 
-                  ? getImageSrc(question.thematicImage) 
-                  : question.thematicImage
+                src={question.requiresGender && gender ? 
+                  (gender === 'male' && question.maleImage ? getImageSrc(question.maleImage) : 
+                   gender === 'female' && question.femaleImage ? getImageSrc(question.femaleImage) : 
+                   question.thematicImage ? getImageSrc(question.thematicImage) : question.thematicImage) : 
+                  question.thematicImage ? getImageSrc(question.thematicImage) : question.thematicImage
                 } 
                 alt={question.title}
-                className={cn(
-                  question.thematicImage === 'lipedema-stages'
-                    ? "w-full h-auto object-contain"
-                    : "w-full h-full object-cover"
-                )}
+                className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
@@ -163,27 +160,13 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
             </div>
           </div>
         )}
-        <h1 className="text-lg md:text-xl font-bold text-foreground mb-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
           {question.title}
         </h1>
         {question.subtitle && (
           <p className="text-muted-foreground text-lg">
             {question.subtitle}
           </p>
-        )}
-        {question.thematicImage && question.id === 'leg-marks' && (
-          <div className="flex justify-center mt-6 px-4">
-            <div className="overflow-hidden w-48 h-48 rounded-xl shadow-lg bg-white p-2">
-              <img 
-                src={getImageSrc(question.thematicImage)} 
-                alt={question.title}
-                className="w-full h-full object-cover rounded-lg"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-            </div>
-          </div>
         )}
       </div>
 
@@ -214,16 +197,22 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
         />
       ) : (
         <div className={cn(
-          "gap-3 max-w-3xl mx-auto",
-          // Question 4 (momento social): vertical layout (one below another)
-          question.id === 4
-            ? "flex flex-col"
-            : // Question 5 (body images): horizontal layout (side by side)
-            question.id === 5
-            ? "grid grid-cols-2 md:grid-cols-4"
-            : "flex flex-col"
+          "grid gap-4 max-w-3xl mx-auto",
+          // Special layout for age question (ID 1) - 2x2 grid on mobile
+          question.id === 1 
+            ? "grid-cols-2 md:grid-cols-4" 
+            : // Special layout for gender question (ID 2) - side by side
+            question.id === 2 
+            ? "grid-cols-2" 
+            : // Special layout for body type question (ID 4) - 2x2 grid
+            question.id === 4
+            ? "grid-cols-2"
+            : // Default layout for other questions
+            question.options && question.options.length <= 4 
+            ? "grid-cols-1 md:grid-cols-2" 
+            : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         )}>
-          {Array.isArray(question.options) && question.options.map((option) => {
+          {question.options?.map((option) => {
             const optionImage = getOptionImage(option);
             return (
               <QuizOption
@@ -237,7 +226,9 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                   ? handleMultipleAnswer(option.id) 
                   : handleSingleAnswer(option.id)
                 }
-                className="min-h-[70px]"
+                className={cn(
+                  optionImage ? "min-h-[160px]" : "min-h-[60px]"
+                )}
                 gender={gender}
                 questionId={question.id}
               />

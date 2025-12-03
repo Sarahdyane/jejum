@@ -6,8 +6,6 @@ import { useEffect } from "react";
 
 const Commitment = () => {
   const navigate = useNavigate();
-  // Quiz exclusivo para mulheres
-  const gender = 'female';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

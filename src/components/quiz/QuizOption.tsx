@@ -64,11 +64,11 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
     <button
       onClick={onClick}
       className={cn(
-        "w-full px-6 py-5 rounded-xl border-2 transition-all duration-300 text-left relative group",
-        "hover:border-primary hover:scale-[1.02]",
+        "w-full p-4 rounded-2xl border-2 transition-all duration-300 text-left relative group shadow-lg hover:shadow-xl",
+        "hover:border-primary hover:shadow-primary/20 hover:scale-105",
         isSelected 
-          ? "border-primary bg-primary/10 shadow-lg shadow-primary/20 scale-[1.02]" 
-          : "border-border bg-card hover:bg-accent/50",
+          ? "border-primary bg-primary text-primary-foreground shadow-xl shadow-primary/25 scale-105" 
+          : "border-border bg-card hover:bg-secondary/50 hover:shadow-primary/10",
         className
       )}
     >
@@ -91,10 +91,10 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
         </div>
       )}
       
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex items-center justify-between gap-2">
         <span className={cn(
-          "font-medium text-base leading-relaxed flex-1 whitespace-pre-line",
-          isSelected ? "text-primary" : "text-foreground"
+          "font-semibold text-base leading-relaxed flex-1",
+          isSelected ? "text-primary-foreground" : "text-foreground"
         )}>
           {getOptionText(option, gender)}
         </span>
@@ -105,9 +105,13 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
               const IconComponent = iconMap[option.icon as keyof typeof iconMap];
               return <IconComponent className={cn(
                 "w-5 h-5",
-                isSelected ? "text-primary" : "text-muted-foreground"
+                isSelected ? "text-primary-foreground" : "text-primary"
               )} />;
             })()
+          )}
+          
+          {isSelected && questionId !== 2 && (
+            <CheckCircle2 className="w-5 h-5 text-primary-foreground drop-shadow-lg flex-shrink-0" />
           )}
         </div>
       </div>
