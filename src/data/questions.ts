@@ -395,17 +395,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 22,
-    title: "Como é o seu horário de trabalho?",
-    type: "single",
-    options: [
-      { id: "9-to-5", text: "9 às 5", icon: "Clock" },
-      { id: "night-shifts", text: "Turnos da noite", icon: "Moon" },
-      { id: "flexible", text: "Meu horário de trabalho é flexível", icon: "Calendar" },
-      { id: "retired", text: "Estou aposentado", icon: "Armchair" }
-    ]
-  },
-  {
     id: 23,
     title: "Você tem algum dos seguintes maus hábitos?",
     type: "multiple",
