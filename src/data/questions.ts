@@ -105,7 +105,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 5,
-    title: "Qual é o seu objetivo de tipo de corpo?",
+    title: "Escolha o corpo que você deseja",
     type: "single",
     requiresGender: true,
     showInfoBox: true,
@@ -116,19 +116,13 @@ export const questions: QuizQuestion[] = [
     options: [
       { 
         id: "slim", 
-        text: "Afinar", 
+        text: "Corpo esbelto", 
         maleImage: "goal-slim-male", 
         femaleImage: "goal-slim-female" 
       },
       { 
-        id: "defined", 
-        text: "Definir", 
-        maleImage: "goal-defined-male", 
-        femaleImage: "goal-defined-female" 
-      },
-      { 
         id: "athlete", 
-        text: "Atleta", 
+        text: "Corpo esbelto e musculoso", 
         maleImage: "goal-athlete-male", 
         femaleImage: "goal-athlete-female" 
       }
