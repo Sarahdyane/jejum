@@ -55,6 +55,9 @@ export interface QuizQuestion {
   maleImage?: string;
   femaleImage?: string;
   thematicImage?: string;
+  bulletPoints?: string[];
+  buttonText?: string;
+  footerText?: string;
 }
 
 export interface QuizState {

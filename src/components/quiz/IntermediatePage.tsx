@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import { useEffect } from "react";
 
 interface IntermediatePageProps {
@@ -9,9 +9,12 @@ interface IntermediatePageProps {
   image: string;
   onContinue: () => void;
   onBack?: () => void;
+  bulletPoints?: string[];
+  buttonText?: string;
+  footerText?: string;
 }
 
-export const IntermediatePage = ({ title, subtitle, description, image, onContinue, onBack }: IntermediatePageProps) => {
+export const IntermediatePage = ({ title, subtitle, description, image, onContinue, onBack, bulletPoints, buttonText, footerText }: IntermediatePageProps) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -95,16 +98,41 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
           )}
         </motion.div>
 
-        <motion.button
+        {bulletPoints && bulletPoints.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="space-y-3 text-left max-w-md mx-auto"
+          >
+            {bulletPoints.map((point, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">{point}</p>
+              </div>
+            ))}
+          </motion.div>
+        )}
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          onClick={onContinue}
-          className="w-full max-w-md mx-auto bg-primary text-primary-foreground hover:bg-primary/90 
-                   py-4 px-8 rounded-lg font-semibold text-lg transition-colors"
+          className="space-y-3"
         >
-          Continuar
-        </motion.button>
+          <button
+            onClick={onContinue}
+            className="w-full max-w-md mx-auto bg-primary text-primary-foreground hover:bg-primary/90 
+                     py-4 px-8 rounded-lg font-semibold text-lg transition-colors"
+          >
+            {buttonText || "Continuar"}
+          </button>
+          {footerText && (
+            <p className="text-sm text-muted-foreground">{footerText}</p>
+          )}
+        </motion.div>
       </div>
     </div>
   );

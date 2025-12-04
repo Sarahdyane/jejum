@@ -199,13 +199,20 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: "motivation-incredible",
-    title: "Você é incrível!",
-    subtitle: "Muitas pessoas lutam contra o medo de não serem boas o suficiente - levaremos isso em conta ao elaborar o seu plano para oferecer uma abordagem que permita que você ganhe confiança!",
+    id: "nutrition-info",
+    title: "81% dos seus resultados dependem da nutrição",
+    subtitle: "Para alcançar evolução mais rápida no corpo, o equilíbrio alimentar é essencial.",
     type: "intermediate",
     requiresGender: true,
-    femaleImage: "motivation-incredible",
-    maleImage: "motivation-incredible-male"
+    femaleImage: "fitness-female",
+    maleImage: "fitness-male",
+    bulletPoints: [
+      "Calorias adequadas para o seu objetivo",
+      "Macros distribuídos corretamente (proteínas, carbo e gorduras)",
+      "Refeições estratégicas para energia e recuperação"
+    ],
+    buttonText: "Entendi",
+    footerText: "Só mais algumas perguntas e seu plano estará tomando forma."
   },
   {
     id: "lipedema-info",
