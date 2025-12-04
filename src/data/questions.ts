@@ -12,7 +12,7 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "SUA CAMINHADA PARA EMAGRECER",
+    showTitle: "VAMOS CONSTRUIR SEU CORPO PERFEITO",
     showSubtitle: "Com base na sua idade",
     showFooter: true,
     options: [
