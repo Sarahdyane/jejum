@@ -23,13 +23,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: "intermediate-1",
-    title: "Você está em boas mãos",
-    subtitle: "Mais de 29.567.899 usuários escolheram a Nutria para começar sua jornada de perda de peso conosco",
-    type: "intermediate",
-    image: "person-exercising-small"
-  },
-  {
     id: 2,
     title: "Qual o seu gênero?",
     type: "single",
