@@ -398,6 +398,23 @@ export const questions: QuizQuestion[] = [
     inputSuffix: "kg"
   },
   {
+    id: 31,
+    title: "Você tem um evento importante em breve?",
+    subtitle: "Ter algo pelo qual ansiar pode ser um grande motivador para atingir sua meta",
+    type: "single",
+    options: [
+      { id: "vacation", text: "Férias", icon: "Plane" },
+      { id: "trip", text: "Viagem", icon: "Compass" },
+      { id: "birthday", text: "Aniversário", icon: "Cake" },
+      { id: "family-occasion", text: "Ocasião familiar", icon: "Users" },
+      { id: "wedding", text: "Casamento", icon: "Heart" },
+      { id: "contest", text: "Concurso", icon: "Trophy" },
+      { id: "extreme-sports", text: "Esportes radicais", icon: "Mountain" },
+      { id: "other", text: "Outros", icon: "Calendar" },
+      { id: "none", text: "Nenhum evento especial", icon: "X" }
+    ]
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
