@@ -243,43 +243,6 @@ export const questions: QuizQuestion[] = [
     maleImage: "motivation-change-habits-male"
   },
   {
-    id: 10,
-    title: "Como você descreveria seu dia típico?",
-    type: "single",
-    requiresGender: true,
-    maleImage: "man-working-office",
-    femaleImage: "woman-working-office",
-    options: [
-      { id: "sitting", text: "Passo a maior parte do dia sentado" },
-      { id: "active-breaks", text: "Faço pausas ativas" },
-      { id: "standing", text: "Fico em pé o dia todo" }
-    ]
-  },
-  {
-    id: 11,
-    title: "Quando você costuma fazer a primeira refeição do dia?",
-    type: "single",
-    thematicImage: "healthy-meal",
-    options: [
-      { id: "6-8", text: "Entre 6h e 8h" },
-      { id: "8-10", text: "Entre 8h e 10h" },
-      { id: "10-12", text: "Entre 10h e 12h" },
-      { id: "skip-breakfast", text: "Normalmente pulo o café da manhã" }
-    ]
-  },
-  {
-    id: 12,
-    title: "Quando você costuma fazer a última refeição do dia?",
-    type: "single",
-    thematicImage: "evening-meal",
-    options: [
-      { id: "16-18", text: "Entre 16h e 18h" },
-      { id: "18-20", text: "Entre 18h e 20h" },
-      { id: "20-22", text: "Entre 20h e 22h" },
-      { id: "skip-dinner", text: "Normalmente pulo o jantar" }
-    ]
-  },
-  {
     id: 13,
     title: "Quantas refeições por dia você gostaria de fazer?",
     type: "single",
