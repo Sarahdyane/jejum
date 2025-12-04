@@ -374,6 +374,30 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: 27,
+    title: "Qual a sua altura?",
+    type: "input",
+    inputType: "number",
+    inputPlaceholder: "Ex: 170",
+    inputSuffix: "cm"
+  },
+  {
+    id: 28,
+    title: "Qual é o seu peso atual?",
+    type: "input",
+    inputType: "number",
+    inputPlaceholder: "Ex: 70",
+    inputSuffix: "kg"
+  },
+  {
+    id: 29,
+    title: "Qual é o seu peso desejado?",
+    type: "input",
+    inputType: "number",
+    inputPlaceholder: "Ex: 65",
+    inputSuffix: "kg"
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
@@ -448,30 +472,6 @@ export const questions: QuizQuestion[] = [
       { id: "clothes-fit", text: "Para que minhas roupas sirvam melhor", icon: "Shirt" },
       { id: "other", text: "Outro", icon: "MessageCircle" }
     ]
-  },
-  {
-    id: 27,
-    title: "Qual a sua altura?",
-    type: "input",
-    inputType: "number",
-    inputPlaceholder: "Ex: 170",
-    inputSuffix: "cm"
-  },
-  {
-    id: 28,
-    title: "Qual é o seu peso atual?",
-    type: "input",
-    inputType: "number",
-    inputPlaceholder: "Ex: 70",
-    inputSuffix: "kg"
-  },
-  {
-    id: 29,
-    title: "Qual é o seu peso desejado?",
-    type: "input",
-    inputType: "number",
-    inputPlaceholder: "Ex: 65",
-    inputSuffix: "kg"
   },
   {
     id: 30,
