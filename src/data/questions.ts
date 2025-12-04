@@ -374,18 +374,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 17,
-    title: "Quanto você dorme normalmente?",
-    type: "single",
-    thematicImage: "/images/lifestyle/peaceful-sleep.jpg",
-    options: [
-      { id: "less-5", text: "Descanso mínimo (menos de 5 horas)" },
-      { id: "5-6", text: "Eu pego um olho (5–6 horas)" },
-      { id: "7-8", text: "Eu durmo muito e bem (7–8 horas)" },
-      { id: "more-8", text: "Gosto de dormir até tarde (mais de 8 horas)" }
-    ]
-  },
-  {
     id: 18,
     title: "Quão cansado você se sente normalmente durante o dia?",
     type: "single",
