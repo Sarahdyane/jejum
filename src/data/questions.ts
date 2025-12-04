@@ -247,10 +247,10 @@ export const questions: QuizQuestion[] = [
     title: "Quantas refeições por dia você gostaria de fazer?",
     type: "single",
     options: [
-      { id: "2-meals", text: "2 refeições por dia 🥗🥙" },
-      { id: "3-meals", text: "3 refeições por dia 🍳🥗🥙" },
-      { id: "4-meals", text: "4 refeições por dia 🍳🍽️🥗🥙" },
-      { id: "5-meals", text: "5 refeições por dia 🍳🍳🍽️🥗🥙" }
+      { id: "2-meals", text: "2 refeições por dia 🥗🥙", icon: "UtensilsCrossed" },
+      { id: "3-meals", text: "3 refeições por dia 🍳🥗🥙", icon: "UtensilsCrossed" },
+      { id: "4-meals", text: "4 refeições por dia 🍳🍽️🥗🥙", icon: "UtensilsCrossed" },
+      { id: "5-meals", text: "5 refeições por dia 🍳🍳🍽️🥗🥙", icon: "UtensilsCrossed" }
     ]
   },
   {
@@ -258,10 +258,10 @@ export const questions: QuizQuestion[] = [
     title: "Qual tipo de dieta você prefere?",
     type: "single",
     options: [
-      { id: "traditional", text: "Tradicional" },
-      { id: "vegetarian", text: "Vegetariana" },
-      { id: "lactose-free", text: "Sem lactose" },
-      { id: "gluten-free", text: "Sem glúten" }
+      { id: "traditional", text: "Tradicional", icon: "Utensils" },
+      { id: "vegetarian", text: "Vegetariana", icon: "Leaf" },
+      { id: "lactose-free", text: "Sem lactose", icon: "MilkOff" },
+      { id: "gluten-free", text: "Sem glúten", icon: "WheatOff" }
     ]
   },
   {
@@ -366,11 +366,11 @@ export const questions: QuizQuestion[] = [
     type: "single",
     thematicImage: "/images/lifestyle/water-consumption.jpg",
     options: [
-      { id: "less-0.5", text: "Menos de 0,5 L (menos de 2 copos)" },
-      { id: "0.5-1.5", text: "0,5 – 1,5 L (2–6 copos)" },
-      { id: "1.5-2.5", text: "1,5 – 2,5 L (7–10 copos)" },
-      { id: "more-2.5", text: "Mais de 2,5 L (mais de 10 copos)" },
-      { id: "dont-count", text: "Eu não conto, depende" }
+      { id: "less-0.5", text: "Menos de 0,5 L (menos de 2 copos)", icon: "Droplet" },
+      { id: "0.5-1.5", text: "0,5 – 1,5 L (2–6 copos)", icon: "Droplets" },
+      { id: "1.5-2.5", text: "1,5 – 2,5 L (7–10 copos)", icon: "GlassWater" },
+      { id: "more-2.5", text: "Mais de 2,5 L (mais de 10 copos)", icon: "Waves" },
+      { id: "dont-count", text: "Eu não conto, depende", icon: "HelpCircle" }
     ]
   },
   {
