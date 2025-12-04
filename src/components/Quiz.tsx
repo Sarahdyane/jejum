@@ -145,6 +145,9 @@ export const Quiz = () => {
         image={imageSrc}
         onContinue={nextQuestion}
         onBack={prevQuestion}
+        bulletPoints={currentQuestion.bulletPoints}
+        buttonText={currentQuestion.buttonText}
+        footerText={currentQuestion.footerText}
       />
     );
   }
