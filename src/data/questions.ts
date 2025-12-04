@@ -374,17 +374,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 18,
-    title: "Quão cansado você se sente normalmente durante o dia?",
-    type: "single",
-    options: [
-      { id: "tired-most", text: "Sinto-me cansado na maior parte do tempo" },
-      { id: "morning-good", text: "De manhã estou bem, mas à tarde estou exausto" },
-      { id: "inconsistent", text: "Tenho energia, mas é inconstante" },
-      { id: "great-most", text: "Sinto-me ótimo na maior parte do dia" }
-    ]
-  },
-  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
