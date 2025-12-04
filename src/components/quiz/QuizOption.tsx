@@ -5,7 +5,8 @@ import {
   AlertTriangle, CheckCircle, Footprints, Clock, Moon, Calendar, 
   Armchair, Candy, Wine, Pizza, DollarSign, Users, Briefcase, 
   HeartCrack, Bug, Shirt, Heart, Activity, Zap, MessageCircle,
-  HelpCircle, X
+  HelpCircle, X, Plane, Compass, Cake, Trophy, Mountain,
+  Utensils, Leaf, MilkOff, WheatOff, Droplet, Droplets, GlassWater, Waves, UtensilsCrossed
 } from "lucide-react";
 
 const iconMap = {
@@ -35,6 +36,20 @@ const iconMap = {
   MessageCircle,
   HelpCircle,
   X,
+  Plane,
+  Compass,
+  Cake,
+  Trophy,
+  Mountain,
+  Utensils,
+  Leaf,
+  MilkOff,
+  WheatOff,
+  Droplet,
+  Droplets,
+  GlassWater,
+  Waves,
+  UtensilsCrossed,
 };
 
 interface QuizOptionProps {

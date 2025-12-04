@@ -13,7 +13,7 @@ export const WeeklyExpectations = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  return <div className="min-h-screen bg-white flex flex-col items-center justify-between p-6">
+  return <div className="min-h-screen bg-background flex flex-col items-center justify-between p-6">
       <div className="w-full max-w-md flex-1 flex flex-col">
         {/* Logo */}
         <div className="mb-8 mt-4">
@@ -23,28 +23,28 @@ export const WeeklyExpectations = ({
         {/* Title Section */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Sparkles className="w-8 h-8 text-[#0d7377]" />
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">O plano para alcaçar seus objetivos está pronto!</h1>
-            <Sparkles className="w-8 h-8 text-[#0d7377]" />
+            <Sparkles className="w-8 h-8 text-primary" />
+            <h1 className="text-2xl md:text-3xl font-bold text-foreground">O plano para alcaçar seus objetivos está pronto!</h1>
+            <Sparkles className="w-8 h-8 text-primary" />
           </div>
-          <p className="text-gray-700 text-lg">
+          <p className="text-muted-foreground text-lg">
             Trabalharemos juntos em direção ao seu objetivo
           </p>
         </div>
 
         {/* Timeline Badge */}
         <div className="flex justify-center mb-6">
-          <div className="bg-[#0d7377] text-white px-6 py-2 rounded-full font-semibold">
+          <div className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-semibold">
             Depois de 4 semanas
           </div>
         </div>
 
         {/* Progress Graph */}
-        <div className="flex-1 relative bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 rounded-3xl p-6 md:p-10 mb-6 shadow-2xl backdrop-blur-sm border border-white/50">
+        <div className="flex-1 relative bg-gradient-to-br from-secondary via-card to-muted rounded-3xl p-6 md:p-10 mb-6 shadow-2xl backdrop-blur-sm border border-border">
           {/* Graph visualization */}
           <div className="relative h-80 md:h-96">
             {/* Y-Axis Labels */}
-            <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs text-gray-400 pr-2">
+            <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs text-muted-foreground pr-2">
               <span>Meta</span>
               <span className="text-center">Progresso</span>
               <span>Início</span>
@@ -250,7 +250,7 @@ export const WeeklyExpectations = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.8 }}
             >
-              <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-semibold text-[10px] md:text-xs text-gray-700 shadow-lg border border-gray-200">
+              <div className="bg-card/90 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-semibold text-[10px] md:text-xs text-foreground shadow-lg border border-border">
                 Semana 2
               </div>
             </motion.div>
@@ -282,14 +282,14 @@ export const WeeklyExpectations = ({
         </div>
 
         {/* Disclaimer */}
-        <p className="text-center text-gray-600 text-sm mb-6">
+        <p className="text-center text-muted-foreground text-sm mb-6">
           Este é um cronograma preliminar baseado em suas respostas.
         </p>
       </div>
 
       {/* Continue Button */}
       <div className="w-full max-w-md">
-        <Button onClick={onContinue} className="w-full bg-[#0d7377] hover:bg-[#0a5c5f] text-white py-6 text-lg font-semibold rounded-lg">
+        <Button onClick={onContinue} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-semibold rounded-lg">
           Avançar
         </Button>
       </div>
