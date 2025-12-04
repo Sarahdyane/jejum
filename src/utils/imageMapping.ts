@@ -33,6 +33,7 @@ import healthyLifestyleMale from '@/assets/healthy-lifestyle-male.jpg';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import lipedemaInfo from '@/assets/lipedema-info.png';
 import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
+import nutritionInfoFemale from '@/assets/nutrition-info-female.png';
 
 // Professional body type images
 import bodyThinProfessional from '@/assets/body-thin-professional.png';
@@ -129,6 +130,7 @@ export const imageMap = {
   'body-fuller-female-results': bodyFullerFemaleResults,
   'body-average-female-results': bodyAverageFemaleResults,
   'body-goal-female-results': bodyGoalFemaleResults,
+  'nutrition-info-female': nutritionInfoFemale,
 };
 
 export const getImageSrc = (imageKey: string) => {

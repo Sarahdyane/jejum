@@ -204,7 +204,7 @@ export const questions: QuizQuestion[] = [
     subtitle: "Para alcançar evolução mais rápida no corpo, o equilíbrio alimentar é essencial.",
     type: "intermediate",
     requiresGender: true,
-    femaleImage: "fitness-female",
+    femaleImage: "nutrition-info-female",
     maleImage: "fitness-male",
     bulletPoints: [
       "Calorias adequadas para o seu objetivo",
