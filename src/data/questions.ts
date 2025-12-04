@@ -434,18 +434,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 19,
-    title: "Você prefere cozinhar, comer fora ou pedir comida?",
-    type: "single",
-    thematicImage: "/images/lifestyle/healthy-cooking.jpg",
-    options: [
-      { id: "cook-home", text: "Cozinhar em casa para mim!" },
-      { id: "restaurant", text: "Prefiro ir a um restaurante" },
-      { id: "takeaway", text: "Sou um grande fã de comida para levar" },
-      { id: "bit-everything", text: "Eu faço um pouco de tudo" }
-    ]
-  },
-  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
