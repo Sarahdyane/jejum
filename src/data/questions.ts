@@ -364,6 +364,11 @@ export const questions: QuizQuestion[] = [
     }
   },
   {
+    id: 33,
+    title: "Projeção de objetivo",
+    type: "goal-projection"
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",

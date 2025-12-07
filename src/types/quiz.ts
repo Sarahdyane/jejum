@@ -31,7 +31,7 @@ export interface QuizQuestion {
   title: string;
   subtitle?: string;
   description?: string;
-  type: 'single' | 'multiple' | 'input' | 'body-selection' | 'intermediate' | 'food-categories' | 'stats' | 'loading' | 'date';
+  type: 'single' | 'multiple' | 'input' | 'body-selection' | 'intermediate' | 'food-categories' | 'stats' | 'loading' | 'date' | 'goal-projection';
   showWhen?: {
     questionId: number;
     notEquals?: string;
