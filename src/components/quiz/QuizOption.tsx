@@ -106,29 +106,40 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
         </div>
       )}
       
-      <div className="flex items-center justify-between gap-2">
-        <span className={cn(
-          "font-semibold text-base leading-relaxed flex-1",
-          isSelected ? "text-primary-foreground" : "text-foreground"
-        )}>
-          {getOptionText(option, gender)}
-        </span>
-        
-        <div className="flex items-center gap-2 flex-shrink-0">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start gap-3 flex-1">
           {option.icon && iconMap[option.icon as keyof typeof iconMap] && (
             (() => {
               const IconComponent = iconMap[option.icon as keyof typeof iconMap];
               return <IconComponent className={cn(
-                "w-5 h-5",
+                "w-5 h-5 mt-0.5 flex-shrink-0",
                 isSelected ? "text-primary-foreground" : "text-primary"
               )} />;
             })()
           )}
           
-          {isSelected && questionId !== 2 && (
-            <CheckCircle2 className="w-5 h-5 text-primary-foreground drop-shadow-lg flex-shrink-0" />
-          )}
+          <div className="flex flex-col gap-1">
+            <span className={cn(
+              "font-semibold text-base leading-relaxed",
+              isSelected ? "text-primary-foreground" : "text-foreground"
+            )}>
+              {getOptionText(option, gender)}
+            </span>
+            
+            {option.description && (
+              <span className={cn(
+                "text-sm leading-relaxed",
+                isSelected ? "text-primary-foreground/80" : "text-muted-foreground"
+              )}>
+                {option.description}
+              </span>
+            )}
+          </div>
         </div>
+        
+        {isSelected && questionId !== 2 && (
+          <CheckCircle2 className="w-5 h-5 text-primary-foreground drop-shadow-lg flex-shrink-0 mt-0.5" />
+        )}
       </div>
     </button>
   );

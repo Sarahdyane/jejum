@@ -1,6 +1,7 @@
 export interface QuizOption {
   id: string;
   text: string;
+  description?: string;
   maleText?: string;
   femaleText?: string;
   image?: string;
