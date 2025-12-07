@@ -353,6 +353,17 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: 32,
+    title: "Quando será o seu evento?",
+    subtitle: "Vamos manter este evento importante em mente para a sua jornada",
+    type: "date",
+    skippable: true,
+    showWhen: {
+      questionId: 31,
+      notEquals: "none"
+    }
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",

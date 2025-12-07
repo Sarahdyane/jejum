@@ -16,6 +16,19 @@ export const useQuiz = (questions: QuizQuestion[]) => {
       return false;
     }
     
+    // Verificar condição showWhen
+    if (question.showWhen) {
+      const { questionId, notEquals, equals } = question.showWhen;
+      const answerValue = quizState.answers[questionId];
+      
+      if (notEquals && answerValue === notEquals) {
+        return false;
+      }
+      if (equals && answerValue !== equals) {
+        return false;
+      }
+    }
+    
     return true;
   }, [quizState.answers]);
 
