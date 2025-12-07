@@ -32,7 +32,7 @@ export interface QuizQuestion {
   title: string;
   subtitle?: string;
   description?: string;
-  type: 'single' | 'multiple' | 'intermediate' | 'input' | 'body-selection' | 'food-categories' | 'stats' | 'loading' | 'goal-projection' | 'date' | 'exercise-preference';
+  type: 'single' | 'multiple' | 'intermediate' | 'input' | 'body-selection' | 'food-categories' | 'stats' | 'loading' | 'goal-projection' | 'date' | 'exercise-preference' | 'supplements-page';
   showWhen?: {
     questionId: number;
     notEquals?: string;
