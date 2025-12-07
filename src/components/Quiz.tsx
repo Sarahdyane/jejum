@@ -14,6 +14,7 @@ import { ReadyTransition } from '@/components/quiz/ReadyTransition';
 import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
 import { CommitmentPage } from '@/components/quiz/CommitmentPage';
 import { DatePickerQuestion } from '@/components/quiz/DatePickerQuestion';
+import { GoalProjectionPage } from '@/components/quiz/GoalProjectionPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
@@ -139,6 +140,22 @@ export const Quiz = () => {
           nextQuestion();
         }}
         onSkip={nextQuestion}
+      />
+    );
+  }
+
+  // Handle goal projection page
+  if (currentQuestion.type === 'goal-projection') {
+    const targetWeight = quizState.answers[29] as number || 65;
+    const currentWeight = quizState.answers[28] as number || 70;
+    const eventDate = quizState.answers[32] as string;
+    
+    return (
+      <GoalProjectionPage
+        targetWeight={targetWeight}
+        currentWeight={currentWeight}
+        eventDate={eventDate}
+        onContinue={nextQuestion}
       />
     );
   }
