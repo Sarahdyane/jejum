@@ -192,17 +192,6 @@ export const questions: QuizQuestion[] = [
     maleImage: "motivation-change-habits-male"
   },
   {
-    id: 13,
-    title: "Quantas refeições por dia você gostaria de fazer?",
-    type: "single",
-    options: [
-      { id: "2-meals", text: "2 refeições por dia 🥗🥙", icon: "UtensilsCrossed" },
-      { id: "3-meals", text: "3 refeições por dia 🍳🥗🥙", icon: "UtensilsCrossed" },
-      { id: "4-meals", text: "4 refeições por dia 🍳🍽️🥗🥙", icon: "UtensilsCrossed" },
-      { id: "5-meals", text: "5 refeições por dia 🍳🍳🍽️🥗🥙", icon: "UtensilsCrossed" }
-    ]
-  },
-  {
     id: 14,
     title: "Qual tipo de dieta você prefere?",
     type: "single",
