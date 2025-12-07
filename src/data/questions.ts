@@ -399,6 +399,19 @@ export const questions: QuizQuestion[] = [
     type: "exercise-preference"
   },
   {
+    id: 36,
+    title: "Quais são os esportes de seu interesse?",
+    type: "multiple",
+    options: [
+      { id: "gym", text: "Treinos de Academia", icon: "Dumbbell" },
+      { id: "home", text: "Treinos em casa", icon: "Home" },
+      { id: "boxing", text: "Boxe", icon: "Swords" },
+      { id: "martial-arts", text: "Outras artes marciais", icon: "PersonStanding" },
+      { id: "running", text: "Corrida", icon: "Footprints" },
+      { id: "none", text: "Nenhuma das opções", icon: "X" }
+    ]
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
