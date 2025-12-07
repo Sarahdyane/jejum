@@ -15,6 +15,7 @@ import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
 import { CommitmentPage } from '@/components/quiz/CommitmentPage';
 import { DatePickerQuestion } from '@/components/quiz/DatePickerQuestion';
 import { GoalProjectionPage } from '@/components/quiz/GoalProjectionPage';
+import { ExercisePreference } from '@/components/quiz/ExercisePreference';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
@@ -156,6 +157,19 @@ export const Quiz = () => {
         currentWeight={currentWeight}
         eventDate={eventDate}
         onContinue={nextQuestion}
+      />
+    );
+  }
+
+  // Handle exercise preference page
+  if (currentQuestion.type === 'exercise-preference') {
+    return (
+      <ExercisePreference
+        onComplete={(preferences) => {
+          setAnswer(currentQuestion.id, JSON.stringify(preferences));
+          nextQuestion();
+        }}
+        onBack={prevQuestion}
       />
     );
   }

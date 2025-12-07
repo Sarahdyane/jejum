@@ -394,6 +394,11 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: 35,
+    title: "Gosto ou não gosto",
+    type: "exercise-preference"
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
