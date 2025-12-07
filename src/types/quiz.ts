@@ -31,7 +31,13 @@ export interface QuizQuestion {
   title: string;
   subtitle?: string;
   description?: string;
-  type: 'single' | 'multiple' | 'input' | 'body-selection' | 'intermediate' | 'food-categories' | 'stats' | 'loading';
+  type: 'single' | 'multiple' | 'input' | 'body-selection' | 'intermediate' | 'food-categories' | 'stats' | 'loading' | 'date';
+  showWhen?: {
+    questionId: number;
+    notEquals?: string;
+    equals?: string;
+  };
+  skippable?: boolean;
   options?: QuizOption[];
   foodCategories?: FoodCategory[];
   inputType?: 'text' | 'number';

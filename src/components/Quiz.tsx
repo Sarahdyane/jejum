@@ -13,6 +13,7 @@ import { LoadingAnalysis } from '@/components/quiz/LoadingAnalysis';
 import { ReadyTransition } from '@/components/quiz/ReadyTransition';
 import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
 import { CommitmentPage } from '@/components/quiz/CommitmentPage';
+import { DatePickerQuestion } from '@/components/quiz/DatePickerQuestion';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
@@ -73,6 +74,7 @@ export const Quiz = () => {
     currentQuestion.type === 'intermediate' || 
     currentQuestion.type === 'stats' ||
     currentQuestion.type === 'loading' ||
+    currentQuestion.type === 'date' ||
     (typeof currentQuestion.id === 'number' && hasAnswer(currentQuestion.id))
   );
 
@@ -120,6 +122,23 @@ export const Quiz = () => {
       <StatsPage
         onContinue={nextQuestion}
         onBack={prevQuestion}
+      />
+    );
+  }
+
+  // Handle date picker page
+  if (currentQuestion.type === 'date') {
+    return (
+      <DatePickerQuestion
+        title={currentQuestion.title}
+        subtitle={currentQuestion.subtitle}
+        onContinue={(date) => {
+          if (date) {
+            setAnswer(currentQuestion.id, date.toISOString());
+          }
+          nextQuestion();
+        }}
+        onSkip={nextQuestion}
       />
     );
   }
