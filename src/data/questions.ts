@@ -55,7 +55,7 @@ export const questions: QuizQuestion[] = [
     options: [
       { id: "lose-weight", text: "Perder peso", icon: "TrendingDown" },
       { id: "get-fit", text: "Ficar em forma", icon: "Dumbbell" },
-      { id: "gain-weight", text: "Ganhar peso", icon: "TrendingUp" }
+      { id: "gain-weight", text: "Ganhar massa muscular", icon: "TrendingUp" }
     ]
   },
   {
