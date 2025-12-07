@@ -369,6 +369,31 @@ export const questions: QuizQuestion[] = [
     type: "goal-projection"
   },
   {
+    id: 34,
+    title: "Qual é o seu nível de condicionamento físico?",
+    type: "single",
+    options: [
+      { 
+        id: "beginner", 
+        text: "Iniciante", 
+        description: "Sempre que me sento no chão, é difícil me levantar.",
+        icon: "Zap"
+      },
+      { 
+        id: "amateur", 
+        text: "Amador", 
+        description: "Tento me exercitar uma vez por semana, mas ainda não é regular.",
+        icon: "Zap"
+      },
+      { 
+        id: "advanced", 
+        text: "Avançado", 
+        description: "Estou pegando fogo! Estou na melhor forma da minha vida.",
+        icon: "Zap"
+      }
+    ]
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
