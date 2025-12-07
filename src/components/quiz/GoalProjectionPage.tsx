@@ -2,6 +2,7 @@ import { format, addMonths } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Button } from '@/components/ui/button';
 import { Flag } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface GoalProjectionPageProps {
   targetWeight: number;
@@ -26,6 +27,14 @@ export const GoalProjectionPage = ({
   const isGaining = targetWeight > currentWeight;
   const startWeight = currentWeight || 70;
   const endWeight = targetWeight || 65;
+
+  // Animation state
+  const [isAnimated, setIsAnimated] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsAnimated(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -72,34 +81,46 @@ export const GoalProjectionPage = ({
                     <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
                     <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
                   </linearGradient>
+                  <clipPath id="revealClip">
+                    <rect 
+                      x="0" 
+                      y="0" 
+                      width={isAnimated ? "400" : "0"} 
+                      height="150"
+                      style={{ transition: 'width 1.5s ease-out' }}
+                    />
+                  </clipPath>
                 </defs>
                 
-                {/* Filled area */}
-                <path
-                  d={isGaining 
-                    ? "M 0,130 Q 100,120 200,80 T 400,20 L 400,150 L 0,150 Z"
-                    : "M 0,20 Q 100,30 200,70 T 400,130 L 400,150 L 0,150 Z"
-                  }
-                  fill="url(#chartGradient)"
-                />
-                
-                {/* Curve line */}
-                <path
-                  d={isGaining 
-                    ? "M 0,130 Q 100,120 200,80 T 400,20"
-                    : "M 0,20 Q 100,30 200,70 T 400,130"
-                  }
-                  fill="none"
-                  stroke="hsl(var(--primary))"
-                  strokeWidth="3"
-                />
+                {/* Filled area with animation */}
+                <g clipPath="url(#revealClip)">
+                  <path
+                    d={isGaining 
+                      ? "M 0,130 Q 100,120 200,80 T 400,20 L 400,150 L 0,150 Z"
+                      : "M 0,20 Q 100,30 200,70 T 400,130 L 400,150 L 0,150 Z"
+                    }
+                    fill="url(#chartGradient)"
+                  />
+                  
+                  {/* Curve line */}
+                  <path
+                    d={isGaining 
+                      ? "M 0,130 Q 100,120 200,80 T 400,20"
+                      : "M 0,20 Q 100,30 200,70 T 400,130"
+                    }
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="3"
+                  />
+                </g>
                 
                 {/* Start point */}
                 <circle 
                   cx="0" 
                   cy={isGaining ? "130" : "20"} 
                   r="6" 
-                  fill="hsl(var(--primary))" 
+                  fill="hsl(var(--primary))"
+                  className={`transition-opacity duration-300 ${isAnimated ? 'opacity-100' : 'opacity-0'}`}
                 />
                 
                 {/* End point */}
@@ -110,11 +131,13 @@ export const GoalProjectionPage = ({
                   fill="hsl(var(--primary))" 
                   stroke="hsl(var(--background))"
                   strokeWidth="2"
+                  className={`transition-opacity duration-500 ${isAnimated ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ transitionDelay: '1.3s' }}
                 />
               </svg>
 
               {/* Current weight label */}
-              <div className="absolute left-0 bottom-full mb-2 flex items-center gap-1">
+              <div className={`absolute left-0 bottom-full mb-2 flex items-center gap-1 transition-opacity duration-500 ${isAnimated ? 'opacity-100' : 'opacity-0'}`}>
                 <span className="bg-muted text-muted-foreground px-2 py-1 rounded text-sm font-medium">
                   {startWeight} kg
                 </span>
