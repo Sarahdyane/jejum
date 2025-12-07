@@ -49,26 +49,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 3,
-    title: "Qual é o seu objetivo?",
-    type: "single",
-    options: [
-      { id: "lose-weight", text: "Perder peso", icon: "TrendingDown" },
-      { id: "get-fit", text: "Ficar em forma", icon: "Dumbbell" },
-      { id: "gain-weight", text: "Ganhar peso", icon: "TrendingUp" }
-    ]
-  },
-  {
-    id: "intermediate-2",
-    title: "Um plano personalizado é a chave para o seu sucesso!",
-    subtitle: "Para as mulheres, uma abordagem individualizada é essencial para resultados duradouros.",
-    description: "Se você deseja uma aparência em forma, energia duradoura e um corpo saudável, um plano personalizado é o ponto de partida ideal que se adapta ao seu estilo de vida.",
-    type: "intermediate",
-    requiresGender: true,
-    maleImage: "fitness-male",
-    femaleImage: "fitness-female"
-  },
-  {
     id: 4,
     title: "Como você descreveria seu físico?",
     type: "single",
