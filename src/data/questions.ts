@@ -148,57 +148,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 7,
-    title: "Há quanto tempo você não está na melhor forma da sua vida?",
-    type: "single",
-    requiresGender: true,
-    maleImage: "fitness-thinking",
-    femaleImage: "fitness-female",
-    showInfoBox: true,
-    options: [
-      { 
-        id: "now", 
-        text: "Agora mesmo",
-        infoBox: {
-          title: "🔥 Continue assim!",
-          content: "Manter os resultados é tão importante quanto conquistá-los. Vamos ajudá-lo a manter seus hábitos saudáveis."
-        }
-      },
-      { 
-        id: "1-2-years", 
-        text: "1–2 anos atrás",
-        infoBox: {
-          title: "⚡ Ótimo momento!",
-          content: "Seu corpo ainda se lembra dos hábitos saudáveis. Vamos reativar rapidamente seu metabolismo."
-        }
-      },
-      { 
-        id: "3-5-years", 
-        text: "3–5 anos atrás",
-        infoBox: {
-          title: "🎯 Vamos retomar!",
-          content: "É normal que o metabolismo desacelere com o tempo. Vamos reativá-lo naturalmente e aumentar sua energia."
-        }
-      },
-      { 
-        id: "5-plus-years", 
-        text: "Mais de 5 anos atrás",
-        infoBox: {
-          title: "💪 Seu corpo lembra!",
-          content: "Mesmo que já tenha passado um tempo, seu corpo ainda se lembra de como funcionar de forma eficiente."
-        }
-      },
-      { 
-        id: "never", 
-        text: "Nunca me senti realmente em forma",
-        infoBox: {
-          title: "🌟 Hora da transformação!",
-          content: "Esta é sua oportunidade! Uma transformação corporal duradoura começa agora."
-        }
-      }
-    ]
-  },
-  {
     id: "nutrition-info",
     title: "81% dos seus resultados dependem da nutrição",
     subtitle: "Para alcançar evolução mais rápida no corpo, o equilíbrio alimentar é essencial.",
