@@ -16,6 +16,7 @@ import { CommitmentPage } from '@/components/quiz/CommitmentPage';
 import { DatePickerQuestion } from '@/components/quiz/DatePickerQuestion';
 import { GoalProjectionPage } from '@/components/quiz/GoalProjectionPage';
 import { ExercisePreference } from '@/components/quiz/ExercisePreference';
+import SupplementsPage from '@/components/quiz/SupplementsPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
@@ -170,6 +171,25 @@ export const Quiz = () => {
           nextQuestion();
         }}
         onBack={prevQuestion}
+      />
+    );
+  }
+
+  // Handle supplements page
+  if (currentQuestion.type === 'supplements-page') {
+    const regularQuestions = questions.filter(q => typeof q.id === 'number');
+    const currentIndex = regularQuestions.findIndex(q => q.id === currentQuestion.id);
+    const totalQuestions = regularQuestions.length;
+    
+    return (
+      <SupplementsPage
+        onAnswer={(answer) => {
+          setAnswer(currentQuestion.id, answer);
+          nextQuestion();
+        }}
+        onBack={prevQuestion}
+        currentStep={currentIndex + 1}
+        totalSteps={totalQuestions}
       />
     );
   }

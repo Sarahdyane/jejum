@@ -412,6 +412,11 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: 37,
+    title: "Guia de suplementos",
+    type: "supplements-page"
+  },
+  {
     id: 20,
     title: "Você tem problemas com algum dos seguintes pontos?",
     type: "multiple",
