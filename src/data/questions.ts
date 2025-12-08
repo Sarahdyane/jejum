@@ -440,11 +440,11 @@ export const questions: QuizQuestion[] = [
   {
     id: 38,
     title: "Escolha o local do seu treino",
-    type: "single",
+    type: "multiple",
     options: [
       { id: "home", text: "Casa", icon: "Home" },
       { id: "gym", text: "Academia", icon: "Dumbbell" },
-      { id: "mixed", text: "Misto", icon: "LayoutGrid" }
+      { id: "mixed", text: "Misto", icon: "Shuffle" }
     ]
   },
   {
