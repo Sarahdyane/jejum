@@ -77,6 +77,10 @@ import goalDefinedMale from '@/assets/goal-defined-male.jpg';
 import goalDefinedFemale from '@/assets/goal-defined-female.jpg';
 import goalAthleteMale from '@/assets/goal-athlete-male.jpg';
 import goalAthleteFemale from '@/assets/goal-athlete-female.jpg';
+import goalSlimFemaleMascot from '@/assets/goal-slim-female-mascot.jpg';
+import goalAthleteFemaleMascot from '@/assets/goal-athlete-female-mascot.jpg';
+import goalSlimMaleMascot from '@/assets/goal-slim-male-mascot.jpg';
+import goalAthleteMaleMascot from '@/assets/goal-athlete-male-mascot.jpg';
 
 // Results page body images
 import bodyFullerFemaleResults from '@/assets/body-fuller-female-results.png';
@@ -148,6 +152,10 @@ export const imageMap = {
   'goal-defined-female': goalDefinedFemale,
   'goal-athlete-male': goalAthleteMale,
   'goal-athlete-female': goalAthleteFemale,
+  'goal-slim-female-mascot': goalSlimFemaleMascot,
+  'goal-athlete-female-mascot': goalAthleteFemaleMascot,
+  'goal-slim-male-mascot': goalSlimMaleMascot,
+  'goal-athlete-male-mascot': goalAthleteMaleMascot,
   'body-fuller-female-results': bodyFullerFemaleResults,
   'body-average-female-results': bodyAverageFemaleResults,
   'body-goal-female-results': bodyGoalFemaleResults,

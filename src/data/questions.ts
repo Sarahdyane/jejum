@@ -117,14 +117,14 @@ export const questions: QuizQuestion[] = [
       { 
         id: "slim", 
         text: "Corpo esbelto", 
-        maleImage: "goal-slim-male", 
-        femaleImage: "goal-slim-female" 
+        maleImage: "goal-slim-male-mascot", 
+        femaleImage: "goal-slim-female-mascot" 
       },
       { 
         id: "athlete", 
         text: "Corpo esbelto e musculoso", 
-        maleImage: "goal-athlete-male", 
-        femaleImage: "goal-athlete-female" 
+        maleImage: "goal-athlete-male-mascot", 
+        femaleImage: "goal-athlete-female-mascot" 
       }
     ]
   },
