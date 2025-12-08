@@ -82,14 +82,6 @@ import goalAthleteFemaleMascot from '@/assets/goal-athlete-female-mascot.jpg';
 import goalSlimMaleMascot from '@/assets/goal-slim-male-mascot.jpg';
 import goalAthleteMaleMascot from '@/assets/goal-athlete-male-mascot.jpg';
 
-// Mascot images for intermediate pages
-import fitnessMaleMascot from '@/assets/fitness-male-mascot.jpg';
-import fitnessFemaleMascot from '@/assets/fitness-female-mascot.jpg';
-import healthyLifestyleMaleMascot from '@/assets/healthy-lifestyle-male-mascot.jpg';
-import healthyLifestyleFemaleMascot from '@/assets/healthy-lifestyle-female-mascot.jpg';
-import motivationChangeHabitsMaleMascot from '@/assets/motivation-change-habits-male-mascot.jpg';
-import motivationChangeHabitsFemaleMascot from '@/assets/motivation-change-habits-female-mascot.jpg';
-
 // Results page body images
 import bodyFullerFemaleResults from '@/assets/body-fuller-female-results.png';
 import bodyAverageFemaleResults from '@/assets/body-average-female-results.png';
@@ -168,12 +160,6 @@ export const imageMap = {
   'body-average-female-results': bodyAverageFemaleResults,
   'body-goal-female-results': bodyGoalFemaleResults,
   'nutrition-info-female': nutritionInfoFemale,
-  'fitness-male-mascot': fitnessMaleMascot,
-  'fitness-female-mascot': fitnessFemaleMascot,
-  'healthy-lifestyle-male-mascot': healthyLifestyleMaleMascot,
-  'healthy-lifestyle-female-mascot': healthyLifestyleFemaleMascot,
-  'motivation-change-habits-male-mascot': motivationChangeHabitsMaleMascot,
-  'motivation-change-habits-female-mascot': motivationChangeHabitsFemaleMascot,
 };
 
 export const getImageSrc = (imageKey: string) => {
