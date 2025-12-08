@@ -198,12 +198,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-12">
         {/* Seção 1: Comparação Corpo Atual vs Meta */}
-        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-3 sm:p-6 md:p-10 shadow-lg">
+        <div className="bg-gradient-to-br from-card to-secondary rounded-3xl p-3 sm:p-6 md:p-10 shadow-lg border border-border">
           <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-10">
             {/* Corpo Atual */}
             <div className="text-center">
-              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 md:mb-6">Seu peso</h3>
-              <div className="relative bg-white rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-foreground mb-2 sm:mb-4 md:mb-6">Seu peso</h3>
+              <div className="relative bg-secondary rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow border border-border">
                 <img 
                   src={getCurrentBodyImage()}
                   alt="Corpo atual" 
@@ -212,11 +212,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </div>
               <div className="space-y-2 md:space-y-3 px-1">
                 <div>
-                  <p className="text-xs sm:text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-[10px] sm:text-xs md:text-base text-gray-600">{getBodyFatPercentage()}</p>
+                  <p className="text-xs sm:text-sm md:text-lg font-bold text-foreground">Gordura corporal</p>
+                  <p className="text-[10px] sm:text-xs md:text-base text-muted-foreground">{getBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
+                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-muted-foreground mb-1 md:mb-2">Nível de energia</p>
                   <Progress value={35} className="h-1.5 sm:h-2 md:h-2.5" />
                 </div>
               </div>
@@ -224,8 +224,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
             {/* Corpo Meta */}
             <div className="text-center">
-              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 md:mb-6">Meta</h3>
-              <div className="relative bg-white rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-sm sm:text-lg md:text-2xl font-bold text-foreground mb-2 sm:mb-4 md:mb-6">Meta</h3>
+              <div className="relative bg-secondary rounded-xl md:rounded-2xl p-2 sm:p-4 md:p-10 mb-2 sm:mb-4 md:mb-6 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow border border-border">
                 <img 
                   src={getTargetBodyImage()}
                   alt="Corpo meta" 
@@ -234,18 +234,18 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </div>
               <div className="space-y-2 md:space-y-3 px-1">
                 <div>
-                  <p className="text-xs sm:text-sm md:text-lg font-bold text-gray-900">Gordura corporal</p>
-                  <p className="text-[10px] sm:text-xs md:text-base text-gray-600">{getTargetBodyFatPercentage()}</p>
+                  <p className="text-xs sm:text-sm md:text-lg font-bold text-foreground">Gordura corporal</p>
+                  <p className="text-[10px] sm:text-xs md:text-base text-muted-foreground">{getTargetBodyFatPercentage()}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Nível de energia</p>
+                  <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-muted-foreground mb-1 md:mb-2">Nível de energia</p>
                   <Progress value={85} className="h-1.5 sm:h-2 md:h-2.5" />
                 </div>
               </div>
             </div>
           </div>
 
-          <p className="text-center text-[10px] sm:text-xs md:text-sm text-gray-600 mt-3 sm:mt-6 md:mt-8 px-2">
+          <p className="text-center text-[10px] sm:text-xs md:text-sm text-muted-foreground mt-3 sm:mt-6 md:mt-8 px-2">
             Os resultados não são típicos. Os resultados individuais podem variar.
           </p>
         </div>
