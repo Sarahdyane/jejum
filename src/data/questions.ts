@@ -438,6 +438,28 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: 38,
+    title: "Escolha o local do seu treino",
+    type: "single",
+    options: [
+      { id: "home", text: "Casa", icon: "Home" },
+      { id: "gym", text: "Academia", icon: "Dumbbell" },
+      { id: "mixed", text: "Misto", icon: "LayoutGrid" }
+    ]
+  },
+  {
+    id: 39,
+    title: "Quanto tempo você quer que seus treinos durem?",
+    type: "grid",
+    options: [
+      { id: "10-15", text: "10 a 15 minutos", icon: "Timer" },
+      { id: "20-30", text: "20 a 30 minutos", icon: "Timer" },
+      { id: "30-40", text: "30 a 40 minutos", icon: "Timer" },
+      { id: "40-60", text: "40 a 60 minutos", icon: "Timer" },
+      { id: "let-decide", text: "Deixe a Nutria decidir", icon: "ThumbsUp" }
+    ]
+  },
+  {
     id: 23,
     title: "Você tem algum dos seguintes maus hábitos?",
     type: "multiple",
