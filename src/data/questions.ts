@@ -487,17 +487,6 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
-    id: 25,
-    title: "É difícil para você escolher roupas com seu peso atual?",
-    type: "single",
-    options: [
-      { id: "almost-always", text: "Quase sempre", icon: "Shirt" },
-      { id: "sometimes", text: "Às vezes", icon: "Shirt" },
-      { id: "rarely", text: "Raramente", icon: "Shirt" },
-      { id: "no-way", text: "De jeito nenhum", icon: "Shirt" }
-    ]
-  },
-  {
     id: "stats-page",
     title: "Estatísticas da Nutria",
     type: "stats",
