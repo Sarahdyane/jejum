@@ -79,6 +79,9 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return answer === optionId;
   };
 
+  // Check if this is a grid layout question
+  const isGridLayout = question.type === 'grid';
+
   // Get the appropriate body image based on gender
   const getBodyImage = () => {
     if (!question.requiresGender || !gender) {
@@ -198,8 +201,11 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
       ) : (
         <div className={cn(
           "grid gap-4 max-w-3xl mx-auto",
-          // Special layout for age question (ID 1) - 2x2 grid on mobile
-          question.id === 1 
+          // Special layout for grid type questions - 2x2 grid
+          isGridLayout
+            ? "grid-cols-2"
+            : // Special layout for age question (ID 1) - 2x2 grid on mobile
+            question.id === 1 
             ? "grid-cols-2 md:grid-cols-4" 
             : // Special layout for gender question (ID 2) - side by side
             question.id === 2 
@@ -212,8 +218,12 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
             ? "grid-cols-1 md:grid-cols-2" 
             : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         )}>
-          {question.options?.map((option) => {
+          {question.options?.map((option, index) => {
             const optionImage = getOptionImage(option);
+            const isLastOdd = isGridLayout && question.options && 
+              question.options.length % 2 !== 0 && 
+              index === question.options.length - 1;
+            
             return (
               <QuizOption
                 key={option.id}
@@ -227,7 +237,8 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                   : handleSingleAnswer(option.id)
                 }
                 className={cn(
-                  optionImage ? "min-h-[160px]" : "min-h-[60px]"
+                  optionImage ? "min-h-[160px]" : "min-h-[60px]",
+                  isLastOdd && "col-span-2"
                 )}
                 gender={gender}
                 questionId={question.id}
