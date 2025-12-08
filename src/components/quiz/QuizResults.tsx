@@ -462,11 +462,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                   <>
                     {/* Card 1 - Ricardo */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
                           <div className="flex justify-between mb-2">
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">DEPOIS</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                           </div>
                           <img 
                             src={transformationCombinedMale1} 
@@ -475,8 +475,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                           />
                         </div>
                         <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Ricardo, -35kg</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
+                          <h3 className="text-xl font-bold text-foreground mb-2">Ricardo, -35kg</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
                             "Transformação incrível! Recuperei minha saúde e energia."
                           </p>
                         </div>
@@ -485,11 +485,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
                     {/* Card 2 - Felipe */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
                           <div className="flex justify-between mb-2">
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">DEPOIS</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                           </div>
                           <img 
                             src={transformationCombinedMale2} 
@@ -498,8 +498,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                           />
                         </div>
                         <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Felipe, -25kg</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
+                          <h3 className="text-xl font-bold text-foreground mb-2">Felipe, -25kg</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
                             "Mudança completa! Me sinto mais forte e confiante."
                           </p>
                         </div>
@@ -508,11 +508,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
                     {/* Card 3 - Marcelo */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
                           <div className="flex justify-between mb-2">
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">DEPOIS</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                           </div>
                           <img 
                             src={transformationCombinedMale3} 
@@ -521,8 +521,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                           />
                         </div>
                         <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Marcelo, -40kg</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
+                          <h3 className="text-xl font-bold text-foreground mb-2">Marcelo, -40kg</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
                             "Resultado extraordinário! Transformei completamente minha vida."
                           </p>
                         </div>
@@ -533,11 +533,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                   <>
                     {/* Card 1 - Camila */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
                           <div className="flex justify-between mb-2">
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">DEPOIS</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                           </div>
                           <img 
                             src={transformationCombinedFemale4} 
@@ -546,8 +546,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                           />
                         </div>
                         <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Camila, -10kg</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
+                          <h3 className="text-xl font-bold text-foreground mb-2">Camila, -10kg</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
                             "Resultados visíveis em poucos meses! Me sinto mais confiante e saudável."
                           </p>
                         </div>
@@ -556,11 +556,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
                     {/* Card 2 - Juliana */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
                           <div className="flex justify-between mb-2">
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">DEPOIS</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                           </div>
                           <img 
                             src={transformationCombinedFemale5} 
@@ -569,8 +569,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                           />
                         </div>
                         <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Juliana, -14kg</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
+                          <h3 className="text-xl font-bold text-foreground mb-2">Juliana, -14kg</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
                             "Mudança incrível! Recuperei minha autoestima e me sinto radiante."
                           </p>
                         </div>
@@ -579,11 +579,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
                     {/* Card 3 - Patricia */}
                     <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
                         <div className="p-4">
                           <div className="flex justify-between mb-2">
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-gray-500 text-center font-semibold flex-1">DEPOIS</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                           </div>
                           <img 
                             src={transformationCombinedFemale3} 
@@ -592,8 +592,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                           />
                         </div>
                         <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Patricia, -15kg</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
+                          <h3 className="text-xl font-bold text-foreground mb-2">Patricia, -15kg</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
                             "Transformação incrível! Me sinto completamente renovada e cheia de energia."
                           </p>
                         </div>
