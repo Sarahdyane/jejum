@@ -17,6 +17,7 @@ import { DatePickerQuestion } from '@/components/quiz/DatePickerQuestion';
 import { GoalProjectionPage } from '@/components/quiz/GoalProjectionPage';
 import { ExercisePreference } from '@/components/quiz/ExercisePreference';
 import SupplementsPage from '@/components/quiz/SupplementsPage';
+import { NutritionExercisePage } from '@/components/quiz/NutritionExercisePage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
@@ -196,6 +197,16 @@ export const Quiz = () => {
 
   // Handle intermediate pages
   if (currentQuestion.type === 'intermediate') {
+    // Special handling for the nutrition/exercise page
+    if (currentQuestion.id === 'intermediate-2') {
+      return (
+        <NutritionExercisePage
+          onContinue={nextQuestion}
+          onBack={prevQuestion}
+        />
+      );
+    }
+
     const gender = quizState.answers[2] as string;
     let imageSrc = currentQuestion.image ? getImageSrc(currentQuestion.image) : '';
     
