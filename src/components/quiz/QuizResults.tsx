@@ -188,9 +188,9 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header fixo */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 py-4 px-4 md:px-6">
+      <div className="sticky top-0 z-50 bg-background border-b border-border py-4 px-4 md:px-6">
         <div className="max-w-4xl mx-auto flex items-center justify-center">
           <img src={nutriaLogo} alt="Nutria" className="h-12 md:h-14" />
         </div>
@@ -252,79 +252,79 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
         {/* Seção 2: Resumo Pessoal */}
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-foreground mb-6">
             Resumo pessoal baseado em suas respostas
           </h2>
 
           {/* IMC Atual */}
-          <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">IMC atual</h3>
-            <p className="text-4xl font-bold text-gray-900 mb-4">{bmi}</p>
+          <div className="bg-card rounded-2xl p-6 mb-6">
+            <h3 className="text-lg font-semibold text-foreground mb-2">IMC atual</h3>
+            <p className="text-4xl font-bold text-foreground mb-4">{bmi}</p>
             
             {/* Escala de IMC */}
             <div className="relative mb-4">
               <div className="h-3 bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 to-red-400 rounded-full"></div>
               <div 
-                className="absolute top-0 w-4 h-4 bg-white border-4 border-gray-900 rounded-full transform -translate-y-0.5"
+                className="absolute top-0 w-4 h-4 bg-background border-4 border-foreground rounded-full transform -translate-y-0.5"
                 style={{ left: `${Math.min(Math.max((bmi - 15) / 25 * 100, 0), 100)}%` }}
               ></div>
             </div>
-            <div className="flex justify-between text-xs text-gray-600 mb-4">
+            <div className="flex justify-between text-xs text-muted-foreground mb-4">
               <span>Abaixo do peso</span>
               <span>Obeso</span>
             </div>
 
-            <div className="bg-[#0d7377]/10 border-l-4 border-[#0d7377] p-4 rounded">
-              <p className="font-semibold text-[#0d7377] mb-2">{bmiStatus}</p>
-              <p className="text-sm text-gray-700">
+            <div className="bg-primary/10 border-l-4 border-primary p-4 rounded">
+              <p className="font-semibold text-primary mb-2">{bmiStatus}</p>
+              <p className="text-sm text-muted-foreground">
                 O índice de massa corporal (IMC) é uma medida que usa sua altura e peso para determinar se seu peso é saudável.
               </p>
             </div>
           </div>
 
           {/* Ingestão Calórica */}
-          <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
+          <div className="bg-card rounded-2xl p-6 mb-6 relative">
             <div className="flex items-center gap-4 mb-4">
-              <div className="bg-orange-100 p-3 rounded-xl flex-shrink-0">
+              <div className="bg-orange-500/20 p-3 rounded-xl flex-shrink-0">
                 <Flame className="w-8 h-8 text-orange-500" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <p className="text-lg font-semibold text-gray-900">Ingestão calórica diária</p>
-                  <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-3 py-0.5 rounded-full text-xs font-semibold">
+                  <p className="text-lg font-semibold text-foreground">Ingestão calórica diária</p>
+                  <span className="bg-background border-2 border-primary text-primary px-3 py-0.5 rounded-full text-xs font-semibold">
                     RECOMENDADO
                   </span>
                 </div>
-                <p className="text-3xl font-bold text-gray-900 mt-1">{calories} kcal</p>
+                <p className="text-3xl font-bold text-foreground mt-1">{calories} kcal</p>
               </div>
             </div>
             <div className="relative mt-4">
               <div className="h-3 bg-gradient-to-r from-yellow-200 via-orange-300 to-red-300 rounded-full"></div>
               <div 
-                className="absolute top-0 w-4 h-4 bg-white border-4 border-orange-500 rounded-full transform -translate-y-0.5"
+                className="absolute top-0 w-4 h-4 bg-background border-4 border-orange-500 rounded-full transform -translate-y-0.5"
                 style={{ left: `${Math.min(Math.max(((calories - 1000) / 4000) * 100, 0), 100)}%` }}
               ></div>
             </div>
-            <div className="flex justify-between text-xs text-gray-600 mt-2">
+            <div className="flex justify-between text-xs text-muted-foreground mt-2">
               <span>1000 kcal</span>
               <span>5000 kcal</span>
             </div>
           </div>
 
           {/* Ingestão de Água */}
-          <div className="bg-gray-50 rounded-2xl p-6 relative">
+          <div className="bg-card rounded-2xl p-6 relative">
             <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-100 p-3 rounded-xl flex-shrink-0">
+              <div className="bg-blue-500/20 p-3 rounded-xl flex-shrink-0">
                 <Droplet className="w-8 h-8 text-blue-500" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <p className="text-lg font-semibold text-gray-900">Ingestão diária de água</p>
-                  <span className="bg-white border-2 border-[#0d7377] text-[#0d7377] px-3 py-0.5 rounded-full text-xs font-semibold">
+                  <p className="text-lg font-semibold text-foreground">Ingestão diária de água</p>
+                  <span className="bg-background border-2 border-primary text-primary px-3 py-0.5 rounded-full text-xs font-semibold">
                     RECOMENDADO
                   </span>
                 </div>
-                <p className="text-3xl font-bold text-gray-900 mt-1">{waterIntake} l</p>
+                <p className="text-3xl font-bold text-foreground mt-1">{waterIntake} l</p>
               </div>
             </div>
             {/* Copos de água estilizados */}
@@ -344,8 +344,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                     {/* Copo */}
                     <path 
                       d="M6 4 L26 4 L24 44 L8 44 Z" 
-                      fill={filled ? '#60A5FA' : '#E5E7EB'} 
-                      stroke={filled ? '#3B82F6' : '#D1D5DB'} 
+                      fill={filled ? '#60A5FA' : 'hsl(var(--muted))'} 
+                      stroke={filled ? '#3B82F6' : 'hsl(var(--border))'} 
                       strokeWidth="1.5"
                     />
                     {/* Água dentro */}
@@ -365,53 +365,53 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
         {/* Seção 3: Seu plano personalizado está pronto */}
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
-            Seu plano personalizado <span className="text-[#0d7377]">está pronto!</span>
+          <h2 className="text-3xl font-bold text-foreground mb-2">
+            Seu plano personalizado <span className="text-primary">está pronto!</span>
           </h2>
 
           <div className="space-y-3 mt-6">
             {/* Meta */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-              <div className="bg-red-100 p-2 rounded-full flex-shrink-0">
+            <div className="bg-card rounded-xl p-4 flex items-center gap-3">
+              <div className="bg-red-500/20 p-2 rounded-full flex-shrink-0">
                 <Target className="w-5 h-5 text-red-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Meta</p>
-                <p className="text-lg font-bold text-gray-900">{weightGoal}</p>
+                <p className="text-sm text-muted-foreground">Meta</p>
+                <p className="text-lg font-bold text-foreground">{weightGoal}</p>
               </div>
             </div>
 
             {/* Idade Metabólica */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-              <div className="bg-purple-100 p-2 rounded-full flex-shrink-0">
+            <div className="bg-card rounded-xl p-4 flex items-center gap-3">
+              <div className="bg-purple-500/20 p-2 rounded-full flex-shrink-0">
                 <User className="w-5 h-5 text-purple-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Idade metabólica</p>
-                <p className="text-lg font-bold text-gray-900">{metabolicAge}</p>
+                <p className="text-sm text-muted-foreground">Idade metabólica</p>
+                <p className="text-lg font-bold text-foreground">{metabolicAge}</p>
               </div>
             </div>
 
             {/* Nível de Energia */}
-            <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-              <div className="bg-orange-100 p-2 rounded-full flex-shrink-0">
+            <div className="bg-card rounded-xl p-4 flex items-center gap-3">
+              <div className="bg-orange-500/20 p-2 rounded-full flex-shrink-0">
                 <Wind className="w-5 h-5 text-orange-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Nível de energia</p>
-                <p className="text-lg font-bold text-gray-900">{getEnergyLevel()}</p>
+                <p className="text-sm text-muted-foreground">Nível de energia</p>
+                <p className="text-lg font-bold text-foreground">{getEnergyLevel()}</p>
               </div>
             </div>
 
             {/* Zonas Alvo */}
             {profile.targetZones && profile.targetZones.length > 0 && (
-              <div className="bg-gray-50 rounded-xl p-4 flex items-center gap-3">
-                <div className="bg-green-100 p-2 rounded-full flex-shrink-0">
+              <div className="bg-card rounded-xl p-4 flex items-center gap-3">
+                <div className="bg-green-500/20 p-2 rounded-full flex-shrink-0">
                   <MapPin className="w-5 h-5 text-green-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Zonas alvo</p>
-                  <p className="text-lg font-bold text-gray-900">{translateZones(profile.targetZones).join(', ')}</p>
+                  <p className="text-sm text-muted-foreground">Zonas alvo</p>
+                  <p className="text-lg font-bold text-foreground">{translateZones(profile.targetZones).join(', ')}</p>
                 </div>
               </div>
             )}
@@ -420,7 +420,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
         {/* Seção 4: As metas do seu plano também incluem */}
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-foreground mb-6">
             As metas do seu plano também incluem:
           </h2>
           
@@ -433,20 +433,20 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               'Melhore o sono'
             ].map((goal, index) => (
               <div key={index} className="flex items-center gap-3">
-                <Check className="w-6 h-6 text-[#0d7377] flex-shrink-0" />
-                <span className="text-lg text-gray-900">{goal}</span>
+                <Check className="w-6 h-6 text-primary flex-shrink-0" />
+                <span className="text-lg text-foreground">{goal}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Seção 5: Transformações Reais */}
-        <section className="py-8 px-4 bg-gradient-to-br from-orange-50/50 to-amber-50/50">
+        <section className="py-8 px-4 bg-card rounded-3xl">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">
               Transformações que Inspiram
             </h2>
-            <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
               Resultados reais de pessoas que transformaram suas vidas com o Nutria
             </p>
             
@@ -625,12 +625,12 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </section>
 
         {/* Seção 6: O que você ganha */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-16 px-4 bg-card rounded-3xl">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">
               O que você ganha
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               Tudo o que você precisa para atingir seus objetivos de fitness em um só lugar
             </p>
             
@@ -646,49 +646,49 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
               {/* Features List */}
               <div className="space-y-6 max-w-xl">
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#0d7377] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                    <h3 className="font-semibold text-lg text-foreground mb-1">
                       Planos nutricionais personalizados com receitas fáceis de entender
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       Receba planos alimentares adaptados às suas necessidades e preferências
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#0d7377] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                    <h3 className="font-semibold text-lg text-foreground mb-1">
                       Rastreador de água inteligente para hidratação suficiente
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       Monitore sua ingestão de água e mantenha-se hidratado ao longo do dia
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#0d7377] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                    <h3 className="font-semibold text-lg text-foreground mb-1">
                       Temporizador de jejum personalizado
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       Acompanhe seus períodos de jejum intermitente de forma simples e eficaz
                     </p>
                   </div>
@@ -702,7 +702,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         <div className="text-center py-8" data-cta-section>
           <Button 
             onClick={() => navigate('/transformation')}
-            className="bg-[#0d7377] hover:bg-[#0a5c5f] text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Ver minha transformação
           </Button>
@@ -710,16 +710,16 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
         {/* Garantia e Rodapé */}
         <div className="text-center space-y-6 pt-12 pb-8">
-          <div className="flex items-center justify-center gap-2 text-gray-700">
-            <ShieldCheck className="w-6 h-6 text-[#0d7377]" />
+          <div className="flex items-center justify-center gap-2 text-foreground">
+            <ShieldCheck className="w-6 h-6 text-primary" />
             <span className="font-semibold">Garantia de 30 dias de devolução do dinheiro</span>
           </div>
           
-          <p className="text-sm text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Se não obtiver resultados visíveis, você pode solicitar um reembolso total em até 30 dias após a compra. <span className="text-[#0d7377] font-semibold cursor-pointer">Saiba mais</span>
+          <p className="text-sm text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Se não obtiver resultados visíveis, você pode solicitar um reembolso total em até 30 dias após a compra. <span className="text-primary font-semibold cursor-pointer">Saiba mais</span>
           </p>
           
-          <div className="mt-6 text-xs text-gray-500">
+          <div className="mt-6 text-xs text-muted-foreground">
             <p>Copyright © 2024 Nutria</p>
             <p>Todos os direitos reservados</p>
           </div>
