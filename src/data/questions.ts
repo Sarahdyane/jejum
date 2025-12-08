@@ -65,8 +65,8 @@ export const questions: QuizQuestion[] = [
     description: "Se você deseja uma aparência em forma, energia duradoura e um corpo saudável, um plano personalizado é o ponto de partida ideal que se adapta ao seu estilo de vida.",
     type: "intermediate",
     requiresGender: true,
-    maleImage: "fitness-male",
-    femaleImage: "fitness-female"
+    maleImage: "fitness-male-mascot",
+    femaleImage: "fitness-female-mascot"
   },
   {
     id: 4,
@@ -188,8 +188,8 @@ export const questions: QuizQuestion[] = [
     subtitle: "Grandes mudanças na vida costumam afetar no peso. É normal. Nós iremos ajudar você a alcançar o seu objetivo.",
     type: "intermediate",
     requiresGender: true,
-    femaleImage: "motivation-change-habits",
-    maleImage: "motivation-change-habits-male"
+    femaleImage: "motivation-change-habits-female-mascot",
+    maleImage: "motivation-change-habits-male-mascot"
   },
   {
     id: 14,
@@ -517,8 +517,8 @@ export const questions: QuizQuestion[] = [
     subtitle: "Para oferecer planos personalizados e recursos do aplicativo, precisamos do seu consentimento para processar seus dados de saúde.",
     type: "intermediate",
     requiresGender: true,
-    femaleImage: "healthy-lifestyle",
-    maleImage: "healthy-lifestyle-male"
+    femaleImage: "healthy-lifestyle-female-mascot",
+    maleImage: "healthy-lifestyle-male-mascot"
   },
   {
     id: "loading-page",
