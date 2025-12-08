@@ -31,7 +31,7 @@ export const questions: QuizQuestion[] = [
       { 
         id: "male", 
         text: "Masculino", 
-        image: "/images/gender-male-professional.jpg",
+        customImage: "gender-male-mascot",
         infoBox: {
           title: "Você sabia?",
           content: "Os homens tendem a responder bem ao jejum 16:8: ele ajuda a otimizar a testosterona e a queima de gordura."
@@ -40,7 +40,7 @@ export const questions: QuizQuestion[] = [
       { 
         id: "female", 
         text: "Feminino", 
-        image: "/images/gender-female-professional.jpg",
+        customImage: "gender-female-mascot",
         infoBox: {
           title: "Você sabia?",
           content: "As mulheres geralmente se beneficiam de janelas de jejum mais suaves, como o jejum das 14h10, especialmente nas primeiras semanas."
