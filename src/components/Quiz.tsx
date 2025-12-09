@@ -11,7 +11,6 @@ import { IntermittentFastingInfo } from '@/components/quiz/IntermittentFastingIn
 import { StatsPage } from '@/components/quiz/StatsPage';
 import { LoadingAnalysis } from '@/components/quiz/LoadingAnalysis';
 import { ReadyTransition } from '@/components/quiz/ReadyTransition';
-import { WeeklyExpectations } from '@/components/quiz/WeeklyExpectations';
 import { CommitmentPage } from '@/components/quiz/CommitmentPage';
 import { DatePickerQuestion } from '@/components/quiz/DatePickerQuestion';
 import { GoalProjectionPage } from '@/components/quiz/GoalProjectionPage';
@@ -23,7 +22,6 @@ import { getImageSrc } from '@/utils/imageMapping';
 export const Quiz = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showReadyTransition, setShowReadyTransition] = useState(false);
-  const [showExpectations, setShowExpectations] = useState(false);
   const [showCommitment, setShowCommitment] = useState(false);
 
   const {
@@ -264,12 +262,8 @@ export const Quiz = () => {
 
   // Handle loading page with new analysis flow
   if (currentQuestion.type === 'loading') {
-    if (showExpectations) {
-      return <WeeklyExpectations onContinue={nextQuestion} />;
-    }
-    
     if (showReadyTransition) {
-      return <ReadyTransition onComplete={() => setShowExpectations(true)} />;
+      return <ReadyTransition onComplete={nextQuestion} />;
     }
     
     if (showAnalysis) {
