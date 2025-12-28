@@ -2,20 +2,6 @@ import { QuizQuestion } from "@/types/quiz";
 
 export const questions: QuizQuestion[] = [
   {
-    id: "splash-screen",
-    title: "",
-    subtitle: "",
-    type: "intermediate",
-    image: "nutria-logo"
-  },
-  {
-    id: "social-proof",
-    title: "150 milhões de pessoas",
-    subtitle: "Escolheram a Nutria",
-    type: "intermediate",
-    image: "fitness-devices-hero"
-  },
-  {
     id: 1,
     title: "",
     type: "single",
@@ -28,6 +14,13 @@ export const questions: QuizQuestion[] = [
       { id: "40-49", text: "40–49", customImage: "age-woman-3" },
       { id: "50+", text: "50+", customImage: "age-woman-4" }
     ]
+  },
+  {
+    id: "social-proof",
+    title: "150 milhões de pessoas",
+    subtitle: "Escolheram a Nutria",
+    type: "intermediate",
+    image: "fitness-devices-hero"
   },
   {
     id: 3,
