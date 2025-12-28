@@ -184,6 +184,13 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: 'nutrition-plan',
+    title: 'Melhore seu condicionamento físico com um plano alimentar personalizado.',
+    subtitle: 'A nutrição é fundamental para **ter um corpo forte e em forma.**\n\nObtenha **receitas rápidas e deliciosas** e melhore seus hábitos alimentares para atingir seu objetivo mais rapidamente.',
+    type: 'intermediate',
+    image: 'app-meals-mockup'
+  },
+  {
     id: 15,
     title: "Escolha os produtos que você gosta",
     subtitle: "Selecione todas as opções que você gosta",

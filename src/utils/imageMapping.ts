@@ -38,6 +38,7 @@ import healthyPeopleCelebration from '@/assets/healthy-people-celebration.jpg';
 import nutritionInfoFemale from '@/assets/nutrition-info-female.png';
 import fitnessDevicesHero from '@/assets/fitness-devices-hero.png';
 import fitnessWomanDumbbell from '@/assets/fitness-woman-dumbbell.png';
+import appMealsMockup from '@/assets/app-meals-mockup.png';
 
 // Professional body type images
 import bodyThinProfessional from '@/assets/body-thin-professional.png';
@@ -132,6 +133,7 @@ export const imageMap = {
   'lipedema-info': lipedemaInfo,
   'fitness-devices-hero': fitnessDevicesHero,
   'fitness-woman-dumbbell': fitnessWomanDumbbell,
+  'app-meals-mockup': appMealsMockup,
   'body-thin-professional': bodyThinProfessional,
   'body-average-professional': bodyAverageProfessional,
   'body-robust-professional': bodyRobustProfessional,
