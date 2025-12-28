@@ -3,7 +3,7 @@ import { QuizState, QuizQuestion, UserProfile } from '@/types/quiz';
 
 export const useQuiz = (questions: QuizQuestion[]) => {
   const [quizState, setQuizState] = useState<QuizState>({
-    currentQuestion: 1,
+    currentQuestion: "splash-screen",
     answers: {
       2: 'female' // Quiz exclusivo para mulheres
     },
