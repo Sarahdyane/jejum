@@ -16,36 +16,10 @@ export const questions: QuizQuestion[] = [
     showSubtitle: "Com base na sua idade",
     showFooter: true,
     options: [
-      { id: "18-29", text: "18–29", customImage: "age-couple-1" },
-      { id: "30-39", text: "30–39", customImage: "age-couple-2" },
-      { id: "40-49", text: "40–49", customImage: "age-couple-3" },
-      { id: "50+", text: "50+", customImage: "age-couple-4" }
-    ]
-  },
-  {
-    id: 2,
-    title: "Qual o seu gênero?",
-    type: "single",
-    showInfoBox: true,
-    options: [
-      { 
-        id: "male", 
-        text: "Masculino", 
-        customImage: "gender-male-mascot",
-        infoBox: {
-          title: "Você sabia?",
-          content: "Os homens tendem a responder bem ao jejum 16:8: ele ajuda a otimizar a testosterona e a queima de gordura."
-        }
-      },
-      { 
-        id: "female", 
-        text: "Feminino", 
-        customImage: "gender-female-mascot",
-        infoBox: {
-          title: "Você sabia?",
-          content: "As mulheres geralmente se beneficiam de janelas de jejum mais suaves, como o jejum das 14h10, especialmente nas primeiras semanas."
-        }
-      }
+      { id: "18-29", text: "18–29", customImage: "age-woman-1" },
+      { id: "30-39", text: "30–39", customImage: "age-woman-2" },
+      { id: "40-49", text: "40–49", customImage: "age-woman-3" },
+      { id: "50+", text: "50+", customImage: "age-woman-4" }
     ]
   },
   {

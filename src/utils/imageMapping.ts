@@ -1,7 +1,7 @@
-import ageCouple1829Mascot from '@/assets/age-couple-18-29-mascot.jpg';
-import ageCouple3039Mascot from '@/assets/age-couple-30-39-mascot.jpg';
-import ageCouple4049Mascot from '@/assets/age-couple-40-49-mascot.jpg';
-import ageCouple50PlusMascot from '@/assets/age-couple-50-plus-mascot.jpg';
+import ageWoman1829 from '@/assets/age-woman-18-29.jpg';
+import ageWoman3039 from '@/assets/age-woman-30-39.jpg';
+import ageWoman4049 from '@/assets/age-woman-40-49.jpg';
+import ageWoman50Plus from '@/assets/age-woman-50-plus.jpg';
 import genderMaleMascot from '@/assets/gender-male-mascot.jpg';
 import genderFemaleMascot from '@/assets/gender-female-mascot.jpg';
 import healthyCelebration from '@/assets/healthy-people-celebration.jpg';
@@ -88,10 +88,10 @@ import bodyAverageFemaleResults from '@/assets/body-average-female-results.png';
 import bodyGoalFemaleResults from '@/assets/body-goal-female-results.png';
 
 export const imageMap = {
-  'age-couple-1': ageCouple1829Mascot,
-  'age-couple-2': ageCouple3039Mascot,
-  'age-couple-3': ageCouple4049Mascot,
-  'age-couple-4': ageCouple50PlusMascot,
+  'age-woman-1': ageWoman1829,
+  'age-woman-2': ageWoman3039,
+  'age-woman-3': ageWoman4049,
+  'age-woman-4': ageWoman50Plus,
   'gender-male-mascot': genderMaleMascot,
   'gender-female-mascot': genderFemaleMascot,
   'healthy-celebration': healthyCelebration,
