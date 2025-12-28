@@ -4,15 +4,15 @@ import { QuizState, QuizQuestion, UserProfile } from '@/types/quiz';
 export const useQuiz = (questions: QuizQuestion[]) => {
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestion: 1,
-    answers: {},
+    answers: {
+      2: 'female' // Quiz exclusivo para mulheres
+    },
     isComplete: false,
   });
 
   const shouldShowQuestion = useCallback((question: QuizQuestion) => {
-    const genderAnswer = quizState.answers[2];
-    
-    // Pular perguntas de lipedema para homens
-    if ((question.id === 8 || question.id === 'lipedema-info') && genderAnswer === 'male') {
+    // Pular pergunta de gênero (quiz exclusivo para mulheres)
+    if (question.id === 2) {
       return false;
     }
     
