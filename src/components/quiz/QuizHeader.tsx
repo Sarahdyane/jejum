@@ -34,11 +34,11 @@ export const QuizHeader = ({
     <div className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center gap-3 justify-center mb-3">
-          <div className="w-10 h-10 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center">
+          <div className="w-14 h-14 rounded-xl overflow-hidden flex items-center justify-center">
             <img 
               src={nutriaLogo} 
               alt="Nutria" 
-              className="w-8 h-8 object-contain"
+              className="w-12 h-12 object-contain"
             />
           </div>
           <span className="text-xl font-bold text-foreground">Nutria</span>
