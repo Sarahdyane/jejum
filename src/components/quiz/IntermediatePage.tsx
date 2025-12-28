@@ -52,8 +52,20 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
     );
   }
   
+  // Helper function to render text with markdown bold support
+  const renderTextWithBold = (text: string) => {
+    const parts = text.split(/\*\*(.*?)\*\*/g);
+    return parts.map((part, index) => {
+      // Odd indices are the bold parts (content between **)
+      if (index % 2 === 1) {
+        return <strong key={index} className="font-bold text-foreground">{part}</strong>;
+      }
+      return part;
+    });
+  };
+  
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex flex-col p-4 pt-16">
       {onBack && (
         <button
           onClick={onBack}
@@ -63,32 +75,19 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
           <ArrowLeft className="w-5 h-5 text-foreground" />
         </button>
       )}
-      <div className="w-full max-w-2xl text-center space-y-8">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center"
-        >
-          <img 
-            src={image} 
-            alt="Inspirational fitness" 
-            className="max-w-xs h-auto rounded-lg shadow-lg"
-          />
-        </motion.div>
-
+      <div className="w-full max-w-2xl mx-auto space-y-6 flex-1 flex flex-col">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
           className="space-y-4"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg md:text-xl text-muted-foreground">
-              {subtitle}
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              {renderTextWithBold(subtitle)}
             </p>
           )}
           {description && (
@@ -98,12 +97,25 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
           )}
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center flex-1 items-center"
+        >
+          <img 
+            src={image} 
+            alt="Inspirational fitness" 
+            className="max-w-full w-full h-auto rounded-lg"
+          />
+        </motion.div>
+
         {bulletPoints && bulletPoints.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-3 text-left max-w-md mx-auto"
+            className="space-y-3 text-left"
           >
             {bulletPoints.map((point, index) => (
               <div key={index} className="flex items-start gap-3">
@@ -120,17 +132,17 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="space-y-3"
+          className="space-y-3 pb-4"
         >
           <button
             onClick={onContinue}
-            className="w-full max-w-md mx-auto bg-primary text-primary-foreground hover:bg-primary/90 
-                     py-4 px-8 rounded-lg font-semibold text-lg transition-colors"
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 
+                     py-4 px-8 rounded-full font-semibold text-lg transition-colors"
           >
-            {buttonText || "Continuar"}
+            {buttonText || "CONTINUAR"}
           </button>
           {footerText && (
-            <p className="text-sm text-muted-foreground">{footerText}</p>
+            <p className="text-sm text-muted-foreground text-center">{footerText}</p>
           )}
         </motion.div>
       </div>

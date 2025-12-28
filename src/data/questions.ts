@@ -78,6 +78,13 @@ export const questions: QuizQuestion[] = [
     ]
   },
   {
+    id: "personalized-plan",
+    title: "Fique em forma e forte com um plano personalizado.",
+    subtitle: "Não precisa gastar dinheiro com treinadores caros. Vamos detalhar tudo e **adaptar o plano ao seu objetivo**.",
+    type: "intermediate",
+    image: "fitness-woman-dumbbell"
+  },
+  {
     id: 5,
     title: "Escolha o corpo que você deseja",
     type: "single",
