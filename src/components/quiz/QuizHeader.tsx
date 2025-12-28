@@ -1,7 +1,7 @@
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import nutriaLogo from '@/assets/nutria-logo.png';
+import nutriaLogo from '@/assets/nutria-logo-dark.png';
 
 interface QuizHeaderProps {
   currentQuestion: number;
