@@ -1,7 +1,8 @@
 import { UserProfile } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck } from "lucide-react";
+import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck, ChevronDown, Dumbbell, Clock, Package, Utensils, Lightbulb } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import nutriaLogo from '@/assets/nutria-logo.png';
@@ -470,6 +471,75 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               <span>Garantia de 30 dias de devolução</span>
             </div>
           </div>
+
+          {/* Seção Principais Pontos do Plano */}
+          <div className="mt-8 bg-card rounded-2xl p-6 border border-border">
+            <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+              Principais pontos do seu plano
+            </h3>
+            
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/20 p-2 rounded-lg flex-shrink-0">
+                  <Dumbbell className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Treinos fáceis para fazer em casa</p>
+                  <p className="text-sm text-muted-foreground">para ganhar massa muscular e entrar em forma.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/20 p-2 rounded-lg flex-shrink-0">
+                  <Target className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Exercícios para iniciantes</p>
+                  <p className="text-sm text-muted-foreground">para uma barriga mais lisa e um corpo mais definido.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/20 p-2 rounded-lg flex-shrink-0">
+                  <Clock className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Rotinas de 10 a 20 minutos</p>
+                  <p className="text-sm text-muted-foreground">que se encaixam na sua agenda.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/20 p-2 rounded-lg flex-shrink-0">
+                  <Package className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Você não precisa de nenhum equipamento,</p>
+                  <p className="text-sm text-muted-foreground">apenas do nosso plano.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/20 p-2 rounded-lg flex-shrink-0">
+                  <Utensils className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Plano alimentar personalizado</p>
+                  <p className="text-sm text-muted-foreground">com receitas rápidas e saborosas.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/20 p-2 rounded-lg flex-shrink-0">
+                  <Lightbulb className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Dicas e truques de especialistas</p>
+                  <p className="text-sm text-muted-foreground">para melhorar seu estilo de vida e manter a forma física.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Seção 4: As metas do seu plano também incluem */}
@@ -678,81 +748,67 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
         </section>
 
-        {/* Seção 6: O que você ganha */}
-        <section className="py-16 px-4 bg-card rounded-3xl">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">
-              O que você ganha
-            </h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Tudo o que você precisa para atingir seus objetivos de fitness em um só lugar
-            </p>
-            
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center">
-              {/* Phone Mockup */}
-              <div className="flex-shrink-0">
-                <img 
-                  src={appMockupNutrition} 
-                  alt="Nutria App" 
-                  className="w-full max-w-[280px] md:max-w-[340px] h-auto object-contain drop-shadow-2xl"
-                />
-              </div>
+        {/* Seção FAQ - As pessoas costumam perguntar */}
+        <section className="py-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-foreground">
+            As pessoas costumam perguntar
+          </h2>
+          
+          <Accordion type="single" collapsible className="w-full space-y-3">
+            <AccordionItem value="item-1" className="border-b border-border">
+              <AccordionTrigger className="text-left text-foreground hover:no-underline py-4">
+                Como esse plano pode me ajudar a queimar gordura e ganhar massa muscular?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-4">
+                Nosso plano combina exercícios específicos para ganho de massa muscular com uma dieta balanceada que acelera o metabolismo. Os treinos são projetados para maximizar a queima de gordura enquanto constroem músculos magros, e o plano alimentar fornece os nutrientes necessários para a recuperação e crescimento muscular.
+              </AccordionContent>
+            </AccordionItem>
 
-              {/* Features List */}
-              <div className="space-y-6 max-w-xl">
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-foreground mb-1">
-                      Planos nutricionais personalizados com receitas fáceis de entender
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Receba planos alimentares adaptados às suas necessidades e preferências
-                    </p>
-                  </div>
-                </div>
+            <AccordionItem value="item-2" className="border-b border-border">
+              <AccordionTrigger className="text-left text-foreground hover:no-underline py-4">
+                Quais são os benefícios da calistenia?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-4">
+                A calistenia oferece diversos benefícios: você pode treinar em qualquer lugar sem equipamentos, desenvolve força funcional, melhora a flexibilidade e coordenação, reduz o risco de lesões e ainda é altamente eficaz para queima de gordura. É ideal para iniciantes e pode ser adaptada conforme seu nível de condicionamento.
+              </AccordionContent>
+            </AccordionItem>
 
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-foreground mb-1">
-                      Rastreador de água inteligente para hidratação suficiente
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Monitore sua ingestão de água e mantenha-se hidratado ao longo do dia
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-foreground mb-1">
-                      Temporizador de jejum personalizado
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Acompanhe seus períodos de jejum intermitente de forma simples e eficaz
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            <AccordionItem value="item-3" className="border-b border-border">
+              <AccordionTrigger className="text-left text-foreground hover:no-underline py-4">
+                E se eu perder a motivação rapidamente?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-4">
+                Entendemos que manter a motivação pode ser desafiador. Por isso, nosso plano inclui metas progressivas, acompanhamento de resultados visíveis e dicas motivacionais diárias. Além disso, os treinos curtos de 10-20 minutos são mais fáceis de manter na rotina, aumentando suas chances de sucesso a longo prazo.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </section>
 
-        {/* CTA Section */}
+        {/* Seção de Garantia Expandida */}
+        <section className="py-8 px-6 bg-card rounded-3xl border border-border">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="bg-green-500/20 p-3 rounded-full">
+              <ShieldCheck className="w-8 h-8 text-green-500" />
+            </div>
+          </div>
+          
+          <h3 className="text-2xl font-bold text-center text-foreground mb-4">
+            garantia de reembolso de 30 dias
+          </h3>
+          
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6">
+            Acreditamos que nosso plano funcionará para você e que você verá resultados visíveis em apenas 4 semanas! Estamos inclusive dispostos a devolver seu dinheiro caso você possa comprovar que seguiu o plano, mas não obteve resultados.
+          </p>
+          
+          <p className="text-center text-sm text-muted-foreground">
+            Saiba mais sobre as limitações aplicáveis em nossa{' '}
+            <span className="text-primary font-semibold cursor-pointer hover:underline">
+              política de reembolso
+            </span>.
+          </p>
+        </section>
+
+        {/* CTA Final */}
         <div className="text-center py-8">
           <Button 
             onClick={() => {
@@ -767,18 +823,9 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </Button>
         </div>
 
-        {/* Garantia e Rodapé */}
-        <div className="text-center space-y-6 pt-12 pb-8">
-          <div className="flex items-center justify-center gap-2 text-foreground">
-            <ShieldCheck className="w-6 h-6 text-primary" />
-            <span className="font-semibold">Garantia de 30 dias de devolução do dinheiro</span>
-          </div>
-          
-          <p className="text-sm text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Se não obtiver resultados visíveis, você pode solicitar um reembolso total em até 30 dias após a compra. <span className="text-primary font-semibold cursor-pointer">Saiba mais</span>
-          </p>
-          
-          <div className="mt-6 text-xs text-muted-foreground">
+        {/* Rodapé */}
+        <div className="text-center space-y-4 pt-8 pb-8 border-t border-border">
+          <div className="text-xs text-muted-foreground">
             <p>Copyright © 2024 Nutria</p>
             <p>Todos os direitos reservados</p>
           </div>
