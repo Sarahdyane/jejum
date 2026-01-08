@@ -6,7 +6,8 @@ import {
   Armchair, Candy, Wine, Pizza, DollarSign, Users, Briefcase, 
   HeartCrack, Bug, Shirt, Heart, Activity, Zap, MessageCircle,
   HelpCircle, X, Plane, Compass, Cake, Trophy, Mountain,
-  Utensils, Leaf, MilkOff, WheatOff, Droplet, Droplets, GlassWater, Waves, UtensilsCrossed
+  Utensils, Leaf, MilkOff, WheatOff, Droplet, Droplets, GlassWater, Waves, UtensilsCrossed,
+  Home, Swords, PersonStanding, Shuffle
 } from "lucide-react";
 
 const iconMap = {
@@ -50,6 +51,10 @@ const iconMap = {
   GlassWater,
   Waves,
   UtensilsCrossed,
+  Home,
+  Swords,
+  PersonStanding,
+  Shuffle,
 };
 
 interface QuizOptionProps {
