@@ -416,6 +416,60 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </div>
             )}
           </div>
+
+          {/* Seção Checkout */}
+          <div className="mt-8 bg-card rounded-2xl p-6 border border-border" data-cta-section>
+            <div className="text-center mb-6">
+              <span className="bg-primary/20 text-primary text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                Oferta Especial
+              </span>
+            </div>
+
+            {/* Plano único */}
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary rounded-2xl p-6 relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-full">
+                  MAIS POPULAR
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between mt-2">
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+                    <Check className="w-3 h-3 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground text-lg">Plano de 4 semanas</p>
+                    <p className="text-sm text-muted-foreground">
+                      <span className="line-through">R$40,00</span>
+                      <span className="mx-2">→</span>
+                      <span className="text-primary font-semibold">R$ 31,60</span>
+                    </p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs text-muted-foreground line-through">R$ 5,71</p>
+                  <p className="text-3xl font-bold text-foreground">R$</p>
+                  <p className="text-4xl font-bold text-primary leading-none">7,90</p>
+                  <p className="text-xs text-muted-foreground">por dia</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Botão de compra */}
+            <Button 
+              onClick={() => window.location.href = 'https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO'}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-bold rounded-full mt-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+            >
+              ADQUIRIR MEU PLANO
+            </Button>
+
+            {/* Garantia */}
+            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-muted-foreground">
+              <ShieldCheck className="w-4 h-4 text-primary" />
+              <span>Garantia de 30 dias de devolução</span>
+            </div>
+          </div>
         </div>
 
         {/* Seção 4: As metas do seu plano também incluem */}
@@ -699,12 +753,17 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         </section>
 
         {/* CTA Section */}
-        <div className="text-center py-8" data-cta-section>
+        <div className="text-center py-8">
           <Button 
-            onClick={() => navigate('/transformation')}
+            onClick={() => {
+              const checkoutSection = document.querySelector('[data-cta-section]');
+              if (checkoutSection) {
+                checkoutSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }}
             className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            Ver minha transformação
+            Adquirir meu plano
           </Button>
         </div>
 
