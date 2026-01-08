@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Progress } from '@/components/ui/progress';
-import nutriaLogo from '@/assets/nutria-logo.png';
+import nutriaLogo from '@/assets/nutria-logo-dark.png';
 
 interface LoadingAnalysisProps {
   onComplete: () => void;

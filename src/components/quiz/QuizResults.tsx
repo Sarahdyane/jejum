@@ -5,7 +5,7 @@ import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck, Chevron
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import nutriaLogo from '@/assets/nutria-logo.png';
+import nutriaLogo from '@/assets/nutria-logo-dark.png';
 import appPhoneMockup from '@/assets/app-phone-mockup.png';
 import appMockupNutrition from '@/assets/app-mockup-nutrition-real.png';
 import { getImageSrc } from '@/utils/imageMapping';
