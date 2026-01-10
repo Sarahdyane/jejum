@@ -95,9 +95,9 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
       {option.image && (
         <div className="flex flex-col items-center space-y-4 mb-4">
           <div className={cn(
-            "rounded-xl flex items-center justify-center",
+            "rounded-xl flex items-center justify-center overflow-hidden",
             isFullWidthImage 
-              ? "w-full aspect-square bg-secondary/20" 
+              ? "w-full aspect-[3/4] bg-secondary/20" 
               : "w-28 h-28 bg-secondary/20"
           )}>
             <img 
@@ -105,7 +105,7 @@ export const QuizOption = ({ option, isSelected, onClick, className, gender, que
               alt={option.text}
               loading="eager"
               decoding="async"
-              className="w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
             />
           </div>
         </div>
