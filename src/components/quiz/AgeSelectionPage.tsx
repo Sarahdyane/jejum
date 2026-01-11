@@ -72,7 +72,7 @@ export const AgeSelectionPage = ({
         </motion.div>
 
         {/* Age Options Grid */}
-        <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
+        <div className="grid grid-cols-2 gap-3 max-w-sm mx-auto px-2">
           {options.map((option, index) => (
             <motion.button
               key={option.id}
@@ -85,7 +85,7 @@ export const AgeSelectionPage = ({
               {/* Card Container */}
               <div className="relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group-hover:scale-[1.02] border border-border">
                 {/* Image Container */}
-                <div className="aspect-[3/4] overflow-hidden bg-secondary/30">
+                <div className="aspect-square overflow-hidden bg-secondary/30">
                   <img
                     src={option.customImage ? getImageSrc(option.customImage) : ""}
                     alt={option.text}
@@ -94,12 +94,12 @@ export const AgeSelectionPage = ({
                 </div>
 
                 {/* Age Label - positioned at bottom of card */}
-                <div className="absolute bottom-3 left-3 right-3">
-                  <div className="bg-primary text-primary-foreground rounded-full px-4 py-2.5 flex items-center justify-between shadow-lg group-hover:bg-[hsl(var(--primary-hover))] transition-colors duration-300">
-                    <span className="text-sm font-semibold">
+                <div className="absolute bottom-2 left-2 right-2">
+                  <div className="bg-primary text-primary-foreground rounded-full px-3 py-2 flex items-center justify-between shadow-lg group-hover:bg-[hsl(var(--primary-hover))] transition-colors duration-300">
+                    <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">
                       {ageLabels[option.id] || `Idade: ${option.text}`}
                     </span>
-                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ChevronRight className="w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </div>
               </div>
