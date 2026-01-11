@@ -1,4 +1,4 @@
-import ageWoman1829 from '@/assets/age-woman-18-29.jpg';
+import ageWoman1829 from '@/assets/age-woman-18-29-young.jpg';
 import ageWoman3039 from '@/assets/age-woman-30-39.jpg';
 import ageWoman4049 from '@/assets/age-woman-40-49.jpg';
 import ageWoman50Plus from '@/assets/age-woman-50-plus.jpg';
