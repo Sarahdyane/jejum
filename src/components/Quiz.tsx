@@ -18,6 +18,7 @@ import { ExercisePreference } from '@/components/quiz/ExercisePreference';
 import SupplementsPage from '@/components/quiz/SupplementsPage';
 import { NutritionExercisePage } from '@/components/quiz/NutritionExercisePage';
 import { SocialProofPage } from '@/components/quiz/SocialProofPage';
+import { AgeSelectionPage } from '@/components/quiz/AgeSelectionPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 export const Quiz = () => {
@@ -102,6 +103,25 @@ export const Quiz = () => {
     }
     
     return <QuizResults profile={profile} onRestart={() => setShowCommitment(true)} />;
+  }
+
+  // Handle age selection page (first question)
+  if (currentQuestion && currentQuestion.id === 1 && currentQuestion.showTitle) {
+    return (
+      <AgeSelectionPage
+        title={currentQuestion.showTitle}
+        subtitle={currentQuestion.showSubtitle || ""}
+        options={currentQuestion.options?.map(opt => ({
+          id: opt.id,
+          text: opt.text,
+          customImage: opt.customImage
+        })) || []}
+        onSelect={(optionId) => {
+          setAnswer(currentQuestion.id, optionId);
+          nextQuestion();
+        }}
+      />
+    );
   }
 
   if (!currentQuestion) {
