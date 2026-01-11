@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Menu } from "lucide-react";
 import { getImageSrc } from "@/utils/imageMapping";
 import nutriaLogo from '@/assets/nutria-logo-dark.png';
 
@@ -35,13 +35,13 @@ export const AgeSelectionPage = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f0eb] flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="flex items-center justify-between px-4 py-4"
+        className="flex items-center justify-between px-4 py-4 border-b border-border"
       >
         <div className="flex items-center gap-2">
           <img
@@ -51,31 +51,28 @@ export const AgeSelectionPage = ({
           />
           <span className="text-lg font-bold text-primary">Nutria</span>
         </div>
-        <div className="w-8 h-8 flex flex-col justify-center gap-1">
-          <span className="w-6 h-0.5 bg-primary rounded-full"></span>
-          <span className="w-6 h-0.5 bg-primary rounded-full"></span>
-        </div>
+        <Menu className="w-6 h-6 text-foreground" />
       </motion.header>
 
       {/* Content */}
-      <div className="flex-1 px-4 pb-8">
+      <div className="flex-1 px-4 py-6">
         {/* Title Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-center mb-6"
+          className="text-center mb-8"
         >
           <h1 className="text-2xl md:text-3xl font-bold text-primary uppercase tracking-wide mb-2">
             {title}
           </h1>
-          <p className="text-sm md:text-base text-primary/70 uppercase tracking-wider">
+          <p className="text-sm md:text-base text-muted-foreground uppercase tracking-wider">
             {subtitle}
           </p>
         </motion.div>
 
         {/* Age Options Grid */}
-        <div className="grid grid-cols-2 gap-3 max-w-lg mx-auto">
+        <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
           {options.map((option, index) => (
             <motion.button
               key={option.id}
@@ -83,24 +80,26 @@ export const AgeSelectionPage = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
               onClick={() => onSelect(option.id)}
-              className="relative group"
+              className="relative group focus:outline-none"
             >
               {/* Card Container */}
-              <div className="relative bg-[#e8dfd6] rounded-3xl overflow-hidden aspect-[3/4] shadow-md hover:shadow-lg transition-shadow duration-300">
-                {/* Image */}
-                <img
-                  src={option.customImage ? getImageSrc(option.customImage) : ""}
-                  alt={option.text}
-                  className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                />
+              <div className="relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group-hover:scale-[1.02] border border-border">
+                {/* Image Container */}
+                <div className="aspect-[3/4] overflow-hidden bg-secondary/30">
+                  <img
+                    src={option.customImage ? getImageSrc(option.customImage) : ""}
+                    alt={option.text}
+                    className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
 
-                {/* Age Label */}
+                {/* Age Label - positioned at bottom of card */}
                 <div className="absolute bottom-3 left-3 right-3">
-                  <div className="bg-primary text-primary-foreground rounded-full px-4 py-2 flex items-center justify-between shadow-lg">
+                  <div className="bg-primary text-primary-foreground rounded-full px-4 py-2.5 flex items-center justify-between shadow-lg group-hover:bg-[hsl(var(--primary-hover))] transition-colors duration-300">
                     <span className="text-sm font-semibold">
                       {ageLabels[option.id] || `Idade: ${option.text}`}
                     </span>
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </div>
               </div>
@@ -113,15 +112,15 @@ export const AgeSelectionPage = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="text-center mt-8 px-4"
+          className="text-center mt-10 px-4"
         >
-          <p className="text-xs text-primary/60 leading-relaxed">
+          <p className="text-xs text-muted-foreground leading-relaxed">
             Ao selecionar sua idade e continuar, você concorda com nossos{" "}
-            <a href="#" className="text-primary underline hover:text-primary/80">
+            <a href="#" className="text-primary underline hover:text-primary/80 transition-colors">
               Termos de Serviço
             </a>{" "}
             |{" "}
-            <a href="#" className="text-primary underline hover:text-primary/80">
+            <a href="#" className="text-primary underline hover:text-primary/80 transition-colors">
               Política de Privacidade
             </a>
             .
