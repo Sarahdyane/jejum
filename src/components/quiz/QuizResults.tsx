@@ -9,6 +9,7 @@ import nutriaLogo from '@/assets/nutria-logo-dark.png';
 import appPhoneMockup from '@/assets/app-phone-mockup.png';
 import appMockupNutrition from '@/assets/app-mockup-nutrition-real.png';
 import { getImageSrc } from '@/utils/imageMapping';
+import { goToCheckout } from '@/utils/utmHelper';
 import transformationBeforeFemale1 from '@/assets/transformation-before-female-1.jpg';
 import transformationAfterFemale1 from '@/assets/transformation-after-female-1.jpg';
 import transformationBeforeMale1 from '@/assets/transformation-before-male-1.jpg';
@@ -459,7 +460,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
 
             {/* Botão de compra */}
             <Button 
-              onClick={() => window.location.href = 'https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO'}
+              onClick={goToCheckout}
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-bold rounded-full mt-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
             >
               ADQUIRIR MEU PLANO
