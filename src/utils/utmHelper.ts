@@ -73,7 +73,7 @@ export const navigateWithUtm = (baseUrl: string): void => {
 };
 
 // URL base do checkout
-export const CHECKOUT_URL = 'https://www.ggcheckout.com/checkout/v2/sAxm8xS5o2d9po6HDheO';
+export const CHECKOUT_URL = 'https://www.ggcheckout.com/checkout/v4/sAxm8xS5o2d9po6HDheO';
 
 // Função específica para ir ao checkout com UTMs
 export const goToCheckout = (): void => {
