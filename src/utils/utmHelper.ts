@@ -4,11 +4,11 @@
 
 const APP_UTM_STORAGE_KEY = "__nutria_utms__";
 
+// Além dos utm_* padrões, algumas chaves comuns em tracking BR/UTMify
 const EXTRA_TRACKING_KEYS = [
   "fbclid",
   "gclid",
   "ttclid",
-  // Chaves comuns em setups BR / UTMify
   "xcod",
   "sck",
   "src",
@@ -18,10 +18,15 @@ const EXTRA_TRACKING_KEYS = [
   "subid3",
   "subid4",
   "subid5",
+  "utmify",
 ];
 
-const isTrackingKey = (key: string): boolean =>
-  key.startsWith("utm_") || EXTRA_TRACKING_KEYS.includes(key);
+const isTrackingKey = (key: string): boolean => {
+  // pega utm_* e também qualquer coisa que contenha "utm" (ex: utmify)
+  if (key.startsWith("utm_")) return true;
+  if (key.includes("utm")) return true;
+  return EXTRA_TRACKING_KEYS.includes(key);
+};
 
 const safeJsonParse = (value: string | null): unknown => {
   if (!value) return null;
@@ -32,14 +37,65 @@ const safeJsonParse = (value: string | null): unknown => {
   }
 };
 
+const parseQueryString = (value: string): Record<string, string> => {
+  const out: Record<string, string> = {};
+  const cleaned = value.trim().replace(/^\?/, "");
+  if (!cleaned) return out;
+
+  const usp = new URLSearchParams(cleaned);
+  for (const [k, v] of usp.entries()) {
+    if (!k || !v) continue;
+    if (!isTrackingKey(k)) continue;
+    out[k] = v;
+  }
+  return out;
+};
+
 const pickTrackingParams = (input: unknown): Record<string, string> => {
   const out: Record<string, string> = {};
-  if (!input || typeof input !== "object") return out;
+  if (!input) return out;
+
+  // string pode vir como querystring
+  if (typeof input === "string") {
+    return parseQueryString(input);
+  }
+
+  if (typeof input !== "object") return out;
 
   for (const [k, v] of Object.entries(input as Record<string, unknown>)) {
-    if (!isTrackingKey(k)) continue;
     if (v === null || v === undefined) continue;
-    out[k] = String(v);
+
+    // alguns formatos salvam tudo em um campo string (ex: "parameters")
+    if (typeof v === "string" && (k === "parameters" || k === "params" || k === "query")) {
+      Object.assign(out, parseQueryString(v));
+      continue;
+    }
+
+    if (isTrackingKey(k)) {
+      out[k] = String(v);
+    }
+  }
+
+  return out;
+};
+
+const deepExtractTrackingParams = (input: unknown, depth = 0): Record<string, string> => {
+  const out: Record<string, string> = {};
+  if (!input) return out;
+
+  // primeiro nível
+  Object.assign(out, pickTrackingParams(input));
+
+  // extrai até 2 níveis para pegar formatos do tipo { utms: {...} }
+  if (depth >= 2) return out;
+
+  if (typeof input === "object") {
+    for (const v of Object.values(input as Record<string, unknown>)) {
+      if (!v) continue;
+      if (typeof v === "object" || typeof v === "string") {
+        Object.assign(out, deepExtractTrackingParams(v, depth + 1));
+      }
+    }
   }
 
   return out;
@@ -78,17 +134,16 @@ const getFromCookies = (): Record<string, string> => {
 const getFromStorage = (storage: Storage): Record<string, string> => {
   const out: Record<string, string> = {};
 
-  // 1) Nosso cache (sempre que existir, é o mais confiável no SPA)
-  Object.assign(out, pickTrackingParams(safeJsonParse(storage.getItem(APP_UTM_STORAGE_KEY))));
+  // 1) Nosso cache (quando existir, é o mais confiável no SPA)
+  Object.assign(out, deepExtractTrackingParams(safeJsonParse(storage.getItem(APP_UTM_STORAGE_KEY))));
 
   // 2) Formato comum do UTMify
-  Object.assign(out, pickTrackingParams(safeJsonParse(storage.getItem("__utmify_session_utms__"))));
+  const s1 = storage.getItem("__utmify_session_utms__");
+  Object.assign(out, deepExtractTrackingParams(safeJsonParse(s1) ?? s1));
 
   // 3) Formato alternativo do UTMify
-  const utmify = safeJsonParse(storage.getItem("__utmify__")) as any;
-  if (utmify && typeof utmify === "object") {
-    Object.assign(out, pickTrackingParams(utmify.utms ?? utmify));
-  }
+  const s2 = storage.getItem("__utmify__");
+  Object.assign(out, deepExtractTrackingParams(safeJsonParse(s2) ?? s2));
 
   return out;
 };
@@ -130,7 +185,13 @@ export const getUtmParams = (): Record<string, string> => {
 
 // Chamar o mais cedo possível no boot do app
 export const initUtmCapture = (): void => {
+  // captura imediata
   getUtmParams();
+
+  // recaptura depois que scripts async (UTMify) terminarem de popular storage/cookies
+  window.setTimeout(() => getUtmParams(), 300);
+  window.setTimeout(() => getUtmParams(), 1200);
+  window.setTimeout(() => getUtmParams(), 3000);
 };
 
 // Função para adicionar UTMs a uma URL
