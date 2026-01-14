@@ -213,9 +213,23 @@ export const appendUtmToUrl = (baseUrl: string): string => {
   return url.toString();
 };
 
-// Função para navegar para uma URL com UTMs
+// Concatena a querystring atual (window.location.search) na URL destino.
+// Isso evita perda de parâmetros quando o usuário clica para ir ao checkout.
+export const appendCurrentQueryToUrl = (baseUrl: string): string => {
+  const currentParams = window.location.search;
+  const qs = (currentParams || "").replace(/^\?/, "");
+
+  if (!qs) return baseUrl;
+
+  return `${baseUrl}${baseUrl.includes("?") ? "&" : "?"}${qs}`;
+};
+
+// Função para navegar para uma URL preservando:
+// 1) parâmetros atuais da URL (querystring)
+// 2) parâmetros capturados via UTMify/storage/cookies (fallback)
 export const navigateWithUtm = (baseUrl: string): void => {
-  const finalUrl = appendUtmToUrl(baseUrl);
+  const withCurrentQuery = appendCurrentQueryToUrl(baseUrl);
+  const finalUrl = appendUtmToUrl(withCurrentQuery);
   window.location.href = finalUrl;
 };
 
