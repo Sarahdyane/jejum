@@ -5,7 +5,7 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "CONSTRUA SEU CORPO PERFEITO",
+    showTitle: "MONTE SEU PLANO 2026",
     showSubtitle: "Com base na sua idade",
     showFooter: true,
     options: [
@@ -473,11 +473,6 @@ export const questions: QuizQuestion[] = [
       { id: "other-stressful", text: "Outros eventos estressantes", icon: "AlertCircle" },
       { id: "none", text: "Nenhuma das afirmações se aplica", icon: "CheckCircle" }
     ]
-  },
-  {
-    id: "stats-page",
-    title: "Estatísticas da Nutria",
-    type: "stats",
   },
   {
     id: 26,
