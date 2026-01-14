@@ -452,7 +452,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 <div className="text-right">
                   <p className="text-xs text-muted-foreground line-through">R$ 5,71</p>
                   <p className="text-3xl font-bold text-foreground">R$</p>
-                  <p className="text-4xl font-bold text-primary leading-none">7,90</p>
+                  <p className="text-4xl font-bold text-primary leading-none">17,99</p>
                   <p className="text-xs text-muted-foreground">por dia</p>
                 </div>
               </div>
