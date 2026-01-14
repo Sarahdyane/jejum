@@ -428,24 +428,16 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             </div>
 
             {/* Plano único */}
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary rounded-2xl p-6 relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-full">
-                  MAIS POPULAR
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between mt-2">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary rounded-2xl p-6">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
                     <Check className="w-3 h-3 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground text-lg">Plano de 4 semanas</p>
+                    <p className="font-bold text-foreground text-lg">Plano Vitalício</p>
                     <p className="text-sm text-muted-foreground">
-                      <span className="line-through">R$40,00</span>
-                      <span className="mx-2">→</span>
-                      <span className="text-primary font-semibold">R$ 31,60</span>
+                      <span className="text-primary font-semibold">Acesso completo</span>
                     </p>
                   </div>
                 </div>
