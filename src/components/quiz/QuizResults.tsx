@@ -418,6 +418,18 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </div>
             )}
           </div>
+        
+<div className="w-full mb-4">
+  <div className="bg-slate-900/50 border border-[#00E599]/30 p-3 rounded-xl flex items-center gap-4 w-full">
+    <div className="bg-[#00E599]/20 p-2 rounded-full text-[#00E599] shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+    </div>
+    <div className="text-left">
+      <h4 className="font-bold text-white text-sm">Nutria AI Inclusa</h4>
+      <p className="text-xs text-gray-400 leading-tight">Tire dúvidas 24h.</p>
+    </div>
+  </div>
+</div>
 
           {/* Seção Checkout */}
           <div className="mt-8 bg-card rounded-2xl p-6 border border-border" data-cta-section>
@@ -441,6 +453,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                     </p>
                   </div>
                 </div>
+                
                 <div className="flex flex-col items-end">
                   <span className="text-5xl font-bold text-[#00E599]">R$ 17,99</span>
                   <span className="mt-1 text-[#00E599] text-xs font-bold uppercase tracking-wider">
