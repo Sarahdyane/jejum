@@ -441,11 +441,11 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                     </p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-xs text-muted-foreground line-through">R$ 5,71</p>
-                  <p className="text-3xl font-bold text-foreground">R$</p>
-                  <p className="text-4xl font-bold text-primary leading-none">17,99</p>
-                  <p className="text-xs text-muted-foreground">por dia</p>
+                <div className="flex flex-col items-end">
+                  <span className="text-5xl font-bold text-[#00E599]">R$ 17,99</span>
+                  <span className="mt-1 text-[#00E599] text-xs font-bold uppercase tracking-wider">
+                    Pagamento Único
+                   </span>
                 </div>
               </div>
             </div>
