@@ -462,14 +462,30 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 </div>
               </div>
             </div>
+           {/* --- NOVO BOTÃO COM RASTREAMENTO (Começa aqui) --- */}
+            <button 
+              onClick={() => {
+                // 👇 COLOQUE SEU LINK AQUI DENTRO DAS ASPAS 👇
+                const checkoutUrl = "https://www.ggcheckout.com/checkout/v4/sAxm8xS5o2d9po6HDheO"; 
+                
+                // Pega o rastro (UTM) do Facebook/Google
+                const currentParams = window.location.search;
+                const separator = checkoutUrl.includes('?') ? '&' : '?';
+                const finalUrl = currentParams ? `${checkoutUrl}${separator}${currentParams.substring(1)}` : checkoutUrl;
 
-            {/* Botão de compra */}
-            <Button 
-              onClick={goToCheckout}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-bold rounded-full mt-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                // Avisa o Facebook que clicou
+                if (typeof window !== 'undefined' && (window as any).fbq) {
+                  (window as any).fbq('track', 'InitiateCheckout');
+                }
+
+                // Vai para o pagamento
+                window.location.href = finalUrl;
+              }}
+              className="w-full bg-[#00E599] hover:bg-[#00E599]/90 text-black font-bold text-lg py-6 rounded-full mt-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
             >
               ADQUIRIR MEU PLANO
-            </Button>
+            </button>
+            {/* --- FIM DO NOVO BOTÃO --- */}
 
             {/* Garantia */}
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-muted-foreground">
