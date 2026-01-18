@@ -5,7 +5,7 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "MONTE SEU PLANO 2026",
+    showTitle: "PLANO DE TREINAMENTO PERSONALIZADO",
     showSubtitle: "Com base na sua idade",
     showFooter: true,
     options: [
@@ -92,12 +92,12 @@ export const questions: QuizQuestion[] = [
     showInfoBox: true,
     infoBoxContent: {
       title: "🔥 Fato sobre queima de gordura",
-      content: "O jejum intermitente ajuda o corpo a queimar gordura armazenada para obter energia após apenas 12 horas de jejum, tornando a perda de peso mais eficaz."
+      content: "Pare de lutar contra seu próprio corpo. Hoje, seu metabolismo está programado para 'Estocar'. Nós vamos apenas virar a chave para o modo 'Queimar'."
     },
     options: [
       { 
         id: "slim", 
-        text: "Corpo esbelto", 
+        text: "Corpo esbelto e magro", 
         maleImage: "goal-slim-male-mascot", 
         femaleImage: "goal-slim-female-mascot" 
       },
@@ -130,7 +130,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "nutrition-info",
-    title: "81% dos seus resultados dependem da nutrição",
+    title: "70% dos seus resultados dependem da nutrição",
     subtitle: "Para alcançar evolução mais rápida no corpo, o equilíbrio alimentar é essencial.",
     type: "intermediate",
     requiresGender: true,
@@ -146,9 +146,9 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "lipedema-info",
-    title: "Você sabia sobre o Lipedema?",
+    title: "Você já ouviu falar do Lipedema?",
     subtitle: "Uma condição que afeta milhões de mulheres",
-    description: "O lipedema é uma condição crônica que causa acúmulo desproporcional de gordura, principalmente nas pernas e braços.\n\n✨ Características principais:\n• Afeta principalmente mulheres\n• Pode causar dor e sensibilidade\n• Dieta balanceada pode ajudar no controle\n• Não é resultado de má alimentação",
+    description: "Você sente que seu esforço nunca chega às pernas? Isso tem nome: Lipedema. Não é estética, é saúde crônica.\n\n Liberte-se:\n• O inchaço é real\n• O hematoma é real\n• A solução existe",
     type: "intermediate",
     image: "lipedema-info"
   },
@@ -165,8 +165,8 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "motivation-change-habits",
-    title: "Você sempre pode mudar os seus hábitos para melhor",
-    subtitle: "Grandes mudanças na vida costumam afetar no peso. É normal. Nós iremos ajudar você a alcançar o seu objetivo.",
+    title: "Acelere seus resultados com treinos e alimnentação direcionada",
+    subtitle: "A confusão é a maior inimiga da constância. Eliminamos a incerteza com um plano visual e direto, onde você sabe exatamente o porquê de cada movimento",
     type: "intermediate",
     requiresGender: true,
     femaleImage: "motivation-change-habits",
@@ -186,106 +186,139 @@ export const questions: QuizQuestion[] = [
   {
     id: 'nutrition-plan',
     title: 'Melhore seu condicionamento físico com um plano alimentar personalizado.',
-    subtitle: 'A nutrição é fundamental para **ter um corpo forte e em forma.**\n\nObtenha **receitas rápidas e deliciosas** e melhore seus hábitos alimentares para atingir seu objetivo mais rapidamente.',
+    subtitle: 'A nutrição é fundamental para **ter um corpo forte e em forma.**\n\nObtenha **receitas rápidas e deliciosas** e melhore seus hábitos para atingir seu objetivo mais rapidamente comendo o que gosta.',
     type: 'intermediate',
     image: 'app-meals-mockup'
   },
-  {
-    id: 15,
-    title: "Escolha os produtos que você gosta",
-    subtitle: "Selecione todas as opções que você gosta",
-    type: "food-categories",
-    foodCategories: [
-      {
-        id: "vegetables",
-        emoji: "🥬",
-        title: "Vegetais",
-        options: [
-          { id: "tomato", text: "Tomate" },
-          { id: "cucumber", text: "Pepino" },
-          { id: "bell-pepper", text: "Páprica" },
-          { id: "onion", text: "Cebola" },
-          { id: "spinach", text: "Espinafre" },
-          { id: "mushrooms", text: "Cogumelos" },
-          { id: "cherry-tomato", text: "Tomate coquetel" },
-          { id: "lettuce", text: "Alface" },
-          { id: "zucchini", text: "Abobrinha" },
-          { id: "carrot", text: "Cenoura" }
-        ]
-      },
-      {
-        id: "grains",
-        emoji: "🍞",
-        title: "Grãos e Pães",
-        options: [
-          { id: "rice", text: "Arroz" },
-          { id: "spaghetti", text: "Espaguete" },
-          { id: "whole-bread", text: "Pão integral" },
-          { id: "couscous", text: "Cuscuz" },
-          { id: "oats", text: "Aveia" },
-          { id: "quinoa", text: "Quinoa" }
-        ],
-        disabledWhen: { questionId: 14, value: "gluten-free" }
-      },
-      {
-        id: "meat",
-        emoji: "🥩",
-        title: "Carne e Ovos",
-        options: [
-          { id: "eggs", text: "Ovos" },
-          { id: "chicken-breast", text: "Peito de frango" },
-          { id: "turkey-breast", text: "Peito de peru" },
-          { id: "chicken-sausage", text: "Salsicha de frango" },
-          { id: "chicken-ham", text: "Presunto de frango" }
-        ],
-        disabledWhen: { questionId: 14, value: "vegetarian" }
-      },
-      {
-        id: "fish",
-        emoji: "🐟",
-        title: "Peixe",
-        options: [
-          { id: "salmon", text: "Salmão" },
-          { id: "tuna", text: "Atum enlatado" },
-          { id: "bass", text: "Badejo" },
-          { id: "seafood-cocktail", text: "Coquetel de frutos do mar" },
-          { id: "shrimp", text: "Camarão" },
-          { id: "trout", text: "Filé de truta de rio" }
-        ],
-        disabledWhen: { questionId: 14, value: "vegetarian" }
-      },
-      {
-        id: "dairy",
-        emoji: "🥛",
-        title: "Produtos lácteos",
-        options: [
-          { id: "tofu", text: "Tofu" },
-          { id: "feta", text: "Queijo feta" },
-          { id: "mozzarella", text: "Mussarela" },
-          { id: "cream-cheese", text: "Queijo cremoso light Philadelphia" },
-          { id: "greek-yogurt", text: "Iogurte grego" },
-          { id: "parmesan", text: "Parmesão ralado" },
-          { id: "cheese", text: "Queijo" },
-          { id: "light-cream", text: "Chantilly com baixo teor de gordura" }
-        ],
-        disabledWhen: { questionId: 14, value: "lactose-free" }
-      },
-      {
-        id: "fruits",
-        emoji: "🍌",
-        title: "Frutas e bagas",
-        options: [
-          { id: "avocado", text: "Abacate" },
-          { id: "apples", text: "Maçãs" },
-          { id: "pears", text: "Peras" },
-          { id: "bananas", text: "Bananas" },
-          { id: "berries", text: "Frutas vermelhas frescas" },
-          { id: "mango", text: "Manga" },
-          { id: "orange", text: "Laranja" }
-        ]
-      }
-    ]
-  },
+ {
+  id: 15,
+  title: "Escolha os produtos que você gosta",
+  subtitle: "Selecione todas as opções que você gosta",
+  type: "food-categories",
+  foodCategories: [
+    {
+      id: "vegetables",
+      emoji: "🥬",
+      title: "Vegetais e Legumes",
+      options: [
+        { id: "tomato", text: "Tomate" },
+        { id: "broccoli", text: "Brócolis" },
+        { id: "cauliflower", text: "Couve-flor" },
+        { id: "cucumber", text: "Pepino" },
+        { id: "bell-pepper", text: "Pimentão" },
+        { id: "onion", text: "Cebola" },
+        { id: "spinach", text: "Espinafre" },
+        { id: "kale", text: "Couve" },
+        { id: "mushrooms", text: "Cogumelos" },
+        { id: "cherry-tomato", text: "Tomate cereja" },
+        { id: "lettuce", text: "Alface" },
+        { id: "zucchini", text: "Abobrinha" },
+        { id: "carrot", text: "Cenoura" },
+        { id: "pumpkin", text: "Abóbora/Cabotiá" },
+        { id: "beetroot", text: "Beterraba" },
+        { id: "eggplant", text: "Berinjela" }
+      ]
+    },
+    {
+      id: "grains",
+      emoji: "🍠",
+      title: "Carboidratos e Grãos",
+      options: [
+        { id: "rice", text: "Arroz Branco" },
+        { id: "brown-rice", text: "Arroz Integral" },
+        { id: "beans", text: "Feijão" },
+        { id: "sweet-potato", text: "Batata Doce" },
+        { id: "potato", text: "Batata Inglesa" },
+        { id: "spaghetti", text: "Macarrão/Espaguete" },
+        { id: "whole-bread", text: "Pão integral" },
+        { id: "couscous", text: "Cuscuz" },
+        { id: "oats", text: "Aveia" },
+        { id: "quinoa", text: "Quinoa" },
+        { id: "tapioca", text: "Tapioca" },
+        { id: "lentils", text: "Lentilha" }
+      ],
+      disabledWhen: { questionId: 14, value: "gluten-free" }
+    },
+    {
+      id: "meat",
+      emoji: "🥩",
+      title: "Carne e Ovos",
+      options: [
+        { id: "eggs", text: "Ovos" },
+        { id: "chicken-breast", text: "Peito de frango" },
+        { id: "ground-beef", text: "Carne Moída (Patinho)" },
+        { id: "beef-steak", text: "Filé de Carne (Alcatra/Mignon)" },
+        { id: "pork-loin", text: "Lombo Suíno" },
+        { id: "turkey-breast", text: "Peito de peru" },
+        { id: "chicken-sausage", text: "Salsicha de frango" },
+        { id: "chicken-ham", text: "Presunto de frango" }
+      ],
+      disabledWhen: { questionId: 14, value: "vegetarian" }
+    },
+    {
+      id: "fish",
+      emoji: "🐟",
+      title: "Peixe",
+      options: [
+        { id: "tilapia", text: "Tilápia" },
+        { id: "salmon", text: "Salmão" },
+        { id: "tuna", text: "Atum" },
+        { id: "sardine", text: "Sardinha" },
+        { id: "bass", text: "Badejo" },
+        { id: "shrimp", text: "Camarão" },
+        { id: "white-fish", text: "Peixe Branco" }
+      ],
+      disabledWhen: { questionId: 14, value: "vegetarian" }
+    },
+    {
+      id: "dairy",
+      emoji: "🥛",
+      title: "Laticínios",
+      options: [
+        { id: "whey-protein", text: "Whey Protein" },
+        { id: "milk", text: "Leite" },
+        { id: "cottage", text: "Queijo Cottage" },
+        { id: "mozzarella", text: "Mussarela" },
+        { id: "ricotta", text: "Ricota" },
+        { id: "greek-yogurt", text: "Iogurte grego" },
+        { id: "parmesan", text: "Parmesão" },
+        { id: "cream-cheese", text: "Cream Cheese Light" },
+        { id: "cheese", text: "Queijo Prato/Minas" }
+      ],
+      disabledWhen: { questionId: 14, value: "lactose-free" }
+    },
+    {
+      id: "fruits",
+      emoji: "🍌",
+      title: "Frutas",
+      options: [
+        { id: "banana", text: "Banana" },
+        { id: "apple", text: "Maçã" },
+        { id: "papaya", text: "Mamão" },
+        { id: "pineapple", text: "Abacaxi" },
+        { id: "watermelon", text: "Melancia" },
+        { id: "grapes", text: "Uvas" },
+        { id: "avocado", text: "Abacate" },
+        { id: "berries", text: "Morango/Frutas Vermelhas" },
+        { id: "mango", text: "Manga" },
+        { id: "orange", text: "Laranja" },
+        { id: "lemon", text: "Limão" }
+      ]
+    },
+    {
+      id: "fats",
+      emoji: "🥜",
+      title: "Gorduras Saudáveis e Sementes",
+      options: [
+        { id: "olive-oil", text: "Azeite de Oliva" },
+        { id: "peanut-butter", text: "Pasta de Amendoim" },
+        { id: "nuts", text: "Castanhas/Nozes" },
+        { id: "chia", text: "Chia/Linhaça" },
+        { id: "coconut-oil", text: "Óleo de Coco" }
+      ]
+    }
+  ]
+},
   {
     id: 16,
     title: "Quanta água você bebe diariamente?",
