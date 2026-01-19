@@ -5,7 +5,7 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "PLANO DE TREINAMENTO PERSONALIZADO",
+    showTitle: "MONTE SEU PLANO 2026",
     showSubtitle: "Com base na sua idade",
     showFooter: true,
     options: [
