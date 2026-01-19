@@ -165,7 +165,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "motivation-change-habits",
-    title: "Acelere seus resultados com treinos e alimnentação direcionada",
+    title: "Acelere seus resultados com treinos e alimentação direcionada",
     subtitle: "A confusão é a maior inimiga da constância. Eliminamos a incerteza com um plano visual e direto, onde você sabe exatamente o porquê de cada movimento",
     type: "intermediate",
     requiresGender: true,
