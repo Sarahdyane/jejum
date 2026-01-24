@@ -5,8 +5,8 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "MONTE SEU PLANO 2026",
-    showSubtitle: "Com base na sua idade",
+    showTitle: "JÁ CHEGA DE DEIXAR ESSE OBJETIVO PRA DEPOIS",
+    showSubtitle: "vamos fazer isso acontecer logo !",
     showFooter: true,
     options: [
       { id: "18-29", text: "18–29", customImage: "age-woman-1" },
@@ -17,10 +17,11 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "social-proof",
-    title: "150 milhões de pessoas",
-    subtitle: "Escolheram a Nutria",
+    title: "12.000 MULHERES TRANSFORMADAS",
+    subtitle: "A Nutria vai acompanhar esse processo com você",
     type: "intermediate",
     image: "fitness-devices-hero"
+   
   },
   {
     id: 3,
