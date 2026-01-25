@@ -5,8 +5,8 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "JÁ CHEGA DE DEIXAR ESSE OBJETIVO PRA DEPOIS",
-    showSubtitle: "vamos fazer isso acontecer logo !",
+    showTitle: "Este será o último plano que você vai precisar",
+    showSubtitle: "Nós cuidamos do seu planejamento ",
     showFooter: true,
     options: [
       { id: "18-29", text: "18–29", customImage: "age-woman-1" },
