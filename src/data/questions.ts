@@ -5,8 +5,8 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "Este será o último plano que você vai precisar",
-    showSubtitle: "Nós cuidamos do seu planejamento ",
+    showTitle: "O segredo para transformar Calorias em Músculos e secar a barriga comendo o que gosta.",
+    showSubtitle: "Nunca foi tão fácil ter resultados em 2026" ",
     showFooter: true,
     options: [
       { id: "18-29", text: "18–29", customImage: "age-woman-1" },
@@ -17,8 +17,8 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "social-proof",
-    title: "12.000 MULHERES TRANSFORMADAS",
-    subtitle: "A Nutria vai acompanhar esse processo com você",
+    title: "VAMOS CRIAR O SEU MAPA ÚNICO",
+    subtitle: "Nós usaremos suas respostas para construir um protocolo 'anti-falha', focado em resultados rápidos",
     type: "intermediate",
     image: "fitness-devices-hero"
    
