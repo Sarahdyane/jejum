@@ -5,7 +5,7 @@ export const questions: QuizQuestion[] = [
     id: 1,
     title: "",
     type: "single",
-    showTitle: "O segredo para transformar Calorias em Músculos e secar a barriga comendo o que gosta.",
+    showTitle: "O segredo para transformar Calorias em Músculos e secar a barriga comendo o que gosta",
     showSubtitle: "Nunca foi tão fácil ter resultados em 2026" ",
     showFooter: true,
     options: [
