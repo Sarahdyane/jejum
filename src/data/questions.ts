@@ -25,7 +25,7 @@ export const questions: QuizQuestion[] = [
       "📍 Rastreamento Metabólico: Identificar o que trava sua queima de gordura.",
       "🍕 Cardápio Flexível: Incluir o que você gosta (sem cortar o jantar).",
       "🛡️ Blindagem Anti-Efeito Sanfona: Uma estratégia para secar e manter."
-   
+   ],
   },
   {
     id: 3,
