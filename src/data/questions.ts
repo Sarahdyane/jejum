@@ -397,19 +397,19 @@ export const questions: QuizQuestion[] = [
       { 
         id: "beginner", 
         text: "Iniciante", 
-        description: "Sempre que me sento no chão, é difícil me levantar.",
+        description: "Faz tempo que não treino e me sinto 'enferrujada'",
         icon: "Zap"
       },
       { 
         id: "amateur", 
-        text: "Amador", 
-        description: "Tento me exercitar uma vez por semana, mas ainda não é regular.",
+        text: "Intermediária"", 
+        description: "Treino de vez em quando, mas sempre acabo parando.",
         icon: "Zap"
       },
       { 
         id: "advanced", 
         text: "Avançado", 
-        description: "Estou pegando fogo! Estou na melhor forma da minha vida.",
+        description: "Já treino firme toda semana.",
         icon: "Zap"
       }
     ]
@@ -451,8 +451,8 @@ export const questions: QuizQuestion[] = [
     type: "single",
     options: [
       { id: "almost-daily", text: "Quase todos os dias", icon: "Footprints" },
-      { id: "3-4-times", text: "3–4 vezes por semana", icon: "Footprints" },
-      { id: "1-2-times", text: "1–2 vezes por semana", icon: "Footprints" },
+      { id: "3-4-times", text: "1-2 vezes por semana", icon: "Footprints" },
+      { id: "1-2-times", text: "1–5 vezes por semana", icon: "Footprints" },
       { id: "once-month", text: "Mais ou menos uma vez por mês", icon: "Footprints" }
     ]
   },
@@ -510,10 +510,10 @@ export const questions: QuizQuestion[] = [
     title: "Qual é a sua principal razão para entrar em forma?",
     type: "single",
     options: [
-      { id: "confident-body", text: "Sentir-me mais confiante no meu próprio corpo", icon: "Heart" },
+      { id: "confident-body", text: "Eliminar a pochete e a barriga estufada", icon: "Heart" },
       { id: "healthier", text: "Sentir-me mais saudável", icon: "Activity" },
-      { id: "more-energy", text: "Sentir-me com mais energia", icon: "Zap" },
-      { id: "clothes-fit", text: "Para que minhas roupas sirvam melhor", icon: "Shirt" },
+      { id: "more-energy", text: "Olhar no espelho e gostar do que vejo (Autoestima)", icon: "Zap" },
+      { id: "clothes-fit", text: "Trocar gordura por corpo definido", icon: "Shirt" },
       { id: "other", text: "Outro", icon: "MessageCircle" }
     ]
   },
