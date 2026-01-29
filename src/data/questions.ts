@@ -18,9 +18,13 @@ export const questions: QuizQuestion[] = [
   {
     id: "social-proof",
     title: "VAMOS CRIAR O SEU MAPA ÚNICO",
-    subtitle: "Nós usaremos suas respostas para construir um protocolo 'anti-falha', focado em resultados rápidos",
+    subtitle: "Chega de tentativa e erro. Cruzaremos seus dados para gerar um protocolo de 3 pilares:",
     type: "intermediate",
     image: "fitness-devices-hero"
+    bulletPoints: [
+      "📍 Rastreamento Metabólico: Identificar o que trava sua queima de gordura.",
+      "🍕 Cardápio Flexível: Incluir o que você gosta (sem cortar o jantar).",
+      "🛡️ Blindagem Anti-Efeito Sanfona: Uma estratégia para secar e manter."
    
   },
   {
