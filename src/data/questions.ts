@@ -397,12 +397,12 @@ export const questions: QuizQuestion[] = [
       { 
         id: "beginner", 
         text: "Iniciante", 
-        description: "Faz tempo que não treino e me sinto 'enferrujada'",
+        description: "Faz tempo que não treino e me sinto enferrujada",
         icon: "Zap"
       },
       { 
         id: "amateur", 
-        text: "Intermediária"", 
+        text: "Intermediária", 
         description: "Treino de vez em quando, mas sempre acabo parando.",
         icon: "Zap"
       },
