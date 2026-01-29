@@ -80,7 +80,7 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "personalized-plan",
-    title: "Fique em forma e forte com um plano personalizado.",
+    title: "Troque gordura por curvas reais com um protocolo feito para você",
     subtitle: "Não precisa gastar dinheiro com treinadores caros. Vamos detalhar tudo e **adaptar o plano ao seu objetivo**.",
     type: "intermediate",
     image: "fitness-woman-dumbbell"
@@ -98,13 +98,13 @@ export const questions: QuizQuestion[] = [
     options: [
       { 
         id: "slim", 
-        text: "Corpo esbelto e magro", 
+        text: "Corpo definido e magro", 
         maleImage: "goal-slim-male-mascot", 
         femaleImage: "goal-slim-female-mascot" 
       },
       { 
         id: "athlete", 
-        text: "Corpo esbelto e musculoso", 
+        text: "Corpo definido e musculoso", 
         maleImage: "goal-athlete-male-mascot", 
         femaleImage: "goal-athlete-female-mascot" 
       }
@@ -131,25 +131,25 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "nutrition-info",
-    title: "70% dos seus resultados dependem da nutrição",
-    subtitle: "Para alcançar evolução mais rápida no corpo, o equilíbrio alimentar é essencial.",
+    title: "Treinar sem ajustar a comida é jogar tempo fora",
+    subtitle: "Seus músculos precisam de combustível. Vamos montar o cardápio que faz seu esforço valer a pena",
     type: "intermediate",
     requiresGender: true,
     femaleImage: "nutrition-info-female",
     maleImage: "fitness-male",
     bulletPoints: [
-      "Calorias adequadas para o seu objetivo",
-      "Macros distribuídos corretamente (proteínas, carbo e gorduras)",
-      "Refeições estratégicas para energia e recuperação"
+      "Cardápios econômicos com ingredientes que você JÁ TEM em casa",
+      "Transforme calorias em massa magra (Definição sem passar fome)",
+      "Liberdade Flexível: Aprenda a comer o que gosta sem estragar o resultado"
     ],
     buttonText: "Entendi",
     footerText: "Só mais algumas perguntas e seu plano estará tomando forma."
   },
   {
     id: "lipedema-info",
-    title: "Você já ouviu falar do Lipedema?",
-    subtitle: "Uma condição que afeta milhões de mulheres",
-    description: "Você sente que seu esforço nunca chega às pernas? Isso tem nome: Lipedema. Não é estética, é saúde crônica.\n\n Liberte-se:\n• O inchaço é real\n• O hematoma é real\n• A solução existe",
+    title: "Gordura nas pernas que não sai?",
+    subtitle: "Isso pode ser um sinal de Lipedema",
+    description: "Vamos adicionar um Protocolo Anti-Inflamatório no seu plano para:\n• Drenar a retenção líquida\n• Melhorar a circulação\n• Destravar essa gordura resistente",
     type: "intermediate",
     image: "lipedema-info"
   },
@@ -166,8 +166,8 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "motivation-change-habits",
-    title: "Acelere seus resultados com treinos e alimentação direcionada",
-    subtitle: "A confusão é a maior inimiga da constância. Eliminamos a incerteza com um plano visual e direto, onde você sabe exatamente o porquê de cada movimento",
+    title: "Deixe nosso algoritmo tomar as decisões difíceis por você",
+    subtitle: "Um dia dizem para cortar pão, no outro para fazer jejum... Chega de ruído. Vamos entender tudo sobre você e deixar apenas o que funciona para a SUA realidade",
     type: "intermediate",
     requiresGender: true,
     femaleImage: "motivation-change-habits",
@@ -186,14 +186,14 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 'nutrition-plan',
-    title: 'Melhore seu condicionamento físico com um plano alimentar personalizado.',
-    subtitle: 'A nutrição é fundamental para **ter um corpo forte e em forma.**\n\nObtenha **receitas rápidas e deliciosas** e melhore seus hábitos para atingir seu objetivo mais rapidamente comendo o que gosta.',
+    title: 'A primeira dieta que se adapta à sua geladeira',
+    subtitle: 'Esqueça ingredientes caros e difíceis. Ative o **Modo Chef** e receba receitas deliciosas de 15 minutos usando apenas o que você já tem em casa.',
     type: 'intermediate',
     image: 'app-meals-mockup'
   },
  {
   id: 15,
-  title: "Escolha os produtos que você gosta",
+  title: "Escolha os alimentos que você gosta",
   subtitle: "Selecione todas as opções que você gosta",
   type: "food-categories",
   foodCategories: [
@@ -322,11 +322,10 @@ export const questions: QuizQuestion[] = [
 },
   {
     id: 16,
-    title: "Quanta água você bebe diariamente?",
+    title: "Quanta água você bebe por dia ?",
     type: "single",
     thematicImage: "/images/lifestyle/water-consumption.jpg",
     options: [
-      { id: "less-0.5", text: "Menos de 0,5 L (menos de 2 copos)", icon: "Droplet" },
       { id: "0.5-1.5", text: "0,5 – 1,5 L (2–6 copos)", icon: "Droplets" },
       { id: "1.5-2.5", text: "1,5 – 2,5 L (7–10 copos)", icon: "GlassWater" },
       { id: "more-2.5", text: "Mais de 2,5 L (mais de 10 copos)", icon: "Waves" },
@@ -359,8 +358,8 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: 31,
-    title: "Você tem um evento importante em breve?",
-    subtitle: "Ter algo pelo qual ansiar pode ser um grande motivador para atingir sua meta",
+    title: "Precisamos preparar seu corpo para uma data específica ?",
+    subtitle: "Vamos usar essa data como combustível para destravar seus resultados mais rápidos.",
     type: "single",
     options: [
       { id: "vacation", text: "Férias", icon: "Plane" },
@@ -427,8 +426,6 @@ export const questions: QuizQuestion[] = [
     options: [
       { id: "gym", text: "Treinos de Academia", icon: "Dumbbell" },
       { id: "home", text: "Treinos em casa", icon: "Home" },
-      { id: "boxing", text: "Boxe", icon: "Swords" },
-      { id: "martial-arts", text: "Outras artes marciais", icon: "PersonStanding" },
       { id: "running", text: "Corrida", icon: "Footprints" },
       { id: "none", text: "Nenhuma das opções", icon: "X" }
     ]
