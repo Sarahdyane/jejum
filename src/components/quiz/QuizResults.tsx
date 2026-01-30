@@ -20,7 +20,6 @@ import transformationCombinedFemale3 from '@/assets/transformation-combined-fema
 import transformationCombinedFemale4 from '@/assets/transformation-combined-female-4.png';
 import transformationCombinedFemale5 from '@/assets/transformation-combined-female-5.png';
 import transformationCombinedMale1 from '@/assets/transformation-combined-male-1.png';
-import transformationCombinedMale2 from '@/assets/transformation-combined-male-2.png';
 import transformationCombinedMale3 from '@/assets/transformation-combined-male-3.png';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -637,11 +636,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                             <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
                             <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                           </div>
-                          <img 
-                            src={transformationCombinedMale2} 
-                            alt="Transformação Felipe" 
-                            className="w-full h-64 object-cover rounded-lg"
-                          />
+          
                         </div>
                         <div className="p-6 pt-2">
                           <h3 className="text-xl font-bold text-foreground mb-2">Felipe, -25kg</h3>
