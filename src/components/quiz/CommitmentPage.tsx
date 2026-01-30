@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
-import commitmentHero from "@/assets/commitment-hero.jpg";
+// CORREÇÃO: Trocamos a imagem que faltava por uma que existe
+import commitmentHero from "@/assets/fitness-female-new.png";
 
 interface CommitmentPageProps {
   onStart: () => void;
