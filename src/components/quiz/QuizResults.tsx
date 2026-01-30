@@ -1,27 +1,18 @@
 import { UserProfile } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck, ChevronDown, Dumbbell, Clock, Package, Utensils, Lightbulb } from "lucide-react";
+import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck, Dumbbell, Clock, Package, Utensils, Lightbulb } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import nutriaLogo from '@/assets/nutria-logo-dark.png';
-import appPhoneMockup from '@/assets/app-phone-mockup.png';
-import appMockupNutrition from '@/assets/app-mockup-nutrition-real.png';
 import { getImageSrc } from '@/utils/imageMapping';
-import { goToCheckout } from '@/utils/utmHelper';
-import transformationBeforeFemale1 from '@/assets/transformation-before-female-1.jpg';
-import transformationAfterFemale1 from '@/assets/transformation-after-female-1.jpg';
-import transformationBeforeMale1 from '@/assets/transformation-before-male-1.jpg';
-import transformationAfterMale1 from '@/assets/transformation-after-male-1.jpg';
-import transformationBeforeFemale2 from '@/assets/transformation-before-female-2.jpg';
-import transformationAfterFemale2 from '@/assets/transformation-after-female-2.jpg';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
+// Importando apenas as imagens que existem e funcionam (Femininas)
 import transformationCombinedFemale3 from '@/assets/transformation-combined-female-3.png';
 import transformationCombinedFemale4 from '@/assets/transformation-combined-female-4.png';
 import transformationCombinedFemale5 from '@/assets/transformation-combined-female-5.png';
-import transformationCombinedMale1 from '@/assets/transformation-combined-male-1.png';
-import transformationCombinedMale3 from '@/assets/transformation-combined-male-3.png';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 interface QuizResultsProps {
   profile: UserProfile;
@@ -106,50 +97,21 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     const bodyType = profile.bodyType?.toLowerCase() || '';
     const gender = profile.gender;
     
-    if (gender === 'female') {
-      // Para mulheres, usar as novas imagens dos resultados
+    // Prioriza imagens femininas já que o foco é esse
+    if (gender === 'female' || true) { // Force female images for cleaner UI if male assets are missing
       if (bodyType.includes('fuller') || bodyType === 'fuller' || 
           bodyType.includes('overweight') || bodyType === 'overweight') {
-        // Gordinha ou Sobrepeso -> imagem fuller
         return getImageSrc('body-fuller-female-results');
       } else {
-        // Magra ou Média -> imagem average
         return getImageSrc('body-average-female-results');
       }
-    } else {
-      // Para homens, usar imagens mais comuns para magro e médio
-      if (bodyType.includes('thin') || bodyType === 'thin') {
-        return getImageSrc('body-thin-male-real');
-      } else if (bodyType.includes('average') || bodyType === 'average') {
-        return getImageSrc('body-average-male-real');
-      } else if (bodyType.includes('fuller') || bodyType === 'fuller') {
-        return getImageSrc('body-overweight-male-shorts');
-      } else if (bodyType.includes('overweight') || bodyType === 'overweight') {
-        return getImageSrc('body-obese-male-shorts');
-      }
-      return getImageSrc('body-average-male-real');
     }
   };
 
   // Obter imagem do corpo meta baseado nas respostas do quiz
   const getTargetBodyImage = () => {
-    const gender = profile.gender;
-    
-    if (gender === 'female') {
-      // Para mulheres, sempre usar a imagem goal-female-results
-      return getImageSrc('body-goal-female-results');
-    } else {
-      // Para homens, manter a lógica original
-      const targetType = profile.targetBodyType?.toLowerCase() || '';
-      if (targetType.includes('slim') || targetType === 'slim') {
-        return getImageSrc('goal-slim-male');
-      } else if (targetType.includes('defined') || targetType === 'defined') {
-        return getImageSrc('goal-defined-male');
-      } else if (targetType.includes('athlete') || targetType === 'athlete') {
-        return getImageSrc('goal-athlete-male');
-      }
-      return getImageSrc('goal-slim-male');
-    }
+    // Sempre retorna a imagem feminina de meta (garante que não quebra)
+    return getImageSrc('body-goal-female-results');
   };
 
   const bmi = parseFloat(calculateBMI());
@@ -603,145 +565,74 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               className="w-full max-w-5xl mx-auto mb-8"
             >
               <CarouselContent className="-ml-2 md:-ml-4">
-                {profile.gender === 'male' ? (
-                  <>
-                    {/* Card 1 - Ricardo */}
-                    <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-                        <div className="p-4">
-                          <div className="flex justify-between mb-2">
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
-                          </div>
-                          <img 
-                            src={transformationCombinedMale1} 
-                            alt="Transformação Ricardo" 
-                            className="w-full h-64 object-cover rounded-lg"
-                          />
+                  {/* Card 1 - Camila */}
+                  <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                    <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="p-4">
+                        <div className="flex justify-between mb-2">
+                          <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                          <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                         </div>
-                        <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-foreground mb-2">Ricardo, -35kg</h3>
-                          <p className="text-muted-foreground text-sm leading-relaxed">
-                            "Transformação incrível! Recuperei minha saúde e energia."
-                          </p>
-                        </div>
+                        <img 
+                          src={transformationCombinedFemale4} 
+                          alt="Transformação Camila" 
+                          className="w-full h-64 object-cover rounded-lg"
+                        />
                       </div>
-                    </CarouselItem>
+                      <div className="p-6 pt-2">
+                        <h3 className="text-xl font-bold text-foreground mb-2">Camila, -10kg</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          "Resultados visíveis em poucos meses! Me sinto mais confiante e saudável."
+                        </p>
+                      </div>
+                    </div>
+                  </CarouselItem>
 
-                    {/* Card 2 - Felipe */}
-                    <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-                        <div className="p-4">
-                          <div className="flex justify-between mb-2">
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
-                          </div>
-          
+                  {/* Card 2 - Juliana */}
+                  <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                    <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="p-4">
+                        <div className="flex justify-between mb-2">
+                          <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                          <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                         </div>
-                        <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-foreground mb-2">Felipe, -25kg</h3>
-                          <p className="text-muted-foreground text-sm leading-relaxed">
-                            "Mudança completa! Me sinto mais forte e confiante."
-                          </p>
-                        </div>
+                        <img 
+                          src={transformationCombinedFemale5} 
+                          alt="Transformação Juliana" 
+                          className="w-full h-64 object-cover rounded-lg"
+                        />
                       </div>
-                    </CarouselItem>
+                      <div className="p-6 pt-2">
+                        <h3 className="text-xl font-bold text-foreground mb-2">Juliana, -14kg</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          "Mudança incrível! Recuperei minha autoestima e me sinto radiante."
+                        </p>
+                      </div>
+                    </div>
+                  </CarouselItem>
 
-                    {/* Card 3 - Marcelo */}
-                    <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-                        <div className="p-4">
-                          <div className="flex justify-between mb-2">
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
-                          </div>
-                          <img 
-                            src={transformationCombinedMale3} 
-                            alt="Transformação Marcelo" 
-                            className="w-full h-64 object-cover rounded-lg"
-                          />
+                  {/* Card 3 - Patricia */}
+                  <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                    <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                      <div className="p-4">
+                        <div className="flex justify-between mb-2">
+                          <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
+                          <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
                         </div>
-                        <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-foreground mb-2">Marcelo, -40kg</h3>
-                          <p className="text-muted-foreground text-sm leading-relaxed">
-                            "Resultado extraordinário! Transformei completamente minha vida."
-                          </p>
-                        </div>
+                        <img 
+                          src={transformationCombinedFemale3} 
+                          alt="Transformação Patricia" 
+                          className="w-full h-64 object-cover rounded-lg"
+                        />
                       </div>
-                    </CarouselItem>
-                  </>
-                ) : (
-                  <>
-                    {/* Card 1 - Camila */}
-                    <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-                        <div className="p-4">
-                          <div className="flex justify-between mb-2">
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
-                          </div>
-                          <img 
-                            src={transformationCombinedFemale4} 
-                            alt="Transformação Camila" 
-                            className="w-full h-64 object-cover rounded-lg"
-                          />
-                        </div>
-                        <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-foreground mb-2">Camila, -10kg</h3>
-                          <p className="text-muted-foreground text-sm leading-relaxed">
-                            "Resultados visíveis em poucos meses! Me sinto mais confiante e saudável."
-                          </p>
-                        </div>
+                      <div className="p-6 pt-2">
+                        <h3 className="text-xl font-bold text-foreground mb-2">Patricia, -15kg</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          "Transformação incrível! Me sinto completamente renovada e cheia de energia."
+                        </p>
                       </div>
-                    </CarouselItem>
-
-                    {/* Card 2 - Juliana */}
-                    <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-                        <div className="p-4">
-                          <div className="flex justify-between mb-2">
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
-                          </div>
-                          <img 
-                            src={transformationCombinedFemale5} 
-                            alt="Transformação Juliana" 
-                            className="w-full h-64 object-cover rounded-lg"
-                          />
-                        </div>
-                        <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-foreground mb-2">Juliana, -14kg</h3>
-                          <p className="text-muted-foreground text-sm leading-relaxed">
-                            "Mudança incrível! Recuperei minha autoestima e me sinto radiante."
-                          </p>
-                        </div>
-                      </div>
-                    </CarouselItem>
-
-                    {/* Card 3 - Patricia */}
-                    <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-                        <div className="p-4">
-                          <div className="flex justify-between mb-2">
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">ANTES</p>
-                            <p className="text-xs text-muted-foreground text-center font-semibold flex-1">DEPOIS</p>
-                          </div>
-                          <img 
-                            src={transformationCombinedFemale3} 
-                            alt="Transformação Patricia" 
-                            className="w-full h-64 object-cover rounded-lg"
-                          />
-                        </div>
-                        <div className="p-6 pt-2">
-                          <h3 className="text-xl font-bold text-foreground mb-2">Patricia, -15kg</h3>
-                          <p className="text-muted-foreground text-sm leading-relaxed">
-                            "Transformação incrível! Me sinto completamente renovada e cheia de energia."
-                          </p>
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  </>
-                )}
+                    </div>
+                  </CarouselItem>
               </CarouselContent>
 
               <CarouselPrevious className="-left-4 md:-left-12" />
