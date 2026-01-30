@@ -110,24 +110,28 @@ export const IntermediatePage = ({ title, subtitle, description, image, onContin
           />
         </motion.div>
 
+        {/* --- NOVO BLOCO VISUAL (Estilo Cards) --- */}
         {bulletPoints && bulletPoints.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-3 text-left"
+            className="w-full max-w-md mx-auto space-y-3 px-1 text-left"
           >
             {bulletPoints.map((point, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
-                </div>
-                <p className="text-foreground">{point}</p>
+              <div 
+                key={index} 
+                className="flex items-start gap-3 bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 backdrop-blur-sm shadow-sm"
+              >
+                <span className="text-sm md:text-base text-zinc-200 leading-relaxed font-medium">
+                  {point}
+                </span>
               </div>
             ))}
           </motion.div>
         )}
-
+        {/* ---------------------------------------- */}
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
