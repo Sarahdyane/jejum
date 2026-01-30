@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import commitmentHero from "@/assets/commitment-hero.jpg";
+// CORREÇÃO AQUI: Trocamos a imagem que faltava por uma que existe
+import commitmentHero from "@/assets/fitness-female-new.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { goToCheckout } from "@/utils/utmHelper";
