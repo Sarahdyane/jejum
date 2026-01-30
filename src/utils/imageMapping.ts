@@ -1,10 +1,11 @@
-// --- IMPORTAÇÕES CONFIRMADAS (Baseado nos seus prints) ---
+// --- IMPORTAÇÕES CONFIRMADAS ---
 
-// 1. Idade (Casais) - Removendo a versão 'new' que deu erro
-import age1829Couple from '@/assets/age-18-29-couple.jpg';
-import age3039Couple from '@/assets/age-30-39-couple.jpg';
-import age4049Couple from '@/assets/age-40-49-couple.jpg';
-import age50PlusCouple from '@/assets/age-50-plus-couple.jpg';
+// 1. Idade (Mulheres sozinhas) - ESSAS EXISTEM, vamos usar como base
+import ageWoman1829Young from '@/assets/age-woman-18-29-young.jpg';
+import ageWoman1829 from '@/assets/age-woman-18-29.jpg';
+import ageWoman3039 from '@/assets/age-woman-30-39.jpg';
+import ageWoman4049 from '@/assets/age-woman-40-49.jpg';
+import ageWoman50Plus from '@/assets/age-woman-50-plus.jpg';
 
 // 2. Idade (Mascotes)
 import ageCouple1829Mascot from '@/assets/age-couple-18-29-mascot.jpg';
@@ -12,26 +13,19 @@ import ageCouple3039Mascot from '@/assets/age-couple-30-39-mascot.jpg';
 import ageCouple4049Mascot from '@/assets/age-couple-40-49-mascot.jpg';
 import ageCouple50PlusMascot from '@/assets/age-couple-50-plus-mascot.jpg';
 
-// 3. Idade (Mulheres sozinhas)
-import ageWoman1829Young from '@/assets/age-woman-18-29-young.jpg';
-import ageWoman1829 from '@/assets/age-woman-18-29.jpg';
-import ageWoman3039 from '@/assets/age-woman-30-39.jpg';
-import ageWoman4049 from '@/assets/age-woman-40-49.jpg';
-import ageWoman50Plus from '@/assets/age-woman-50-plus.jpg';
-
-// 4. App & Exercícios
+// 3. App & Exercícios
 import appMealsMockup from '@/assets/app-meals-mockup.png';
 import exerciseCardio from '@/assets/exercise-cardio.png';
 import exercisePushups from '@/assets/exercise-pushups.png';
 import exerciseWeights from '@/assets/exercise-weights.png';
 
-// 5. Corpos Reais (Mulheres - Versões New confirmadas)
+// 4. Corpos Reais (Mulheres)
 import bodyAverageFemaleRealNew from '@/assets/body-average-female-real-new.jpg';
 import bodyFullerFemaleRealNew from '@/assets/body-fuller-female-real-new.jpg';
 import bodyObeseFemaleRealNew from '@/assets/body-obese-female-real-new.jpg';
 import bodyThinFemaleRealNew from '@/assets/body-thin-female-real-new.jpg';
 
-// 6. Resultados & Zonas
+// 5. Resultados & Zonas
 import bodyAverageFemaleResults from '@/assets/body-average-female-results.png';
 import bodyFullerFemaleResults from '@/assets/body-fuller-female-results.png';
 import bodyGoalFemaleResults from '@/assets/body-goal-female-results.png';
@@ -40,7 +34,7 @@ import bodyZonesFemaleMascotNew from '@/assets/body-zones-female-mascot-new.png'
 import bodyZonesFemaleNew from '@/assets/body-zones-female-new.png';
 import bodyZonesMaleArrows from '@/assets/body-zones-male-arrows.jpg';
 
-// 7. Fitness & Lifestyle & Logos
+// 6. Fitness & Lifestyle & Logos
 import fitnessDevicesHero from '@/assets/fitness-devices-hero.png';
 import fitnessFemaleNew from '@/assets/fitness-female-new.png';
 import fitnessWomanDumbbell from '@/assets/fitness-woman-dumbbell.png';
@@ -54,7 +48,7 @@ import nutriaLogoDark from '@/assets/nutria-logo-dark.png';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import nutritionInfoFemale from '@/assets/nutrition-info-female.png';
 
-// 8. Transformações (Apenas as femininas que você mandou)
+// 7. Transformações (Femininas)
 import transformationCombinedFemale3 from '@/assets/transformation-combined-female-3.png';
 import transformationCombinedFemale4 from '@/assets/transformation-combined-female-4.png';
 import transformationCombinedFemale5 from '@/assets/transformation-combined-female-5.png';
@@ -67,13 +61,13 @@ export const imageMap = {
   'age-woman-3': ageWoman4049,
   'age-woman-4': ageWoman50Plus,
   
-  // --- CASAIS (Truque de segurança) ---
-  'age-18-29-couple': age1829Couple,
-  // Aqui está o segredo: Se o app pedir o "new" que deu erro, ele entrega o "normal"
-  'age-18-29-couple-new': age1829Couple, 
-  'age-30-39-couple': age3039Couple,
-  'age-40-49-couple': age4049Couple,
-  'age-50-plus-couple': age50PlusCouple,
+  // --- CASAIS (SUBSTITUIÇÃO DE EMERGÊNCIA) ---
+  // Estou apontando para as imagens de mulher ou mascotes para não quebrar o build
+  'age-18-29-couple': ageCouple1829Mascot, 
+  'age-18-29-couple-new': ageCouple1829Mascot,
+  'age-30-39-couple': ageCouple3039Mascot,
+  'age-40-49-couple': ageCouple4049Mascot,
+  'age-50-plus-couple': ageCouple50PlusMascot,
   
   // --- MASCOTES ---
   'age-couple-18-29-mascot': ageCouple1829Mascot,
@@ -87,13 +81,13 @@ export const imageMap = {
   'exercise-pushups': exercisePushups,
   'exercise-weights': exerciseWeights,
 
-  // --- CORPOS REAIS (Mapeando para as versões NEW) ---
+  // --- CORPOS ---
   'body-thin-female-real': bodyThinFemaleRealNew,
   'body-average-female-real': bodyAverageFemaleRealNew,
   'body-fuller-female-real': bodyFullerFemaleRealNew,
   'body-obese-female-real': bodyObeseFemaleRealNew,
   
-  // --- FALLBACKS (Para não quebrar se o app pedir versão antiga) ---
+  // Fallbacks
   'body-thin-female-mascot': bodyThinFemaleRealNew, 
   'body-average-female-mascot': bodyAverageFemaleRealNew,
   'body-fuller-female-mascot': bodyFullerFemaleRealNew,
@@ -104,13 +98,13 @@ export const imageMap = {
   'body-fuller-female-results': bodyFullerFemaleResults,
   'body-goal-female-results': bodyGoalFemaleResults,
 
-  // --- ZONAS DO CORPO ---
+  // --- ZONAS ---
   'body-zones-female-mascot': bodyZonesFemaleMascotFinal,
   'body-zones-female-mascot-new': bodyZonesFemaleMascotNew,
   'body-zones-female-new': bodyZonesFemaleNew,
   'body-zones-male-arrows': bodyZonesMaleArrows,
 
-  // --- LIFESTYLE & OUTROS ---
+  // --- OUTROS ---
   'fitness-devices-hero': fitnessDevicesHero,
   'fitness-female-new': fitnessFemaleNew,
   'fitness-woman-dumbbell': fitnessWomanDumbbell,
