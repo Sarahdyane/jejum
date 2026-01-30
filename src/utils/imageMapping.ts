@@ -21,7 +21,6 @@ import womanWorkingOffice from '@/assets/woman-working-office.jpg';
 import healthyLifestyle from '@/assets/healthy-lifestyle.jpg';
 import appMockupNutrition from '@/assets/app-mockup-nutrition.jpg';
 import fitnessThinking from '@/assets/fitness-thinking.jpg';
-import appLoading from '@/assets/app-loading.jpg';
 import motivationIncredible from '@/assets/motivation-incredible.jpg';
 import motivationChangeHabits from '@/assets/motivation-change-habits.jpg';
 import motivationIncredibleNew from '@/assets/motivation-incredible-new.png';
@@ -121,7 +120,6 @@ export const imageMap = {
   'man-working-office': manWorkingOffice,
   'woman-working-office': womanWorkingOffice,
   'fitness-thinking': fitnessThinking,
-  'app-loading': appLoading,
   'motivation-incredible': motivationIncredibleNew,
   'motivation-incredible-male': motivationIncredibleMale,
   'motivation-change-habits': motivationChangeHabitsNew,
