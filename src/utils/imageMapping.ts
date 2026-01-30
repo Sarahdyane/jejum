@@ -1,5 +1,4 @@
 // --- IMPORTAÇÕES QUE TEMOS 100% DE CERTEZA QUE EXISTEM ---
-// (Baseado nos seus prints)
 
 // Vamos usar esta imagem para substituir todas as que faltam por enquanto
 import ageWoman1829 from '@/assets/age-woman-18-29.jpg';
@@ -26,7 +25,7 @@ import bodyGoalFemaleResults from '@/assets/body-goal-female-results.png';
 import bodyZonesFemaleMascotFinal from '@/assets/body-zones-female-mascot-final.png';
 import bodyZonesFemaleMascotNew from '@/assets/body-zones-female-mascot-new.png';
 import bodyZonesFemaleNew from '@/assets/body-zones-female-new.png';
-import bodyZonesMaleArrows from '@/assets/body-zones-male-arrows.jpg';
+// REMOVI O MALE ARROWS DAQUI POIS VOCÊ APAGOU
 
 import fitnessDevicesHero from '@/assets/fitness-devices-hero.png';
 import fitnessFemaleNew from '@/assets/fitness-female-new.png';
@@ -90,7 +89,9 @@ export const imageMap = {
   'body-zones-female-mascot': bodyZonesFemaleMascotFinal,
   'body-zones-female-mascot-new': bodyZonesFemaleMascotNew,
   'body-zones-female-new': bodyZonesFemaleNew,
-  'body-zones-male-arrows': bodyZonesMaleArrows,
+  
+  // AQUI ESTÁ A CORREÇÃO: Usamos a feminina no lugar da masculina que sumiu
+  'body-zones-male-arrows': bodyZonesFemaleNew,
 
   'fitness-devices-hero': fitnessDevicesHero,
   'fitness-female-new': fitnessFemaleNew,
