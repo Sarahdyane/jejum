@@ -216,18 +216,6 @@ export const Quiz = () => {
 
   // Handle intermediate pages
   if (currentQuestion.type === 'intermediate') {
-    // Special handling for social proof page
-    if (currentQuestion.id === 'social-proof') {
-      return (
-        <SocialProofPage
-          title={currentQuestion.title}
-          subtitle={currentQuestion.subtitle || ''}
-          image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
-          onContinue={nextQuestion}
-          onBack={prevQuestion}
-        />
-      );
-    }
 
     // Special handling for the nutrition/exercise page
     if (currentQuestion.id === 'intermediate-2') {
