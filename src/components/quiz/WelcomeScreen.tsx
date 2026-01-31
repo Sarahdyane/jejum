@@ -29,13 +29,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
     <div className="min-h-screen bg-[#050a14] text-white relative overflow-x-hidden font-sans">
       
       {/* --- HEADER FIXO --- */}
-      {/* Mobile: py-2 (bem compacto) | Desktop: py-6 (mais respiro) */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#050a14]/95 backdrop-blur-md border-b border-white/5 py-2 px-6 md:py-6 md:px-12 flex items-center justify-between transition-all duration-300">
          <div className="flex-shrink-0">
             <img 
                 src={nutriaLogo} 
                 alt="Nutria Logo" 
-                // AUMENTADO: h-12 no mobile (grande mas cabe na barra) | h-28 no desktop (gigante)
                 className="h-12 md:h-28 w-auto object-contain drop-shadow-sm" 
             />
          </div>
@@ -47,10 +45,9 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       </header>
 
       {/* --- CONTAINER PRINCIPAL --- */}
-      {/* pt-24 no mobile para compensar o header, pt-48 no desktop */}
       <main className="max-w-screen-xl mx-auto pt-24 md:pt-48 pb-40 px-6 md:px-12 relative z-10">
 
-        {/* --- HERO SECTION (Grid Desktop / Vertical Mobile) --- */}
+        {/* --- HERO SECTION --- */}
         <motion.div 
             initial="hidden"
             animate="visible"
@@ -70,7 +67,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 Você não vê resultados porque segue qualquer plano. Nossa IA, treinada com os melhores nutricionistas e personal trainers, <strong>entrega a estratégia que seu corpo precisa.</strong>
                 </motion.p>
 
-                 {/* Botão Desktop (Aparece só em telas grandes) */}
+                 {/* Botão Desktop */}
                  <motion.div variants={fadeInUp} className="hidden lg:block">
                     <Button
                         onClick={onStart}
@@ -114,7 +111,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </motion.div>
         </motion.div>
 
-        {/* --- SEÇÃO DE DORES (Exatamente o modelo solicitado) --- */}
+        {/* --- SEÇÃO DE DORES (CORRIGIDA PARA MOBILE ESTREITO) --- */}
         <div className="bg-[#0a0f1d]/50 rounded-3xl p-6 md:p-16 border border-white/5 mb-24 backdrop-blur-sm max-w-5xl mx-auto">
             <div className="text-center mb-10 md:mb-16 font-extrabold tracking-tight leading-tight">
                 <h2 className="text-3xl md:text-5xl text-white mb-2">
@@ -125,11 +122,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 </h2>
             </div>
           
-          {/* GRID: 1 coluna no mobile (vertical), 2 colunas no desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+          {/* GRID CORRIGIDO: max-w-sm mx-auto no mobile para ficar estreito */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-sm mx-auto md:max-w-none">
             
             {/* Card da Dor 1 */}
-            <div className="bg-[#050a14] p-6 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
+            <div className="bg-[#050a14] p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
               <div className="shrink-0 mt-1">
                 <XCircle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
               </div>
@@ -142,7 +139,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </div>
 
             {/* Card da Dor 2 */}
-            <div className="bg-[#050a14] p-6 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
+            <div className="bg-[#050a14] p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
               <div className="shrink-0 mt-1">
                 <XCircle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
               </div>
