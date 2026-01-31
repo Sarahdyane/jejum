@@ -28,26 +28,27 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
     // COR DE FUNDO: Mantida a cor escura azulada (#050a14)
     <div className="min-h-screen bg-[#050a14] text-white relative overflow-x-hidden font-sans">
       
-      {/* --- HEADER FIXO (Ajustado para Mobile menor e Desktop grande) --- */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#050a14]/90 backdrop-blur-md border-b border-white/10 py-3 px-6 md:py-5 md:px-12 flex items-center justify-between transition-all duration-300">
+      {/* --- HEADER FIXO --- */}
+      {/* Mobile: py-2 (bem compacto) | Desktop: py-6 (mais respiro) */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#050a14]/95 backdrop-blur-md border-b border-white/5 py-2 px-6 md:py-6 md:px-12 flex items-center justify-between transition-all duration-300">
          <div className="flex-shrink-0">
             <img 
                 src={nutriaLogo} 
                 alt="Nutria Logo" 
-                // MOBILE: h-10 (mais compacto) | DESKTOP: h-24 (gigante como pediu)
-                className="h-10 md:h-24 w-auto object-contain drop-shadow-sm" 
+                // AUMENTADO: h-12 no mobile (grande mas cabe na barra) | h-28 no desktop (gigante)
+                className="h-12 md:h-28 w-auto object-contain drop-shadow-sm" 
             />
          </div>
          <div>
             <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 rounded-full">
-                <Menu className="w-6 h-6 md:w-8 md:h-8" />
+                <Menu className="w-7 h-7 md:w-10 md:h-10" />
             </Button>
          </div>
       </header>
 
       {/* --- CONTAINER PRINCIPAL --- */}
-      {/* pt-28 no mobile para compensar o header menor, pt-44 no desktop */}
-      <main className="max-w-screen-xl mx-auto pt-28 md:pt-44 pb-40 px-6 md:px-12 relative z-10">
+      {/* pt-24 no mobile para compensar o header, pt-48 no desktop */}
+      <main className="max-w-screen-xl mx-auto pt-24 md:pt-48 pb-40 px-6 md:px-12 relative z-10">
 
         {/* --- HERO SECTION (Grid Desktop / Vertical Mobile) --- */}
         <motion.div 
@@ -69,11 +70,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 Você não vê resultados porque segue qualquer plano. Nossa IA, treinada com os melhores nutricionistas e personal trainers, <strong>entrega a estratégia que seu corpo precisa.</strong>
                 </motion.p>
 
-                 {/* Botão Desktop */}
+                 {/* Botão Desktop (Aparece só em telas grandes) */}
                  <motion.div variants={fadeInUp} className="hidden lg:block">
                     <Button
                         onClick={onStart}
-                        className="bg-[#00E599] hover:bg-[#00cc88] text-[#050a14] font-extrabold text-lg py-8 px-10 rounded-2xl shadow-[0_0_30px_rgba(0,229,153,0.4)] hover:shadow-[0_0_40px_rgba(0,229,153,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
+                        className="bg-[#00E599] hover:bg-[#00cc88] text-[#050a14] font-extrabold text-lg py-8 px-12 rounded-2xl shadow-[0_0_30px_rgba(0,229,153,0.4)] hover:shadow-[0_0_40px_rgba(0,229,153,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
                     >
                         INICIAR ANÁLISE GRÁTIS
                         <ArrowRight className="w-6 h-6" />
@@ -86,7 +87,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="relative z-10 max-w-[280px] md:max-w-[320px] lg:max-w-[400px] mx-auto lg:mr-0"
+                className="relative z-10 max-w-[280px] md:max-w-[320px] lg:max-w-[450px] mx-auto lg:mr-0"
             >
                 <div className="absolute top-10 left-10 right-10 bottom-10 bg-[#00E599] opacity-20 blur-[80px] rounded-full"></div>
                 
@@ -100,22 +101,22 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -right-4 md:-right-8 top-1/3 bg-[#0a0f1d]/90 backdrop-blur-md p-3 md:p-4 rounded-2xl shadow-2xl border border-gray-800 flex items-center gap-3 md:gap-4 z-20"
+                className="absolute -right-4 md:-right-8 top-1/3 bg-[#0a0f1d]/90 backdrop-blur-md p-3 md:p-5 rounded-2xl shadow-2xl border border-gray-800 flex items-center gap-3 md:gap-4 z-20"
                 >
                 <div className="bg-[#00E599]/20 p-2 md:p-3 rounded-full">
-                    <Trophy className="w-5 h-5 md:w-6 md:h-6 text-[#00E599]" />
+                    <Trophy className="w-5 h-5 md:w-7 md:h-7 text-[#00E599]" />
                 </div>
                 <div>
-                    <p className="text-[10px] md:text-xs text-gray-400 font-bold uppercase mb-1">Meta Atingida</p>
-                    <p className="text-sm md:text-lg font-bold text-white">-4.2kg em 15 dias</p>
+                    <p className="text-[10px] md:text-sm text-gray-400 font-bold uppercase mb-1">Meta Atingida</p>
+                    <p className="text-sm md:text-xl font-bold text-white">-4.2kg em 15 dias</p>
                 </div>
                 </motion.div>
             </motion.div>
         </motion.div>
 
-        {/* --- SEÇÃO DE DORES --- */}
-        <div className="bg-[#0a0f1d]/50 rounded-3xl p-6 md:p-12 border border-white/5 mb-24 backdrop-blur-sm max-w-4xl mx-auto">
-            <div className="text-center mb-10 md:mb-12 font-extrabold tracking-tight leading-tight">
+        {/* --- SEÇÃO DE DORES (Exatamente o modelo solicitado) --- */}
+        <div className="bg-[#0a0f1d]/50 rounded-3xl p-6 md:p-16 border border-white/5 mb-24 backdrop-blur-sm max-w-5xl mx-auto">
+            <div className="text-center mb-10 md:mb-16 font-extrabold tracking-tight leading-tight">
                 <h2 className="text-3xl md:text-5xl text-white mb-2">
                     Você sabe que é <span className="text-red-500">bom o suficiente.</span>
                 </h2>
@@ -125,29 +126,29 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </div>
           
           {/* GRID: 1 coluna no mobile (vertical), 2 colunas no desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             
-            {/* Card 1 */}
-            <div className="bg-[#050a14] p-6 rounded-2xl border border-red-900/30 shadow-lg flex gap-5 items-start opacity-80 hover:opacity-100 transition-all hover:border-red-500/50 group">
-              <div className="bg-red-500/10 p-3 rounded-xl group-hover:bg-red-500/20 transition-colors shrink-0">
+            {/* Card da Dor 1 */}
+            <div className="bg-[#050a14] p-6 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
+              <div className="shrink-0 mt-1">
                 <XCircle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
               </div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2">O ciclo da "Segunda-feira"</h3>
-                <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                <h3 className="text-lg md:text-2xl font-bold text-white mb-2">O ciclo da "Segunda-feira"</h3>
+                <p className="text-sm md:text-lg text-gray-400 leading-relaxed">
                   Você sempre promete que "na segunda vai começar", mas a semana passa e nada muda.
                 </p>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="bg-[#050a14] p-6 rounded-2xl border border-red-900/30 shadow-lg flex gap-5 items-start opacity-80 hover:opacity-100 transition-all hover:border-red-500/50 group">
-              <div className="bg-red-500/10 p-3 rounded-xl group-hover:bg-red-500/20 transition-colors shrink-0">
+            {/* Card da Dor 2 */}
+            <div className="bg-[#050a14] p-6 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
+              <div className="shrink-0 mt-1">
                 <XCircle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
               </div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2">Treinos e dietas perdidas</h3>
-                <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                <h3 className="text-lg md:text-2xl font-bold text-white mb-2">Treinos e dietas perdidas</h3>
+                <p className="text-sm md:text-lg text-gray-400 leading-relaxed">
                   Todo aquele esforço, suor e dinheiro investido em planos genéricos que não te levaram a lugar nenhum.
                 </p>
               </div>
@@ -157,7 +158,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </div>
 
         {/* --- PASSO A PASSO --- */}
-        <div className="max-w-5xl mx-auto mb-10 text-center">
+        <div className="max-w-6xl mx-auto mb-10 text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Como funciona</h2>
             <p className="text-lg md:text-xl text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto">Sua jornada simplificada em 3 etapas estratégicas.</p>
 
@@ -192,7 +193,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
 
       </main>
 
-      {/* --- CTA FLUTUANTE (Aparece no Mobile, some no Desktop grande) --- */}
+      {/* --- CTA FLUTUANTE (Mobile Only) --- */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#050a14]/90 backdrop-blur-xl border-t border-white/10 z-50 lg:hidden">
         <div className="max-w-md mx-auto">
           <Button
