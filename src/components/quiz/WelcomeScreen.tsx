@@ -25,43 +25,43 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
   };
 
   return (
-    // COR DE FUNDO: Ajustada para o tom escuro azulado das referências
+    // COR DE FUNDO: Mantida a cor escura azulada (#050a14)
     <div className="min-h-screen bg-[#050a14] text-white pb-32 relative overflow-x-hidden">
-
+      
       {/* --- HEADER COM LOGO NUTRIA --- */}
-      {/* Posicionada no canto superior esquerdo, estilo "CvPorVaga" */}
-      <div className="w-full px-6 py-6">
-         <img
-            src={nutriaLogo}
-            alt="Nutria Logo"
-            className="h-8 md:h-10 w-auto object-contain"
+      <div className="w-full px-6 py-8"> 
+         <img 
+            src={nutriaLogo} 
+            alt="Nutria Logo" 
+            // AUMENTADO: h-14 (mobile) e h-20 (desktop) para ficar bem visível
+            className="h-14 md:h-20 w-auto object-contain" 
          />
       </div>
 
       {/* --- HERO SECTION --- */}
-      <motion.div
+      <motion.div 
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        // Padding superior reduzido (pt-10) para subir o conteúdo
-        className="px-6 pt-10 pb-8 text-center max-w-lg mx-auto"
+        // Ajustei o padding para não colar na logo gigante
+        className="px-6 pt-6 pb-8 text-center max-w-lg mx-auto"
       >
-        {/* BADGE "NOVA TECNOLOGIA METABÓLICA" REMOVIDA AQUI */}
-
+        {/* Badge removida conforme pedido */}
+        
         <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white drop-shadow-sm">
           O fim das tentativas.<br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E599] to-emerald-500">
             O começo dos resultados.
           </span>
         </motion.h1>
-
+        
         <motion.p variants={fadeInUp} className="text-lg text-gray-400 leading-relaxed">
           Chega de planos genéricos. O Nutria usa Inteligência Artificial para criar o único protocolo que seu corpo é <strong>biologicamente incapaz</strong> de ignorar.
         </motion.p>
       </motion.div>
 
       {/* --- MOCKUP --- */}
-      <motion.div
+      <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
@@ -69,14 +69,14 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       >
         <div className="relative max-w-[280px] mx-auto">
             <div className="absolute top-10 left-10 right-10 bottom-10 bg-[#00E599] opacity-15 blur-[60px] rounded-full"></div>
-
-            <img
-              src={appMockup}
-              alt="Nutria App Interface"
+            
+            <img 
+              src={appMockup} 
+              alt="Nutria App Interface" 
               className="relative z-10 w-full h-auto drop-shadow-2xl"
             />
-
-            <motion.div
+            
+            <motion.div 
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.8 }}
@@ -97,7 +97,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       <div className="bg-[#0a0f1d]/80 py-12 px-6 border-y border-white/5 mb-16">
         <div className="max-w-lg mx-auto">
           <h2 className="text-2xl font-bold text-center mb-8 text-white">Por que você travou?</h2>
-
+          
           <div className="grid gap-4">
             <div className="bg-[#050a14] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-60">
               <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-1" />
@@ -107,7 +107,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
               </div>
             </div>
 
-            <motion.div
+            <motion.div 
               whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
               className="bg-[#0a0f1d] p-6 rounded-2xl border border-[#00E599]/50 shadow-[0_0_30px_-10px_rgba(0,229,153,0.1)] flex gap-4 items-start relative overflow-hidden"
@@ -134,7 +134,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             { icon: "🤖", title: "Protocolo Gerado", text: "Receba um plano de refeições 100% adaptado." },
             { icon: "🔥", title: "Execução & Resultado", text: "O sistema recalcula a rota para garantir a meta." }
           ].map((item, index) => (
-            <motion.div
+            <motion.div 
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
