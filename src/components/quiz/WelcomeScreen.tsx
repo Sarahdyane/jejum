@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Trophy, XCircle, CheckCircle2, Zap, Menu } from "lucide-react";
+import { ArrowRight, Trophy, XCircle, CheckCircle2, Zap } from "lucide-react";
 // Imagens
 import appMockup from "@/assets/app-meals-mockup.png";
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
@@ -25,19 +25,16 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
   };
 
   return (
-    // Fundo Preto Profundo (#020817)
-    <div className="min-h-screen bg-[#020817] text-white pb-32 relative overflow-x-hidden">
+    // COR DE FUNDO: Preto (#000000)
+    <div className="min-h-screen bg-black text-white pb-32 relative overflow-x-hidden">
       
-      {/* --- HEADER CORRIGIDO --- */}
-      <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-[#020817]/80 backdrop-blur-md border-b border-white/5">
-         {/* LOGO: Tamanho aumentado (h-12) e SEM filtro de cor (Original) */}
+      {/* --- LOGO NUTRIA (Grande e sem cabeçalho) --- */}
+      <div className="absolute top-6 left-6 z-50">
          <img 
             src={nutriaLogo} 
             alt="Nutria Logo" 
             className="h-10 md:h-12 w-auto object-contain" 
          />
-         {/* Menu Hambúrguer */}
-         <Menu className="w-8 h-8 text-white cursor-pointer opacity-80 hover:opacity-100" />
       </div>
 
       {/* --- HERO SECTION --- */}
@@ -45,7 +42,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="px-6 pt-28 pb-8 text-center max-w-lg mx-auto"
+        className="px-6 pt-32 pb-8 text-center max-w-lg mx-auto"
       >
         <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-[10px] font-bold uppercase tracking-wider mb-6 backdrop-blur-sm">
           <Zap className="w-3 h-3 text-[#00E599] fill-[#00E599]" />
@@ -98,12 +95,12 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       </motion.div>
 
       {/* --- QUEBRA DE OBJEÇÕES --- */}
-      <div className="bg-[#0b0f19] py-12 px-6 border-y border-white/5 mb-16">
+      <div className="bg-[#0a0a0a] py-12 px-6 border-y border-white/5 mb-16">
         <div className="max-w-lg mx-auto">
           <h2 className="text-2xl font-bold text-center mb-8 text-white">Por que você travou?</h2>
           
           <div className="grid gap-4">
-            <div className="bg-[#020817] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-60">
+            <div className="bg-black p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-60">
               <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-white">O jeito antigo</h3>
@@ -114,9 +111,9 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             <motion.div 
               whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
-              className="bg-[#0f172a] p-6 rounded-2xl border border-[#00E599]/50 shadow-[0_0_30px_-10px_rgba(0,229,153,0.1)] flex gap-4 items-start relative overflow-hidden"
+              className="bg-[#0a0a0a] p-6 rounded-2xl border border-[#00E599]/50 shadow-[0_0_30px_-10px_rgba(0,229,153,0.1)] flex gap-4 items-start relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 bg-[#00E599] text-[#020617] text-[10px] font-bold px-3 py-1 rounded-bl-xl">NOVA ERA</div>
+              <div className="absolute top-0 right-0 bg-[#00E599] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl">NOVA ERA</div>
               <CheckCircle2 className="w-6 h-6 text-[#00E599] shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-white">O Método Nutria</h3>
@@ -144,11 +141,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative bg-[#0f172a] rounded-3xl p-6 shadow-lg border border-white/5 overflow-hidden hover:border-[#00E599]/30 transition-colors"
+              className="group relative bg-[#0a0a0a] rounded-3xl p-6 shadow-lg border border-white/5 overflow-hidden hover:border-[#00E599]/30 transition-colors"
             >
               <div className="absolute top-0 left-0 w-1 h-full bg-white/5 group-hover:bg-[#00E599] transition-colors duration-300"></div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#020817] flex items-center justify-center text-2xl group-hover:text-[#00E599] transition-colors">
+                <div className="w-12 h-12 rounded-2xl bg-black flex items-center justify-center text-2xl group-hover:text-[#00E599] transition-colors">
                   {item.icon}
                 </div>
                 <div>
@@ -162,11 +159,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       </div>
 
       {/* --- CTA FLUTUANTE --- */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#020817]/80 backdrop-blur-xl border-t border-white/5 z-50">
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/80 backdrop-blur-xl border-t border-white/5 z-50">
         <div className="max-w-md mx-auto">
           <Button
             onClick={onStart}
-            className="w-full bg-[#00E599] hover:bg-[#00cc88] text-[#020617] font-extrabold text-lg py-7 rounded-2xl shadow-[0_0_20px_rgba(0,229,153,0.3)] hover:shadow-[0_0_30px_rgba(0,229,153,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
+            className="w-full bg-[#00E599] hover:bg-[#00cc88] text-black font-extrabold text-lg py-7 rounded-2xl shadow-[0_0_20px_rgba(0,229,153,0.3)] hover:shadow-[0_0_30px_rgba(0,229,153,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
           >
             INICIAR ANÁLISE GRÁTIS
             <ArrowRight className="w-5 h-5" />
