@@ -49,14 +49,14 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         {/* Badge removida conforme pedido */}
         
         <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white drop-shadow-sm">
-          O fim das tentativas.<br/>
+          Chega de se esforçar tanto <br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E599] to-emerald-500">
-            O começo dos resultados.
+            e continuar com o mesmo corpo.
           </span>
         </motion.h1>
         
         <motion.p variants={fadeInUp} className="text-lg text-gray-400 leading-relaxed">
-          Chega de planos genéricos. O Nutria usa Inteligência Artificial para criar o único protocolo que seu corpo é <strong>biologicamente incapaz</strong> de ignorar.
+          Você não vê resultados porque segue qualquer plano. Nossa IA, treinada com os melhores nutricionistas e personal trainers, <strong>entrega a estratégia que seu corpo precisa</strong>
         </motion.p>
       </motion.div>
 
@@ -96,14 +96,27 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       {/* --- QUEBRA DE OBJEÇÕES --- */}
       <div className="bg-[#0a0f1d]/80 py-12 px-6 border-y border-white/5 mb-16">
         <div className="max-w-lg mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-white">Por que você travou?</h2>
+          
+          {/* MUDANÇA AQUI: Adicionei a frase de validação antes da pergunta */}
+          <div className="text-center mb-10">
+            <p className="text-lg text-gray-400 font-medium mb-1">
+                Você sabe que é bom o suficiente.
+            </p>
+            <h2 className="text-2xl font-bold text-white">
+                Por que você trava ?
+            </h2>
+          </div>
           
           <div className="grid gap-4">
+            
+            {/* --- CARD ALTERADO PARA A DOR DA SEGUNDA-FEIRA --- */}
             <div className="bg-[#050a14] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-60">
               <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-white">O jeito antigo</h3>
-                <p className="text-sm text-gray-400 mt-1">Dietas de internet que desaceleram seu metabolismo.</p>
+                <h3 className="font-bold text-white">O ciclo da "Segunda-feira"</h3>
+                <p className="text-sm text-gray-400 mt-1">
+                  Você sempre promete que "na segunda vai começar", mas a semana passa e nada muda.
+                </p>
               </div>
             </div>
 
