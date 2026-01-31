@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Trophy, XCircle, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Trophy, XCircle } from "lucide-react";
 // Imagens
 import appMockup from "@/assets/app-meals-mockup.png";
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
@@ -46,8 +46,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         // Ajustei o padding para não colar na logo gigante
         className="px-6 pt-6 pb-8 text-center max-w-lg mx-auto"
       >
-        {/* Badge removida conforme pedido */}
-        
         <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white drop-shadow-sm">
           Chega de se esforçar tanto <br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E599] to-emerald-500">
@@ -93,11 +91,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </div>
       </motion.div>
 
-      {/* --- QUEBRA DE OBJEÇÕES --- */}
+      {/* --- QUEBRA DE OBJEÇÕES (SÓ DORES AGORA) --- */}
       <div className="bg-[#0a0f1d]/80 py-12 px-6 border-y border-white/5 mb-16">
         <div className="max-w-lg mx-auto">
           
-          {/* MUDANÇA AQUI: Títulos grandes e com destaque em vermelho, estilo a referência */}
+          {/* Títulos grandes e com destaque em vermelho */}
           <div className="text-center mb-12 font-extrabold tracking-tight leading-tight">
             <h2 className="text-3xl md:text-4xl text-white">
                 Você sabe que é <span className="text-red-500">bom o suficiente.</span>
@@ -109,29 +107,28 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
           
           <div className="grid gap-4">
             
-            {/* --- CARD DA DOR DA SEGUNDA-FEIRA --- */}
-            <div className="bg-[#050a14] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-60">
+            {/* --- CARD DA DOR 1: O CICLO DA SEGUNDA-FEIRA --- */}
+            <div className="bg-[#050a14] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-70 hover:opacity-100 transition-opacity">
               <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-white">O ciclo da "Segunda-feira"</h3>
-                <p className="text-sm text-gray-400 mt-1">
+                <p className="text-sm text-gray-400 mt-1 leading-relaxed">
                   Você sempre promete que "na segunda vai começar", mas a semana passa e nada muda.
                 </p>
               </div>
             </div>
 
-            <motion.div 
-              whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
-              className="bg-[#0a0f1d] p-6 rounded-2xl border border-[#00E599]/50 shadow-[0_0_30px_-10px_rgba(0,229,153,0.1)] flex gap-4 items-start relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 bg-[#00E599] text-[#050a14] text-[10px] font-bold px-3 py-1 rounded-bl-xl">NOVA ERA</div>
-              <CheckCircle2 className="w-6 h-6 text-[#00E599] shrink-0 mt-1" />
+            {/* --- CARD DA DOR 2: ESFORÇO SEM RETORNO (NOVO) --- */}
+            <div className="bg-[#050a14] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-70 hover:opacity-100 transition-opacity">
+              <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-white">O Método Nutria</h3>
-                <p className="text-sm text-gray-300 mt-1">Nutrição estratégica ajustada diariamente por IA.</p>
+                <h3 className="font-bold text-white">Treinos e dietas perdidas sem retorno</h3>
+                <p className="text-sm text-gray-400 mt-1 leading-relaxed">
+                  Todo aquele esforço, suor e dinheiro investido em planos genéricos que não te levaram a lugar nenhum.
+                </p>
               </div>
-            </motion.div>
+            </div>
+
           </div>
         </div>
       </div>
