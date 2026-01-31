@@ -97,19 +97,19 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       <div className="bg-[#0a0f1d]/80 py-12 px-6 border-y border-white/5 mb-16">
         <div className="max-w-lg mx-auto">
           
-          {/* MUDANÇA AQUI: Adicionei a frase de validação antes da pergunta */}
-          <div className="text-center mb-10">
-            <p className="text-lg text-gray-400 font-medium mb-1">
-                Você sabe que é bom o suficiente.
-            </p>
-            <h2 className="text-2xl font-bold text-white">
-                Por que você trava ?
+          {/* MUDANÇA AQUI: Títulos grandes e com destaque em vermelho, estilo a referência */}
+          <div className="text-center mb-12 font-extrabold tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl text-white">
+                Você sabe que é <span className="text-red-500">bom o suficiente.</span>
+            </h2>
+            <h2 className="text-3xl md:text-4xl text-white mt-1">
+                Por que você <span className="text-red-500">trava?</span>
             </h2>
           </div>
           
           <div className="grid gap-4">
             
-            {/* --- CARD ALTERADO PARA A DOR DA SEGUNDA-FEIRA --- */}
+            {/* --- CARD DA DOR DA SEGUNDA-FEIRA --- */}
             <div className="bg-[#050a14] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-60">
               <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-1" />
               <div>
