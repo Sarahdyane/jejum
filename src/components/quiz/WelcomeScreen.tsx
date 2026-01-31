@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Trophy, XCircle, Menu } from "lucide-react";
+import { ArrowRight, Trophy, XCircle, Menu, Check, Zap, ShoppingCart, BarChart3 } from "lucide-react";
 // Imagens
 import appMockup from "@/assets/app-meals-mockup.png";
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
@@ -79,7 +79,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                  </motion.div>
             </div>
 
-            {/* Mockup */}
+            {/* Mockup Hero */}
             <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -111,7 +111,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </motion.div>
         </motion.div>
 
-        {/* --- SEÇÃO DE DORES (CORRIGIDA PARA O MODELO EXATO) --- */}
+        {/* --- SEÇÃO DE DORES --- */}
         <div className="bg-[#0a0f1d]/50 rounded-3xl p-5 md:p-16 border border-white/5 mb-24 backdrop-blur-sm max-w-5xl mx-auto">
             <div className="text-center mb-8 md:mb-16 font-extrabold tracking-tight leading-tight">
                 <h2 className="text-2xl md:text-5xl text-white mb-1 md:mb-2">
@@ -122,10 +122,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 </h2>
             </div>
           
-          {/* GRID: 1 coluna no mobile (vertical), 2 colunas no desktop. 
-              Removida a restrição de largura no mobile para preencher o container. */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            
             {/* Card da Dor 1 */}
             <div className="bg-[#050a14] p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
               <div className="shrink-0 mt-1">
@@ -151,8 +148,120 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 </p>
               </div>
             </div>
-
           </div>
+        </div>
+
+        {/* --- NOVA SEÇÃO: BENEFÍCIOS ( ESTILO SURREAL/VISUAL ) --- */}
+        <div className="mb-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                
+                {/* LADO ESQUERDO: VISUAL SURREAL (MOCKUP + EFEITOS) */}
+                <motion.div 
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="relative order-1 lg:order-1"
+                >
+                    {/* Efeito de brilho de fundo */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00E599] opacity-10 blur-[100px] rounded-full"></div>
+                    
+                    <div className="relative z-10 mx-auto max-w-[300px] lg:max-w-md">
+                        <img 
+                            src={appMockup} 
+                            alt="Nutria Dashboard" 
+                            className="w-full h-auto drop-shadow-2xl relative z-10" 
+                        />
+
+                        {/* Elementos Flutuantes "Surreais" (Dados da IA) */}
+                        <motion.div 
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -left-4 top-20 bg-[#0a0f1d] border border-[#00E599]/30 p-4 rounded-xl shadow-xl z-20 backdrop-blur-md hidden md:block"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="bg-[#00E599]/20 p-2 rounded-full"><Zap className="w-4 h-4 text-[#00E599]"/></div>
+                                <div>
+                                    <p className="text-[10px] text-gray-400 uppercase">Metabolismo</p>
+                                    <p className="text-sm font-bold text-white">Acelerado 🔥</p>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div 
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="absolute -right-8 bottom-32 bg-[#0a0f1d] border border-[#00E599]/30 p-4 rounded-xl shadow-xl z-20 backdrop-blur-md hidden md:block"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="bg-[#00E599]/20 p-2 rounded-full"><BarChart3 className="w-4 h-4 text-[#00E599]"/></div>
+                                <div>
+                                    <p className="text-[10px] text-gray-400 uppercase">Ajuste de IA</p>
+                                    <p className="text-sm font-bold text-white">Dieta Recalculada</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+
+                {/* LADO DIREITO: LISTA DE BENEFÍCIOS (ESTILO SELETA/BLACK VITALICIA) */}
+                <div className="order-2 lg:order-2">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                        Você não recebe uma dieta em PDF. <br/>
+                        <span className="text-[#00E599]">Você recebe um GPS.</span>
+                    </h2>
+                    
+                    <p className="text-lg text-gray-400 mb-10 leading-relaxed">
+                        Dentro do Nutria, a complexidade desaparece. Você foca em viver, e a nossa Inteligência Artificial cuida dos dados.
+                    </p>
+
+                    <div className="space-y-6">
+                        {/* ITEM 1 */}
+                        <div className="flex gap-4 items-start group">
+                            <div className="mt-1 w-8 h-8 rounded-full bg-[#00E599]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00E599]/20 transition-colors">
+                                <Check className="w-5 h-5 text-[#00E599]" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E599] transition-colors">Cardápio Anti-Falha</h3>
+                                <p className="text-gray-400 text-sm md:text-base">Comeu uma pizza no sábado? A IA recalcula sua semana inteira para você não perder o progresso.</p>
+                            </div>
+                        </div>
+
+                        {/* ITEM 2 */}
+                        <div className="flex gap-4 items-start group">
+                             <div className="mt-1 w-8 h-8 rounded-full bg-[#00E599]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00E599]/20 transition-colors">
+                                <Check className="w-5 h-5 text-[#00E599]" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E599] transition-colors">Treinos de Alta Eficiência</h3>
+                                <p className="text-gray-400 text-sm md:text-base">Protocolos de 15 a 20 minutos focados em acelerar sua queima de gordura em repouso.</p>
+                            </div>
+                        </div>
+
+                         {/* ITEM 3 */}
+                         <div className="flex gap-4 items-start group">
+                             <div className="mt-1 w-8 h-8 rounded-full bg-[#00E599]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00E599]/20 transition-colors">
+                                <Check className="w-5 h-5 text-[#00E599]" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E599] transition-colors">Lista de Compras Automática</h3>
+                                <p className="text-gray-400 text-sm md:text-base">Saiba exatamente o que comprar no mercado, economizando dinheiro e evitando desperdício.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Botão extra para Desktop na seção de benefícios */}
+                    <div className="mt-10 hidden lg:block">
+                        <Button
+                            onClick={onStart}
+                            className="bg-white text-[#050a14] hover:bg-gray-100 font-extrabold text-lg py-6 px-10 rounded-xl shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
+                        >
+                            QUERO MEU GPS AGORA
+                            <ArrowRight className="w-5 h-5" />
+                        </Button>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         {/* --- PASSO A PASSO --- */}
