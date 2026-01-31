@@ -178,9 +178,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
 
                 {/* LADO DIREITO: LISTA DE BENEFÍCIOS */}
                 <div className="order-2 lg:order-2">
+                    
+                    {/* --- TEXTO ALTERADO CONFORME SOLICITADO --- */}
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-                        Você não recebe uma dieta em PDF. <br/>
-                        <span className="text-[#00E599]">Você recebe um GPS.</span>
+                        A Nutria existe para <br/>
+                        <span className="text-[#00E599]">corrigir isso.</span>
                     </h2>
                     
                     <p className="text-lg text-gray-400 mb-10 leading-relaxed">
@@ -256,7 +258,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </div>
         </div>
 
-        {/* --- PASSO A PASSO (TEXTO ATUALIZADO) --- */}
+        {/* --- PASSO A PASSO (TEXTO E ÍCONES ATUALIZADOS) --- */}
         <div className="max-w-6xl mx-auto mb-10 text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Como funciona</h2>
             <p className="text-lg md:text-xl text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto">Sua jornada simplificada em 3 etapas estratégicas.</p>
