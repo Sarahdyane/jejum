@@ -111,19 +111,20 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </motion.div>
         </motion.div>
 
-        {/* --- SEÇÃO DE DORES (CORRIGIDA PARA MOBILE ESTREITO) --- */}
-        <div className="bg-[#0a0f1d]/50 rounded-3xl p-6 md:p-16 border border-white/5 mb-24 backdrop-blur-sm max-w-5xl mx-auto">
-            <div className="text-center mb-10 md:mb-16 font-extrabold tracking-tight leading-tight">
-                <h2 className="text-3xl md:text-5xl text-white mb-2">
+        {/* --- SEÇÃO DE DORES (CORRIGIDA PARA O MODELO EXATO) --- */}
+        <div className="bg-[#0a0f1d]/50 rounded-3xl p-5 md:p-16 border border-white/5 mb-24 backdrop-blur-sm max-w-5xl mx-auto">
+            <div className="text-center mb-8 md:mb-16 font-extrabold tracking-tight leading-tight">
+                <h2 className="text-2xl md:text-5xl text-white mb-1 md:mb-2">
                     Você sabe que é <span className="text-red-500">bom o suficiente.</span>
                 </h2>
-                <h2 className="text-3xl md:text-5xl text-white">
+                <h2 className="text-2xl md:text-5xl text-white">
                     Por que você <span className="text-red-500">trava?</span>
                 </h2>
             </div>
           
-          {/* GRID CORRIGIDO: max-w-sm mx-auto no mobile para ficar estreito */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-sm mx-auto md:max-w-none">
+          {/* GRID: 1 coluna no mobile (vertical), 2 colunas no desktop. 
+              Removida a restrição de largura no mobile para preencher o container. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             
             {/* Card da Dor 1 */}
             <div className="bg-[#050a14] p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
