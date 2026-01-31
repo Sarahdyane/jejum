@@ -25,19 +25,19 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
   };
 
   return (
-    // COR AJUSTADA: bg-[#020817] é o preto padrão de temas dark modernos (Shadcn/Tailwind)
+    // Fundo Preto Profundo (#020817)
     <div className="min-h-screen bg-[#020817] text-white pb-32 relative overflow-x-hidden">
       
-      {/* --- HEADER (IGUAL A IMAGEM) --- */}
-      <div className="fixed top-0 left-0 right-0 z-50 px-6 py-5 flex items-center justify-between bg-[#020817]/80 backdrop-blur-md border-b border-white/5">
-         {/* LOGO NUTRIA (Forçando ficar branca caso o arquivo seja preto) */}
+      {/* --- HEADER CORRIGIDO --- */}
+      <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-[#020817]/80 backdrop-blur-md border-b border-white/5">
+         {/* LOGO: Tamanho aumentado (h-12) e SEM filtro de cor (Original) */}
          <img 
             src={nutriaLogo} 
             alt="Nutria Logo" 
-            className="h-7 w-auto object-contain brightness-0 invert" 
+            className="h-10 md:h-12 w-auto object-contain" 
          />
-         {/* Ícone de Menu (Hambúrguer) para ficar igual ao print */}
-         <Menu className="w-6 h-6 text-white cursor-pointer" />
+         {/* Menu Hambúrguer */}
+         <Menu className="w-8 h-8 text-white cursor-pointer opacity-80 hover:opacity-100" />
       </div>
 
       {/* --- HERO SECTION --- */}
@@ -45,7 +45,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="px-6 pt-24 pb-8 text-center max-w-lg mx-auto"
+        className="px-6 pt-28 pb-8 text-center max-w-lg mx-auto"
       >
         <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-[10px] font-bold uppercase tracking-wider mb-6 backdrop-blur-sm">
           <Zap className="w-3 h-3 text-[#00E599] fill-[#00E599]" />
@@ -64,7 +64,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </motion.p>
       </motion.div>
 
-      {/* --- MOCKUP (A Prova Visual) --- */}
+      {/* --- MOCKUP --- */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -72,7 +72,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         className="relative z-10 -mt-2 px-4 mb-16"
       >
         <div className="relative max-w-[280px] mx-auto">
-            {/* Brilho Verde Neon mais sutil */}
             <div className="absolute top-10 left-10 right-10 bottom-10 bg-[#00E599] opacity-15 blur-[60px] rounded-full"></div>
             
             <img 
@@ -81,7 +80,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
               className="relative z-10 w-full h-auto drop-shadow-2xl"
             />
             
-            {/* Card Flutuante */}
             <motion.div 
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -105,7 +103,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
           <h2 className="text-2xl font-bold text-center mb-8 text-white">Por que você travou?</h2>
           
           <div className="grid gap-4">
-            {/* Card Erro */}
             <div className="bg-[#020817] p-5 rounded-2xl border border-red-900/20 shadow-sm flex gap-4 items-start opacity-60">
               <XCircle className="w-6 h-6 text-red-500 shrink-0 mt-1" />
               <div>
@@ -114,7 +111,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
               </div>
             </div>
 
-            {/* Card Nutria */}
             <motion.div 
               whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
