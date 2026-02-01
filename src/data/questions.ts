@@ -106,7 +106,7 @@ export const questions: QuizQuestion[] = [
         // Mantive o mascote masculino pois você não me passou foto de homem
         maleImage: "body-thin-female-real-new",
         // ATUALIZADO: Usando a foto real que você escolheu
-        femaleImage: "body-average-female-real-new", // O sistema deve adicionar o .jpg automaticamente
+        femaleImage: "body-thin-female-real-new", // O sistema deve adicionar o .jpg automaticamente
       },
       {
         id: "athlete",
