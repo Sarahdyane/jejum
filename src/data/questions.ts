@@ -104,9 +104,9 @@ export const questions: QuizQuestion[] = [
         id: "slim",
         text: "Corpo definido e magro",
         // Mantive o mascote masculino pois você não me passou foto de homem
-        maleImage: "body-thin-female-real-new.jpg",
+        maleImage: "body-thin-female-real-new",
         // ATUALIZADO: Usando a foto real que você escolheu
-        femaleImage: "body-average-female-real-new.jpg", // O sistema deve adicionar o .jpg automaticamente
+        femaleImage: "body-average-female-real-new", // O sistema deve adicionar o .jpg automaticamente
       },
       {
         id: "athlete",
