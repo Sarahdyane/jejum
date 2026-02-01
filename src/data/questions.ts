@@ -100,17 +100,21 @@ export const questions: QuizQuestion[] = [
       content: "Pare de lutar contra seu próprio corpo. Hoje, seu metabolismo está programado para 'Estocar'. Nós vamos apenas virar a chave para o modo 'Queimar'."
     },
     options: [
-      { 
-        id: "slim", 
-        text: "Corpo definido e magro", 
-        maleImage: "goal-slim-male-mascot", 
-        femaleImage: "goal-slim-female-mascot" 
+     {
+        id: "slim",
+        text: "Corpo definido e magro",
+        // Mantive o mascote masculino pois você não me passou foto de homem
+        maleImage: "goal-slim-male-mascot",
+        // ATUALIZADO: Usando a foto real que você escolheu
+        femaleImage: "body-thin-female-real-new", // O sistema deve adicionar o .jpg automaticamente
       },
-      { 
-        id: "athlete", 
-        text: "Corpo definido e musculoso", 
-        maleImage: "goal-athlete-male-mascot", 
-        femaleImage: "goal-athlete-female-mascot" 
+      {
+        id: "athlete",
+        text: "Corpo definido e musculoso",
+        // Mantive o mascote masculino
+        maleImage: "goal-athlete-male-mascot",
+        // ATUALIZADO: Usando a foto real que você escolheu
+        femaleImage: "body-average-female-real-new",
       }
     ]
   },
