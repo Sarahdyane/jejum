@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Trophy, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain, ClipboardList, Target } from "lucide-react";
-// Imagens
-import appMockup from "@/assets/app-meals-mockup.png";
+// --- IMAGENS NOVAS ---
+import cardapioMockup from "@/assets/Cardápio do dia_imagem.png";
+import treinoMockup from "@/assets/App de treino_imagem.png";
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
 
 interface WelcomeScreenProps {
@@ -79,7 +80,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                  </motion.div>
             </div>
 
-            {/* Mockup */}
+            {/* Mockup Hero (IMAGEM 1: CARDÁPIO) */}
             <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -89,8 +90,8 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 <div className="absolute top-10 left-10 right-10 bottom-10 bg-[#00E599] opacity-20 blur-[80px] rounded-full"></div>
                 
                 <img 
-                src={appMockup} 
-                alt="Nutria App Interface" 
+                src={cardapioMockup} 
+                alt="Mockup do Cardápio Nutria" 
                 className="relative z-10 w-full h-auto drop-shadow-2xl transform hover:scale-[1.02] transition-transform duration-500"
                 />
                 
@@ -153,7 +154,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         <div className="mb-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 
-                {/* LADO ESQUERDO: VISUAL SURREAL */}
+                {/* LADO ESQUERDO: VISUAL SURREAL (IMAGEM 2: TREINO) */}
                 <motion.div 
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -163,10 +164,11 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00E599] opacity-10 blur-[100px] rounded-full"></div>
                     <div className="relative z-10 mx-auto max-w-[300px] lg:max-w-md">
                         <img 
-                            src={appMockup} 
-                            alt="Nutria Dashboard" 
+                            src={treinoMockup} 
+                            alt="Mockup do Treino Nutria" 
                             className="w-full h-auto drop-shadow-2xl relative z-10" 
                         />
+                        {/* Elemento flutuante (mantido pois combina com treino também) */}
                         <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -left-4 top-20 bg-[#0a0f1d] border border-[#00E599]/30 p-4 rounded-xl shadow-xl z-20 backdrop-blur-md hidden md:block">
                             <div className="flex items-center gap-3">
                                 <div className="bg-[#00E599]/20 p-2 rounded-full"><Zap className="w-4 h-4 text-[#00E599]"/></div>
@@ -179,7 +181,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 {/* LADO DIREITO: LISTA DE BENEFÍCIOS */}
                 <div className="order-2 lg:order-2">
                     
-                    {/* --- TEXTO ALTERADO CONFORME SOLICITADO --- */}
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
                         A Nutria existe para <br/>
                         <span className="text-[#00E599]">corrigir isso.</span>
@@ -258,7 +259,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </div>
         </div>
 
-        {/* --- PASSO A PASSO (TEXTO E ÍCONES ATUALIZADOS) --- */}
+        {/* --- PASSO A PASSO --- */}
         <div className="max-w-6xl mx-auto mb-10 text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Como funciona</h2>
             <p className="text-lg md:text-xl text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto">Sua jornada simplificada em 3 etapas estratégicas.</p>
