@@ -16,7 +16,7 @@ import exerciseCardio from '@/assets/exercise-cardio.png';
 import exercisePushups from '@/assets/exercise-pushups.png';
 import exerciseWeights from '@/assets/exercise-weights.png';
 
-// Corpos Reais
+// Corpos Reais (IMPORTADOS CORRETAMENTE)
 import bodyAverageFemaleRealNew from '@/assets/body-average-female-real-new.jpg';
 import bodyFullerFemaleRealNew from '@/assets/body-fuller-female-real-new.jpg';
 import bodyObeseFemaleRealNew from '@/assets/body-obese-female-real-new.jpg';
@@ -38,8 +38,6 @@ import goalAthleteFemaleReal from '@/assets/goal-athlete-female-real.jpg';
 import goalSlimFemaleReal from '@/assets/goal-slim-female-real.jpg';
 import lipedemaInfo from '@/assets/lipedema-info.png';
 import motivationChangeHabitsNew from '@/assets/motivation-change-habits-new.png';
-// REMOVIDO: motivation-incredible-new.png (Estava dando erro)
-// REMOVIDO: motivation-incredible.jpg (Preventivo)
 
 import nutriaLogoDark from '@/assets/nutria-logo-dark.png';
 import nutriaLogo from '@/assets/nutria-logo.png';
@@ -50,7 +48,7 @@ import transformationCombinedFemale3 from '@/assets/transformation-combined-fema
 import transformationCombinedFemale4 from '@/assets/transformation-combined-female-4.png';
 import transformationCombinedFemale5 from '@/assets/transformation-combined-female-5.png';
 
-export const imageMap = {
+export const imageMap: Record<string, string> = {
   // --- IDADE ---
   'age-woman-1': ageWoman1829Young,
   'age-woman-18-29': ageWoman1829,
@@ -76,9 +74,13 @@ export const imageMap = {
   'exercise-pushups': exercisePushups,
   'exercise-weights': exerciseWeights,
 
-  // --- CORPOS ---
+  // --- CORPOS (IMPORTANTE: ADICIONEI AS CHAVES COM "-new" AQUI) ---
   'body-thin-female-real': bodyThinFemaleRealNew,
+  'body-thin-female-real-new': bodyThinFemaleRealNew, // <--- ADICIONADO PARA GARANTIR
+
   'body-average-female-real': bodyAverageFemaleRealNew,
+  'body-average-female-real-new': bodyAverageFemaleRealNew, // <--- ADICIONADO PARA GARANTIR
+
   'body-fuller-female-real': bodyFullerFemaleRealNew,
   'body-obese-female-real': bodyObeseFemaleRealNew,
   
@@ -107,7 +109,7 @@ export const imageMap = {
   'lipedema-info': lipedemaInfo,
   'motivation-change-habits': motivationChangeHabitsNew,
   
-  // AQUI A CORREÇÃO: Usando a imagem segura para os motivacionais que faltam
+  // Usando a imagem segura para os motivacionais que faltam para não quebrar
   'motivation-incredible': safeImage, 
   'motivation-incredible-new': safeImage,
 
