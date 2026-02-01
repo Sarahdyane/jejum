@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Trophy, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain, ClipboardList, Target } from "lucide-react";
-// --- IMAGENS NOVAS ---
+import { ArrowRight, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain, ClipboardList, Target } from "lucide-react";
+// Imagens
 import cardapioMockup from "@/assets/Cardápio do dia_imagem.png";
 import treinoMockup from "@/assets/App de treino_imagem.png";
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
@@ -80,7 +80,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                  </motion.div>
             </div>
 
-            {/* Mockup Hero (IMAGEM 1: CARDÁPIO) */}
+            {/* Mockup Hero (IMAGEM 1: CARDÁPIO - SEM O CARD DE META) */}
             <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -95,20 +95,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 className="relative z-10 w-full h-auto drop-shadow-2xl transform hover:scale-[1.02] transition-transform duration-500"
                 />
                 
-                <motion.div 
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -right-4 md:-right-8 top-1/3 bg-[#0a0f1d]/90 backdrop-blur-md p-3 md:p-5 rounded-2xl shadow-2xl border border-gray-800 flex items-center gap-3 md:gap-4 z-20"
-                >
-                <div className="bg-[#00E599]/20 p-2 md:p-3 rounded-full">
-                    <Trophy className="w-5 h-5 md:w-7 md:h-7 text-[#00E599]" />
-                </div>
-                <div>
-                    <p className="text-[10px] md:text-sm text-gray-400 font-bold uppercase mb-1">Meta Atingida</p>
-                    <p className="text-sm md:text-xl font-bold text-white">-4.2kg em 15 dias</p>
-                </div>
-                </motion.div>
+                {/* --- O CARD FLUTUANTE DE "META ATINGIDA" FOI REMOVIDO DAQUI --- */}
             </motion.div>
         </motion.div>
 
@@ -168,7 +155,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                             alt="Mockup do Treino Nutria" 
                             className="w-full h-auto drop-shadow-2xl relative z-10" 
                         />
-                        {/* Elemento flutuante (mantido pois combina com treino também) */}
+                        {/* Elemento flutuante (Mantido nesta segunda imagem) */}
                         <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -left-4 top-20 bg-[#0a0f1d] border border-[#00E599]/30 p-4 rounded-xl shadow-xl z-20 backdrop-blur-md hidden md:block">
                             <div className="flex items-center gap-3">
                                 <div className="bg-[#00E599]/20 p-2 rounded-full"><Zap className="w-4 h-4 text-[#00E599]"/></div>
