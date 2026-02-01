@@ -114,7 +114,8 @@ export const questions: QuizQuestion[] = [
         // Mantive o mascote masculino
         maleImage: "goal-athlete-male-mascot",
         // ATUALIZADO: Usando a foto real que você escolheu
-        femaleImage: "body-average-female-real-new.jpg",
+        femaleImage: "body-average-female-real-new",
+        
       }
     ]
   },
