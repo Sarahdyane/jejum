@@ -71,7 +71,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                  <motion.div variants={fadeInUp} className="hidden lg:block">
                     <Button
                         onClick={onStart}
-                        // COR NOVA APLICADA AQUI (#01d3b4)
                         className="bg-[#01d3b4] hover:bg-[#01b398] text-[#050a14] font-extrabold text-lg py-8 px-12 rounded-2xl shadow-[0_0_30px_rgba(1,211,180,0.4)] hover:shadow-[0_0_40px_rgba(1,211,180,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
                     >
                         INICIAR ANÁLISE GRÁTIS
@@ -87,7 +86,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="relative z-10 max-w-[280px] md:max-w-[320px] lg:max-w-[450px] mx-auto lg:mr-0"
             >
-                {/* Glow com a nova cor */}
                 <div className="absolute top-10 left-10 right-10 bottom-10 bg-[#01d3b4] opacity-20 blur-[80px] rounded-full"></div>
                 
                 <img 
@@ -154,13 +152,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                             alt="Mockup do Cardápio Nutria" 
                             className="w-full h-auto drop-shadow-2xl relative z-10" 
                         />
-                        {/* Elemento flutuante de Metabolismo */}
-                        <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -left-4 top-20 bg-[#0a0f1d] border border-[#01d3b4]/30 p-4 rounded-xl shadow-xl z-20 backdrop-blur-md hidden md:block">
-                            <div className="flex items-center gap-3">
-                                <div className="bg-[#01d3b4]/20 p-2 rounded-full"><Zap className="w-4 h-4 text-[#01d3b4]"/></div>
-                                <div><p className="text-[10px] text-gray-400 uppercase">Metabolismo</p><p className="text-sm font-bold text-white">Acelerado 🔥</p></div>
-                            </div>
-                        </motion.div>
+                        {/* --- REMOVIDO: O CARD FLUTUANTE DE METABOLISMO --- */}
                     </div>
                 </motion.div>
 
@@ -169,7 +161,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                     
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
                         A Nutria existe para <br/>
-                        {/* COR NOVA APLICADA AQUI */}
                         <span className="text-[#01d3b4]">corrigir isso.</span>
                     </h2>
                     
@@ -308,7 +299,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         <div className="max-w-md mx-auto">
           <Button
             onClick={onStart}
-            // COR NOVA APLICADA AO BOTÃO FLUTUANTE
             className="w-full bg-[#01d3b4] hover:bg-[#01b398] text-[#050a14] font-extrabold text-lg py-7 rounded-2xl shadow-[0_0_20px_rgba(1,211,180,0.3)] hover:shadow-[0_0_30px_rgba(1,211,180,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
           >
             INICIAR ANÁLISE GRÁTIS
