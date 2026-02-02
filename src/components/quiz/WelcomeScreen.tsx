@@ -1,9 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain, ClipboardList, Target } from "lucide-react";
-// Imagens
+import { ArrowRight, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain } from "lucide-react";
+
+// --- IMAGENS ---
+// Usaremos estas como placeholders para o novo passo a passo.
+// O ideal é você criar 3 imagens conceituais novas depois.
 import cardapioMockup from "@/assets/Cardápio do dia_imagem.png";
 import treinoMockup from "@/assets/App de treino_imagem.png";
+// Vou repetir uma imagem para o terceiro passo só para ilustrar, depois você troca.
+import step3Placeholder from "@/assets/Cardápio do dia_imagem.png";
+
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
 
 interface WelcomeScreenProps {
@@ -24,6 +30,31 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       transition: { staggerChildren: 0.2 }
     }
   };
+
+  // --- NOVOS DADOS DO PASSO A PASSO COM IMAGENS ---
+  const stepsData = [
+    { 
+      step: "PASSO 01",
+      // Usando o mockup do cardápio como exemplo de "Análise/Dados"
+      image: cardapioMockup, 
+      title: "Análise Profunda IA", 
+      text: "Nossa IA processa 50+ pontos sobre sua rotina, metabolismo e biotipo. Não é um chute, é ciência de dados aplicada ao seu corpo." 
+    },
+    { 
+      step: "PASSO 02",
+      // Usando o mockup de treino como exemplo de "Protocolo"
+      image: treinoMockup, 
+      title: "Geração do Protocolo", 
+      text: "Receba instantaneamente seu GPS: refeições exatas, treinos estratégicos e suplementação. Tudo 100% adaptado à sua realidade." 
+    },
+    { 
+      step: "PASSO 03",
+      // Placeholder para o terceiro passo
+      image: step3Placeholder, 
+      title: "Execução & Adaptação", 
+      text: "O sistema aprende com você. Comeu fora do plano? A IA recalcula a rota automaticamente para você nunca parar de evoluir." 
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-[#050a14] text-white relative overflow-x-hidden font-sans">
@@ -152,7 +183,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                             alt="Mockup do Cardápio Nutria" 
                             className="w-full h-auto drop-shadow-2xl relative z-10" 
                         />
-                        {/* --- REMOVIDO: O CARD FLUTUANTE DE METABOLISMO --- */}
                     </div>
                 </motion.div>
 
@@ -237,56 +267,63 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </div>
         </div>
 
-        {/* --- PASSO A PASSO --- */}
-        <div className="max-w-6xl mx-auto mb-10 text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Como funciona</h2>
-            <p className="text-lg md:text-xl text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto">Sua jornada simplificada em 3 etapas estratégicas.</p>
+        {/* --- NOVO PASSO A PASSO VISUAL (Estilo Nike Card) --- */}
+        <div className="max-w-7xl mx-auto mb-24 px-4">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-white tracking-tight">
+                    Sua jornada, <span className="text-[#01d3b4]">simplificada.</span>
+                </h2>
+                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Esqueça planilhas complexas. A tecnologia Nutria faz o trabalho pesado para você só se preocupar em viver.
+                </p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-                { 
-                  step: "PASSO 01",
-                  icon: <ClipboardList className="w-full h-full" />, 
-                  title: "Análise Profunda", 
-                  text: "Nossa IA analisa 50+ pontos sobre sua rotina, metabolismo e objetivos. Leva apenas 3 minutos." 
-                },
-                { 
-                  step: "PASSO 02",
-                  icon: <Zap className="w-full h-full" />, 
-                  title: "Protocolo Personalizado", 
-                  text: "Receba instantaneamente seu plano de refeições, treinos e suplementação 100% adaptados." 
-                },
-                { 
-                  step: "PASSO 03",
-                  icon: <Target className="w-full h-full" />, 
-                  title: "Execução Inteligente", 
-                  text: "O sistema se adapta automaticamente conforme você vive. Sem culpa, sem falhas, só resultados." 
-                }
-            ].map((item, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {stepsData.map((item, index) => (
                 <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                className="group relative bg-[#0a0f1d] rounded-[2rem] p-8 shadow-xl border border-white/5 overflow-hidden hover:border-[#01d3b4]/50 transition-all duration-500 hover:-translate-y-2"
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2, duration: 0.6 }}
+                    // CONTAINER DO CARD: Alto, arredondado, com borda sutil
+                    className="group relative bg-[#0a0f1d] rounded-[2.5rem] border border-white/10 overflow-hidden hover:border-[#01d3b4]/50 transition-all duration-500 hover:-translate-y-3 shadow-2xl flex flex-col"
                 >
-                <div className="absolute top-0 left-0 w-full h-1 bg-white/5 group-hover:bg-[#01d3b4] transition-colors duration-500"></div>
-                <div className="flex flex-col items-center">
                     
-                    {/* Badge do Passo */}
-                    <div className="mb-4 bg-white/5 px-3 py-1 rounded-full border border-white/10 group-hover:border-[#01d3b4]/30 transition-colors">
-                        <span className="text-[10px] font-bold text-[#01d3b4] tracking-widest">{item.step}</span>
+                    {/* --- METADE SUPERIOR: IMAGEM --- */}
+                    <div className="relative h-72 md:h-80 overflow-hidden">
+                        {/* Glow atrás da imagem (efeito Nike) */}
+                        <div className="absolute inset-0 bg-[#01d3b4] opacity-0 group-hover:opacity-20 blur-[80px] transition-opacity duration-500 z-0"></div>
+                        
+                        <img 
+                            src={item.image} 
+                            alt={item.title} 
+                            className="w-full h-full object-cover relative z-10 transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                        />
+                        
+                        {/* Gradiente para fundir a imagem com o texto embaixo */}
+                        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0f1d] via-[#0a0f1d]/80 to-transparent z-20"></div>
                     </div>
 
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-[#050a14] flex items-center justify-center p-5 text-[#01d3b4] group-hover:scale-110 transition-all duration-500 mb-4 shadow-inner border border-white/5 group-hover:border-[#01d3b4]/20">
-                        {item.icon}
+                    {/* --- METADE INFERIOR: CONTEÚDO --- */}
+                    <div className="p-8 relative z-30 -mt-10 flex-grow flex flex-col justify-end">
+                        {/* Badge do Passo */}
+                        <div className="mb-4 inline-flex items-center bg-[#01d3b4]/10 px-4 py-1.5 rounded-full border border-[#01d3b4]/30 backdrop-blur-md">
+                            <span className="text-xs font-bold text-[#01d3b4] tracking-widest">{item.step}</span>
+                        </div>
+                        
+                        <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 leading-tight group-hover:text-[#01d3b4] transition-colors">
+                            {item.title}
+                        </h3>
+                        <p className="text-base text-gray-400 leading-relaxed">
+                            {item.text}
+                        </p>
+
+                        {/* Ícone de seta sutil no final */}
+                        <div className="mt-6 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
+                            <ArrowRight className="text-[#01d3b4] w-6 h-6" />
+                        </div>
                     </div>
-                    <div>
-                        <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{item.title}</h3>
-                        <p className="text-sm md:text-base text-gray-400 leading-relaxed">{item.text}</p>
-                    </div>
-                </div>
                 </motion.div>
             ))}
             </div>
