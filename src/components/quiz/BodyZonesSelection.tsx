@@ -78,7 +78,8 @@ export const BodyZonesSelection = ({
                   <div 
                     className={cn(
                       "w-12 sm:w-16 h-0.5 transition-colors duration-200",
-                      isSelected ? "bg-primary" : "bg-muted-foreground/60"
+                      // MUDANÇA: Branco se não selecionado (para ver no escuro), Verde (#00E599) se selecionado
+                      isSelected ? "bg-[#00E599]" : "bg-white"
                     )}
                   />
                   
@@ -86,17 +87,17 @@ export const BodyZonesSelection = ({
                   <div 
                     className={cn(
                       "w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200",
-                      isSelected ? "border-b-primary" : "border-b-muted-foreground/60"
+                      isSelected ? "border-b-[#00E599]" : "border-b-white"
                     )}
                   />
                   
-                  {/* Label */}
+                  {/* Label (AQUI ESTÁ A CORREÇÃO PRINCIPAL) */}
                   <div 
                     className={cn(
-                      "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
+                      "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
                       isSelected 
-                        ? "bg-primary text-primary-foreground border-primary scale-105" 
-                        : "bg-card text-foreground border-border hover:border-primary hover:scale-105"
+                        ? "bg-[#00E599] text-[#050a14] border-[#00E599] scale-110" // Selecionado: Verde neon + texto escuro
+                        : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105" // Não selecionado: BRANCO + texto PRETO
                     )}
                     onClick={() => handleZoneClick(option.id)}
                   >
@@ -118,10 +119,10 @@ export const BodyZonesSelection = ({
               key={option.id}
               onClick={() => handleZoneClick(option.id)}
               className={cn(
-                "p-3 rounded-lg border-2 transition-all duration-200 text-center font-semibold",
+                "p-3 rounded-lg border-2 transition-all duration-200 text-center font-bold shadow-md",
                 isSelected 
-                  ? "bg-primary text-primary-foreground border-primary" 
-                  : "bg-card text-foreground border-border hover:border-primary"
+                  ? "bg-[#00E599] text-[#050a14] border-[#00E599]" 
+                  : "bg-white text-black border-white hover:bg-gray-100"
               )}
             >
               {option.text}
