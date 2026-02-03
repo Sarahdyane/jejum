@@ -35,15 +35,15 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // --- COORDENADAS REAJUSTADAS (V2) ---
-    // Foco: Sair da área do rosto e pescoço
+    // Mantive as coordenadas que miram nos músculos (longe do rosto)
+    // Mas agora a imagem inteira vai subir
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
-      'arms': { top: '38%', left: '5%' },      // Bíceps
-      'chest': { top: '35%', right: '5%' },     // Peitoral
-      'abs': { top: '48%', right: '5%' },       // Abdômen
-      'butt': { top: '56%', right: '5%' },      // Quadril
-      'legs': { top: '72%', left: '5%' },       // Coxas
-      'full-body': { top: '85%', left: '50%' }  // Pés
+      'arms': { top: '38%', left: '5%' },
+      'chest': { top: '35%', right: '5%' },
+      'abs': { top: '48%', right: '5%' },
+      'butt': { top: '56%', right: '5%' },
+      'legs': { top: '72%', left: '5%' },
+      'full-body': { top: '85%', left: '50%' }
     };
     return positions[zoneId] || { top: '50%', left: '50%' };
   };
@@ -51,7 +51,9 @@ export const BodyZonesSelection = ({
   return (
     <div className="space-y-6 -mx-4">
       <div className="flex justify-center mb-8">
-        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[50vh] sm:max-h-none overflow-visible flex items-start justify-center pt-8">
+        {/* CORREÇÃO AQUI: */}
+        {/* Removi o 'pt-8' e adicionei '-mt-8' para puxar a imagem PARA CIMA */}
+        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[50vh] sm:max-h-none overflow-visible flex items-start justify-center -mt-8">
           <img 
             src={getBodyImage()} 
             alt="Body zones" 
@@ -73,7 +75,7 @@ export const BodyZonesSelection = ({
                 }}
               >
                 <div className="flex items-center">
-                  {/* Linha da Seta */}
+                  {/* Seta */}
                   <div 
                     className={cn(
                       "w-8 sm:w-16 h-0.5 transition-colors duration-200",
@@ -81,7 +83,7 @@ export const BodyZonesSelection = ({
                     )}
                   />
                   
-                  {/* Ponta da Seta */}
+                  {/* Ponta */}
                   <div 
                     className={cn(
                       "w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200",
