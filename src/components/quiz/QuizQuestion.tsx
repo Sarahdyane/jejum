@@ -27,7 +27,6 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
   };
 
   const handleMultipleAnswer = (optionId: string | string[]) => {
-    // Se for um array (vindo do "Corpo inteiro"), substitui todas as respostas
     if (Array.isArray(optionId)) {
       onAnswer(optionId);
       return;
@@ -41,10 +40,8 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
       const allOptionIds = question.options?.filter(opt => !opt.isSelectAll && opt.id !== 'none').map(opt => opt.id) || [];
       const hasAllSelected = allOptionIds.every(id => currentAnswers.includes(id));
       if (hasAllSelected) {
-        // Deselect all
         onAnswer([]);
       } else {
-        // Select all
         onAnswer(allOptionIds);
       }
       return;
@@ -79,10 +76,8 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return answer === optionId;
   };
 
-  // Check if this is a grid layout question
   const isGridLayout = question.type === 'grid';
 
-  // Get the appropriate body image based on gender
   const getBodyImage = () => {
     if (!question.requiresGender || !gender) {
       if (question.bodyImage) return question.bodyImage;
@@ -97,7 +92,6 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return question.bodyImage || '';
   };
 
-  // Get option image based on gender and custom images
   const getOptionImage = (option: any) => {
     if (option.customImage) {
       return getImageSrc(option.customImage);
@@ -114,7 +108,6 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return option.image;
   };
 
-  // Get info box for selected option
   const getSelectedInfoBox = () => {
     if (!question.showInfoBox) return null;
     
@@ -141,7 +134,6 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return null;
   };
 
-  // --- NOVA LÓGICA PARA DETECTAR SE TEM IMAGEM ---
   const hasImages = question.options?.some(opt => 
     opt.image || opt.maleImage || opt.femaleImage || opt.customImage
   );
@@ -206,24 +198,16 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
       ) : (
         <div className={cn(
           "grid gap-4 max-w-3xl mx-auto",
-          
-          // 1. Se for layout GRID explícito -> 2 colunas
           isGridLayout
             ? "grid-cols-2"
-            
-            // 2. Se as opções tiverem IMAGEM (Goal Body) -> Força 2 colunas no mobile
             : hasImages
-            ? "grid-cols-2"
-            
-            // 3. Casos específicos por ID
-            : question.id === 1 // Idade
+            ? "grid-cols-2" // Força 2 colunas para imagens
+            : question.id === 1 
             ? "grid-cols-2 md:grid-cols-4" 
-            : question.id === 2 // Gênero
+            : question.id === 2 
             ? "grid-cols-2" 
-            : question.id === 4 // Tipo de corpo
+            : question.id === 4
             ? "grid-cols-2"
-            
-            // 4. Fallback padrão para texto (1 coluna mobile, 2 desk)
             : question.options && question.options.length <= 4 
             ? "grid-cols-1 md:grid-cols-2" 
             : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
@@ -234,26 +218,71 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
               question.options.length % 2 !== 0 && 
               index === question.options.length - 1;
             
+            const isSelectedOption = isSelected(option.id);
+            
             return (
-              <QuizOption
+              <div
                 key={option.id}
-                option={{
-                  ...option,
-                  image: optionImage
-                }}
-                isSelected={isSelected(option.id)}
                 onClick={() => question.type === 'multiple' 
                   ? handleMultipleAnswer(option.id) 
                   : handleSingleAnswer(option.id)
                 }
                 className={cn(
-                  // Se tiver imagem, aumenta a altura mínima para caber a foto
-                  optionImage ? "min-h-[220px] aspect-[3/5]" : "min-h-[60px]",
-                  isLastOdd && "col-span-2"
+                  "cursor-pointer rounded-2xl border-2 transition-all duration-200 overflow-hidden relative group flex flex-col",
+                  // MUDANÇA: Layout flex vertical para separar imagem do texto
+                  optionImage ? "aspect-[3/5]" : "min-h-[60px]",
+                  isLastOdd && "col-span-2",
+                  isSelectedOption
+                    ? "border-[#01d3b4] bg-[#01d3b4]/5 shadow-[0_0_20px_rgba(1,211,180,0.2)]" 
+                    : "border-white/10 hover:border-white/30 hover:bg-white/5"
                 )}
-                gender={gender}
-                questionId={question.id}
-              />
+              >
+                {optionImage ? (
+                  <>
+                    {/* Imagem ocupa o espaço disponível no topo */}
+                    <div className="relative flex-grow overflow-hidden">
+                        <img 
+                            src={optionImage} 
+                            alt={option.text}
+                            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        />
+                        {/* Gradiente sutil apenas para profundidade */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-50" />
+                    </div>
+                    
+                    {/* Texto numa barra DEDICADA embaixo da imagem */}
+                    <div className={cn(
+                        "p-3 text-center flex items-center justify-center min-h-[50px] bg-[#0a0f1d] border-t border-white/5",
+                        isSelectedOption ? "bg-[#01d3b4]/10" : ""
+                    )}>
+                      <span className={cn(
+                        // MUDANÇA: text-xs no mobile para evitar quebras feias
+                        "font-bold text-xs md:text-sm leading-tight block w-full whitespace-normal",
+                        isSelectedOption ? "text-[#01d3b4]" : "text-white"
+                      )}>
+                        {option.text}
+                      </span>
+                    </div>
+                    
+                    {/* Check de seleção no topo (Opcional, mas ajuda visualmente) */}
+                    {isSelectedOption && (
+                        <div className="absolute top-2 right-2 w-5 h-5 bg-[#01d3b4] rounded-full flex items-center justify-center shadow-lg z-10">
+                            <svg className="w-3 h-3 text-[#050a14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    )}
+                  </>
+                ) : (
+                  // Layout padrão (sem imagem)
+                  <QuizOption
+                    option={option}
+                    isSelected={isSelectedOption}
+                    gender={gender}
+                    questionId={question.id}
+                  />
+                )}
+              </div>
             );
           })}
         </div>
