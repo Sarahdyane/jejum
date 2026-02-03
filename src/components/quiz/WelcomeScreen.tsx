@@ -3,14 +3,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain } from "lucide-react";
 
 // --- IMAGENS ---
-// Usaremos estas como placeholders para o novo passo a passo.
-// O ideal é você criar 3 imagens conceituais novas depois.
 import cardapioMockup from "@/assets/Cardápio do dia_imagem.png";
 import treinoMockup from "@/assets/App de treino_imagem.png";
-// Vou repetir uma imagem para o terceiro passo só para ilustrar, depois você troca.
-import step3Placeholder from "@/assets/Cardápio do dia_imagem.png";
-
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
+
+// --- NOVA IMAGEM PARA O PASSO 1 ---
+import step1Image from "@/assets/body-zones-female-mascot-final.png";
 
 interface WelcomeScreenProps {
   onStart: () => void;
@@ -31,26 +29,24 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
     }
   };
 
-  // --- NOVOS DADOS DO PASSO A PASSO COM IMAGENS ---
+  // --- DADOS DO PASSO A PASSO ---
   const stepsData = [
     { 
       step: "PASSO 01",
-      // Usando o mockup do cardápio como exemplo de "Análise/Dados"
-      image: cardapioMockup, 
-      title: "Análise Profunda IA", 
-      text: "Nossa IA processa 50+ pontos sobre sua rotina, metabolismo e biotipo. Não é um chute, é ciência de dados aplicada ao seu corpo." 
+      // AQUI ESTÁ A MUDANÇA: Usando a imagem da modelo com as zonas do corpo
+      image: step1Image, 
+      title: "Mapeamento Corporal", 
+      text: "Nossa IA identifica suas zonas-alvo e biotipo exato. Não é um chute, é um escaneamento completo das suas necessidades." 
     },
     { 
       step: "PASSO 02",
-      // Usando o mockup de treino como exemplo de "Protocolo"
       image: treinoMockup, 
       title: "Geração do Protocolo", 
       text: "Receba instantaneamente seu GPS: refeições exatas, treinos estratégicos e suplementação. Tudo 100% adaptado à sua realidade." 
     },
     { 
       step: "PASSO 03",
-      // Placeholder para o terceiro passo
-      image: step3Placeholder, 
+      image: cardapioMockup, 
       title: "Execução & Adaptação", 
       text: "O sistema aprende com você. Comeu fora do plano? A IA recalcula a rota automaticamente para você nunca parar de evoluir." 
     }
@@ -267,7 +263,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             </div>
         </div>
 
-        {/* --- NOVO PASSO A PASSO VISUAL (Estilo Nike Card) --- */}
+        {/* --- PASSO A PASSO (CARD ESTILO NIKE) --- */}
         <div className="max-w-7xl mx-auto mb-24 px-4">
             <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-white tracking-tight">
@@ -286,18 +282,18 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2, duration: 0.6 }}
-                    // CONTAINER DO CARD: Alto, arredondado, com borda sutil
                     className="group relative bg-[#0a0f1d] rounded-[2.5rem] border border-white/10 overflow-hidden hover:border-[#01d3b4]/50 transition-all duration-500 hover:-translate-y-3 shadow-2xl flex flex-col"
                 >
                     
                     {/* --- METADE SUPERIOR: IMAGEM --- */}
                     <div className="relative h-72 md:h-80 overflow-hidden">
-                        {/* Glow atrás da imagem (efeito Nike) */}
+                        {/* Glow atrás da imagem */}
                         <div className="absolute inset-0 bg-[#01d3b4] opacity-0 group-hover:opacity-20 blur-[80px] transition-opacity duration-500 z-0"></div>
                         
                         <img 
                             src={item.image} 
                             alt={item.title} 
+                            // Object-contain ou cover dependendo de como você quer que a modelo apareça
                             className="w-full h-full object-cover relative z-10 transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
                         />
                         
