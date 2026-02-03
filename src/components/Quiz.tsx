@@ -21,6 +21,10 @@ import { SocialProofPage } from '@/components/quiz/SocialProofPage';
 import { AgeSelectionPage } from '@/components/quiz/AgeSelectionPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
+// --- IMPORTAÇÃO DA NOVA IMAGEM ---
+// Certifique-se que o arquivo está na pasta src/assets/ com a extensão .png
+import modeloFinalImage from "@/assets/modelo_final.png"; 
+
 export const Quiz = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showReadyTransition, setShowReadyTransition] = useState(false);
@@ -268,14 +272,15 @@ export const Quiz = () => {
     );
   }
 
-  // Handle consent page
+  // --- CORREÇÃO DA PÁGINA DE CONSENTIMENTO ---
   if (currentQuestion.id === "consent-page") {
     return (
       <IntermediatePage
         title={currentQuestion.title}
         subtitle={currentQuestion.subtitle}
         description={currentQuestion.description}
-        image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
+        // Usando a imagem importada diretamente
+        image={modeloFinalImage}
         onContinue={nextQuestion}
         onBack={prevQuestion}
       />
