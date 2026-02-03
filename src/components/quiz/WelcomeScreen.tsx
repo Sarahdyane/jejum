@@ -6,8 +6,6 @@ import { ArrowRight, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain } from
 import cardapioMockup from "@/assets/Cardápio do dia_imagem.png";
 import treinoMockup from "@/assets/App de treino_imagem.png";
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
-
-// --- NOVA IMAGEM PARA O PASSO 1 ---
 import step1Image from "@/assets/body-zones-female-mascot-final.png";
 
 interface WelcomeScreenProps {
@@ -33,7 +31,6 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
   const stepsData = [
     { 
       step: "PASSO 01",
-      // AQUI ESTÁ A MUDANÇA: Usando a imagem da modelo com as zonas do corpo
       image: step1Image, 
       title: "Mapeamento Corporal", 
       text: "Nossa IA identifica suas zonas-alvo e biotipo exato. Não é um chute, é um escaneamento completo das suas necessidades." 
@@ -286,15 +283,16 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 >
                     
                     {/* --- METADE SUPERIOR: IMAGEM --- */}
-                    <div className="relative h-72 md:h-80 overflow-hidden">
+                    {/* CORREÇÃO AQUI: Adicionei h-80/h-96 e object-top */}
+                    <div className="relative h-80 md:h-96 overflow-hidden">
                         {/* Glow atrás da imagem */}
                         <div className="absolute inset-0 bg-[#01d3b4] opacity-0 group-hover:opacity-20 blur-[80px] transition-opacity duration-500 z-0"></div>
                         
                         <img 
                             src={item.image} 
                             alt={item.title} 
-                            // Object-contain ou cover dependendo de como você quer que a modelo apareça
-                            className="w-full h-full object-cover relative z-10 transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                            // AQUI ESTÁ A CORREÇÃO PRINCIPAL: object-top
+                            className="w-full h-full object-cover object-top relative z-10 transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
                         />
                         
                         {/* Gradiente para fundir a imagem com o texto embaixo */}
