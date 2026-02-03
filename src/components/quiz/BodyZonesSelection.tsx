@@ -35,25 +35,15 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // --- COORDENADAS AJUSTADAS PARA A NOVA MODELO ---
+    // --- COORDENADAS REAJUSTADAS (V2) ---
+    // Foco: Sair da área do rosto e pescoço
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
-      // Braços: Desci de 22% para 28% para não cortar no topo
-      'arms': { top: '28%', left: '8%' },
-      
-      // Peito: Ajuste fino para alinhar melhor
-      'chest': { top: '30%', right: '8%' },
-      
-      // Abdômen
-      'abs': { top: '44%', right: '8%' },
-      
-      // Pernas: Subi um pouquinho de 68% para 65% para ficar mais central na coxa
-      'legs': { top: '65%', left: '8%' },
-      
-      // Bunda/Quadril
-      'butt': { top: '54%', right: '8%' },
-      
-      // Corpo Inteiro
-      'full-body': { top: '82%', left: '50%' }
+      'arms': { top: '38%', left: '5%' },      // Bíceps
+      'chest': { top: '35%', right: '5%' },     // Peitoral
+      'abs': { top: '48%', right: '5%' },       // Abdômen
+      'butt': { top: '56%', right: '5%' },      // Quadril
+      'legs': { top: '72%', left: '5%' },       // Coxas
+      'full-body': { top: '85%', left: '50%' }  // Pés
     };
     return positions[zoneId] || { top: '50%', left: '50%' };
   };
@@ -61,8 +51,7 @@ export const BodyZonesSelection = ({
   return (
     <div className="space-y-6 -mx-4">
       <div className="flex justify-center mb-8">
-        {/* Adicionei 'pt-4' (padding top) para garantir que nada encoste no teto do container */}
-        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[50vh] sm:max-h-none overflow-visible flex items-start justify-center pt-4">
+        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[50vh] sm:max-h-none overflow-visible flex items-start justify-center pt-8">
           <img 
             src={getBodyImage()} 
             alt="Body zones" 
@@ -87,7 +76,7 @@ export const BodyZonesSelection = ({
                   {/* Linha da Seta */}
                   <div 
                     className={cn(
-                      "w-12 sm:w-16 h-0.5 transition-colors duration-200",
+                      "w-8 sm:w-16 h-0.5 transition-colors duration-200",
                       isSelected ? "bg-[#01d3b4]" : "bg-white"
                     )}
                   />
@@ -100,7 +89,7 @@ export const BodyZonesSelection = ({
                     )}
                   />
                   
-                  {/* Botão/Etiqueta */}
+                  {/* Etiqueta */}
                   <div 
                     className={cn(
                       "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
@@ -119,7 +108,7 @@ export const BodyZonesSelection = ({
         </div>
       </div>
       
-      {/* Lista de botões alternativa para Mobile (caso a imagem fique ruim em telas muito pequenas) */}
+      {/* Lista Mobile */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4">
         {options.map((option) => {
           const isSelected = selectedZones.includes(option.id);
