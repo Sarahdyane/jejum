@@ -3,14 +3,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain } from "lucide-react";
 
 // --- IMAGENS ---
-// AQUI ESTÁ A MUDANÇA: Importando a Panqueca Proteíca
-import panquecaMockup from "@/assets/Panqueca proteíca.png";
+import panquecaMockup from "@/assets/Panqueca proteíca.png"; // Nova imagem para o Passo 3
+import cardapioMockup from "@/assets/Cardápio do dia_imagem.png"; // Imagem original para a seção de benefícios
 import treinoMockup from "@/assets/App de treino_imagem.png";
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
 import step1Image from "@/assets/body-zones-female-mascot-final.png";
-
-// Se você ainda usa o cardápio em outro lugar, mantenha o import abaixo, senão pode remover:
-// import cardapioMockup from "@/assets/Cardápio do dia_imagem.png"; 
 
 interface WelcomeScreenProps {
   onStart: () => void;
@@ -47,7 +44,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
     },
     { 
       step: "PASSO 03",
-      // AQUI ESTÁ A MUDANÇA: Usando a imagem da Panqueca
+      // AQUI SIM: A imagem nova da Panqueca (apenas aqui)
       image: panquecaMockup, 
       title: "Execução & Adaptação", 
       text: "O sistema aprende com você. Comeu fora do plano? A IA recalcula a rota automaticamente para você nunca parar de evoluir." 
@@ -167,7 +164,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         <div className="mb-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 
-                {/* LADO ESQUERDO: VISUAL SURREAL (AGORA PANQUECA) */}
+                {/* LADO ESQUERDO: VISUAL SURREAL (VOLTOU A SER O CARDÁPIO) */}
                 <motion.div 
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -176,10 +173,10 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 >
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#01d3b4] opacity-10 blur-[100px] rounded-full"></div>
                     <div className="relative z-10 mx-auto max-w-[300px] lg:max-w-md">
-                        {/* Usando a imagem da panqueca aqui também na seção de benefícios, se desejar */}
+                        {/* VOLTEI PARA A IMAGEM ORIGINAL AQUI */}
                         <img 
-                            src={panquecaMockup} 
-                            alt="Mockup do Prato Nutria" 
+                            src={cardapioMockup} 
+                            alt="Mockup do Cardápio Nutria" 
                             className="w-full h-auto drop-shadow-2xl relative z-10" 
                         />
                     </div>
