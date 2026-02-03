@@ -19,7 +19,6 @@ export const BodyZonesSelection = ({
 }: BodyZonesSelectionProps) => {
   
   const handleZoneClick = (zoneId: string) => {
-    // Se "Corpo inteiro" for selecionado, seleciona todas as outras opções
     if (zoneId === 'full-body') {
       const allZones = options.filter(opt => opt.id !== 'full-body').map(opt => opt.id);
       onZoneSelect(allZones);
@@ -36,13 +35,24 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // Position arrows based on body parts - optimized for better visibility
+    // --- COORDENADAS AJUSTADAS PARA A NOVA MODELO ---
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
-      'arms': { top: '22%', left: '8%' },
-      'chest': { top: '28%', right: '8%' },
-      'abs': { top: '42%', right: '8%' },
-      'legs': { top: '68%', left: '8%' },
-      'butt': { top: '52%', right: '8%' },
+      // Braços: Desci de 22% para 28% para não cortar no topo
+      'arms': { top: '28%', left: '8%' },
+      
+      // Peito: Ajuste fino para alinhar melhor
+      'chest': { top: '30%', right: '8%' },
+      
+      // Abdômen
+      'abs': { top: '44%', right: '8%' },
+      
+      // Pernas: Subi um pouquinho de 68% para 65% para ficar mais central na coxa
+      'legs': { top: '65%', left: '8%' },
+      
+      // Bunda/Quadril
+      'butt': { top: '54%', right: '8%' },
+      
+      // Corpo Inteiro
       'full-body': { top: '82%', left: '50%' }
     };
     return positions[zoneId] || { top: '50%', left: '50%' };
@@ -51,14 +61,14 @@ export const BodyZonesSelection = ({
   return (
     <div className="space-y-6 -mx-4">
       <div className="flex justify-center mb-8">
-        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[50vh] sm:max-h-none overflow-visible flex items-start justify-center">
+        {/* Adicionei 'pt-4' (padding top) para garantir que nada encoste no teto do container */}
+        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[50vh] sm:max-h-none overflow-visible flex items-start justify-center pt-4">
           <img 
             src={getBodyImage()} 
             alt="Body zones" 
             className="w-full h-auto object-top"
           />
           
-          {/* Arrows pointing to body parts */}
           {options.map((option) => {
             const position = getArrowPosition(option.id);
             const isSelected = selectedZones.includes(option.id);
@@ -74,30 +84,29 @@ export const BodyZonesSelection = ({
                 }}
               >
                 <div className="flex items-center">
-                  {/* Arrow line */}
+                  {/* Linha da Seta */}
                   <div 
                     className={cn(
                       "w-12 sm:w-16 h-0.5 transition-colors duration-200",
-                      // MUDANÇA: Branco se não selecionado (para ver no escuro), Verde (#00E599) se selecionado
-                      isSelected ? "bg-[#00E599]" : "bg-white"
+                      isSelected ? "bg-[#01d3b4]" : "bg-white"
                     )}
                   />
                   
-                  {/* Arrow head */}
+                  {/* Ponta da Seta */}
                   <div 
                     className={cn(
                       "w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200",
-                      isSelected ? "border-b-[#00E599]" : "border-b-white"
+                      isSelected ? "border-b-[#01d3b4]" : "border-b-white"
                     )}
                   />
                   
-                  {/* Label (AQUI ESTÁ A CORREÇÃO PRINCIPAL) */}
+                  {/* Botão/Etiqueta */}
                   <div 
                     className={cn(
                       "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
                       isSelected 
-                        ? "bg-[#00E599] text-[#050a14] border-[#00E599] scale-110" // Selecionado: Verde neon + texto escuro
-                        : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105" // Não selecionado: BRANCO + texto PRETO
+                        ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" 
+                        : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
                     )}
                     onClick={() => handleZoneClick(option.id)}
                   >
@@ -110,7 +119,7 @@ export const BodyZonesSelection = ({
         </div>
       </div>
       
-      {/* Alternative button list for easier selection on mobile */}
+      {/* Lista de botões alternativa para Mobile (caso a imagem fique ruim em telas muito pequenas) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4">
         {options.map((option) => {
           const isSelected = selectedZones.includes(option.id);
@@ -121,7 +130,7 @@ export const BodyZonesSelection = ({
               className={cn(
                 "p-3 rounded-lg border-2 transition-all duration-200 text-center font-bold shadow-md",
                 isSelected 
-                  ? "bg-[#00E599] text-[#050a14] border-[#00E599]" 
+                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" 
                   : "bg-white text-black border-white hover:bg-gray-100"
               )}
             >
