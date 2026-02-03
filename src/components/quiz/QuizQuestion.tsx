@@ -17,10 +17,10 @@ interface QuizQuestionProps {
 
 export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuestionProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  
+   
   // Get gender from previous answers (question 2)
   const gender = answers[2] as string;
-  
+   
   const handleSingleAnswer = (optionId: string) => {
     onAnswer(optionId);
     setSelectedOption(optionId);
@@ -141,6 +141,11 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
     return null;
   };
 
+  // --- NOVA LÓGICA PARA DETECTAR SE TEM IMAGEM ---
+  const hasImages = question.options?.some(opt => 
+    opt.image || opt.maleImage || opt.femaleImage || opt.customImage
+  );
+
   return (
     <div className="w-full max-w-4xl mx-auto quiz-fade-in">
       <div className="text-center mb-12">
@@ -201,26 +206,33 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
       ) : (
         <div className={cn(
           "grid gap-4 max-w-3xl mx-auto",
-          // Special layout for grid type questions - 2x2 grid
+          
+          // --- AQUI ESTÁ A CORREÇÃO PRINCIPAL ---
+          
+          // 1. Se for layout GRID explícito -> 2 colunas
           isGridLayout
             ? "grid-cols-2"
-            : // Special layout for age question (ID 1) - 2x2 grid on mobile
-            question.id === 1 
-            ? "grid-cols-2 md:grid-cols-4" 
-            : // Special layout for gender question (ID 2) - side by side
-            question.id === 2 
-            ? "grid-cols-2" 
-            : // Special layout for body type question (ID 4) - 2x2 grid
-            question.id === 4
+            
+            // 2. Se as opções tiverem IMAGEM (Goal Body) -> Força 2 colunas no mobile
+            : hasImages
             ? "grid-cols-2"
-            : // Default layout for other questions
-            question.options && question.options.length <= 4 
+            
+            // 3. Casos específicos por ID
+            : question.id === 1 // Idade
+            ? "grid-cols-2 md:grid-cols-4" 
+            : question.id === 2 // Gênero
+            ? "grid-cols-2" 
+            : question.id === 4 // Tipo de corpo
+            ? "grid-cols-2"
+            
+            // 4. Fallback padrão para texto (1 coluna mobile, 2 desk)
+            : question.options && question.options.length <= 4 
             ? "grid-cols-1 md:grid-cols-2" 
             : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         )}>
           {question.options?.map((option, index) => {
             const optionImage = getOptionImage(option);
-            const isLastOdd = isGridLayout && question.options && 
+            const isLastOdd = (isGridLayout || hasImages) && question.options && 
               question.options.length % 2 !== 0 && 
               index === question.options.length - 1;
             
@@ -237,7 +249,8 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                   : handleSingleAnswer(option.id)
                 }
                 className={cn(
-                  optionImage ? "min-h-[160px]" : "min-h-[60px]",
+                  // Se tiver imagem, aumenta a altura mínima para caber a foto
+                  optionImage ? "min-h-[220px] aspect-[3/5]" : "min-h-[60px]",
                   isLastOdd && "col-span-2"
                 )}
                 gender={gender}
