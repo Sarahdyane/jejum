@@ -207,8 +207,6 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
         <div className={cn(
           "grid gap-4 max-w-3xl mx-auto",
           
-          // --- AQUI ESTÁ A CORREÇÃO PRINCIPAL ---
-          
           // 1. Se for layout GRID explícito -> 2 colunas
           isGridLayout
             ? "grid-cols-2"
