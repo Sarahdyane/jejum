@@ -35,25 +35,13 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // --- COORDENADAS REAJUSTADAS (V4 - DESCENDO AS OPÇÕES) ---
-    // Aumentei bastante o 'top' (%) para tirar os botões da borda superior
+    // Mantendo as posições que funcionaram bem (v4)
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
-      // Braços: 45% (Agora fica no meio do braço, bem longe do topo cortado)
       'arms': { top: '45%', left: '5%' },
-      
-      // Peito: 42% (Alinhado com o braço)
       'chest': { top: '42%', right: '5%' },
-      
-      // Abdômen: 55% (Bem no centro)
       'abs': { top: '55%', right: '5%' },
-      
-      // Bunda/Quadril: 62%
       'butt': { top: '62%', right: '5%' },
-
-      // Pernas: 78% (Coxa)
       'legs': { top: '78%', left: '5%' },
-      
-      // Corpo Inteiro: 92% (Pés)
       'full-body': { top: '92%', left: '50%' }
     };
     return positions[zoneId] || { top: '50%', left: '50%' };
@@ -61,9 +49,12 @@ export const BodyZonesSelection = ({
 
   return (
     <div className="space-y-6 -mx-4">
-      <div className="flex justify-center mb-8">
-        {/* Mantive o container normal, sem margem negativa, para a imagem ficar no lugar dela */}
-        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[50vh] sm:max-h-none overflow-visible flex items-start justify-center">
+      <div className="flex justify-center mb-8 overflow-hidden pt-2">
+        {/* --- AJUSTE EQUILIBRADO AQUI --- 
+            Mudei de -mt-20 para -mt-10. 
+            Sobe a imagem "um pouco", mas mantém tudo visível.
+        */}
+        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[60vh] sm:max-h-none overflow-visible flex items-start justify-center -mt-10">
           <img 
             src={getBodyImage()} 
             alt="Body zones" 
@@ -85,7 +76,7 @@ export const BodyZonesSelection = ({
                 }}
               >
                 <div className="flex items-center">
-                  {/* Linha da Seta */}
+                  {/* Seta */}
                   <div 
                     className={cn(
                       "w-8 sm:w-16 h-0.5 transition-colors duration-200",
@@ -93,7 +84,7 @@ export const BodyZonesSelection = ({
                     )}
                   />
                   
-                  {/* Ponta da Seta */}
+                  {/* Ponta */}
                   <div 
                     className={cn(
                       "w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200",
@@ -101,7 +92,7 @@ export const BodyZonesSelection = ({
                     )}
                   />
                   
-                  {/* Etiqueta / Botão */}
+                  {/* Botão */}
                   <div 
                     className={cn(
                       "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
@@ -120,7 +111,7 @@ export const BodyZonesSelection = ({
         </div>
       </div>
       
-      {/* Lista Mobile (Backup) */}
+      {/* Lista Mobile */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4">
         {options.map((option) => {
           const isSelected = selectedZones.includes(option.id);
