@@ -22,7 +22,6 @@ import { AgeSelectionPage } from '@/components/quiz/AgeSelectionPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 // --- IMPORTAÇÃO DA NOVA IMAGEM ---
-// Certifique-se que o arquivo está na pasta src/assets/ com a extensão .png
 import modeloFinalImage from "@/assets/modelo_final.png"; 
 
 export const Quiz = () => {
@@ -218,7 +217,38 @@ export const Quiz = () => {
     );
   }
 
-  // Handle intermediate pages
+  // --- LÓGICA REORDENADA: ID ESPECÍFICOS VÊM ANTES DOS TIPOS GENÉRICOS ---
+
+  // Handle consent page (COM IMAGEM CORRIGIDA)
+  if (currentQuestion.id === "consent-page") {
+    return (
+      <IntermediatePage
+        title={currentQuestion.title}
+        subtitle={currentQuestion.subtitle}
+        description={currentQuestion.description}
+        // Usando a imagem importada diretamente
+        image={modeloFinalImage}
+        onContinue={nextQuestion}
+        onBack={prevQuestion}
+      />
+    );
+  }
+
+  // Handle fasting benefits page
+  if (currentQuestion.id === "fasting-benefits") {
+    return (
+      <IntermediatePage
+        title={currentQuestion.title}
+        subtitle={currentQuestion.subtitle}
+        description={currentQuestion.description}
+        image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
+        onContinue={nextQuestion}
+        onBack={prevQuestion}
+      />
+    );
+  }
+
+  // Handle GENERIC intermediate pages
   if (currentQuestion.type === 'intermediate') {
 
     // Special handling for the nutrition/exercise page
@@ -253,36 +283,6 @@ export const Quiz = () => {
         bulletPoints={currentQuestion.bulletPoints}
         buttonText={currentQuestion.buttonText}
         footerText={currentQuestion.footerText}
-      />
-    );
-  }
-
-
-  // Handle fasting benefits page
-  if (currentQuestion.id === "fasting-benefits") {
-    return (
-      <IntermediatePage
-        title={currentQuestion.title}
-        subtitle={currentQuestion.subtitle}
-        description={currentQuestion.description}
-        image={currentQuestion.image ? getImageSrc(currentQuestion.image) : ''}
-        onContinue={nextQuestion}
-        onBack={prevQuestion}
-      />
-    );
-  }
-
-  // --- CORREÇÃO DA PÁGINA DE CONSENTIMENTO ---
-  if (currentQuestion.id === "consent-page") {
-    return (
-      <IntermediatePage
-        title={currentQuestion.title}
-        subtitle={currentQuestion.subtitle}
-        description={currentQuestion.description}
-        // Usando a imagem importada diretamente
-        image={modeloFinalImage}
-        onContinue={nextQuestion}
-        onBack={prevQuestion}
       />
     );
   }
