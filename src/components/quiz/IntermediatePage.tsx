@@ -1,12 +1,13 @@
-import { motion } from "framer-motion";
-import { ArrowLeft, Check } from "lucide-react";
-import { useEffect } from "react";
+import React from 'react';
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface IntermediatePageProps {
   title: string;
   subtitle?: string;
   description?: string;
-  image: string;
+  image?: string;
   onContinue: () => void;
   onBack?: () => void;
   bulletPoints?: string[];
@@ -14,141 +15,102 @@ interface IntermediatePageProps {
   footerText?: string;
 }
 
-export const IntermediatePage = ({ title, subtitle, description, image, onContinue, onBack, bulletPoints, buttonText, footerText }: IntermediatePageProps) => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
-  // Splash screen mode - show only logo centered
-  const isSplashScreen = !title && !subtitle && !description;
-  
-  if (isSplashScreen) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex justify-center"
-        >
-          <img 
-            src={image} 
-            alt="Nutria" 
-            className="h-24 w-auto"
-          />
-        </motion.div>
-        
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          onClick={onContinue}
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-md mx-auto bg-primary text-primary-foreground hover:bg-primary/90 
-                   py-4 px-8 rounded-lg font-semibold text-lg transition-colors"
-        >
-          Começar
-        </motion.button>
-      </div>
-    );
-  }
-  
-  // Helper function to render text with markdown bold support
-  const renderTextWithBold = (text: string) => {
-    const parts = text.split(/\*\*(.*?)\*\*/g);
-    return parts.map((part, index) => {
-      // Odd indices are the bold parts (content between **)
-      if (index % 2 === 1) {
-        return <strong key={index} className="font-bold text-foreground">{part}</strong>;
-      }
-      return part;
-    });
-  };
-  
+export const IntermediatePage = ({
+  title,
+  subtitle,
+  description,
+  image,
+  onContinue,
+  onBack,
+  bulletPoints,
+  buttonText = "CONTINUAR",
+  footerText
+}: IntermediatePageProps) => {
   return (
-    <div className="min-h-screen bg-background flex flex-col p-4 pt-16">
-      {onBack && (
-        <button
-          onClick={onBack}
-          className="fixed top-4 left-4 z-50 p-2 hover:bg-secondary/50 rounded-lg transition-colors"
-          aria-label="Voltar"
-        >
-          <ArrowLeft className="w-5 h-5 text-foreground" />
-        </button>
-      )}
-      <div className="w-full max-w-2xl mx-auto space-y-6 flex-1 flex flex-col">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-4"
-        >
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              {renderTextWithBold(subtitle)}
-            </p>
+    <div className="min-h-screen bg-[#050a14] flex flex-col">
+      {/* Header fixo para manter o espaçamento correto */}
+      <div className="fixed top-0 left-0 right-0 h-20 bg-[#050a14] z-10"></div>
+
+      <main className="flex-grow flex items-center justify-center px-6 pt-24 pb-32 relative z-0">
+        <div className="w-full max-w-md mx-auto quiz-fade-in">
+          
+          {/* Botão Voltar */}
+          {onBack && (
+            <button 
+              onClick={onBack}
+              className="absolute top-6 left-6 p-2 text-gray-400 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="w-6 h-6" />
+            </button>
           )}
+
+          {/* Área de Texto Superior */}
+          <div className="text-center mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
+              {title}
+            </h1>
+            {subtitle && (
+              <p className="text-lg text-gray-300">
+                {subtitle}
+            </p>
+            )}
+          </div>
+
+          {/* Descrição Principal */}
           {description && (
-            <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+            <p className="text-gray-300 text-center mb-8 leading-relaxed">
               {description}
             </p>
           )}
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center flex-1 items-center"
-        >
-          <img 
-            src={image} 
-            alt="Inspirational fitness" 
-            className="max-w-full w-full h-auto rounded-lg"
-          />
-        </motion.div>
-
-        {/* --- NOVO BLOCO VISUAL (Estilo Cards) --- */}
-        {bulletPoints && bulletPoints.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-full max-w-md mx-auto space-y-3 px-1 text-left"
-          >
-            {bulletPoints.map((point, index) => (
-              <div 
-                key={index} 
-                className="flex items-start gap-3 bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 backdrop-blur-sm shadow-sm"
-              >
-                <span className="text-sm md:text-base text-zinc-200 leading-relaxed font-medium">
-                  {point}
-                </span>
+          {/* --- ÁREA DA IMAGEM --- */}
+          {image && (
+            <div className="mb-8 flex justify-center">
+              {/* CORREÇÃO AQUI: Adicionei bg-[#050a14] para remover a linha branca de fundo */}
+              <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-[#050a14]">
+                <img 
+                  src={image} 
+                  alt={title} 
+                  className="w-full h-auto object-cover block" // 'block' remove espaços fantasmas embaixo de imagens inline
+                />
               </div>
-            ))}
-          </motion.div>
-        )}
-        {/* ---------------------------------------- */}
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="space-y-3 pb-4"
-        >
-          <button
-            onClick={onContinue}
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 
-                     py-4 px-8 rounded-full font-semibold text-lg transition-colors"
-          >
-            {buttonText || "CONTINUAR"}
-          </button>
-          {footerText && (
-            <p className="text-sm text-muted-foreground text-center">{footerText}</p>
+            </div>
           )}
-        </motion.div>
+
+          {/* Bullet Points (se houver) */}
+          {bulletPoints && bulletPoints.length > 0 && (
+            <ul className="space-y-4 mb-8 text-left inline-block mx-auto">
+              {bulletPoints.map((point, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <div className="mt-1 w-5 h-5 rounded-full bg-[#01d3b4]/20 flex items-center justify-center shrink-0">
+                    <div className="w-2 h-2 rounded-full bg-[#01d3b4]" />
+                  </div>
+                  <span className="text-gray-300">{point}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Rodapé de Texto (se houver) */}
+          {footerText && (
+            <p className="text-sm text-gray-400 text-center mb-8 italic">
+              {footerText}
+            </p>
+          )}
+        </div>
+      </main>
+
+      {/* Botão de Continuar Fixo na Base */}
+      <div className="fixed bottom-0 left-0 right-0 p-6 bg-[#050a14]/80 backdrop-blur-lg z-20 border-t border-white/5">
+        <div className="max-w-md mx-auto">
+          <Button
+            onClick={onContinue}
+            className="w-full bg-[#01d3b4] hover:bg-[#01b398] text-[#050a14] font-bold py-6 text-lg rounded-xl shadow-[0_0_20px_rgba(1,211,180,0.2)] hover:shadow-[0_0_30px_rgba(1,211,180,0.4)] transition-all duration-300 flex items-center justify-center gap-2 group"
+          >
+            {buttonText}
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
       </div>
     </div>
   );
