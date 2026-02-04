@@ -35,7 +35,6 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // Mantendo as posições que funcionaram bem (v4)
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
       'arms': { top: '45%', left: '5%' },
       'chest': { top: '42%', right: '5%' },
@@ -49,11 +48,10 @@ export const BodyZonesSelection = ({
 
   return (
     <div className="space-y-6 -mx-4">
+      
+      {/* --- ÁREA DA IMAGEM COM ETIQUETAS (Desktop/Tablet) --- */}
+      {/* Mantivemos as etiquetas brancas aqui conforme seu pedido */}
       <div className="flex justify-center mb-8 overflow-hidden pt-2">
-        {/* --- AJUSTE EQUILIBRADO AQUI --- 
-            Mudei de -mt-20 para -mt-10. 
-            Sobe a imagem "um pouco", mas mantém tudo visível.
-        */}
         <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[60vh] sm:max-h-none overflow-visible flex items-start justify-center -mt-10">
           <img 
             src={getBodyImage()} 
@@ -68,7 +66,7 @@ export const BodyZonesSelection = ({
             return (
               <div
                 key={option.id}
-                className="absolute flex items-center z-10"
+                className="absolute items-center z-10 hidden md:flex" 
                 style={{
                   top: position.top,
                   ...(position.left ? { left: position.left } : {}),
@@ -76,29 +74,13 @@ export const BodyZonesSelection = ({
                 }}
               >
                 <div className="flex items-center">
-                  {/* Seta */}
-                  <div 
-                    className={cn(
-                      "w-8 sm:w-16 h-0.5 transition-colors duration-200",
-                      isSelected ? "bg-[#01d3b4]" : "bg-white"
-                    )}
-                  />
-                  
-                  {/* Ponta */}
-                  <div 
-                    className={cn(
-                      "w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200",
-                      isSelected ? "border-b-[#01d3b4]" : "border-b-white"
-                    )}
-                  />
-                  
-                  {/* Botão */}
+                  <div className={cn("w-8 sm:w-16 h-0.5 transition-colors duration-200", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
+                  <div className={cn("w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200", isSelected ? "border-b-[#01d3b4]" : "border-b-white")} />
                   <div 
                     className={cn(
                       "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
-                      isSelected 
-                        ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" 
-                        : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
+                      // AQUI: Mantém branco quando não selecionado, pois fica em cima da imagem
+                      isSelected ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
                     )}
                     onClick={() => handleZoneClick(option.id)}
                   >
@@ -111,8 +93,9 @@ export const BodyZonesSelection = ({
         </div>
       </div>
       
-      {/* Lista Mobile */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4">
+      {/* --- LISTA DE BOTÕES INFERIOR (Mobile) --- */}
+      {/* AQUI ESTÁ A MUDANÇA: Estilo Dark Theme igual às outras perguntas */}
+      <div className="grid grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4 pb-8">
         {options.map((option) => {
           const isSelected = selectedZones.includes(option.id);
           return (
@@ -120,10 +103,10 @@ export const BodyZonesSelection = ({
               key={option.id}
               onClick={() => handleZoneClick(option.id)}
               className={cn(
-                "p-3 rounded-lg border-2 transition-all duration-200 text-center font-bold shadow-md",
+                "p-4 rounded-xl border-2 transition-all duration-200 text-center font-bold shadow-md text-sm",
                 isSelected 
-                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" 
-                  : "bg-white text-black border-white hover:bg-gray-100"
+                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" // Selecionado (Verde)
+                  : "bg-transparent text-white border-white/10 hover:bg-white/5 hover:border-white/30" // Não Selecionado (Dark Theme)
               )}
             >
               {option.text}
@@ -131,6 +114,7 @@ export const BodyZonesSelection = ({
           );
         })}
       </div>
+
     </div>
   );
 };
