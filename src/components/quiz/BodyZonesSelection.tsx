@@ -35,17 +35,18 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // POSIÇÕES REORGANIZADAS PARA EQUILÍBRIO
+    // POSIÇÕES AJUSTADAS
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
       // Lado Esquerdo
       'arms': { top: '36%', left: '15%' },
-      // MUDANÇA AQUI: Subi de 46% para 42%
-      'abs':  { top: '42%', left: '15%' }, 
+      'abs':  { top: '42%', left: '15%' }, // Mantido onde você gostou
       'legs': { top: '72%', left: '15%' },
 
       // Lado Direito
       'chest': { top: '33%', right: '15%' },
-      'butt':  { top: '56%', right: '15%' }, 
+      
+      // MUDANÇA AQUI: Subi de 56% para 50% (Altura do quadril)
+      'butt':  { top: '50%', right: '15%' }, 
       
       // Central/Baixo
       'full-body': { top: '90%', right: '20%' }
