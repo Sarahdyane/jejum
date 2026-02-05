@@ -35,13 +35,25 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
+    // AJUSTE FINO DE POSIÇÕES (Coordenadas mais precisas)
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
-      'arms': { top: '45%', left: '5%' },
-      'chest': { top: '42%', right: '5%' },
-      'abs': { top: '55%', right: '5%' },
-      'butt': { top: '62%', right: '5%' },
-      'legs': { top: '78%', left: '5%' },
-      'full-body': { top: '92%', left: '50%' }
+      // Braços: Subi um pouco e trouxe mais para perto do corpo
+      'arms': { top: '36%', left: '15%' },
+      
+      // Peito: Subi para ficar na linha do tórax e trouxe para perto
+      'chest': { top: '33%', right: '15%' },
+      
+      // Abdômen: Ajustado para o centro da barriga
+      'abs': { top: '46%', right: '15%' },
+      
+      // Bunda/Glúteos: Na altura do quadril
+      'butt': { top: '56%', right: '15%' },
+      
+      // Pernas: Na altura da coxa
+      'legs': { top: '72%', left: '15%' },
+      
+      // Corpo Inteiro: Próximo aos pés
+      'full-body': { top: '90%', right: '20%' }
     };
     return positions[zoneId] || { top: '50%', left: '50%' };
   };
@@ -51,10 +63,6 @@ export const BodyZonesSelection = ({
       
       {/* --- ÁREA DA IMAGEM COM ETIQUETAS --- */}
       <div className="flex justify-center mb-8 overflow-hidden pt-2">
-        {/* MUDANÇAS AQUI:
-            1. De 'max-h-[60vh]' para 'max-h-[70vh]' (Permite imagem mais alta)
-            2. De '-mt-10' para 'mt-0' (Para de cortar a cabeça)
-        */}
         <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[70vh] sm:max-h-none overflow-visible flex items-start justify-center mt-0">
           <img 
             src={getBodyImage()} 
@@ -76,18 +84,26 @@ export const BodyZonesSelection = ({
                   ...(position.right ? { right: position.right } : {})
                 }}
               >
-                <div className="flex items-center">
-                  <div className={cn("w-8 sm:w-16 h-0.5 transition-colors duration-200", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
-                  <div className={cn("w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-transparent transition-colors duration-200", isSelected ? "border-b-[#01d3b4]" : "border-b-white")} />
+                {/* Lógica para inverter a seta dependendo do lado (Esquerda/Direita) */}
+                <div className={cn("flex items-center", position.right ? "flex-row" : "flex-row-reverse")}>
+                  
+                  {/* Botão (Etiqueta) */}
                   <div 
                     className={cn(
-                      "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
+                      "px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg z-20",
                       isSelected ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
                     )}
                     onClick={() => handleZoneClick(option.id)}
                   >
                     {option.text}
                   </div>
+
+                  {/* Linha da Seta */}
+                  <div className={cn("w-4 sm:w-8 h-0.5 transition-colors duration-200", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
+                  
+                  {/* Ponta da Seta (Triângulo) - Simplificado para um círculo pequeno para ficar mais limpo, ou mantendo a seta se preferir */}
+                  <div className={cn("w-1.5 h-1.5 rounded-full", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
+                  
                 </div>
               </div>
             );
