@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+// IMPORTANTE: Importando a Logo da Nutria
+import nutriaLogo from "@/assets/nutria-logo-dark.png";
+
 interface IntermediatePageProps {
   title: string;
   subtitle?: string;
@@ -28,22 +31,38 @@ export const IntermediatePage = ({
 }: IntermediatePageProps) => {
   return (
     <div className="min-h-screen bg-[#050a14] flex flex-col">
-      {/* Header fixo para manter o espaçamento correto */}
-      <div className="fixed top-0 left-0 right-0 h-20 bg-[#050a14] z-10"></div>
-
-      <main className="flex-grow flex items-center justify-center px-6 pt-24 pb-32 relative z-0">
-        <div className="w-full max-w-md mx-auto quiz-fade-in">
-          
-          {/* Botão Voltar */}
+      
+      {/* --- CABEÇALHO PADRÃO (LOGO + VOLTAR) --- */}
+      <header className="fixed top-0 left-0 right-0 h-16 md:h-20 bg-[#050a14] z-50 flex items-center justify-between px-4 md:px-8 border-b border-white/5">
+        {/* Lado Esquerdo: Botão Voltar */}
+        <div className="w-12 flex justify-start">
           {onBack && (
             <button 
               onClick={onBack}
-              className="absolute top-6 left-6 p-2 text-gray-400 hover:text-white transition-colors"
+              className="p-2 -ml-2 text-white hover:text-[#01d3b4] transition-colors rounded-full hover:bg-white/5"
             >
               <ArrowLeft className="w-6 h-6" />
             </button>
           )}
+        </div>
 
+        {/* Centro: Logo Nutria */}
+        <div className="flex-1 flex justify-center">
+          <img 
+            src={nutriaLogo} 
+            alt="Nutria" 
+            className="h-6 md:h-8 w-auto object-contain"
+          />
+        </div>
+
+        {/* Lado Direito: Espaço vazio para centralizar a logo */}
+        <div className="w-12"></div>
+      </header>
+
+      {/* --- CONTEÚDO DA PÁGINA --- */}
+      <main className="flex-grow flex items-center justify-center px-6 pt-24 pb-32 relative z-0">
+        <div className="w-full max-w-md mx-auto quiz-fade-in">
+          
           {/* Área de Texto Superior */}
           <div className="text-center mb-8">
             <h1 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
@@ -63,21 +82,20 @@ export const IntermediatePage = ({
             </p>
           )}
 
-          {/* --- ÁREA DA IMAGEM --- */}
+          {/* Área da Imagem */}
           {image && (
             <div className="mb-8 flex justify-center">
-              {/* CORREÇÃO AQUI: Adicionei bg-[#050a14] para remover a linha branca de fundo */}
               <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-[#050a14]">
                 <img 
                   src={image} 
                   alt={title} 
-                  className="w-full h-auto object-cover block" // 'block' remove espaços fantasmas embaixo de imagens inline
+                  className="w-full h-auto object-cover block"
                 />
               </div>
             </div>
           )}
 
-          {/* Bullet Points (se houver) */}
+          {/* Bullet Points */}
           {bulletPoints && bulletPoints.length > 0 && (
             <ul className="space-y-4 mb-8 text-left inline-block mx-auto">
               {bulletPoints.map((point, index) => (
@@ -91,7 +109,7 @@ export const IntermediatePage = ({
             </ul>
           )}
 
-          {/* Rodapé de Texto (se houver) */}
+          {/* Rodapé de Texto */}
           {footerText && (
             <p className="text-sm text-gray-400 text-center mb-8 italic">
               {footerText}
