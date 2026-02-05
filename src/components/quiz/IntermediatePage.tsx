@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// IMPORTANTE: Importando a Logo da Nutria
+// Importando a Logo da Nutria
 import nutriaLogo from "@/assets/nutria-logo-dark.png";
 
 interface IntermediatePageProps {
@@ -32,31 +32,35 @@ export const IntermediatePage = ({
   return (
     <div className="min-h-screen bg-[#050a14] flex flex-col">
       
-      {/* --- CABEÇALHO PADRÃO (LOGO + VOLTAR) --- */}
+      {/* --- CABEÇALHO (TAMANHO PADRÃO FIXO) --- */}
+      {/* Voltei para h-16 (mobile) e h-20 (desktop) para não ocupar muito espaço */}
       <header className="fixed top-0 left-0 right-0 h-16 md:h-20 bg-[#050a14] z-50 flex items-center justify-between px-4 md:px-8 border-b border-white/5">
+        
         {/* Lado Esquerdo: Botão Voltar */}
-        <div className="w-12 flex justify-start">
+        <div className="w-20 flex justify-start">
           {onBack && (
             <button 
               onClick={onBack}
               className="p-2 -ml-2 text-white hover:text-[#01d3b4] transition-colors rounded-full hover:bg-white/5"
             >
-              <ArrowLeft className="w-6 h-6" />
+              <ArrowLeft className="w-6 h-6 md:w-8 md:h-8" />
             </button>
           )}
         </div>
 
-        {/* Centro: Logo Nutria */}
-        <div className="flex-1 flex justify-center">
+        {/* Centro: Logo Nutria (OCUPANDO O MÁXIMO DO CABEÇALHO) */}
+        <div className="flex-1 flex justify-center h-full items-center">
           <img 
             src={nutriaLogo} 
             alt="Nutria" 
-            className="h-6 md:h-8 w-auto object-contain"
+            // h-12 no mobile (dentro de um header h-16) fica bem grande
+            // h-16 no desktop (dentro de um header h-20) fica enorme
+            className="h-12 md:h-16 w-auto object-contain"
           />
         </div>
 
-        {/* Lado Direito: Espaço vazio para centralizar a logo */}
-        <div className="w-12"></div>
+        {/* Lado Direito: Espaço vazio para manter o centro alinhado */}
+        <div className="w-20"></div>
       </header>
 
       {/* --- CONTEÚDO DA PÁGINA --- */}
