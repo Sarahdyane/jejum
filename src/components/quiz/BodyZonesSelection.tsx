@@ -35,27 +35,25 @@ export const BodyZonesSelection = ({
   };
 
   const getArrowPosition = (zoneId: string) => {
-    // AJUSTE FINO DE POSIÇÕES (Coordenadas mais precisas)
+    // POSIÇÕES AJUSTADAS
     const positions: Record<string, { top: string; left?: string; right?: string }> = {
-      // Braços: Subi um pouco e trouxe mais para perto do corpo
       'arms': { top: '36%', left: '15%' },
-      
-      // Peito: Subi para ficar na linha do tórax e trouxe para perto
       'chest': { top: '33%', right: '15%' },
-      
-      // Abdômen: Ajustado para o centro da barriga
       'abs': { top: '46%', right: '15%' },
       
-      // Bunda/Glúteos: Na altura do quadril
-      'butt': { top: '56%', right: '15%' },
+      // AQUI: Ajustado para 64% para apontar corretamente para os glúteos
+      'butt': { top: '64%', right: '15%' },
       
-      // Pernas: Na altura da coxa
       'legs': { top: '72%', left: '15%' },
-      
-      // Corpo Inteiro: Próximo aos pés
       'full-body': { top: '90%', right: '20%' }
     };
     return positions[zoneId] || { top: '50%', left: '50%' };
+  };
+
+  // Função auxiliar para corrigir o nome visualmente
+  const getLabelText = (text: string) => {
+    if (text === 'Bunda') return 'Glúteos';
+    return text;
   };
 
   return (
@@ -73,6 +71,7 @@ export const BodyZonesSelection = ({
           {options.map((option) => {
             const position = getArrowPosition(option.id);
             const isSelected = selectedZones.includes(option.id);
+            const labelText = getLabelText(option.text);
             
             return (
               <div
@@ -84,24 +83,26 @@ export const BodyZonesSelection = ({
                   ...(position.right ? { right: position.right } : {})
                 }}
               >
-                {/* Lógica para inverter a seta dependendo do lado (Esquerda/Direita) */}
+                {/* Lógica para inverter a direção da seta (esquerda/direita) */}
                 <div className={cn("flex items-center", position.right ? "flex-row" : "flex-row-reverse")}>
                   
-                  {/* Botão (Etiqueta) */}
+                  {/* Botão (Etiqueta Flutuante) */}
                   <div 
                     className={cn(
                       "px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg z-20",
-                      isSelected ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
+                      isSelected 
+                        ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" 
+                        : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
                     )}
                     onClick={() => handleZoneClick(option.id)}
                   >
-                    {option.text}
+                    {labelText}
                   </div>
 
                   {/* Linha da Seta */}
                   <div className={cn("w-4 sm:w-8 h-0.5 transition-colors duration-200", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
                   
-                  {/* Ponta da Seta (Triângulo) - Simplificado para um círculo pequeno para ficar mais limpo, ou mantendo a seta se preferir */}
+                  {/* Ponta da Seta (Bolinha) */}
                   <div className={cn("w-1.5 h-1.5 rounded-full", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
                   
                 </div>
@@ -115,6 +116,8 @@ export const BodyZonesSelection = ({
       <div className="grid grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4 pb-8">
         {options.map((option) => {
           const isSelected = selectedZones.includes(option.id);
+          const labelText = getLabelText(option.text);
+
           return (
             <button
               key={option.id}
@@ -126,7 +129,7 @@ export const BodyZonesSelection = ({
                   : "bg-transparent text-white border-white/10 hover:bg-white/5 hover:border-white/30"
               )}
             >
-              {option.text}
+              {labelText}
             </button>
           );
         })}
