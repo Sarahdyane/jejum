@@ -49,8 +49,7 @@ export const BodyZonesSelection = ({
   return (
     <div className="space-y-6 -mx-4">
       
-      {/* --- ÁREA DA IMAGEM COM ETIQUETAS (Desktop/Tablet) --- */}
-      {/* Mantivemos as etiquetas brancas aqui conforme seu pedido */}
+      {/* --- ÁREA DA IMAGEM COM ETIQUETAS --- */}
       <div className="flex justify-center mb-8 overflow-hidden pt-2">
         <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[60vh] sm:max-h-none overflow-visible flex items-start justify-center -mt-10">
           <img 
@@ -66,7 +65,9 @@ export const BodyZonesSelection = ({
             return (
               <div
                 key={option.id}
-                className="absolute items-center z-10 hidden md:flex" 
+                // CORREÇÃO AQUI: Removi 'hidden md:flex' e deixei apenas 'absolute flex'
+                // Isso garante que as setas apareçam no celular também
+                className="absolute flex items-center z-10" 
                 style={{
                   top: position.top,
                   ...(position.left ? { left: position.left } : {}),
@@ -79,7 +80,7 @@ export const BodyZonesSelection = ({
                   <div 
                     className={cn(
                       "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
-                      // AQUI: Mantém branco quando não selecionado, pois fica em cima da imagem
+                      // MANTIDO BRANCO (para contraste com a imagem)
                       isSelected ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
                     )}
                     onClick={() => handleZoneClick(option.id)}
@@ -94,7 +95,6 @@ export const BodyZonesSelection = ({
       </div>
       
       {/* --- LISTA DE BOTÕES INFERIOR (Mobile) --- */}
-      {/* AQUI ESTÁ A MUDANÇA: Estilo Dark Theme igual às outras perguntas */}
       <div className="grid grid-cols-2 gap-3 max-w-md mx-auto md:hidden px-4 pb-8">
         {options.map((option) => {
           const isSelected = selectedZones.includes(option.id);
@@ -105,8 +105,8 @@ export const BodyZonesSelection = ({
               className={cn(
                 "p-4 rounded-xl border-2 transition-all duration-200 text-center font-bold shadow-md text-sm",
                 isSelected 
-                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" // Selecionado (Verde)
-                  : "bg-transparent text-white border-white/10 hover:bg-white/5 hover:border-white/30" // Não Selecionado (Dark Theme)
+                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" // Selecionado
+                  : "bg-transparent text-white border-white/10 hover:bg-white/5 hover:border-white/30" // CORRIGIDO: Dark Theme (Transparente/Branco)
               )}
             >
               {option.text}
