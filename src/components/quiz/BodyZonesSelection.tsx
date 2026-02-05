@@ -51,7 +51,11 @@ export const BodyZonesSelection = ({
       
       {/* --- ÁREA DA IMAGEM COM ETIQUETAS --- */}
       <div className="flex justify-center mb-8 overflow-hidden pt-2">
-        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[60vh] sm:max-h-none overflow-visible flex items-start justify-center -mt-10">
+        {/* MUDANÇAS AQUI:
+            1. De 'max-h-[60vh]' para 'max-h-[70vh]' (Permite imagem mais alta)
+            2. De '-mt-10' para 'mt-0' (Para de cortar a cabeça)
+        */}
+        <div className="relative w-[150%] sm:w-full sm:max-w-3xl max-h-[70vh] sm:max-h-none overflow-visible flex items-start justify-center mt-0">
           <img 
             src={getBodyImage()} 
             alt="Body zones" 
@@ -65,8 +69,6 @@ export const BodyZonesSelection = ({
             return (
               <div
                 key={option.id}
-                // CORREÇÃO AQUI: Removi 'hidden md:flex' e deixei apenas 'absolute flex'
-                // Isso garante que as setas apareçam no celular também
                 className="absolute flex items-center z-10" 
                 style={{
                   top: position.top,
@@ -80,7 +82,6 @@ export const BodyZonesSelection = ({
                   <div 
                     className={cn(
                       "ml-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg",
-                      // MANTIDO BRANCO (para contraste com a imagem)
                       isSelected ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
                     )}
                     onClick={() => handleZoneClick(option.id)}
@@ -105,8 +106,8 @@ export const BodyZonesSelection = ({
               className={cn(
                 "p-4 rounded-xl border-2 transition-all duration-200 text-center font-bold shadow-md text-sm",
                 isSelected 
-                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" // Selecionado
-                  : "bg-transparent text-white border-white/10 hover:bg-white/5 hover:border-white/30" // CORRIGIDO: Dark Theme (Transparente/Branco)
+                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" 
+                  : "bg-transparent text-white border-white/10 hover:bg-white/5 hover:border-white/30"
               )}
             >
               {option.text}
