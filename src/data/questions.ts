@@ -103,17 +103,13 @@ export const questions: QuizQuestion[] = [
      {
         id: "slim",
         text: "Corpo definido e magro",
-        // Mantive o mascote masculino pois você não me passou foto de homem
         maleImage: "body-thin-female-real-new",
-        // ATUALIZADO: Usando a foto real que você escolheu
-        femaleImage: "body-thin-female-real-new", // O sistema deve adicionar o .jpg automaticamente
+        femaleImage: "body-thin-female-real-new",
       },
       {
         id: "athlete",
         text: "Corpo definido e musculoso",
-        // Mantive o mascote masculino
         maleImage: "goal-athlete-male-mascot",
-        // ATUALIZADO: Usando a foto real que você escolheu
         femaleImage: "body-average-female-real-new",
         
       }
@@ -497,33 +493,6 @@ export const questions: QuizQuestion[] = [
       { id: "love-sodas", text: "Eu amo refrigerantes", icon: "Wine" },
       { id: "love-fatty-salty", text: "Eu amo alimentos gordurosos ou salgados", icon: "Pizza" },
       { id: "none", text: "Nenhuma das afirmações se aplica", icon: "CheckCircle" }
-    ]
-  },
-  {
-    id: 24,
-    title: "Algum dos seguintes eventos nos últimos anos levou ao ganho de peso?",
-    type: "multiple",
-    options: [
-      { id: "financial-difficulties", text: "Dificuldades financeiras", icon: "DollarSign" },
-      { id: "busy-family", text: "Vida familiar ocupada", icon: "Users" },
-      { id: "slower-metabolism", text: "Metabolismo mais lento devido ao envelhecimento", icon: "TrendingDown" },
-      { id: "work-pressure", text: "Pressão no trabalho", icon: "Briefcase" },
-      { id: "divorce", text: "Divórcio ou separação", icon: "HeartCrack" },
-      { id: "covid-pandemic", text: "Pandemia de Covid-19", icon: "Bug" },
-      { id: "other-stressful", text: "Outros eventos estressantes", icon: "AlertCircle" },
-      { id: "none", text: "Nenhuma das afirmações se aplica", icon: "CheckCircle" }
-    ]
-  },
-  {
-    id: 26,
-    title: "Qual é a sua principal razão para entrar em forma?",
-    type: "single",
-    options: [
-      { id: "confident-body", text: "Eliminar a pochete e a barriga estufada", icon: "Heart" },
-      { id: "healthier", text: "Sentir-me mais saudável", icon: "Activity" },
-      { id: "more-energy", text: "Olhar no espelho e gostar do que vejo (Autoestima)", icon: "Zap" },
-      { id: "clothes-fit", text: "Trocar gordura por corpo definido", icon: "Shirt" },
-      { id: "other", text: "Outro", icon: "MessageCircle" }
     ]
   },
   {
