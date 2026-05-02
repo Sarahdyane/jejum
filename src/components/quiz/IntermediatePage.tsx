@@ -2,9 +2,10 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from "@/components/ThemeToggle";
 
-// Importando a Logo da Nutria
-import nutriaLogo from "@/assets/nutria-logo-dark.png";
+import nutriaLogoLight from "@/assets/nutria-logo.png";
+import nutriaLogoDark from "@/assets/nutria-logo-dark.png";
 
 interface IntermediatePageProps {
   title: string;
@@ -30,37 +31,33 @@ export const IntermediatePage = ({
   footerText
 }: IntermediatePageProps) => {
   return (
-    <div className="min-h-screen bg-[#050a14] flex flex-col">
-      
-      {/* --- CABEÇALHO (TAMANHO PADRÃO FIXO) --- */}
-      {/* Voltei para h-16 (mobile) e h-20 (desktop) para não ocupar muito espaço */}
-      <header className="fixed top-0 left-0 right-0 h-16 md:h-20 bg-[#050a14] z-50 flex items-center justify-between px-4 md:px-8 border-b border-white/5">
-        
+    <div className="min-h-screen bg-background flex flex-col">
+
+      {/* --- CABEÇALHO --- */}
+      <header className="fixed top-0 left-0 right-0 h-16 md:h-20 bg-background z-50 flex items-center justify-between px-4 md:px-8 border-b border-border">
+
         {/* Lado Esquerdo: Botão Voltar */}
         <div className="w-20 flex justify-start">
           {onBack && (
-            <button 
+            <button
               onClick={onBack}
-              className="p-2 -ml-2 text-white hover:text-[#01d3b4] transition-colors rounded-full hover:bg-white/5"
+              className="p-2 -ml-2 text-foreground hover:text-primary transition-colors rounded-full hover:bg-secondary/50"
             >
               <ArrowLeft className="w-6 h-6 md:w-8 md:h-8" />
             </button>
           )}
         </div>
 
-        {/* Centro: Logo Nutria (OCUPANDO O MÁXIMO DO CABEÇALHO) */}
+        {/* Centro: Logo Nutria */}
         <div className="flex-1 flex justify-center h-full items-center">
-          <img 
-            src={nutriaLogo} 
-            alt="Nutria" 
-            // h-12 no mobile (dentro de um header h-16) fica bem grande
-            // h-16 no desktop (dentro de um header h-20) fica enorme
-            className="h-12 md:h-16 w-auto object-contain"
-          />
+          <img src={nutriaLogoLight} alt="Nutria" className="h-12 md:h-16 w-auto object-contain block dark:hidden mix-blend-multiply" />
+          <img src={nutriaLogoDark} alt="Nutria" className="h-12 md:h-16 w-auto object-contain hidden dark:block" />
         </div>
 
-        {/* Lado Direito: Espaço vazio para manter o centro alinhado */}
-        <div className="w-20"></div>
+        {/* Lado Direito: Toggle de Tema */}
+        <div className="w-20 flex justify-end">
+          <ThemeToggle />
+        </div>
       </header>
 
       {/* --- CONTEÚDO DA PÁGINA --- */}
@@ -69,19 +66,19 @@ export const IntermediatePage = ({
           
           {/* Área de Texto Superior */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
+            <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3 leading-tight">
               {title}
             </h1>
             {subtitle && (
-              <p className="text-lg text-gray-300">
+              <p className="text-lg text-foreground">
                 {subtitle}
-            </p>
+              </p>
             )}
           </div>
 
           {/* Descrição Principal */}
           {description && (
-            <p className="text-gray-300 text-center mb-8 leading-relaxed">
+            <p className="text-muted-foreground text-center mb-8 leading-relaxed">
               {description}
             </p>
           )}
@@ -89,7 +86,7 @@ export const IntermediatePage = ({
           {/* Área da Imagem */}
           {image && (
             <div className="mb-8 flex justify-center">
-              <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-[#050a14]">
+              <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl ring-1 ring-border bg-secondary">
                 <img 
                   src={image} 
                   alt={title} 
@@ -107,7 +104,7 @@ export const IntermediatePage = ({
                   <div className="mt-1 w-5 h-5 rounded-full bg-[#01d3b4]/20 flex items-center justify-center shrink-0">
                     <div className="w-2 h-2 rounded-full bg-[#01d3b4]" />
                   </div>
-                  <span className="text-gray-300">{point}</span>
+                  <span className="text-foreground">{point}</span>
                 </li>
               ))}
             </ul>
@@ -115,7 +112,7 @@ export const IntermediatePage = ({
 
           {/* Rodapé de Texto */}
           {footerText && (
-            <p className="text-sm text-gray-400 text-center mb-8 italic">
+            <p className="text-sm text-muted-foreground text-center mb-8 italic">
               {footerText}
             </p>
           )}
@@ -123,7 +120,7 @@ export const IntermediatePage = ({
       </main>
 
       {/* Botão de Continuar Fixo na Base */}
-      <div className="fixed bottom-0 left-0 right-0 p-6 bg-[#050a14]/80 backdrop-blur-lg z-20 border-t border-white/5">
+      <div className="fixed bottom-0 left-0 right-0 p-6 bg-background/80 backdrop-blur-lg z-20 border-t border-border">
         <div className="max-w-md mx-auto">
           <Button
             onClick={onContinue}

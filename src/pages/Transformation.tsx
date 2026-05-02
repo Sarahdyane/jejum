@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Clock, BarChart3, Target, Trophy, ArrowLeft } from "lucide-react";
-import nutriaLogo from '@/assets/nutria-logo.png';
+import nutriaLogoLight from '@/assets/nutria-logo.png';
+import nutriaLogoDark from '@/assets/nutria-logo-dark.png';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { goToCheckout } from "@/utils/utmHelper";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Transformation = () => {
   const navigate = useNavigate();
@@ -60,23 +62,28 @@ const Transformation = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header fixo */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 py-4 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto flex items-center justify-center">
-          <img src={nutriaLogo} alt="Nutria" className="h-12 md:h-14" />
+      <div className="sticky top-0 z-50 bg-background border-b border-border py-4 px-4 md:px-6">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="w-16" />
+          <div className="flex items-center justify-center">
+            <img src={nutriaLogoLight} alt="Nutria" className="h-12 md:h-14 block dark:hidden mix-blend-multiply" />
+            <img src={nutriaLogoDark} alt="Nutria" className="h-12 md:h-14 hidden dark:block" />
+          </div>
+          <ThemeToggle />
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-16">
         {/* Hero Section */}
         <div className="text-center mb-16 md:mb-28 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 md:mb-8 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 md:mb-8 leading-tight">
             Veja como sua transformação vai acontecer
             <br />
             <span className="text-[#0d7377]">nas próximas 4 semanas</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-500 font-light">
+          <p className="text-xl md:text-2xl text-muted-foreground font-light">
             Pequenas mudanças → grandes resultados
           </p>
         </div>
@@ -97,7 +104,7 @@ const Transformation = () => {
                     className="animate-fade-in"
                     style={{ animationDelay: `${index * 0.15}s` }}
                   >
-                    <div className="bg-white rounded-3xl shadow-sm p-8 border border-gray-100 hover:shadow-xl hover:border-[#0d7377]/30 transition-all duration-500 h-full group">
+                    <div className="bg-card rounded-3xl shadow-sm p-8 border border-border hover:shadow-xl hover:border-[#0d7377]/30 transition-all duration-500 h-full group">
                       {/* Ícone minimalista */}
                       <div className="w-32 h-32 mx-auto mb-8 rounded-full border-2 border-[#0d7377]/20 bg-[#0d7377]/5 flex items-center justify-center group-hover:border-[#0d7377] group-hover:bg-[#0d7377]/10 transition-all duration-500">
                         <Icon className="w-14 h-14 text-[#0d7377]" strokeWidth={1.5} />
@@ -106,7 +113,7 @@ const Transformation = () => {
                       {/* Título */}
                       <div className="text-center mb-6">
                         <p className="text-xs font-semibold text-[#0d7377]/60 tracking-wider mb-2">SEMANA {week.week}</p>
-                        <h3 className="text-2xl font-bold text-gray-900">{week.title}</h3>
+                        <h3 className="text-2xl font-bold text-foreground">{week.title}</h3>
                       </div>
                       
                       {/* Benefícios */}
@@ -157,7 +164,7 @@ const Transformation = () => {
                         {/* Benefícios */}
                         <ul className="space-y-3">
                           {week.benefits.map((benefit, i) => (
-                            <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
+                            <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
                               <CheckCircle2 className="w-5 h-5 text-[#0d7377] flex-shrink-0 mt-0.5" strokeWidth={1.5} />
                               <span className="leading-relaxed">{benefit}</span>
                             </li>
@@ -194,7 +201,7 @@ const Transformation = () => {
         </div>
 
         {/* Disclaimer */}
-        <p className="text-center text-xs md:text-sm text-gray-500 mt-12 max-w-2xl mx-auto">
+        <p className="text-center text-xs md:text-sm text-muted-foreground mt-12 max-w-2xl mx-auto">
           Os resultados podem variar de pessoa para pessoa. O progresso mostrado é uma estimativa baseada em experiências de usuários que seguiram o plano de forma consistente.
         </p>
       </div>

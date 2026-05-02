@@ -7,52 +7,54 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  /* ── LIGHT THEME (padrão) ── */
   :root {
-    --background: 220 15% 8%;
-    --foreground: 0 0% 95%;
+    --background: 210 20% 97%;        /* gelo sofisticado #F3F6F9 */
+    --foreground: 220 25% 14%;        /* chumbo escuro #1B2135 */
 
-    --card: 220 15% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 14%;
 
-    --popover: 220 15% 10%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 14%;
 
-    --primary: 174 85% 42%;
+    --primary: 174 85% 35%;           /* verde-ciano – ligeiramente mais escuro para contraste em fundo claro */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 174 85% 52%;
+    --primary-hover: 174 85% 28%;
 
-    --secondary: 220 15% 16%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 210 20% 93%;
+    --secondary-foreground: 220 25% 20%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 65%;
+    --muted: 210 15% 94%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 174 85% 42%;
+    --accent: 174 85% 35%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84.2% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
-    --ring: 174 85% 42%;
+    --border: 220 15% 86%;
+    --input: 220 15% 91%;
+    --ring: 174 85% 35%;
 
-    --quiz-gradient: linear-gradient(135deg, hsl(174 85% 38%) 0%, hsl(174 85% 48%) 100%);
-    --option-selected: 174 85% 42%;
-    --option-hover: 174 50% 18%;
+    --quiz-gradient: linear-gradient(135deg, hsl(174 85% 32%) 0%, hsl(174 85% 42%) 100%);
+    --option-selected: 174 85% 35%;
+    --option-hover: 174 50% 92%;      /* teal muito claro no hover */
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 174 85% 42%;
+    --sidebar-background: 210 20% 95%;
+    --sidebar-foreground: 220 25% 20%;
+    --sidebar-primary: 174 85% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 16%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 174 85% 42%;
+    --sidebar-accent: 210 20% 90%;
+    --sidebar-accent-foreground: 220 25% 20%;
+    --sidebar-border: 220 15% 86%;
+    --sidebar-ring: 174 85% 35%;
   }
 
+  /* ── DARK THEME ── */
   .dark {
     --background: 220 15% 8%;
     --foreground: 220 15% 95%;
@@ -86,14 +88,15 @@ All colors MUST be HSL.
     --quiz-gradient: linear-gradient(135deg, hsl(174 85% 45%) 0%, hsl(174 85% 55%) 100%);
     --option-selected: 174 85% 45%;
     --option-hover: 174 85% 15%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 174 85% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 174 85% 45%;
   }
 }
 
@@ -104,6 +107,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .quiz-gradient {

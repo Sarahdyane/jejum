@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-// CORREÇÃO AQUI: Trocamos a imagem que faltava por uma que existe
 import commitmentHero from "@/assets/fitness-female-new.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { goToCheckout } from "@/utils/utmHelper";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Commitment = () => {
   const navigate = useNavigate();
@@ -14,7 +14,11 @@ const Commitment = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
+      {/* Header minimalista com toggle */}
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       {/* Hero Image Section */}
       <div className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
         <img
@@ -29,7 +33,7 @@ const Commitment = () => {
       <div className="max-w-3xl mx-auto px-4 py-12 md:py-16">
         <div className="text-center space-y-6">
           {/* Main Title */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
             Você realmente está pronta para entrar nessa jornada?
           </h1>
 
@@ -39,7 +43,7 @@ const Commitment = () => {
           </p>
 
           {/* Supporting Text */}
-          <div className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto space-y-3 pt-4">
+          <div className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto space-y-3 pt-4">
             <p>Você já deu o passo mais importante: decidiu mudar.</p>
             <p>Agora o Nutria vai caminhar com você.</p>
           </div>
@@ -57,7 +61,7 @@ const Commitment = () => {
             <Button
               onClick={() => navigate(-1)}
               variant="ghost"
-              className="text-gray-600 hover:text-gray-900 flex items-center gap-2"
+              className="text-muted-foreground hover:text-foreground flex items-center gap-2"
             >
               <ArrowLeft className="w-5 h-5" />
               Voltar aos resultados

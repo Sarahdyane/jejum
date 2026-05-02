@@ -1,7 +1,9 @@
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import nutriaLogo from '@/assets/nutria-logo-dark.png';
+import nutriaLogoLight from '@/assets/nutria-logo.png';
+import nutriaLogoDark from '@/assets/nutria-logo-dark.png';
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface QuizHeaderProps {
   currentQuestion: number;
@@ -35,11 +37,8 @@ export const QuizHeader = ({
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center gap-3 justify-center mb-3">
           <div className="w-14 h-14 rounded-xl overflow-hidden flex items-center justify-center">
-            <img 
-              src={nutriaLogo} 
-              alt="Nutria" 
-              className="w-12 h-12 object-contain"
-            />
+            <img src={nutriaLogoLight} alt="Nutria" className="w-12 h-12 object-contain block dark:hidden mix-blend-multiply" />
+            <img src={nutriaLogoDark} alt="Nutria" className="w-12 h-12 object-contain hidden dark:block" />
           </div>
           <span className="text-xl font-bold text-foreground">Nutria</span>
         </div>
@@ -69,10 +68,11 @@ export const QuizHeader = ({
           </button>
 
           <div className="flex-1"></div>
-          
+
           <span className="text-sm font-medium text-muted-foreground min-w-[50px] text-right">
             {currentQuestion}/{totalQuestions}
           </span>
+          <ThemeToggle />
         </div>
         
         <div className="mt-2">

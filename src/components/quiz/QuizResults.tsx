@@ -5,8 +5,10 @@ import { Check, Target, Flame, Droplet, User, Wind, MapPin, ShieldCheck, Dumbbel
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import nutriaLogo from '@/assets/nutria-logo-dark.png';
+import nutriaLogoLight from '@/assets/nutria-logo.png';
+import nutriaLogoDark from '@/assets/nutria-logo-dark.png';
 import { getImageSrc } from '@/utils/imageMapping';
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // Importando apenas as imagens que existem e funcionam (Femininas)
@@ -154,8 +156,13 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     <div className="min-h-screen bg-background">
       {/* Header fixo */}
       <div className="sticky top-0 z-50 bg-background border-b border-border py-4 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto flex items-center justify-center">
-          <img src={nutriaLogo} alt="Nutria" className="h-12 md:h-14" />
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="w-16" />
+          <div className="flex items-center justify-center">
+            <img src={nutriaLogoLight} alt="Nutria" className="h-12 md:h-14 block dark:hidden mix-blend-multiply" />
+            <img src={nutriaLogoDark} alt="Nutria" className="h-12 md:h-14 hidden dark:block" />
+          </div>
+          <ThemeToggle />
         </div>
       </div>
 
@@ -381,13 +388,13 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
           </div>
         
           <div className="w-full mb-4 mt-6">
-            <div className="bg-slate-900/50 border border-[#00E599]/30 p-3 rounded-xl flex items-center gap-4 w-full">
+            <div className="bg-secondary/50 border border-[#00E599]/30 p-3 rounded-xl flex items-center gap-4 w-full">
               <div className="bg-[#00E599]/20 p-2 rounded-full text-[#00E599] shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
               </div>
               <div className="text-left">
-                <h4 className="font-bold text-white text-sm">Nutria AI Inclusa</h4>
-                <p className="text-xs text-gray-400 leading-tight">Tire dúvidas 24h.</p>
+                <h4 className="font-bold text-foreground text-sm">Nutria AI Inclusa</h4>
+                <p className="text-xs text-muted-foreground leading-tight">Tire dúvidas 24h.</p>
               </div>
             </div>
           </div>

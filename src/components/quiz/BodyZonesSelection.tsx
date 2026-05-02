@@ -94,9 +94,9 @@ export const BodyZonesSelection = ({
                   <div 
                     className={cn(
                       "px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border-2 cursor-pointer transition-all duration-200 whitespace-nowrap shadow-lg z-20",
-                      isSelected 
-                        ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110" 
-                        : "bg-white text-black border-white hover:bg-gray-100 hover:scale-105"
+                      isSelected
+                        ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4] scale-110"
+                        : "bg-background text-foreground border-border hover:bg-secondary hover:scale-105"
                     )}
                     onClick={() => handleZoneClick(option.id)}
                   >
@@ -104,10 +104,10 @@ export const BodyZonesSelection = ({
                   </div>
 
                   {/* Linha da Seta */}
-                  <div className={cn("w-4 sm:w-8 h-0.5 transition-colors duration-200", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
-                  
+                  <div className={cn("w-4 sm:w-8 h-0.5 transition-colors duration-200", isSelected ? "bg-[#01d3b4]" : "bg-foreground/50")} />
+
                   {/* Ponta da Seta (Bolinha) */}
-                  <div className={cn("w-1.5 h-1.5 rounded-full", isSelected ? "bg-[#01d3b4]" : "bg-white")} />
+                  <div className={cn("w-1.5 h-1.5 rounded-full", isSelected ? "bg-[#01d3b4]" : "bg-foreground/50")} />
                   
                 </div>
               </div>
@@ -128,9 +128,9 @@ export const BodyZonesSelection = ({
               onClick={() => handleZoneClick(option.id)}
               className={cn(
                 "p-4 rounded-xl border-2 transition-all duration-200 text-center font-bold shadow-md text-sm",
-                isSelected 
-                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]" 
-                  : "bg-transparent text-white border-white/10 hover:bg-white/5 hover:border-white/30"
+                isSelected
+                  ? "bg-[#01d3b4] text-[#050a14] border-[#01d3b4]"
+                  : "bg-transparent text-foreground border-border hover:bg-secondary/50 hover:border-primary/30"
               )}
             >
               {labelText}

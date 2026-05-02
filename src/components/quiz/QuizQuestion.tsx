@@ -143,7 +143,7 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
       <div className="text-center mb-12">
         {(question.thematicImage || (question.requiresGender && gender && (question.maleImage || question.femaleImage))) && (
           <div className="mb-6 flex justify-center">
-            <div className="w-32 h-32 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/20">
+            <div className="w-32 h-32 rounded-2xl overflow-hidden shadow-xl ring-4 ring-border">
               <img 
                 src={question.requiresGender && gender ? 
                   (gender === 'male' && question.maleImage ? getImageSrc(question.maleImage) : 
@@ -233,8 +233,8 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                   optionImage ? "aspect-[3/5]" : "min-h-[60px]",
                   isLastOdd && "col-span-2",
                   isSelectedOption
-                    ? "border-[#01d3b4] bg-[#01d3b4]/5 shadow-[0_0_20px_rgba(1,211,180,0.2)]" 
-                    : "border-white/10 hover:border-white/30 hover:bg-white/5"
+                    ? "border-[#01d3b4] bg-[#01d3b4]/5 shadow-[0_0_20px_rgba(1,211,180,0.2)]"
+                    : "border-border hover:border-primary/40 hover:bg-secondary/50"
                 )}
               >
                 {optionImage ? (
@@ -252,13 +252,13 @@ export const QuizQuestion = ({ question, answer, onAnswer, answers }: QuizQuesti
                     
                     {/* Texto numa barra DEDICADA embaixo da imagem */}
                     <div className={cn(
-                        "p-3 text-center flex items-center justify-center min-h-[50px] bg-[#0a0f1d] border-t border-white/5",
+                        "p-3 text-center flex items-center justify-center min-h-[50px] bg-card border-t border-border",
                         isSelectedOption ? "bg-[#01d3b4]/10" : ""
                     )}>
                       <span className={cn(
                         // MUDANÇA: text-xs no mobile para evitar quebras feias
                         "font-bold text-xs md:text-sm leading-tight block w-full whitespace-normal",
-                        isSelectedOption ? "text-[#01d3b4]" : "text-white"
+                        isSelectedOption ? "text-[#01d3b4]" : "text-foreground"
                       )}>
                         {option.text}
                       </span>

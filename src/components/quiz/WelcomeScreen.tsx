@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, XCircle, Menu, ShieldCheck, Zap, ShoppingCart, Brain } from "lucide-react";
+import { ArrowRight, XCircle, ShieldCheck, Zap, ShoppingCart, Brain } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 // --- IMAGENS ---
-import panquecaMockup from "@/assets/Panqueca proteíca.png"; // Nova imagem para o Passo 3
-import cardapioMockup from "@/assets/Cardápio do dia_imagem.png"; // Imagem original para a seção de benefícios
+import panquecaMockup from "@/assets/Panqueca proteíca.png";
+import cardapioMockup from "@/assets/Cardápio do dia_imagem.png";
 import treinoMockup from "@/assets/App de treino_imagem.png";
-import nutriaLogo from "@/assets/nutria-logo-dark.png";
+import nutriaLogoLight from "@/assets/nutria-logo.png";
+import nutriaLogoDark from "@/assets/nutria-logo-dark.png";
 import step1Image from "@/assets/body-zones-female-mascot-final.png";
 
 interface WelcomeScreenProps {
@@ -52,21 +54,16 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050a14] text-white relative overflow-x-hidden font-sans">
-      
+    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden font-sans">
+
       {/* --- HEADER FIXO --- */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#050a14]/95 backdrop-blur-md border-b border-white/5 py-2 px-6 md:py-6 md:px-12 flex items-center justify-between transition-all duration-300">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border py-2 px-6 md:py-6 md:px-12 flex items-center justify-between transition-all duration-300">
          <div className="flex-shrink-0">
-            <img 
-                src={nutriaLogo} 
-                alt="Nutria Logo" 
-                className="h-12 md:h-28 w-auto object-contain drop-shadow-sm" 
-            />
+            <img src={nutriaLogoLight} alt="Nutria Logo" className="h-12 md:h-28 w-auto object-contain drop-shadow-sm block dark:hidden mix-blend-multiply" />
+            <img src={nutriaLogoDark} alt="Nutria Logo" className="h-12 md:h-28 w-auto object-contain drop-shadow-sm hidden dark:block" />
          </div>
          <div>
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 rounded-full">
-                <Menu className="w-7 h-7 md:w-10 md:h-10" />
-            </Button>
+            <ThemeToggle />
          </div>
       </header>
 
@@ -82,14 +79,14 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         >
             {/* Texto */}
             <div className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
-                <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 md:mb-8 text-white drop-shadow-sm">
+                <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 md:mb-8 text-foreground drop-shadow-sm">
                 Chega de se esforçar tanto <br className="hidden md:block"/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#01d3b4] to-teal-500">
                     e continuar com o mesmo corpo.
                 </span>
                 </motion.h1>
                 
-                <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-gray-300 leading-relaxed mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0">
+                <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-muted-foreground leading-relaxed mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0">
                 Você não vê resultados porque segue qualquer plano. Nossa IA, treinada com os melhores nutricionistas e personal trainers, <strong>entrega a estratégia que seu corpo precisa.</strong>
                 </motion.p>
 
@@ -123,36 +120,36 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </motion.div>
 
         {/* --- SEÇÃO DE DORES --- */}
-        <div className="bg-[#0a0f1d]/50 rounded-3xl p-5 md:p-16 border border-white/5 mb-24 backdrop-blur-sm max-w-5xl mx-auto">
+        <div className="bg-card/60 rounded-3xl p-5 md:p-16 border border-border mb-24 backdrop-blur-sm max-w-5xl mx-auto">
             <div className="text-center mb-8 md:mb-16 font-extrabold tracking-tight leading-tight">
-                <h2 className="text-2xl md:text-5xl text-white mb-1 md:mb-2">
+                <h2 className="text-2xl md:text-5xl text-foreground mb-1 md:mb-2">
                     Você sabe que é <span className="text-red-500">bom o suficiente.</span>
                 </h2>
-                <h2 className="text-2xl md:text-5xl text-white">
+                <h2 className="text-2xl md:text-5xl text-foreground">
                     Por que você <span className="text-red-500">trava?</span>
                 </h2>
             </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            <div className="bg-[#050a14] p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
+            <div className="bg-background p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
               <div className="shrink-0 mt-1">
                 <XCircle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
               </div>
               <div>
-                <h3 className="text-lg md:text-2xl font-bold text-white mb-2">O ciclo da "Segunda-feira"</h3>
-                <p className="text-sm md:text-lg text-gray-400 leading-relaxed">
+                <h3 className="text-lg md:text-2xl font-bold text-foreground mb-2">O ciclo da "Segunda-feira"</h3>
+                <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
                   Você sempre promete que "na segunda vai começar", mas a semana passa e nada muda.
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#050a14] p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
+            <div className="bg-background p-5 md:p-8 rounded-2xl border border-red-900/20 shadow-lg flex gap-4 md:gap-5 items-start opacity-90 hover:opacity-100 transition-all hover:border-red-500/30">
               <div className="shrink-0 mt-1">
                 <XCircle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
               </div>
               <div>
-                <h3 className="text-lg md:text-2xl font-bold text-white mb-2">Treinos e dietas perdidas</h3>
-                <p className="text-sm md:text-lg text-gray-400 leading-relaxed">
+                <h3 className="text-lg md:text-2xl font-bold text-foreground mb-2">Treinos e dietas perdidas</h3>
+                <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
                   Todo aquele esforço, suor e dinheiro investido em planos genéricos que não te levaram a lugar nenhum.
                 </p>
               </div>
@@ -185,64 +182,64 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                 {/* LADO DIREITO: LISTA DE BENEFÍCIOS */}
                 <div className="order-2 lg:order-2">
                     
-                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight">
                         A Nutria existe para <br/>
                         <span className="text-[#01d3b4]">corrigir isso.</span>
                     </h2>
-                    
-                    <p className="text-lg text-gray-400 mb-10 leading-relaxed">
+
+                    <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
                         Dentro do Nutria, a complexidade desaparece. Você foca em viver, e a nossa Inteligência Artificial cuida dos dados.
                     </p>
 
                     <div className="space-y-4">
-                        <div className="bg-[#050a14] border border-white/5 rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
+                        <div className="bg-card border border-border rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
                             <div className="absolute top-0 right-0 bg-[#01d3b4]/10 text-[#01d3b4] text-[10px] font-bold px-3 py-1 rounded-bl-xl">Impossível falhar</div>
                             <div className="flex gap-4 items-start">
                                 <div className="bg-[#01d3b4]/10 p-3 rounded-xl shrink-0 group-hover:bg-[#01d3b4]/20 transition-colors">
                                     <ShieldCheck className="w-6 h-6 text-[#01d3b4]" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white mb-1">Cardápio Anti-Falha</h3>
-                                    <p className="text-gray-400 text-sm leading-relaxed">Comeu pizza no sábado? A IA recalcula automaticamente sua semana inteira. Você não perde progresso, você adapta.</p>
+                                    <h3 className="text-lg font-bold text-foreground mb-1">Cardápio Anti-Falha</h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed">Comeu pizza no sábado? A IA recalcula automaticamente sua semana inteira. Você não perde progresso, você adapta.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-[#050a14] border border-white/5 rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
+                        <div className="bg-card border border-border rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
                             <div className="absolute top-0 right-0 bg-[#01d3b4]/10 text-[#01d3b4] text-[10px] font-bold px-3 py-1 rounded-bl-xl">Máximo resultado</div>
                             <div className="flex gap-4 items-start">
                                 <div className="bg-[#01d3b4]/10 p-3 rounded-xl shrink-0 group-hover:bg-[#01d3b4]/20 transition-colors">
                                     <Zap className="w-6 h-6 text-[#01d3b4]" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white mb-1">Treinos de Alta Eficiência</h3>
-                                    <p className="text-gray-400 text-sm leading-relaxed">Protocolos de 15-20 minutos que aceleram sua queima de gordura por até 48h depois do treino.</p>
+                                    <h3 className="text-lg font-bold text-foreground mb-1">Treinos de Alta Eficiência</h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed">Protocolos de 15-20 minutos que aceleram sua queima de gordura por até 48h depois do treino.</p>
                                 </div>
                             </div>
                         </div>
 
-                         <div className="bg-[#050a14] border border-white/5 rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
+                         <div className="bg-card border border-border rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
                             <div className="absolute top-0 right-0 bg-[#01d3b4]/10 text-[#01d3b4] text-[10px] font-bold px-3 py-1 rounded-bl-xl">Sem desperdício</div>
                             <div className="flex gap-4 items-start">
                                 <div className="bg-[#01d3b4]/10 p-3 rounded-xl shrink-0 group-hover:bg-[#01d3b4]/20 transition-colors">
                                     <ShoppingCart className="w-6 h-6 text-[#01d3b4]" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white mb-1">Lista de Compras Automática</h3>
-                                    <p className="text-gray-400 text-sm leading-relaxed">Saiba exatamente o que comprar no mercado. Economize R$847/mês eliminando compras desnecessárias.</p>
+                                    <h3 className="text-lg font-bold text-foreground mb-1">Lista de Compras Automática</h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed">Saiba exatamente o que comprar no mercado. Economize R$847/mês eliminando compras desnecessárias.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-[#050a14] border border-white/5 rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
+                        <div className="bg-card border border-border rounded-2xl p-5 hover:border-[#01d3b4]/30 transition-all group relative overflow-hidden">
                             <div className="absolute top-0 right-0 bg-[#01d3b4]/10 text-[#01d3b4] text-[10px] font-bold px-3 py-1 rounded-bl-xl">Prazer + resultado</div>
                             <div className="flex gap-4 items-start">
                                 <div className="bg-[#01d3b4]/10 p-3 rounded-xl shrink-0 group-hover:bg-[#01d3b4]/20 transition-colors">
                                     <Brain className="w-6 h-6 text-[#01d3b4]" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white mb-1">Memória Alimentar Inteligente</h3>
-                                    <p className="text-gray-400 text-sm leading-relaxed">A IA aprende seus gostos e recria versões saudáveis dos pratos que você ama. Não é sacrifício, é evolução.</p>
+                                    <h3 className="text-lg font-bold text-foreground mb-1">Memória Alimentar Inteligente</h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed">A IA aprende seus gostos e recria versões saudáveis dos pratos que você ama. Não é sacrifício, é evolução.</p>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +249,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                     <div className="mt-10 hidden lg:block">
                         <Button
                             onClick={onStart}
-                            className="bg-white text-[#050a14] hover:bg-gray-100 font-extrabold text-lg py-6 px-10 rounded-xl shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
+                            className="bg-foreground text-background hover:bg-foreground/90 font-extrabold text-lg py-6 px-10 rounded-xl shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
                         >
                             QUERO MEU GPS AGORA
                             <ArrowRight className="w-5 h-5" />
@@ -266,10 +263,10 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         {/* --- PASSO A PASSO (CARD ESTILO NIKE) --- */}
         <div className="max-w-7xl mx-auto mb-24 px-4">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-white tracking-tight">
+                <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-foreground tracking-tight">
                     Sua jornada, <span className="text-[#01d3b4]">simplificada.</span>
                 </h2>
-                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                     Esqueça planilhas complexas. A tecnologia Nutria faz o trabalho pesado para você só se preocupar em viver.
                 </p>
             </div>
@@ -282,7 +279,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2, duration: 0.6 }}
-                    className="group relative bg-[#0a0f1d] rounded-[2.5rem] border border-white/10 overflow-hidden hover:border-[#01d3b4]/50 transition-all duration-500 hover:-translate-y-3 shadow-2xl flex flex-col"
+                    className="group relative bg-card rounded-[2.5rem] border border-border overflow-hidden hover:border-[#01d3b4]/50 transition-all duration-500 hover:-translate-y-3 shadow-2xl flex flex-col"
                 >
                     
                     {/* --- METADE SUPERIOR: IMAGEM --- */}
@@ -296,8 +293,8 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                             className="w-full h-full object-cover object-top relative z-10 transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
                         />
                         
-                        {/* Gradiente para fundir a imagem com o texto embaixo */}
-                        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0f1d] via-[#0a0f1d]/80 to-transparent z-20"></div>
+                        {/* Gradiente para fundir a imagem com o fundo do card */}
+                        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-card via-card/80 to-transparent z-20"></div>
                     </div>
 
                     {/* --- METADE INFERIOR: CONTEÚDO --- */}
@@ -307,10 +304,10 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
                             <span className="text-xs font-bold text-[#01d3b4] tracking-widest">{item.step}</span>
                         </div>
                         
-                        <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 leading-tight group-hover:text-[#01d3b4] transition-colors">
+                        <h3 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 leading-tight group-hover:text-[#01d3b4] transition-colors">
                             {item.title}
                         </h3>
-                        <p className="text-base text-gray-400 leading-relaxed">
+                        <p className="text-base text-muted-foreground leading-relaxed">
                             {item.text}
                         </p>
 
@@ -327,7 +324,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
       </main>
 
       {/* --- CTA FLUTUANTE (Mobile Only) --- */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#050a14]/90 backdrop-blur-xl border-t border-white/10 z-50 lg:hidden">
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/90 backdrop-blur-xl border-t border-border z-50 lg:hidden">
         <div className="max-w-md mx-auto">
           <Button
             onClick={onStart}
@@ -336,7 +333,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
             INICIAR ANÁLISE GRÁTIS
             <ArrowRight className="w-5 h-5" />
           </Button>
-          <p className="text-[10px] text-center text-gray-500 mt-3 flex justify-center items-center gap-1">
+          <p className="text-[10px] text-center text-muted-foreground mt-3 flex justify-center items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-[#01d3b4] animate-pulse"></span>
             Sistema Online
           </p>
