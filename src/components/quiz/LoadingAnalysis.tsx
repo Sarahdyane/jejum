@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Progress } from '@/components/ui/progress';
-import nutriaLogo from '@/assets/nutria-logo-dark.png';
+import { Check, Brain, Dumbbell, Utensils, Sparkles } from 'lucide-react';
+import nutriaLogoLight from '@/assets/nutria-logo.png';
+import nutriaLogoDark from '@/assets/nutria-logo-dark.png';
 
 interface LoadingAnalysisProps {
   onComplete: () => void;
 }
 
 const analysisSteps = [
-  { text: 'Os parâmetros corporais são analisados...', duration: 2000 },
-  { text: 'Refeições e atividades...', duration: 2000 },
-  { text: 'Estilo de vida e hábitos...', duration: 2000 },
-  { text: 'Seu plano de ação está sendo criado...', duration: 2000 }
+  { text: 'Analisando seus parâmetros corporais', icon: Brain, duration: 2200 },
+  { text: 'Calculando plano alimentar ideal', icon: Utensils, duration: 2200 },
+  { text: 'Ajustando rotina de exercícios', icon: Dumbbell, duration: 2200 },
+  { text: 'Finalizando seu plano personalizado', icon: Sparkles, duration: 2200 },
 ];
 
 export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [progress, setProgress] = useState<number[]>([0, 0, 0, 0]);
+  const [stepProgress, setStepProgress] = useState(0);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -23,25 +24,26 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
 
   useEffect(() => {
     if (currentStep >= analysisSteps.length) {
-      const timer = setTimeout(onComplete, 500);
-      return () => clearTimeout(timer);
+      const t = setTimeout(onComplete, 400);
+      return () => clearTimeout(t);
     }
 
-    // Animate current step progress
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        const newProgress = [...prev];
-        if (newProgress[currentStep] < 100) {
-          newProgress[currentStep] = Math.min(100, newProgress[currentStep] + 2);
-        }
-        return newProgress;
-      });
-    }, analysisSteps[currentStep].duration / 50);
+    setStepProgress(0);
 
-    // Move to next step when current completes
+    const duration = analysisSteps[currentStep].duration;
+    const tickMs = 30;
+    const increment = (tickMs / duration) * 100;
+
+    const interval = setInterval(() => {
+      setStepProgress(p => {
+        const next = p + increment;
+        return next >= 100 ? 100 : next;
+      });
+    }, tickMs);
+
     const stepTimer = setTimeout(() => {
-      setCurrentStep(prev => prev + 1);
-    }, analysisSteps[currentStep].duration);
+      setCurrentStep(s => s + 1);
+    }, duration);
 
     return () => {
       clearInterval(interval);
@@ -49,59 +51,156 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
     };
   }, [currentStep, onComplete]);
 
+  const totalProgress = Math.min(
+    ((currentStep + stepProgress / 100) / analysisSteps.length) * 100,
+    100
+  );
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-background">
-      <div className="w-full max-w-md space-y-12 animate-fade-in">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-background relative overflow-hidden">
+
+      {/* Background glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/6 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-primary/4 rounded-full blur-2xl" />
+      </div>
+
+      <div className="w-full max-w-sm space-y-10 relative z-10">
+
         {/* Logo */}
         <div className="flex justify-center">
-          <img 
-            src={nutriaLogo} 
-            alt="Nutria" 
-            className="h-12 w-auto"
-          />
+          <img src={nutriaLogoLight} alt="Nutria" className="h-10 w-auto block dark:hidden mix-blend-multiply" />
+          <img src={nutriaLogoDark}  alt="Nutria" className="h-10 w-auto hidden dark:block" />
+        </div>
+
+        {/* Animated orb */}
+        <div className="flex justify-center">
+          <div className="relative w-32 h-32">
+            {/* Outer spinning ring */}
+            <div
+              className="absolute inset-0 rounded-full spin-slow"
+              style={{
+                background: 'conic-gradient(from 0deg, hsl(var(--primary) / 0) 0%, hsl(var(--primary) / 0.6) 50%, hsl(var(--primary) / 0) 100%)',
+                padding: '2px',
+              }}
+            >
+              <div className="w-full h-full rounded-full bg-background" />
+            </div>
+
+            {/* Middle dashed ring */}
+            <div
+              className="absolute inset-4 rounded-full border border-dashed border-primary/40 spin-reverse"
+            />
+
+            {/* Center orb */}
+            <div className="absolute inset-7 rounded-full bg-gradient-to-br from-primary to-emerald-400 float-anim flex items-center justify-center shadow-xl shadow-primary/30">
+              <Brain className="w-7 h-7 text-white" />
+            </div>
+
+            {/* Orbiting dots */}
+            {[0, 120, 240].map((deg, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 rounded-full bg-primary shadow-sm shadow-primary/50 spin-slow"
+                style={{
+                  top: '50%',
+                  left: '50%',
+                  transformOrigin: '0 0',
+                  transform: `rotate(${deg}deg) translate(56px) translate(-50%, -50%)`,
+                  animationDuration: `${3 + i * 0.4}s`,
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Title */}
-        <div className="text-center space-y-2">
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-            Suas respostas estão sendo<br />analisadas...
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-black text-foreground">
+            Criando seu plano com IA
           </h1>
-        </div>
-
-        {/* Progress Bars */}
-        <div className="space-y-6">
-          {analysisSteps.map((step, index) => (
-            <div key={index} className="space-y-2">
-              <p className={`text-base transition-colors duration-300 ${
-                index < currentStep 
-                  ? 'text-foreground font-medium' 
-                  : index === currentStep
-                  ? 'text-foreground font-medium'
-                  : 'text-muted-foreground'
-              }`}>
-                {step.text}
-              </p>
-              <Progress 
-                value={progress[index]} 
-                className="h-2 bg-secondary"
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom text */}
-        <div className="text-center space-y-4 pt-8">
-          <div className="flex items-center justify-center gap-2">
-            <span className="text-xl">🌿</span>
-            <p className="text-sm text-muted-foreground">
-              O assistente de perda de peso <span className="font-semibold text-foreground">mais eficaz</span>
-            </p>
-            <span className="text-xl">🌿</span>
-          </div>
-          <p className="text-xs text-muted-foreground">
-            Avaliações honestas da marca
+          <p className="text-sm text-muted-foreground">
+            Baseado em {analysisSteps.length * 10}+ parâmetros do seu perfil
           </p>
         </div>
+
+        {/* Overall progress */}
+        <div className="space-y-1.5">
+          <div className="flex justify-between text-xs text-muted-foreground font-medium">
+            <span>Processando...</span>
+            <span className="text-primary font-bold">{Math.round(totalProgress)}%</span>
+          </div>
+          <div className="h-2 bg-secondary rounded-full overflow-hidden">
+            <div
+              className="h-full rounded-full progress-gradient-bar transition-all duration-300"
+              style={{ width: `${totalProgress}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Steps */}
+        <div className="space-y-3">
+          {analysisSteps.map((step, index) => {
+            const isDone   = index < currentStep;
+            const isActive = index === currentStep;
+            const StepIcon = step.icon;
+
+            return (
+              <div
+                key={index}
+                className={`flex items-center gap-3 transition-all duration-500 ${
+                  isDone || isActive ? 'opacity-100' : 'opacity-30'
+                }`}
+              >
+                {/* Icon / check */}
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-400 ${
+                    isDone
+                      ? 'bg-primary'
+                      : isActive
+                      ? 'bg-primary/15 border border-primary'
+                      : 'bg-secondary border border-border'
+                  }`}
+                >
+                  {isDone ? (
+                    <Check className="w-4 h-4 text-white step-check-pop" />
+                  ) : isActive ? (
+                    <StepIcon className="w-4 h-4 text-primary animate-pulse" />
+                  ) : (
+                    <StepIcon className="w-4 h-4 text-muted-foreground" />
+                  )}
+                </div>
+
+                {/* Text + mini progress */}
+                <div className="flex-1 min-w-0">
+                  <p className={`text-sm font-semibold leading-tight ${
+                    isDone || isActive ? 'text-foreground' : 'text-muted-foreground'
+                  }`}>
+                    {step.text}
+                  </p>
+                  {isActive && (
+                    <div className="mt-1 h-1 bg-secondary rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-primary/70 rounded-full transition-all duration-75"
+                        style={{ width: `${stepProgress}%` }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {isDone && (
+                  <span className="text-[10px] font-bold text-primary">OK</span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        <p className="text-center text-xs text-muted-foreground">
+          O assistente de saúde{' '}
+          <span className="font-semibold text-foreground">mais eficaz do Brasil</span>
+        </p>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ import { AgeSelectionPage } from '@/components/quiz/AgeSelectionPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 // --- IMPORTAÇÃO DA NOVA IMAGEM ---
-import modeloFinalImage from "@/assets/modelo_final.png"; 
+import modeloFinalImage from "@/assets/modelofinal_semfundo.png";
 
 export const Quiz = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
@@ -318,7 +318,7 @@ export const Quiz = () => {
       />
       
       <main className="pt-36 pb-20 px-4">
-        <div className="container mx-auto py-8">
+        <div key={quizState.currentQuestion} className="container mx-auto py-8 question-enter">
           <QuizQuestion
             question={currentQuestion}
             answer={quizState.answers[currentQuestion.id]}

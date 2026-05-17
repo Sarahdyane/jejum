@@ -103,15 +103,14 @@ export const questions: QuizQuestion[] = [
      {
         id: "slim",
         text: "Corpo definido e magro",
-        maleImage: "body-thin-female-real-new",
-        femaleImage: "body-thin-female-real-new",
+        maleImage: "goal-slim-female-real",
+        femaleImage: "goal-slim-female-real",
       },
       {
         id: "athlete",
         text: "Corpo definido e musculoso",
-        maleImage: "goal-athlete-male-mascot",
-        femaleImage: "body-average-female-real-new",
-        
+        maleImage: "goal-athlete-female-real",
+        femaleImage: "goal-athlete-female-real",
       }
     ]
   },
@@ -509,7 +508,7 @@ export const questions: QuizQuestion[] = [
     subtitle: "Para oferecer planos personalizados e recursos do aplicativo, precisamos do seu consentimento para processar seus dados de saúde.",
     type: "intermediate",
     requiresGender: true,
-    femaleImage: "healthy-lifestyle",
+    femaleImage: "modelo-final-sem-fundo",
     maleImage: "healthy-lifestyle-male"
   },
   {

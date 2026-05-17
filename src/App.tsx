@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Transformation from "./pages/Transformation";
 import Commitment from "./pages/Commitment";
+import ResultsPreview from "./pages/ResultsPreview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/quiz" element={<Index />} />
           <Route path="/transformation" element={<Transformation />} />
           <Route path="/commitment" element={<Commitment />} />
+          <Route path="/results-preview" element={<ResultsPreview />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

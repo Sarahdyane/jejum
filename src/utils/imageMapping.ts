@@ -26,7 +26,7 @@ import bodyThinFemaleRealNew from '@/assets/body-thin-female-real-new.jpg';
 import bodyAverageFemaleResults from '@/assets/body-average-female-results.png';
 import bodyFullerFemaleResults from '@/assets/body-fuller-female-results.png';
 import bodyGoalFemaleResults from '@/assets/body-goal-female-results.png';
-import bodyZonesFemaleMascotFinal from '@/assets/body-zones-female-mascot-final.png';
+import bodyZonesFemaleMascotFinal from '@/assets/body-zones-female-mascot-no-bg.png';
 import bodyZonesFemaleMascotNew from '@/assets/body-zones-female-mascot-new.png';
 import bodyZonesFemaleNew from '@/assets/body-zones-female-new.png';
 
@@ -34,11 +34,12 @@ import bodyZonesFemaleNew from '@/assets/body-zones-female-new.png';
 import fitnessDevicesHero from '@/assets/fitness-devices-hero.png';
 import fitnessFemaleNew from '@/assets/fitness-female-new.png';
 import fitnessWomanDumbbell from '@/assets/fitness-woman-dumbbell.png';
-import goalAthleteFemaleReal from '@/assets/goal-athlete-female-real.jpg';
-import goalSlimFemaleReal from '@/assets/goal-slim-female-real.jpg';
+import goalAthleteFemaleReal from '@/modelo_musculosa_definida.jpeg';
+import goalSlimFemaleReal from '@/modelo_magra_definida.jpeg';
 import lipedemaInfo from '@/assets/lipedema-info.png';
 import motivationChangeHabitsNew from '@/assets/motivation-change-habits-new.png';
 
+import modeloFinalSemFundo from '@/assets/modelofinal_semfundo.png';
 import nutriaLogoDark from '@/assets/nutria-logo-dark.png';
 import nutriaLogo from '@/assets/nutria-logo.png';
 import nutritionInfoFemale from '@/assets/nutrition-info-female.png';
@@ -112,6 +113,8 @@ export const imageMap: Record<string, string> = {
   // Usando a imagem segura para os motivacionais que faltam para não quebrar
   'motivation-incredible': safeImage, 
   'motivation-incredible-new': safeImage,
+
+  'modelo-final-sem-fundo': modeloFinalSemFundo,
 
   'nutria-logo': nutriaLogo,
   'nutria-logo-dark': nutriaLogoDark,

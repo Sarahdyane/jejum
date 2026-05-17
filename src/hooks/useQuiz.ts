@@ -127,6 +127,11 @@ export const useQuiz = (questions: QuizQuestion[]) => {
       currentWeight: answers[28] as number || 0,
       targetWeight: answers[29] as number || 0,
       userAge: answers[30] as number || 0,
+      eventType: answers[31] as string || '',
+      eventDate: answers[32] as string || '',
+      sportsInterest: answers[36] as string[] || [],
+      workoutLocation: answers[38] as string[] || [],
+      workoutDuration: answers[39] as string || '',
     };
   }, [quizState.answers]);
 

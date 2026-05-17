@@ -103,4 +103,9 @@ export interface UserProfile {
   currentWeight: number;
   targetWeight: number;
   userAge: number;
+  eventType?: string;
+  eventDate?: string;
+  sportsInterest?: string[];
+  workoutLocation?: string[];
+  workoutDuration?: string;
 }
