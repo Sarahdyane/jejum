@@ -19,6 +19,7 @@ import SupplementsPage from '@/components/quiz/SupplementsPage';
 import { NutritionExercisePage } from '@/components/quiz/NutritionExercisePage';
 import { SocialProofPage } from '@/components/quiz/SocialProofPage';
 import { AgeSelectionPage } from '@/components/quiz/AgeSelectionPage';
+import { ProgressMockupPage } from '@/components/quiz/ProgressMockupPage';
 import { getImageSrc } from '@/utils/imageMapping';
 
 // --- IMPORTAÇÃO DA NOVA IMAGEM ---
@@ -250,6 +251,18 @@ export const Quiz = () => {
 
   // Handle GENERIC intermediate pages
   if (currentQuestion.type === 'intermediate') {
+
+    // Special handling: elegant app progress mockup
+    if (currentQuestion.id === 'motivation-change-habits') {
+      return (
+        <ProgressMockupPage
+          title={currentQuestion.title}
+          subtitle={currentQuestion.subtitle}
+          onContinue={nextQuestion}
+          onBack={prevQuestion}
+        />
+      );
+    }
 
     // Special handling for the nutrition/exercise page
     if (currentQuestion.id === 'intermediate-2') {

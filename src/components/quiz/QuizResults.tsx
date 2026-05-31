@@ -307,16 +307,17 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         ══════════════════════════════════════ */}
         <FadeUp>
           <div className="relative overflow-hidden rounded-3xl" style={{
-            background: 'linear-gradient(135deg, #0a2218 0%, #0f3d2c 45%, #0a2a1e 100%)'
+            background: 'linear-gradient(145deg, #111520 0%, #181d2e 60%, #131825 100%)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            boxShadow: '0 24px 56px rgba(0,0,0,0.35)',
           }}>
-            {/* Tech grid overlay */}
-            <div className="absolute inset-0 opacity-20" style={{
-              backgroundImage: 'linear-gradient(hsl(174 85% 50% / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(174 85% 50% / 0.3) 1px, transparent 1px)',
-              backgroundSize: '32px 32px',
+            {/* Top accent line */}
+            <div className="absolute top-0 left-0 right-0 h-px" style={{
+              background: 'linear-gradient(90deg, transparent 0%, hsl(174 85% 45%) 40%, hsl(174 85% 45%) 60%, transparent 100%)',
             }} />
-            {/* Glow orbs */}
-            <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl pointer-events-none" style={{ background: 'hsl(174 85% 35% / 0.25)' }} />
-            <div className="absolute -bottom-16 -left-16 w-52 h-52 rounded-full blur-3xl pointer-events-none" style={{ background: 'hsl(174 85% 35% / 0.15)' }} />
+            {/* Subtle glow orbs — no grid */}
+            <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl pointer-events-none" style={{ background: 'hsl(174 85% 40% / 0.10)' }} />
+            <div className="absolute -bottom-20 -left-20 w-56 h-56 rounded-full blur-3xl pointer-events-none" style={{ background: 'hsl(174 85% 40% / 0.06)' }} />
 
             <div className="relative z-10 p-6 md:p-10">
               {/* Badge */}
@@ -469,32 +470,39 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         ══════════════════════════════════════ */}
         {daysToEvent !== null && profile.eventType && profile.eventType !== 'none' && (
           <FadeUp delay={80}>
-            <div className="relative overflow-hidden rounded-3xl border" style={{
-              background: 'linear-gradient(135deg, #1a0a30 0%, #2d1060 100%)',
-              borderColor: '#7c3aed40',
+            <div className="relative overflow-hidden rounded-3xl" style={{
+              background: 'linear-gradient(145deg, #191208 0%, #231a08 60%, #1a1306 100%)',
+              border: '1px solid rgba(245,158,11,0.18)',
+              boxShadow: '0 16px 40px rgba(0,0,0,0.3)',
             }}>
-              <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full blur-3xl" style={{ background: '#7c3aed25' }} />
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-px" style={{
+                background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.7), transparent)',
+              }} />
+              <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full blur-3xl pointer-events-none" style={{ background: 'rgba(245,158,11,0.08)' }} />
               <div className="relative z-10 p-6 md:p-8 flex flex-col sm:flex-row items-center gap-6">
                 <div className="text-center sm:text-left flex-1">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3"
-                    style={{ background: '#7c3aed25', border: '1px solid #7c3aed50', color: '#c4b5fd' }}>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4"
+                    style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.25)', color: '#fbbf24' }}>
                     <CalendarDays className="w-3 h-3" />
                     {eventLabels[profile.eventType] || 'Evento especial'}
                   </div>
-                  <h3 className="text-2xl font-black text-white mb-1">
-                    Você tem <span style={{ color: '#c4b5fd' }}>{daysToEvent} dias</span> para chegar lá.
+                  <h3 className="text-2xl font-black text-white mb-2">
+                    Você tem{' '}
+                    <span style={{ color: '#fbbf24' }}>{daysToEvent} dias</span>{' '}
+                    para chegar lá.
                   </h3>
-                  <p className="text-white/50 text-sm">
+                  <p className="text-white/40 text-sm leading-relaxed">
                     Seu plano foi calculado para atingir a meta a tempo.
                     {profile.targetWeight > 0 && ` Meta: ${profile.targetWeight}kg.`}
                   </p>
                 </div>
-                <div className="flex-shrink-0 text-center">
-                  <div className="relative w-24 h-24 rounded-full flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', boxShadow: '0 8px 32px #7c3aed60' }}>
+                <div className="flex-shrink-0">
+                  <div className="w-24 h-24 rounded-2xl flex items-center justify-center"
+                    style={{ background: 'rgba(245,158,11,0.12)', border: '1.5px solid rgba(245,158,11,0.3)' }}>
                     <div className="text-center">
-                      <p className="text-3xl font-black text-white leading-none">{daysToEvent}</p>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-white/70">dias</p>
+                      <p className="text-4xl font-black leading-none" style={{ color: '#fbbf24' }}>{daysToEvent}</p>
+                      <p className="text-[9px] font-bold uppercase tracking-widest mt-0.5" style={{ color: 'rgba(251,191,36,0.5)' }}>dias</p>
                     </div>
                   </div>
                 </div>
@@ -522,40 +530,49 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                 Baseado nos alimentos que você gosta — receitas práticas, saudáveis e deliciosas.
               </p>
 
-              <div className="grid grid-cols-2 gap-3">
-                {recipePreview.map((recipe, i) => (
-                  <div key={i} className="rounded-2xl border border-border bg-card overflow-hidden group cursor-pointer">
-                    {/* Image */}
-                    <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-                      <img src={recipe.img} alt={recipe.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                      <div className="absolute top-2 left-2">
-                        <span className="text-[10px] font-bold px-2 py-1 rounded-full text-white backdrop-blur-sm"
-                          style={{ background: 'hsl(174 85% 35% / 0.9)' }}>
-                          {recipe.tag}
-                        </span>
-                      </div>
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-white text-foreground shadow">
-                          <Lock className="w-3 h-3" /> Ver receita
+              {(() => {
+                const recipeImgCycle = [imgHealthyMeal, imgPanqueca, imgEveningMeal, imgCardapio];
+                return (
+                  <div className="grid grid-cols-2 gap-3">
+                    {recipePreview.map((recipe, i) => (
+                      <div key={i} className="rounded-2xl border border-border bg-card overflow-hidden group cursor-pointer">
+                        {/* Image — sempre diferente por índice */}
+                        <div className="relative overflow-hidden" style={{ aspectRatio: '1/1' }}>
+                          <img
+                            src={recipeImgCycle[i % recipeImgCycle.length]}
+                            alt="Receita"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          {/* Gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                          {/* Tag */}
+                          <div className="absolute top-2 left-2">
+                            <span className="text-[10px] font-bold px-2 py-1 rounded-full text-white backdrop-blur-sm"
+                              style={{ background: 'hsl(174 85% 35% / 0.88)' }}>
+                              {recipe.tag}
+                            </span>
+                          </div>
+                          {/* Lock hover */}
+                          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-white/90 text-foreground shadow-lg backdrop-blur-sm">
+                              <Lock className="w-3 h-3" /> Ver receita
+                            </div>
+                          </div>
+                          {/* Stats at bottom of image */}
+                          <div className="absolute bottom-2 left-2 right-2 flex gap-2 text-[10px] font-semibold">
+                            <span className="flex items-center gap-0.5 text-orange-300 drop-shadow">
+                              <Flame className="w-2.5 h-2.5" />{recipe.kcal} kcal
+                            </span>
+                            <span className="flex items-center gap-0.5 text-emerald-300 drop-shadow">
+                              <TrendingUp className="w-2.5 h-2.5" />{recipe.protein}g prot
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    {/* Content */}
-                    <div className="p-3">
-                      <p className="font-bold text-foreground text-xs leading-tight mb-2 line-clamp-2">{recipe.name}</p>
-                      <div className="flex gap-2.5 text-[10px] font-semibold flex-wrap">
-                        <span className="flex items-center gap-0.5 text-orange-500">
-                          <Flame className="w-2.5 h-2.5" />{recipe.kcal} kcal
-                        </span>
-                        <span className="flex items-center gap-0.5 text-primary">
-                          <TrendingUp className="w-2.5 h-2.5" />{recipe.protein}g prot
-                        </span>
-                        <span className="text-muted-foreground">{recipe.carbs}g carb</span>
-                      </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                );
+              })()}
 
               <div className="mt-4 flex items-center justify-center gap-2 p-3 rounded-2xl border border-dashed border-primary/30 text-center"
                 style={{ background: 'hsl(174 85% 35% / 0.04)' }}>

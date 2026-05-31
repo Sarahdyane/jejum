@@ -85,7 +85,7 @@ export const questions: QuizQuestion[] = [
   {
     id: "personalized-plan",
     title: "Troque gordura por curvas reais com um protocolo feito para você",
-    subtitle: "Não precisa gastar dinheiro com treinadores caros. Vamos detalhar tudo e **adaptar o plano ao seu objetivo**.",
+    subtitle: "Não precisa gastar dinheiro com treinadores caros. Vamos detalhar tudo e adaptar o plano ao seu objetivo.",
     type: "intermediate",
     image: "fitness-woman-dumbbell"
   },
@@ -191,7 +191,7 @@ export const questions: QuizQuestion[] = [
   {
     id: 'nutrition-plan',
     title: 'A primeira dieta que se adapta à sua geladeira',
-    subtitle: 'Esqueça ingredientes caros e difíceis. Ative o **Modo Chef** e receba receitas deliciosas de 15 minutos usando apenas o que você já tem em casa.',
+    subtitle: 'Esqueça ingredientes caros e difíceis. Ative o Modo Chef e receba receitas deliciosas de 15 minutos usando apenas o que você já tem em casa.',
     type: 'intermediate',
     image: 'app-meals-mockup'
   },

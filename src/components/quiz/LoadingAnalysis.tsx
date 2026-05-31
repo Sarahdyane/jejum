@@ -117,7 +117,7 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
         {/* Title */}
         <div className="text-center space-y-1">
           <h1 className="text-2xl font-black text-foreground">
-            Criando seu plano com IA
+            Montando seu protocolo exclusivo
           </h1>
           <p className="text-sm text-muted-foreground">
             Baseado em {analysisSteps.length * 10}+ parâmetros do seu perfil
