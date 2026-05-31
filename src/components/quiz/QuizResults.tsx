@@ -531,40 +531,63 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </p>
 
               {(() => {
-                const recipeImgCycle = [imgHealthyMeal, imgPanqueca, imgEveningMeal, imgCardapio];
+                // 3 fotos reais e diferentes — sem screenshots de app
+                const foodImgs = [imgPanqueca, imgHealthyMeal, imgEveningMeal];
+                const defaultMeta = [
+                  { kcal: 320, protein: 28, tag: 'Café da manhã' },
+                  { kcal: 390, protein: 36, tag: 'Almoço fit' },
+                  { kcal: 260, protein: 22, tag: 'Jantar leve' },
+                ];
+                const slots = foodImgs.map((img, i) => ({
+                  img,
+                  kcal: recipePreview[i]?.kcal ?? defaultMeta[i].kcal,
+                  protein: recipePreview[i]?.protein ?? defaultMeta[i].protein,
+                  tag: recipePreview[i]?.tag ?? defaultMeta[i].tag,
+                }));
+
                 return (
                   <div className="grid grid-cols-2 gap-3">
-                    {recipePreview.map((recipe, i) => (
-                      <div key={i} className="rounded-2xl border border-border bg-card overflow-hidden group cursor-pointer">
-                        {/* Image — sempre diferente por índice */}
-                        <div className="relative overflow-hidden" style={{ aspectRatio: '1/1' }}>
+                    {slots.map((item, i) => (
+                      <div
+                        key={i}
+                        className={`rounded-2xl overflow-hidden group cursor-pointer border border-border/40 shadow-sm${i === 2 ? ' col-span-2' : ''}`}
+                      >
+                        <div
+                          className="relative overflow-hidden"
+                          style={{ aspectRatio: i === 2 ? '21/9' : '1/1' }}
+                        >
                           <img
-                            src={recipeImgCycle[i % recipeImgCycle.length]}
+                            src={item.img}
                             alt="Receita"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
-                          {/* Gradient overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                          {/* Gradient from bottom */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
+
                           {/* Tag */}
-                          <div className="absolute top-2 left-2">
-                            <span className="text-[10px] font-bold px-2 py-1 rounded-full text-white backdrop-blur-sm"
-                              style={{ background: 'hsl(174 85% 35% / 0.88)' }}>
-                              {recipe.tag}
+                          <div className="absolute top-2.5 left-2.5">
+                            <span
+                              className="text-[10px] font-bold px-2.5 py-1 rounded-full text-white backdrop-blur-sm"
+                              style={{ background: 'hsl(174 85% 35% / 0.88)' }}
+                            >
+                              {item.tag}
                             </span>
                           </div>
-                          {/* Lock hover */}
+
+                          {/* Hover lock overlay */}
                           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-white/90 text-foreground shadow-lg backdrop-blur-sm">
                               <Lock className="w-3 h-3" /> Ver receita
                             </div>
                           </div>
-                          {/* Stats at bottom of image */}
-                          <div className="absolute bottom-2 left-2 right-2 flex gap-2 text-[10px] font-semibold">
-                            <span className="flex items-center gap-0.5 text-orange-300 drop-shadow">
-                              <Flame className="w-2.5 h-2.5" />{recipe.kcal} kcal
+
+                          {/* Stats overlaid at bottom */}
+                          <div className="absolute bottom-3 left-3 right-3 flex items-center gap-3">
+                            <span className="flex items-center gap-1 text-[10px] font-bold text-orange-300 drop-shadow-md">
+                              <Flame className="w-3 h-3" />{item.kcal} kcal
                             </span>
-                            <span className="flex items-center gap-0.5 text-emerald-300 drop-shadow">
-                              <TrendingUp className="w-2.5 h-2.5" />{recipe.protein}g prot
+                            <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-300 drop-shadow-md">
+                              <TrendingUp className="w-3 h-3" />{item.protein}g prot
                             </span>
                           </div>
                         </div>
