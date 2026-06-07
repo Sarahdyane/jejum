@@ -73,44 +73,11 @@ export const LoadingAnalysis = ({ onComplete }: LoadingAnalysisProps) => {
           <img src={nutriaLogoDark}  alt="Nutria" className="h-10 w-auto hidden dark:block" />
         </div>
 
-        {/* Animated orb */}
+        {/* Spinner Nutria AI */}
         <div className="flex justify-center">
-          <div className="relative w-32 h-32">
-            {/* Outer spinning ring */}
-            <div
-              className="absolute inset-0 rounded-full spin-slow"
-              style={{
-                background: 'conic-gradient(from 0deg, hsl(var(--primary) / 0) 0%, hsl(var(--primary) / 0.6) 50%, hsl(var(--primary) / 0) 100%)',
-                padding: '2px',
-              }}
-            >
-              <div className="w-full h-full rounded-full bg-background" />
-            </div>
-
-            {/* Middle dashed ring */}
-            <div
-              className="absolute inset-4 rounded-full border border-dashed border-primary/40 spin-reverse"
-            />
-
-            {/* Center orb */}
-            <div className="absolute inset-7 rounded-full bg-gradient-to-br from-primary to-emerald-400 float-anim flex items-center justify-center shadow-xl shadow-primary/30">
-              <Brain className="w-7 h-7 text-white" />
-            </div>
-
-            {/* Orbiting dots */}
-            {[0, 120, 240].map((deg, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 rounded-full bg-primary shadow-sm shadow-primary/50 spin-slow"
-                style={{
-                  top: '50%',
-                  left: '50%',
-                  transformOrigin: '0 0',
-                  transform: `rotate(${deg}deg) translate(56px) translate(-50%, -50%)`,
-                  animationDuration: `${3 + i * 0.4}s`,
-                }}
-              />
-            ))}
+          <div className="relative w-[100px] h-[100px]">
+            <div className="nutria-spinner" />
+            <div className="nutria-spinner1 absolute inset-0" />
           </div>
         </div>
 

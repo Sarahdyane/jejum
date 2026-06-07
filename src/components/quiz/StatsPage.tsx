@@ -112,12 +112,74 @@ export const StatsPage = ({ onContinue, onBack }: StatsPageProps) => {
           </p>
         </motion.div>
 
+        {/* Activity Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex justify-center"
+        >
+          <div className="ns-card text-left">
+            <div className="ns-header">
+              <span className="ns-title">Queima Diária</span>
+              <button className="ns-full-stats-btn">Ver tudo</button>
+            </div>
+
+            <div>
+              <span className="ns-range-value">1.230</span>
+              <span className="ns-range-unit">kcal</span>
+            </div>
+            <div className="ns-date-range">Meta Nutria · Semana atual</div>
+
+            <div className="ns-chart-container">
+              <div className="ns-avg-line">
+                <span className="ns-avg-label">Média</span>
+              </div>
+              <div className="ns-chart">
+                {[
+                  { label: 'Seg', height: 32 },
+                  { label: 'Ter', height: 44 },
+                  { label: 'Qua', height: 25 },
+                  { label: 'Qui', height: 32 },
+                  { label: 'Sex', height: 44 },
+                  { label: 'Sáb', height: 38 },
+                  { label: 'Dom', height: 28 },
+                ].map((day) => (
+                  <div key={day.label} className="ns-bar-wrapper">
+                    <div className="ns-bar-container">
+                      <div className="ns-bar" style={{ height: day.height }}>
+                        <span className="ns-dot ns-dot-top" />
+                        <span className="ns-dot ns-dot-bottom" />
+                      </div>
+                    </div>
+                    <span className="ns-day-label">{day.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="ns-readings">
+              {[
+                { time: '07:30 AM', value: '280 kcal' },
+                { time: '12:00 PM', value: '430 kcal' },
+                { time: '15:30 PM', value: '160 kcal' },
+                { time: '19:00 PM', value: '360 kcal' },
+              ].map((r) => (
+                <div key={r.time} className="ns-reading">
+                  <span className="ns-reading-time">{r.time}</span>
+                  <span className="ns-reading-value">{r.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           onClick={onContinue}
-          className="w-full max-w-md mx-auto bg-primary text-primary-foreground hover:bg-primary/90 
+          className="w-full max-w-md mx-auto bg-primary text-primary-foreground hover:bg-primary/90
                    py-4 px-8 rounded-lg font-semibold text-lg transition-colors"
         >
           Continuar

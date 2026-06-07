@@ -120,7 +120,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </motion.div>
 
         {/* --- SEÇÃO DE DORES --- */}
-        <div className="bg-card/60 rounded-3xl p-5 md:p-16 border border-border mb-24 backdrop-blur-sm max-w-5xl mx-auto">
+        <div id="secao-dores" className="bg-card/60 rounded-3xl p-5 md:p-16 border border-border mb-24 backdrop-blur-sm max-w-5xl mx-auto">
             <div className="text-center mb-8 md:mb-16 font-extrabold tracking-tight leading-tight">
                 <h2 className="text-2xl md:text-5xl text-foreground mb-1 md:mb-2">
                     Você sabe que é <span className="text-red-500">bom o suficiente.</span>
@@ -158,7 +158,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </div>
 
         {/* --- SEÇÃO: BENEFÍCIOS --- */}
-        <div className="mb-24">
+        <div id="secao-beneficios" className="mb-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 
                 {/* LADO ESQUERDO: VISUAL SURREAL (VOLTOU A SER O CARDÁPIO) */}
@@ -261,7 +261,7 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </div>
 
         {/* --- PASSO A PASSO (CARD ESTILO NIKE) --- */}
-        <div className="max-w-7xl mx-auto mb-24 px-4">
+        <div id="secao-passos" className="max-w-7xl mx-auto mb-24 px-4">
             <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-foreground tracking-tight">
                     Sua jornada, <span className="text-[#01d3b4]">simplificada.</span>
@@ -322,6 +322,8 @@ export const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
         </div>
 
       </main>
+
+
 
       {/* --- CTA FLUTUANTE (Mobile Only) --- */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/90 backdrop-blur-xl border-t border-border z-50 lg:hidden">

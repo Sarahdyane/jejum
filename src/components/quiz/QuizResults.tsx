@@ -26,6 +26,17 @@ import imgExercisePushups from '@/assets/exercise-pushups.png';
 import imgExerciseWeights from '@/assets/exercise-weights.png';
 import imgFitnessWoman from '@/assets/fitness-woman-dumbbell.png';
 
+const RippleLoader = () => {
+  const delays = ['', 'rd-1', 'rd-2', 'rd-1', 'rd-2', 'rd-3', 'rd-2', 'rd-3', 'rd-4'];
+  return (
+    <div className="ripple-loader">
+      {delays.map((d, i) => (
+        <div key={i} className={`ripple-cell${d ? ` ${d}` : ''}`} />
+      ))}
+    </div>
+  );
+};
+
 const FadeUp = ({
   children,
   delay = 0,
@@ -252,8 +263,8 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
     { id: 'home',       label: 'HIIT em casa', duration: '20 min', level: 'Iniciante',     img: imgExercisePushups, desc: 'Circuito completo sem equipamentos' },
     { id: 'running',    label: 'Cardio intervalado', duration: '30 min', level: 'Moderado',     img: imgExerciseCardio,  desc: 'Alterna sprint e caminhada para queimar mais' },
     { id: 'gym',        label: 'Treino de força', duration: '45 min', level: 'Intermediário', img: imgExerciseWeights, desc: 'Musculação focada em hipertrofia' },
-    { id: 'walking',    label: 'Caminhada HIIT', duration: '35 min', level: 'Iniciante',     img: imgExerciseCardio,  desc: 'Caminhada rápida com variações de ritmo' },
-    { id: 'stretching', label: 'Treino com peso', duration: '25 min', level: 'Iniciante',   img: imgFitnessWoman,    desc: 'Força e definição com halteres leves' },
+    { id: 'walking',    label: 'Caminhada HIIT', duration: '35 min', level: 'Iniciante',     img: imgFitnessWoman,    desc: 'Caminhada rápida com variações de ritmo' },
+    { id: 'stretching', label: 'Treino com peso', duration: '25 min', level: 'Iniciante',   img: imgExerciseWeights, desc: 'Força e definição com halteres leves' },
   ];
 
   const sportsInterest = profile.sportsInterest || [];
@@ -303,71 +314,95 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
       <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 space-y-12">
 
         {/* ══════════════════════════════════════
-            HERO — DARK PREMIUM
+            HERO — 3D PLAN CARD
         ══════════════════════════════════════ */}
         <FadeUp>
-          <div className="relative overflow-hidden rounded-3xl" style={{
-            background: 'linear-gradient(145deg, #111520 0%, #181d2e 60%, #131825 100%)',
-            border: '1px solid rgba(255,255,255,0.07)',
-            boxShadow: '0 24px 56px rgba(0,0,0,0.35)',
-          }}>
-            {/* Top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-px" style={{
-              background: 'linear-gradient(90deg, transparent 0%, hsl(174 85% 45%) 40%, hsl(174 85% 45%) 60%, transparent 100%)',
-            }} />
-            {/* Subtle glow orbs — no grid */}
-            <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl pointer-events-none" style={{ background: 'hsl(174 85% 40% / 0.10)' }} />
-            <div className="absolute -bottom-20 -left-20 w-56 h-56 rounded-full blur-3xl pointer-events-none" style={{ background: 'hsl(174 85% 40% / 0.06)' }} />
+          <div className="flex flex-col items-center gap-6">
 
-            <div className="relative z-10 p-6 md:p-10">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider"
-                style={{ background: 'hsl(174 85% 35% / 0.2)', borderColor: 'hsl(174 85% 35% / 0.4)', color: 'hsl(174 85% 65%)' }}>
-                <Zap className="w-3 h-3" />
-                Plano gerado agora para você
-              </div>
+            {/* 3D Card */}
+            <div className="nc-parent">
+              <div className="nc-card">
+                {/* Glass overlay */}
+                <div className="nc-glass" />
 
-              <h1 className="text-4xl md:text-5xl font-black text-white mb-3 leading-tight">
-                Seu plano está<br />
-                <span style={{ color: 'hsl(174 85% 55%)' }}>pronto.</span>
-              </h1>
-              <p className="text-white/60 mb-7 text-sm md:text-base max-w-md">
-                Baseado em <strong className="text-white/90">mais de 40 respostas</strong> suas, criamos um plano único focado em{' '}
-                <strong style={{ color: 'hsl(174 85% 55%)' }}>{getGoalText().toLowerCase()}</strong>.
-              </p>
+                {/* Concentric circles — top right */}
+                <div className="nc-logo">
+                  <span className="nc-circle nc-circle1" />
+                  <span className="nc-circle nc-circle2" />
+                  <span className="nc-circle nc-circle3" />
+                  <span className="nc-circle nc-circle4" />
+                  <span className="nc-circle nc-circle5">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M13 2L4.5 13H11L10 22L19.5 11H13L13 2Z" />
+                    </svg>
+                  </span>
+                </div>
 
-              {/* Weight delta widget */}
-              {weightDiff > 0 && (
-                <div className="inline-flex items-center gap-4 mb-7 rounded-2xl p-4 border"
-                  style={{ background: 'rgba(255,255,255,0.06)', borderColor: 'rgba(255,255,255,0.12)' }}>
-                  <div className="text-center">
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold mb-0.5">Hoje</p>
-                    <p className="text-3xl font-black text-white">{profile.currentWeight}<span className="text-lg">kg</span></p>
+                {/* Texto principal */}
+                <div className="nc-content">
+                  <span className="nc-title">
+                    Seu plano<br />está pronto.
+                  </span>
+                  <span className="nc-text">
+                    {getGoalText()}
+                    {weightDiff > 0 ? ` · Meta: −${weightDiff}kg` : ''}
+                  </span>
+                </div>
+
+                {/* Bottom — ícones + ver plano */}
+                <div className="nc-bottom">
+                  <div className="nc-social-btns">
+                    <button className="nc-social-btn" title="Treino">
+                      <Dumbbell className="nc-social-btn-icon" />
+                    </button>
+                    <button className="nc-social-btn" title="Queima">
+                      <Flame className="nc-social-btn-icon" />
+                    </button>
+                    <button className="nc-social-btn" title="Conquista">
+                      <Trophy className="nc-social-btn-icon" />
+                    </button>
                   </div>
-                  <div className="flex flex-col items-center gap-1 px-1">
-                    <div className="rounded-full p-1.5" style={{ background: 'hsl(174 85% 35% / 0.3)' }}>
-                      <ArrowRight className="w-4 h-4" style={{ color: 'hsl(174 85% 55%)' }} />
-                    </div>
-                    <span className="text-[10px] font-black" style={{ color: 'hsl(174 85% 55%)' }}>−{weightDiff}kg</span>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold mb-0.5">Meta</p>
-                    <p className="text-3xl font-black" style={{ color: 'hsl(174 85% 55%)' }}>{profile.targetWeight}<span className="text-lg">kg</span></p>
+                  <div className="nc-view-more" onClick={scrollToCTA}>
+                    <button className="nc-view-more-btn">Ver plano</button>
+                    <svg viewBox="0 0 15 15" className="nc-view-more-arrow">
+                      <path d="M5 3L10 7.5L5 12" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </div>
                 </div>
-              )}
-
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2">
-                {personalizedBadges.map((badge, i) => (
-                  <span key={i} className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border"
-                    style={{ background: 'rgba(255,255,255,0.07)', borderColor: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.8)' }}>
-                    <Check className="w-3 h-3 flex-shrink-0" style={{ color: 'hsl(174 85% 55%)' }} />
-                    {badge}
-                  </span>
-                ))}
               </div>
             </div>
+
+            {/* Weight delta widget */}
+            {weightDiff > 0 && (
+              <div className="inline-flex items-center gap-4 rounded-2xl p-4 border"
+                style={{ background: 'hsl(174 85% 35% / 0.07)', borderColor: 'hsl(174 85% 35% / 0.2)' }}>
+                <div className="text-center">
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold mb-0.5">Hoje</p>
+                  <p className="text-3xl font-black text-foreground">{profile.currentWeight}<span className="text-lg">kg</span></p>
+                </div>
+                <div className="flex flex-col items-center gap-1 px-1">
+                  <div className="rounded-full p-1.5 bg-primary/20">
+                    <ArrowRight className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-[10px] font-black text-primary">−{weightDiff}kg</span>
+                </div>
+                <div className="text-center">
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold mb-0.5">Meta</p>
+                  <p className="text-3xl font-black text-primary">{profile.targetWeight}<span className="text-lg">kg</span></p>
+                </div>
+              </div>
+            )}
+
+            {/* Badges personalizados */}
+            <div className="flex flex-wrap gap-2 justify-center max-w-sm">
+              {personalizedBadges.map((badge, i) => (
+                <span key={i} className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border border-border bg-card text-foreground">
+                  <Check className="w-3 h-3 flex-shrink-0 text-primary" />
+                  {badge}
+                </span>
+              ))}
+            </div>
+
           </div>
         </FadeUp>
 
@@ -782,13 +817,15 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
         ══════════════════════════════════════ */}
         <FadeUp delay={80}>
           <div className="rounded-3xl border border-border overflow-hidden shadow-sm">
-            {/* Header dark */}
-            <div className="px-6 py-5 border-b border-border" style={{
-              background: 'linear-gradient(135deg, #0a2218 0%, #0f3d2c 100%)'
-            }}>
-              <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: 'hsl(174 85% 55%)' }}>Personalizado para você</p>
-              <h2 className="text-2xl font-black text-white">Seu plano está pronto</h2>
-              <p className="text-white/50 text-xs mt-1">Criado exclusivamente com base nas suas respostas</p>
+            {/* Header */}
+            <div className="px-6 py-5 border-b border-border bg-card">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-1 rounded-full bg-primary flex-shrink-0" />
+                <div>
+                  <h2 className="text-2xl font-black text-foreground">Seu plano está pronto</h2>
+                  <p className="text-xs text-muted-foreground mt-0.5">Personalizado com base nas suas respostas</p>
+                </div>
+              </div>
             </div>
 
             <div className="p-6 bg-card">
@@ -814,10 +851,9 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
               </div>
 
               {/* AI pill */}
-              <div className="flex items-center gap-4 rounded-2xl border p-4"
-                style={{ background: 'hsl(174 85% 35% / 0.07)', borderColor: 'hsl(174 85% 35% / 0.2)' }}>
-                <div className="p-2.5 rounded-xl shrink-0" style={{ background: 'hsl(174 85% 35% / 0.15)' }}>
-                  <Zap className="w-5 h-5 text-primary" />
+              <div className="flex items-center gap-4 rounded-2xl border border-border bg-secondary/40 p-4">
+                <div className="p-2.5 rounded-xl shrink-0 bg-background border border-border/60">
+                  <Zap className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
                   <h4 className="font-bold text-foreground text-sm">Nutria AI inclusa no plano</h4>
@@ -837,10 +873,7 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             <div className="absolute inset-0" style={{
               background: 'linear-gradient(135deg, #0a2218 0%, #0f3d2c 50%, #0a2218 100%)'
             }} />
-            <div className="absolute inset-0 opacity-15" style={{
-              backgroundImage: 'linear-gradient(hsl(174 85% 50% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(174 85% 50% / 0.4) 1px, transparent 1px)',
-              backgroundSize: '28px 28px',
-            }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl pointer-events-none" style={{ background: 'hsl(174 85% 35% / 0.12)' }} />
             <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl" style={{ background: 'hsl(174 85% 35% / 0.2)' }} />
 
             <div className="relative z-10 p-6 md:p-10">
@@ -859,6 +892,14 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
                   <span style={{ color: 'hsl(174 85% 55%)' }}>ainda hoje.</span>
                 </h2>
                 <p className="text-white/50 text-sm">Seu plano já está pronto. Falta só um passo.</p>
+              </div>
+
+              {/* Ripple grid — visual pulse de energia antes do timer */}
+              <div className="flex flex-col items-center gap-3 mb-8">
+                <RippleLoader />
+                <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'hsl(174 85% 45%)' }}>
+                  Plano ativo e pronto para você
+                </p>
               </div>
 
               {/* Countdown */}
@@ -969,21 +1010,23 @@ export const QuizResults = ({ profile, onRestart }: QuizResultsProps) => {
             BENEFÍCIOS ADICIONAIS
         ══════════════════════════════════════ */}
         <FadeUp delay={80}>
-          <div className="rounded-3xl border p-6 md:p-8" style={{ background: 'hsl(174 85% 35% / 0.06)', borderColor: 'hsl(174 85% 35% / 0.2)' }}>
-            <h2 className="text-2xl font-black text-foreground mb-5">Seu plano também vai te ajudar a:</h2>
-            <div className="space-y-2.5">
+          <div className="rounded-3xl border border-border bg-card overflow-hidden shadow-sm">
+            <div className="px-6 py-5 border-b border-border bg-secondary/30">
+              <h2 className="text-xl font-black text-foreground">Além disso, você vai:</h2>
+            </div>
+            <div className="p-6 grid sm:grid-cols-2 gap-1">
               {[
                 'Reduzir o estresse e a ansiedade',
                 'Se sentir mais saudável e confiante',
                 'Desenvolver autodisciplina de forma natural',
-                'Criar hábitos saudáveis que duram para sempre',
+                'Criar hábitos saudáveis que duram',
                 'Melhorar a qualidade do sono',
               ].map((goal, i) => (
-                <div key={i} className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-3 border border-border/30">
-                  <div className="rounded-full p-0.5 flex-shrink-0" style={{ background: 'hsl(174 85% 35%)' }}>
-                    <Check className="w-3 h-3 text-white" />
-                  </div>
-                  <span className="text-sm font-medium text-foreground">{goal}</span>
+                <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-secondary/40 transition-colors group">
+                  <span className="text-[11px] font-black tabular-nums text-primary/50 w-5 flex-shrink-0 group-hover:text-primary transition-colors">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-sm text-foreground">{goal}</span>
                 </div>
               ))}
             </div>

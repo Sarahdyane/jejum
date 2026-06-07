@@ -254,4 +254,290 @@ All colors MUST be HSL.
   .quiz-button-professional {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
   }
+
+  /* ── 3D PLAN CARD (Uiverse.io by Smit-Prajapati — Nutria adaptation) ── */
+  .nc-parent {
+    width: 290px;
+    height: 300px;
+    perspective: 1000px;
+  }
+
+  .nc-card {
+    height: 100%;
+    border-radius: 50px;
+    background: linear-gradient(135deg, hsl(174 85% 58%) 0%, hsl(174 85% 38%) 100%);
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    box-shadow: rgba(0, 80, 68, 0) 40px 50px 25px -40px, rgba(0, 80, 68, 0.2) 0px 25px 25px -5px;
+    position: relative;
+  }
+
+  .nc-glass {
+    transform-style: preserve-3d;
+    position: absolute;
+    inset: 8px;
+    border-radius: 55px;
+    border-top-right-radius: 100%;
+    background: linear-gradient(0deg, rgba(255,255,255,0.349) 0%, rgba(255,255,255,0.815) 100%);
+    transform: translate3d(0px, 0px, 25px);
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .nc-content {
+    padding: 95px 60px 0px 28px;
+    transform: translate3d(0, 0, 26px);
+  }
+
+  .nc-title {
+    display: block;
+    color: hsl(174 85% 18%);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .nc-text {
+    display: block;
+    color: rgba(0, 95, 80, 0.76);
+    font-size: 13px;
+    margin-top: 10px;
+    line-height: 1.45;
+  }
+
+  .nc-bottom {
+    padding: 10px 12px;
+    transform-style: preserve-3d;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translate3d(0, 0, 26px);
+  }
+
+  .nc-social-btns {
+    display: flex;
+    gap: 10px;
+    transform-style: preserve-3d;
+  }
+
+  .nc-social-btn {
+    width: 30px;
+    aspect-ratio: 1;
+    padding: 5px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: none;
+    display: grid;
+    place-content: center;
+    box-shadow: rgba(0, 80, 68, 0.5) 0px 7px 5px -5px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s;
+  }
+
+  .nc-social-btn:nth-child(2) { transition-delay: 0.6s; }
+  .nc-social-btn:nth-child(3) { transition-delay: 0.8s; }
+
+  .nc-social-btn-icon { width: 15px; height: 15px; color: hsl(174 85% 28%); }
+
+  .nc-social-btn:hover { background: #050a14; }
+  .nc-social-btn:hover .nc-social-btn-icon { color: white; }
+  .nc-social-btn:active { background: hsl(174 85% 55%); }
+  .nc-social-btn:active .nc-social-btn-icon { color: white; }
+
+  .nc-view-more {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 40%;
+    justify-content: flex-end;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .nc-view-more:hover { transform: translate3d(0, 0, 10px); }
+
+  .nc-view-more-btn {
+    background: none;
+    border: none;
+    color: hsl(174 85% 30%);
+    font-weight: 800;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .nc-view-more-arrow {
+    fill: none;
+    stroke: hsl(174 85% 30%);
+    stroke-width: 3px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .nc-logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-style: preserve-3d;
+  }
+
+  .nc-circle {
+    display: block;
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(1, 211, 180, 0.2);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .nc-circle1 { width: 170px; transform: translate3d(0,0,20px); top: 8px; right: 8px; }
+  .nc-circle2 { width: 140px; transform: translate3d(0,0,40px); top: 10px; right: 10px; -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px); transition-delay: 0.4s; }
+  .nc-circle3 { width: 110px; transform: translate3d(0,0,60px); top: 17px; right: 17px; transition-delay: 0.8s; }
+  .nc-circle4 { width: 80px;  transform: translate3d(0,0,80px); top: 23px; right: 23px; transition-delay: 1.2s; }
+  .nc-circle5 { width: 50px;  transform: translate3d(0,0,100px); top: 30px; right: 30px; display: grid; place-content: center; transition-delay: 1.6s; }
+
+  .nc-parent:hover .nc-card {
+    transform: rotate3d(1, 1, 0, 30deg);
+    box-shadow: rgba(0, 80, 68, 0.3) 30px 50px 25px -40px, rgba(0, 80, 68, 0.1) 0px 25px 30px 0px;
+  }
+
+  .nc-parent:hover .nc-social-btn {
+    transform: translate3d(0, 0, 50px);
+    box-shadow: rgba(0, 80, 68, 0.2) -5px 20px 10px 0px;
+  }
+
+  .nc-parent:hover .nc-circle2 { transform: translate3d(0,0,60px); }
+  .nc-parent:hover .nc-circle3 { transform: translate3d(0,0,80px); }
+  .nc-parent:hover .nc-circle4 { transform: translate3d(0,0,100px); }
+  .nc-parent:hover .nc-circle5 { transform: translate3d(0,0,120px); }
+
+  /* ── NUTRIA ACTIVITY CARD (Uiverse.io by NK2552003 — Nutria adaptation) ── */
+  .ns-card {
+    background: hsl(var(--card));
+    border-radius: 20px;
+    padding: 18px;
+    max-width: 260px;
+    width: 100%;
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .ns-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .ns-title { font-size: 16px; font-weight: 700; color: hsl(var(--foreground)); }
+  .ns-full-stats-btn {
+    background: hsl(var(--card));
+    border: 1.5px solid hsl(var(--border));
+    border-radius: 5px;
+    padding: 4px 9px;
+    font-size: 10px;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .ns-full-stats-btn:hover { background: hsl(var(--muted)); }
+  .ns-range-value { font-size: 30px; font-weight: 700; color: hsl(var(--foreground)); letter-spacing: -0.5px; }
+  .ns-range-unit { font-size: 28px; font-weight: 300; color: hsl(var(--muted-foreground)); margin-left: 4px; }
+  .ns-date-range { font-size: 11px; color: hsl(var(--muted-foreground)); margin-bottom: 20px; }
+  .ns-chart-container { position: relative; height: 90px; margin-bottom: 20px; }
+  .ns-chart { display: flex; align-items: flex-end; justify-content: space-around; height: 100%; position: relative; padding: 0 14px; }
+  .ns-avg-line { position: absolute; left: 0; right: 0; top: 45%; height: 1.5px; background: hsl(var(--border)); z-index: 1; }
+  .ns-avg-label {
+    position: absolute; top: -35%; right: 0;
+    background: hsl(174 85% 28%);
+    color: white; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; z-index: 2;
+  }
+  .ns-bar-wrapper { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; z-index: 2; }
+  .ns-bar-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .ns-bar {
+    width: 20px;
+    background: linear-gradient(to bottom, hsl(174 85% 38%) 0%, hsl(174 85% 65%) 100%);
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+  }
+  .ns-bar:hover { transform: scale(1.05); }
+  .ns-dot { width: 8px; height: 8px; background: white; border: 1.5px solid hsl(174 85% 38%); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); }
+  .ns-dot-top { top: -4px; }
+  .ns-dot-bottom { bottom: -4px; }
+  .ns-day-label { font-size: 9px; color: hsl(var(--muted-foreground)); font-weight: 500; }
+  .ns-readings { border-top: 1.5px solid hsl(var(--border)); padding-top: 12px; }
+  .ns-reading { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1.5px solid hsl(var(--border)); }
+  .ns-reading:last-child { border-bottom: none; }
+  .ns-reading-time { font-size: 9px; color: hsl(var(--muted-foreground)); }
+  .ns-reading-value { font-size: 12px; font-weight: 700; color: hsl(var(--foreground)); }
+
+  /* ── NUTRIA SPINNER (Uiverse.io by xXJollyHAKERXx — Nutria adaptation) ── */
+  .nutria-spinner {
+    background-image: linear-gradient(hsl(174 85% 38%) 35%, hsl(160 80% 58%));
+    width: 100px;
+    height: 100px;
+    animation: nutria-spinning 1.7s linear infinite;
+    border-radius: 50px;
+    filter: blur(1px);
+    box-shadow: 0px -5px 20px 0px hsl(174 85% 45%), 0px 5px 20px 0px hsl(160 80% 60%);
+  }
+  .nutria-spinner1 {
+    background-color: hsl(var(--background));
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    filter: blur(10px);
+  }
+  @keyframes nutria-spinning {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ── RIPPLE GRID LOADER (Uiverse.io by alexruix) ── */
+  .ripple-loader {
+    --cell-size: 52px;
+    --cell-spacing: 1px;
+    --cells: 3;
+    --total-size: calc(var(--cells) * (var(--cell-size) + 2 * var(--cell-spacing)));
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--total-size);
+    height: var(--total-size);
+  }
+
+  .ripple-cell {
+    flex: 0 0 var(--cell-size);
+    margin: var(--cell-spacing);
+    background-color: transparent;
+    box-sizing: border-box;
+    border-radius: 4px;
+    animation: ripple-wave 1.5s ease infinite;
+  }
+
+  .ripple-cell.rd-1 { animation-delay: 100ms; }
+  .ripple-cell.rd-2 { animation-delay: 200ms; }
+  .ripple-cell.rd-3 { animation-delay: 300ms; }
+  .ripple-cell.rd-4 { animation-delay: 400ms; }
+
+  .ripple-cell:nth-child(1) { --cell-color: #00FF87; }
+  .ripple-cell:nth-child(2) { --cell-color: #0CFD95; }
+  .ripple-cell:nth-child(3) { --cell-color: #17FBA2; }
+  .ripple-cell:nth-child(4) { --cell-color: #23F9B2; }
+  .ripple-cell:nth-child(5) { --cell-color: #30F7C3; }
+  .ripple-cell:nth-child(6) { --cell-color: #3DF5D4; }
+  .ripple-cell:nth-child(7) { --cell-color: #45F4DE; }
+  .ripple-cell:nth-child(8) { --cell-color: #53F1F0; }
+  .ripple-cell:nth-child(9) { --cell-color: #60EFFF; }
+
+  @keyframes ripple-wave {
+    0%   { background-color: transparent; }
+    30%  { background-color: var(--cell-color); }
+    60%  { background-color: transparent; }
+    100% { background-color: transparent; }
+  }
 }
